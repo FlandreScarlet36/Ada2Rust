@@ -1,0 +1,44 @@
+program
+    ProcedureDef
+        Procedure	name: example	type: Procedure
+        DeclItemOrBodyStmt
+            DeclStmt
+                ObjectDeclStmt
+                    DefId	name: I	type: Integer	isConst: false
+                    InitOptStmt
+                        Literal	type: Integer	value: 1
+        Stmt
+            LoopStmt
+                BasicLoopStmt
+                    Stmt
+                        BlockStmt
+                            DeclItemOrBodyStmt
+                                DeclStmt
+                                    ObjectDeclStmt
+                                        DefId	name: Name	type: String	isConst: true
+                                        InitOptStmt
+                                            BinaryExpr
+                                                OpSign: &
+                                                    Literal	type: String	value: "Num is: "
+                                                    Id
+                                                        Id
+                                                            Id
+                                                                name: Integer	scope: 0	type: Integer
+                                                                AttributeId: Image
+                                                        Name PAREN Value
+                                                            Id
+                                                                name: I	scope: 2	type: Integer
+                            Stmt
+                                ExitStmt
+                                    BinaryExpr
+                                        OpSign: =
+                                            Id
+                                                name: I	scope: 2	type: Integer
+                                            Literal	type: Integer	value: 4
+                    Stmt
+                        AssignStmt	name: I	type: Integer
+                            BinaryExpr
+                                OpSign: +
+                                    Id
+                                        name: I	scope: 2	type: Integer
+                                    Literal	type: Integer	value: 1
