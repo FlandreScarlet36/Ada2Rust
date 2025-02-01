@@ -1,7 +1,7 @@
 #ifndef __ADA2C_CPP_UNIT_H__
 #define __ADA2C_CPP_UNIT_H__
 
-#include "CppType.h"
+#include "RustType.h"
 #include "Function.h"
 #include <map>
 #include <vector>

@@ -1,4 +1,4 @@
-#include "CppType.h"
+#include "RustType.h"
 
 extern FILE *yyout;
 bool AdaInteger::isUsed = false;

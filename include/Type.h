@@ -3,7 +3,7 @@
 
 #include <string>
 #include <vector>
-#include "CppType.h"
+#include "RustType.h"
 
 class SymbolEntry;
 

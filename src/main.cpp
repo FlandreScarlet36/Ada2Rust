@@ -1,5 +1,5 @@
 #include "Ast.h"
-#include "CppUnit.h"
+#include "RustUnit.h"
 #include "common.h"
 #include <iostream>
 #include <string.h>
