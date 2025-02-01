@@ -6,152 +6,203 @@ bool AdaNatural::isUsed = false;
 bool AdaString::isUsed = false;
 
 void AdaInteger::output() {
-  fprintf(yyout, R"(#include <climits>
-#include <string>
-class AdaInteger {
-private:
-  int value;
+  fprintf(yyout, R"(
+use std::fmt;
+#[derive(Debug, Clone, PartialEq, PartialOrd)]
+struct AdaInteger {
+    value: i32,
+}
 
-public:
-  static AdaInteger Last;
-  AdaInteger() = default;
-  AdaInteger(int _value) : value(_value){};
-  AdaInteger operator-() { return AdaInteger(-value); }
-  friend AdaInteger operator+(AdaInteger &_left, AdaInteger &_right) {
-    return AdaInteger(_left.value + _right.value);
-  }
-  friend AdaInteger operator+(AdaInteger &_left, int _right) {
-    return AdaInteger(_left.value + _right);
-  }
-  friend AdaInteger operator-(AdaInteger &_left, AdaInteger &_right) {
-    return AdaInteger(_left.value - _right.value);
-  }
-  friend AdaInteger operator-(AdaInteger &_left, int _right) {
-    return AdaInteger(_left.value - _right);
-  }
-  friend bool operator>(AdaInteger &_left, AdaInteger &_right) {
-    return _left.value > _right.value;
-  }
-  friend bool operator>(AdaInteger &_left, int _right) {
-    return _left.value > _right;
-  }
-  friend bool operator<(AdaInteger &_left, AdaInteger &_right) {
-    return _left.value < _right.value;
-  }
-  friend bool operator<(AdaInteger &_left, int _right) {
-    return _left.value < _right;
-  }
-  friend bool operator==(AdaInteger &_left, AdaInteger &_right) {
-    return _left.value == _right.value;
-  }
-  friend bool operator==(AdaInteger &_left, int _right) {
-    return _left.value == _right;
-  }
-  friend bool operator!=(AdaInteger &_left, AdaInteger &_right) {
-    return _left.value != _right.value;
-  }
-  friend bool operator!=(AdaInteger &_left, int _right) {
-    return _left.value != _right;
-  }
-  friend bool operator<=(AdaInteger &_left, AdaInteger &_right) {
-    return _left.value <= _right.value;
-  }
-  friend bool operator<=(AdaInteger &_left, int _right) {
-    return _left.value <= _right;
-  }
-  friend bool operator>=(AdaInteger &_left, AdaInteger &_right) {
-    return _left.value >= _right.value;
-  }
-  friend bool operator>=(AdaInteger &_left, int _right) {
-    return _left.value >= _right;
-  }
-  static std::string Image(AdaInteger I) { return std::to_string(I.value); }
-};
-AdaInteger AdaInteger::Last = AdaInteger(INT_MAX);
+impl AdaInteger {
+    fn new(value: i32) -> Self {
+        AdaInteger { value }
+    }
+
+    fn image(&self) -> String {
+        self.value.to_string()
+    }
+}
+
+impl std::ops::Neg for AdaInteger {
+    type Output = AdaInteger;
+
+    fn neg(self) -> AdaInteger {
+        AdaInteger::new(-self.value)
+    }
+}
+
+impl std::ops::Add for AdaInteger {
+    type Output = AdaInteger;
+
+    fn add(self, other: AdaInteger) -> AdaInteger {
+        AdaInteger::new(self.value + other.value)
+    }
+}
+
+impl std::ops::Add<i32> for AdaInteger {
+    type Output = AdaInteger;
+
+    fn add(self, other: i32) -> AdaInteger {
+        AdaInteger::new(self.value + other)
+    }
+}
+
+impl std::ops::Sub for AdaInteger {
+    type Output = AdaInteger;
+
+    fn sub(self, other: AdaInteger) -> AdaInteger {
+        AdaInteger::new(self.value - other.value)
+    }
+}
+
+impl std::ops::Sub<i32> for AdaInteger {
+    type Output = AdaInteger;
+
+    fn sub(self, other: i32) -> AdaInteger {
+        AdaInteger::new(self.value - other)
+    }
+}
+
+impl fmt::Display for AdaInteger {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{}", self.value)
+    }
+}
+
+impl AdaInteger {
+    const LAST: AdaInteger = AdaInteger { value: i32::MAX };
+}
 )");
 }
 
 void AdaNatural::output() {
-  fprintf(yyout, R"(class AdaNatural {
-private:
-  int value;
-public:
-  AdaNatural() = default;
-  AdaNatural(int _value) : value(_value) {};
-  AdaNatural operator-() {
-    return AdaNatural(-value);
-  }
-  friend AdaNatural operator+(AdaNatural& _left, AdaNatural& _right) {
-    return AdaNatural(_left.value + _right.value);
-  }
-  friend AdaNatural operator+(AdaNatural& _left, int _right) {
-    return AdaNatural(_left.value + _right);
-  }
-  friend AdaNatural operator-(AdaNatural& _left, AdaNatural& _right) {
-    return AdaNatural(_left.value - _right.value);
-  }
-  friend AdaNatural operator-(AdaNatural& _left, int _right) {
-    return AdaNatural(_left.value - _right);
-  }
-  friend bool operator>(AdaNatural& _left, AdaNatural& _right) {
-    return _left.value > _right.value;
-  }
-  friend bool operator>(AdaNatural& _left, int _right) {
-    return _left.value > _right;
-  }
-  friend bool operator<(AdaNatural& _left, AdaNatural& _right) {
-    return _left.value < _right.value;
-  }
-  friend bool operator<(AdaNatural& _left, int _right) {
-    return _left.value < _right;
-  }
-  friend bool operator==(AdaNatural& _left, AdaNatural& _right) {
-    return _left.value == _right.value;
-  }
-  friend bool operator==(AdaNatural& _left, int _right) {
-    return _left.value == _right;
-  }
-  friend bool operator!=(AdaNatural& _left, AdaNatural& _right) {
-    return _left.value != _right.value;
-  }
-  friend bool operator!=(AdaNatural& _left, int _right) {
-    return _left.value != _right;
-  }
-  friend bool operator<=(AdaNatural& _left, AdaNatural& _right) {
-    return _left.value <= _right.value;
-  }
-  friend bool operator<=(AdaNatural& _left, int _right) {
-    return _left.value <= _right;
-  }
-  friend bool operator>=(AdaNatural& _left, AdaNatural& _right) {
-    return _left.value >= _right.value;
-  }
-  friend bool operator>=(AdaNatural& _left, int _right) {
-    return _left.value >= _right;
-  }
-};
+  fprintf(yyout, R"(
+#[derive(Debug, Clone)]
+struct AdaNatural {
+    value: i32,
+}
+
+impl AdaNatural {
+    fn new(value: i32) -> Self {
+        AdaNatural { value }
+    }
+}
+
+impl std::ops::Neg for AdaNatural {
+    type Output = AdaNatural;
+
+    fn neg(self) -> AdaNatural {
+        AdaNatural::new(-self.value)
+    }
+}
+
+impl std::ops::Add for AdaNatural {
+    type Output = AdaNatural;
+
+    fn add(self, other: AdaNatural) -> AdaNatural {
+        AdaNatural::new(self.value + other.value)
+    }
+}
+
+impl std::ops::Add<i32> for AdaNatural {
+    type Output = AdaNatural;
+
+    fn add(self, other: i32) -> AdaNatural {
+        AdaNatural::new(self.value + other)
+    }
+}
+
+impl std::ops::Sub for AdaNatural {
+    type Output = AdaNatural;
+
+    fn sub(self, other: AdaNatural) -> AdaNatural {
+        AdaNatural::new(self.value - other.value)
+    }
+}
+
+impl std::ops::Sub<i32> for AdaNatural {
+    type Output = AdaNatural;
+
+    fn sub(self, other: i32) -> AdaNatural {
+        AdaNatural::new(self.value - other)
+    }
+}
+
+impl PartialEq<i32> for AdaNatural {
+    fn eq(&self, other: &i32) -> bool {
+        self.value == *other
+    }
+}
+
+impl PartialOrd<i32> for AdaNatural {
+    fn partial_cmp(&self, other: &i32) -> Option<std::cmp::Ordering> {
+        self.value.partial_cmp(other)
+    }
+}
+
+impl std::cmp::PartialEq for AdaNatural {
+    fn eq(&self, other: &Self) -> bool {
+        self.value == other.value
+    }
+}
+
+impl std::cmp::PartialOrd for AdaNatural {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+        self.value.partial_cmp(&other.value)
+    }
+}
+
+impl fmt::Display for AdaNatural {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{}", self.value)
+    }
+}
 )");
 }
 
 void AdaString::output() {
-  fprintf(yyout, R"(#include <string>
-class AdaString {
-private:
-  std::string value;
+  fprintf(yyout, R"(  
+#[derive(Debug, Clone)]
+struct AdaString {
+    value: String,
+}
 
-public:
-  AdaString() = default;
-  AdaString(std::string _value) : value(_value){};
-  AdaString(const char *_value) { value = std::string(_value); };
-  AdaString(const AdaString &a) { value = a.getValue(); };
-  std::string getValue() const { return value; }
-  void setValue(std::string _value) { value = _value; }
-  friend AdaString operator+(AdaString &_left, AdaString &_right) {
-    return AdaString(_left.value + _right.value);
-  }
-  friend AdaString operator+(AdaString &_left, std::string _right) {
-    return AdaString(_left.value + _right);
-  }
-};
+impl AdaString {
+    fn new(value: &str) -> Self {
+        AdaString {
+            value: value.to_string(),
+        }
+    }
+
+    fn get_value(&self) -> &str {
+        &self.value
+    }
+
+    fn set_value(&mut self, value: &str) {
+        self.value = value.to_string();
+    }
+}
+
+impl std::ops::Add for AdaString {
+    type Output = AdaString;
+
+    fn add(self, other: AdaString) -> AdaString {
+        AdaString::new(&(self.value + &other.value))
+    }
+}
+
+impl std::ops::Add<&str> for AdaString {
+    type Output = AdaString;
+
+    fn add(self, other: &str) -> AdaString {
+        AdaString::new(&(self.value + other))
+    }
+}
+
+impl fmt::Display for AdaString {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{}", self.value)
+    }
+}
 )");
 }
