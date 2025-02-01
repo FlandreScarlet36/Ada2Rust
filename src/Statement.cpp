@@ -2,12 +2,12 @@
 #include "Function.h"
 
 extern FILE *yyout;
-int CppNode::counter = 0;
+int RustNode::counter = 0;
 
-CppNode::CppNode() { seq = counter++; }
+RustNode::RustNode() { seq = counter++; }
 
-void CppNode::setNext(CppNode *node) {
-  CppNode *n = this;
+void RustNode::setNext(RustNode *node) {
+  RustNode *n = this;
   while (n->getNext()) {
     n = n->getNext();
   }
@@ -18,8 +18,8 @@ void CppNode::setNext(CppNode *node) {
   }
 }
 
-void CppStmt::setNext(CppStmt *node) {
-  CppStmt *n = this;
+void RustStmt::setNext(RustStmt *node) {
+  RustStmt *n = this;
   while (n->getNext()) {
     n = n->getNext();
   }
@@ -30,21 +30,21 @@ void CppStmt::setNext(CppStmt *node) {
   }
 }
 
-CppStmt::CppStmt(Function *func) {
+RustStmt::RustStmt(Function *func) {
   if (func) {
     func->insertStmts(this);
   }
 }
 
-std::string CppId::output() const {
+std::string RustId::output() const {
   if (name) {
     if (expr) {
       std::string paramStr;
-      CppExpr *temp = expr;
+      RustExpr *temp = expr;
       paramStr += temp->output();
       if (temp->getNext()) {
         paramStr += ", ";
-        temp = dynamic_cast<CppExpr *>(temp->getNext());
+        temp = dynamic_cast<RustExpr *>(temp->getNext());
       }
       char res[50];
       sprintf(res, "%s(%s)", name->output().c_str(), paramStr.c_str());
@@ -67,87 +67,87 @@ std::string CppId::output() const {
   }
 }
 
-std::string CppConstant::output() const { return se->dump(); }
+std::string RustConstant::output() const { return se->dump(); }
 
-std::string CppFactor::output() const {
+std::string RustFactor::output() const {
   std::string opMethod;
   switch (op) {
-  case CppFactor::NOT:
+  case RustFactor::NOT:
     opMethod = "!";
     break;
-  case CppFactor::ABS:
+  case RustFactor::ABS:
     opMethod = "";
   }
   return opMethod + cExpr->output();
 }
 
-std::string CppBinaryExpr::output() const {
-  // For some operator, we can use them in Cpp directly.
+std::string RustBinaryExpr::output() const {
+  // For some operator, we can use them in Rust directly.
   // But others we should define method to implement them.
   std::string opSignName;
   switch (sign) {
-  case CppBinaryExpr::MUL:
+  case RustBinaryExpr::MUL:
     opSignName = "*";
     break;
-  case CppBinaryExpr::DIV:
+  case RustBinaryExpr::DIV:
     opSignName = "/";
     break;
-  case CppBinaryExpr::MOD:
+  case RustBinaryExpr::MOD:
     opSignName = "%";
     break;
-  case CppBinaryExpr::REM:
+  case RustBinaryExpr::REM:
     // Fix: add rules of it
     opSignName = "rem";
     break;
-  case CppBinaryExpr::ADD:
+  case RustBinaryExpr::ADD:
     opSignName = "+";
     break;
-  case CppBinaryExpr::SUB:
+  case RustBinaryExpr::SUB:
     opSignName = "-";
     break;
-  case CppBinaryExpr::SINGLEAND:
+  case RustBinaryExpr::SINGLEAND:
     // HL: maybe string
     opSignName = "+";
     break;
-    //   case CppBinaryExpr::IN:
+    //   case RustBinaryExpr::IN:
     //     opSignName = "in";
     //     break;
-    //   case CppBinaryExpr::NOTIN:
+    //   case RustBinaryExpr::NOTIN:
     //     opSignName = "not in";
     //     break;
-  case CppBinaryExpr::EQ:
+  case RustBinaryExpr::EQ:
     opSignName = "==";
     break;
-  case CppBinaryExpr::NE:
+  case RustBinaryExpr::NE:
     opSignName = "!=";
     break;
-  case CppBinaryExpr::LE:
+  case RustBinaryExpr::LE:
     opSignName = "<";
     break;
-  case CppBinaryExpr::LTEQ:
+  case RustBinaryExpr::LTEQ:
     opSignName = "<=";
     break;
-  case CppBinaryExpr::GE:
+  case RustBinaryExpr::GE:
     opSignName = ">";
     break;
-  case CppBinaryExpr::GTEQ:
+  case RustBinaryExpr::GTEQ:
     opSignName = ">=";
     break;
-  case CppBinaryExpr::ANDTHEN:
+  case RustBinaryExpr::ANDTHEN:
     // Fix: add rules of it
     opSignName = "and then";
     break;
-  case CppBinaryExpr::ORELSE:
+  case RustBinaryExpr::ORELSE:
     // Fix: add rules of it
     opSignName = "or else";
     break;
-  case CppBinaryExpr::AND:
+  case RustBinaryExpr::AND:
     opSignName = "&&";
     break;
-  case CppBinaryExpr::OR:
+  case RustBinaryExpr::OR:
     opSignName = "||";
     break;
-  case CppBinaryExpr::XOR:
+  case RustBinaryExpr::XOR:
     // Fix: add rules of it
     opSignName = "xor";
     break;
@@ -161,13 +161,13 @@ std::string CppBinaryExpr::output() const {
     return std::string(temp);
   } else if (isMember) {
     if (se) {
-      if (sign == CppBinaryExpr::IN) {
+      if (sign == RustBinaryExpr::IN) {
         // Fix: need to add rules
         /*
         ValidDigits : constant DigitSet := (1, 3, 5, 7, 9);
         if A in ValidDigits:
         */
-      } else if (sign == CppBinaryExpr::NOTIN) {
+      } else if (sign == RustBinaryExpr::NOTIN) {
         // Fix: need to add rules
       } else {
         sprintf(temp, "%s %s %s", cExpr1->output().c_str(), opSignName.c_str(),
@@ -175,18 +175,18 @@ std::string CppBinaryExpr::output() const {
       }
     }
     if (cRange) {
-      CppExpr *low = cRange->getLow();
-      CppExpr *upper = cRange->getUpper();
-      if (sign == CppBinaryExpr::IN) {
+      RustExpr *low = cRange->getLow();
+      RustExpr *upper = cRange->getUpper();
+      if (sign == RustBinaryExpr::IN) {
         sprintf(temp, "%s >= %s && %s <= %s", cExpr1->output().c_str(),
                 low->output().c_str(), cExpr1->output().c_str(),
                 upper->output().c_str());
-      } else if (sign == CppBinaryExpr::NOTIN) {
+      } else if (sign == RustBinaryExpr::NOTIN) {
         sprintf(temp, "%s < %s || %s > %s", cExpr1->output().c_str(),
                 low->output().c_str(), cExpr1->output().c_str(),
                 upper->output().c_str());
       } else {
-        std::cerr << "[CPPBINARY OUTPUT ERROR] Not match sign of Range!\n";
+        std::cerr << "[RustBINARY OUTPUT ERROR] Not match sign of Range!\n";
         return std::string();
       }
     }
@@ -198,7 +198,7 @@ std::string CppBinaryExpr::output() const {
   }
 }
 
-std::string CppSeqStmt::output(int level) const {
+std::string RustSeqStmt::output(int level) const {
   std::string res = stmt->output(level);
   if (this->getNext()) {
     res += this->getNext()->output(level);
@@ -206,20 +206,20 @@ std::string CppSeqStmt::output(int level) const {
   return res;
 }
 
-std::string CppDummyStmt::output(int level) const {
+std::string RustDummyStmt::output(int level) const {
   char temp[80];
   sprintf(temp, "%*c;\n", level, ' ');
   return std::string(temp);
 }
 
-std::string CppAssignStmt::output(int level) const {
+std::string RustAssignStmt::output(int level) const {
   char temp[200];
   sprintf(temp, "%*c%s = %s;\n", level, ' ', se->dump().c_str(),
           cExpr->output().c_str());
   return std::string(temp);
 }
 
-std::string CppCallStmt::output(int level) const {
+std::string RustCallStmt::output(int level) const {
   char temp[200];
   std::string paramStr;
   if (!cId->getParam()) {
@@ -230,7 +230,7 @@ std::string CppCallStmt::output(int level) const {
   return std::string(temp);
 }
 
-std::string CppCondClause::output(int level) const {
+std::string RustCondClause::output(int level) const {
   std::string stmtStr = stmts->output(level + 4);
   std::string resStr;
   char res[200];
@@ -238,7 +238,7 @@ std::string CppCondClause::output(int level) const {
 %s%*c}
 )deli",
           level, ' ', cond->output().c_str(), stmtStr.c_str(), level, ' ');
-  CppCondClause *elseIf = dynamic_cast<CppCondClause *>(this->getNext());
+  RustCondClause *elseIf = dynamic_cast<RustCondClause *>(this->getNext());
   resStr += std::string(res);
   while (elseIf) {
     char temp[200];
@@ -248,13 +248,13 @@ std::string CppCondClause::output(int level) const {
 )deli",
             level, ' ', elseIf->getCond()->output().c_str(),
             elseIfStmtStr.c_str(), level, ' ');
-    elseIf = dynamic_cast<CppCondClause *>(elseIf->getNext());
+    elseIf = dynamic_cast<RustCondClause *>(elseIf->getNext());
     resStr += std::string(temp);
   }
   return resStr;
 }
 
-std::string CppIfStmt::output(int level) const {
+std::string RustIfStmt::output(int level) const {
   char res[2000];
   if (elsestmt) {
     std::string elseStr = elsestmt->output(level + 4);
@@ -268,7 +268,7 @@ std::string CppIfStmt::output(int level) const {
   return clause->output(level);
 }
 
-std::string CppIteration::output(int level) const {
+std::string RustIteration::output(int level) const {
   char res[200];
   if (cond) {
     sprintf(res, "while(%s)", cond->output().c_str());
@@ -286,7 +286,7 @@ std::string CppIteration::output(int level) const {
   return std::string(res);
 }
 
-std::string CppLoopStmt::output(int level) const {
+std::string RustLoopStmt::output(int level) const {
   char res[4000];
   if (cIter) {
     sprintf(res, R"deli(%*c%s {
@@ -303,17 +303,17 @@ std::string CppLoopStmt::output(int level) const {
   return std::string(res);
 }
 
-std::string CppCaseStmt::output(int level) const {
+std::string RustCaseStmt::output(int level) const {
   std::string resStr;
   std::string exprStr = cExpr->output();
   bool haveElse = false;
-  CppSeqStmt *elseStmts;
-  CppAlternative *temp = alter;
+  RustSeqStmt *elseStmts;
+  RustAlternative *temp = alter;
   bool firstCase = true;
   while (temp) {
     char tempIf[300];
-    CppChoice *choices = temp->getChoices();
-    CppSeqStmt *stmts = temp->getStmts();
+    RustChoice *choices = temp->getChoices();
+    RustSeqStmt *stmts = temp->getStmts();
     std::string condStr;
     bool isFirst = true;
     while (choices) {
@@ -337,7 +337,7 @@ std::string CppCaseStmt::output(int level) const {
       } else {
         condStr += std::string(" || ") + std::string(tempCond);
       }
-      choices = dynamic_cast<CppChoice *>(choices->getNext());
+      choices = dynamic_cast<RustChoice *>(choices->getNext());
     }
     if (condStr.empty())
       break;
@@ -357,7 +357,7 @@ std::string CppCaseStmt::output(int level) const {
               level, ' ');
       resStr += std::string(tempIf);
     }
-    temp = dynamic_cast<CppAlternative *>(temp->getNext());
+    temp = dynamic_cast<RustAlternative *>(temp->getNext());
   }
 
   if (haveElse) {
@@ -371,7 +371,7 @@ std::string CppCaseStmt::output(int level) const {
   return resStr;
 }
 
-std::string CppExitStmt::output(int level) const {
+std::string RustExitStmt::output(int level) const {
   char res[200];
   if (cCond) {
     sprintf(res, R"deli(%*cif(%s) {
@@ -385,11 +385,11 @@ std::string CppExitStmt::output(int level) const {
   return std::string(res);
 }
 
-std::string CppBlockStmt::output(int level) const {
+std::string RustBlockStmt::output(int level) const {
   std::string res;
   for (auto op : declvec) {
     char temp[200];
-    CppExpr *init = op->getInit();
+    RustExpr *init = op->getInit();
     std::string typeName = op->typeName();
     if (op->getConst()) {
       typeName = "const " + typeName;
@@ -406,12 +406,12 @@ std::string CppBlockStmt::output(int level) const {
   return res;
 }
 
-CppFuncDecl::CppFuncDecl(Function *_func, SymbolEntry *_se) : CppStmt(nullptr) {
+RustFuncDecl::RustFuncDecl(Function *_func, SymbolEntry *_se) : RustStmt(nullptr) {
   se = _se;
   _func->insertDecls(this);
 }
 
-std::string CppFuncDecl::output(int level) const {
+std::string RustFuncDecl::output(int level) const {
   char res[50];
   sprintf(res, "%*cclass %s;", level, ' ', se->dump().c_str());
   return std::string(res);

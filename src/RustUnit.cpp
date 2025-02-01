@@ -2,7 +2,7 @@
 
 extern FILE *yyout;
 
-std::string CppUnit::getOpFullName(Function *func, Operand *op) {
+std::string RustUnit::getOpFullName(Function *func, Operand *op) {
   std::string fullName = func->getName() + "::" + op->getName();
   Function *temp = func;
   Function *prev;
@@ -13,7 +13,7 @@ std::string CppUnit::getOpFullName(Function *func, Operand *op) {
   return fullName;
 }
 
-void CppUnit::output() const {
+void RustUnit::output() const {
   AdaInteger::getInstance().output();
   AdaNatural::getInstance().output();
   AdaString::getInstance().output();
@@ -28,7 +28,7 @@ void CppUnit::output() const {
     for (auto op : *vec) {
       // Simple Operand Name
       std::string opName = getOpFullName(func, op);
-      CppExpr *init = op->getInit();
+      RustExpr *init = op->getInit();
       if (init) {
         fprintf(yyout, "%s %s = %s;\n", op->typeName().c_str(), opName.c_str(),
                 init->output().c_str());

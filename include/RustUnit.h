@@ -6,7 +6,7 @@
 #include <map>
 #include <vector>
 
-class CppUnit {
+class RustUnit {
 private:
   // The list of functions and procedures.
   std::vector<Function *> funcList;
@@ -14,8 +14,8 @@ private:
   std::map<Function *, std::vector<Operand*>*> opList;
 
 public:
-  CppUnit() = default;
-  ~CppUnit() {
+  RustUnit() = default;
+  ~RustUnit() {
     // auto deleteList = funcList;
     // for (auto &func : deleteList)
     //   delete func;

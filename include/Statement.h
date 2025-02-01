@@ -9,79 +9,79 @@ using namespace std;
 
 class Function;
 
-// The Ast Node of Cpp Grammar
-class CppNode {
+// The Ast Node of Rust Grammar
+class RustNode {
 private:
   static int counter;
   int seq;
-  CppNode *next;
+  RustNode *next;
 
 public:
-  CppNode();
-  virtual ~CppNode() {}
+  RustNode();
+  virtual ~RustNode() {}
   int getSeq() const { return seq; };
-  void setNext(CppNode *node);
-  CppNode *getNext() const { return next; };
+  void setNext(RustNode *node);
+  RustNode *getNext() const { return next; };
 };
 
-// Statement in Cpp
-class CppStmt : public CppNode {
+// Statement in Rust
+class RustStmt : public RustNode {
 protected:
-  CppStmt *next;
+  RustStmt *next;
 
 public:
-  CppStmt(Function *func);
-  void setNext(CppStmt *stmt);
-  CppStmt *getNext() const { return next; };
+  RustStmt(Function *func);
+  void setNext(RustStmt *stmt);
+  RustStmt *getNext() const { return next; };
   virtual std::string output(int level) const = 0;
 };
 
-// Expr in Cpp
-class CppExpr : public CppNode {
+// Expr in Rust
+class RustExpr : public RustNode {
 public:
   virtual std::string output() const = 0;
 };
 
-class CppRange : public CppStmt {
+class RustRange : public RustStmt {
 private:
-  CppExpr *cLow;
-  CppExpr *cUpper;
+  RustExpr *cLow;
+  RustExpr *cUpper;
 
 public:
-  CppRange(CppExpr *_low, CppExpr *_upper)
-      : CppStmt(nullptr), cLow(_low), cUpper(_upper){};
-  CppExpr *getLow() { return cLow; }
-  CppExpr *getUpper() { return cUpper; }
+  RustRange(RustExpr *_low, RustExpr *_upper)
+      : RustStmt(nullptr), cLow(_low), cUpper(_upper){};
+  RustExpr *getLow() { return cLow; }
+  RustExpr *getUpper() { return cUpper; }
   std::string output(int level) const { return ""; };
 };
 
-class CppId : public CppExpr {
+class RustId : public RustExpr {
 private:
   SymbolEntry *se;
-  CppId *name;
-  CppExpr *expr;
+  RustId *name;
+  RustExpr *expr;
   std::string attr;
 
 public:
-  CppId(SymbolEntry *_se) : se(_se){};
-  CppId(CppId *_id, CppExpr *_expr) : name(_id), expr(_expr){};
-  CppId(CppId *_id, std::string _attr) : name(_id), attr(_attr){};
-  CppExpr *getParam() { return expr; }
+  RustId(SymbolEntry *_se) : se(_se){};
+  RustId(RustId *_id, RustExpr *_expr) : name(_id), expr(_expr){};
+  RustId(RustId *_id, std::string _attr) : name(_id), attr(_attr){};
+  RustExpr *getParam() { return expr; }
   std::string output() const;
 };
 
-class CppConstant : public CppExpr {
+class RustConstant : public RustExpr {
 private:
   SymbolEntry *se;
 
 public:
-  CppConstant(SymbolEntry *_se) : se(_se){};
+  RustConstant(SymbolEntry *_se) : se(_se){};
   std::string output() const;
 };
 
-class CppFactor : public CppExpr {
+class RustFactor : public RustExpr {
 private:
-  CppExpr *cExpr;
+  RustExpr *cExpr;
   int op;
 
 public:
@@ -89,14 +89,14 @@ public:
     NOT,
     ABS,
   };
-  CppFactor(CppExpr *_expr, int _op) : cExpr(_expr), op(_op){};
+  RustFactor(RustExpr *_expr, int _op) : cExpr(_expr), op(_op){};
   std::string output() const;
 };
 
-class CppBinaryExpr : public CppExpr {
+class RustBinaryExpr : public RustExpr {
 private:
-  CppExpr *cExpr1, *cExpr2;
-  CppRange *cRange;
+  RustExpr *cExpr1, *cExpr2;
+  RustRange *cRange;
   SymbolEntry *se;
   int sign;
   bool isUnary;
@@ -126,195 +126,195 @@ public:
     XOR,
     EXPON,
   };
-  CppBinaryExpr(CppExpr *_expr1, CppExpr *_expr2, int _sign)
+  RustBinaryExpr(RustExpr *_expr1, RustExpr *_expr2, int _sign)
       : cExpr1(_expr1), cExpr2(_expr2), sign(_sign){};
-  CppBinaryExpr(CppExpr *_expr1, int _sign) : cExpr1(_expr1), sign(_sign) {
+  RustBinaryExpr(RustExpr *_expr1, int _sign) : cExpr1(_expr1), sign(_sign) {
     isUnary = true;
   };
-  CppBinaryExpr(CppExpr *_expr1, CppRange *_range, int _sign)
+  RustBinaryExpr(RustExpr *_expr1, RustRange *_range, int _sign)
       : cExpr1(_expr1), cRange(_range), sign(_sign) {
     isMember = true;
   };
-  CppBinaryExpr(CppExpr *_expr1, SymbolEntry *_se, int _sign)
+  RustBinaryExpr(RustExpr *_expr1, SymbolEntry *_se, int _sign)
       : cExpr1(_expr1), se(_se), sign(_sign) {
     isMember = true;
   };
   std::string output() const;
 };
 
-class CppSeqStmt : public CppStmt {
+class RustSeqStmt : public RustStmt {
 private:
-  CppStmt *stmt;
+  RustStmt *stmt;
 
 public:
-  CppSeqStmt() : CppStmt(nullptr){};
-  CppSeqStmt(Function *func) : CppStmt(func){};
-  CppSeqStmt(Function *func, CppStmt *_stmt) : CppStmt(func), stmt(_stmt){};
+  RustSeqStmt() : RustStmt(nullptr){};
+  RustSeqStmt(Function *func) : RustStmt(func){};
+  RustSeqStmt(Function *func, RustStmt *_stmt) : RustStmt(func), stmt(_stmt){};
   std::string output(int level) const;
 };
 
-class CppDummyStmt : public CppStmt {
+class RustDummyStmt : public RustStmt {
 public:
-  CppDummyStmt() : CppStmt(nullptr){};
-  CppDummyStmt(Function *func) : CppStmt(func){};
+  RustDummyStmt() : RustStmt(nullptr){};
+  RustDummyStmt(Function *func) : RustStmt(func){};
   std::string output(int level) const;
 };
 
-class CppAssignStmt : public CppStmt {
+class RustAssignStmt : public RustStmt {
 private:
   SymbolEntry *se;
-  CppExpr *cExpr;
+  RustExpr *cExpr;
 
 public:
-  CppAssignStmt(Function *func, SymbolEntry *_se, CppExpr *_cExpr)
-      : CppStmt(func) {
+  RustAssignStmt(Function *func, SymbolEntry *_se, RustExpr *_cExpr)
+      : RustStmt(func) {
     se = _se;
     cExpr = _cExpr;
   };
   std::string output(int level) const;
 };
 
-class CppCallStmt : public CppStmt {
+class RustCallStmt : public RustStmt {
 private:
-  CppId *cId;
+  RustId *cId;
 
 public:
-  CppCallStmt(Function *_func, CppId *_cId) : CppStmt(_func), cId(_cId){};
+  RustCallStmt(Function *_func, RustId *_cId) : RustStmt(_func), cId(_cId){};
   std::string output(int level) const;
 };
 
-class CppCondClause : public CppStmt {
+class RustCondClause : public RustStmt {
 private:
-  CppExpr *cond;
-  CppSeqStmt *stmts;
+  RustExpr *cond;
+  RustSeqStmt *stmts;
 
 public:
-  CppCondClause(Function *_func, CppExpr *_cond, CppSeqStmt *_stmts)
-      : CppStmt(_func) {
+  RustCondClause(Function *_func, RustExpr *_cond, RustSeqStmt *_stmts)
+      : RustStmt(_func) {
     cond = _cond;
     stmts = _stmts;
   };
-  CppExpr *getCond() { return cond; }
-  CppStmt *getStmts() { return stmts; }
+  RustExpr *getCond() { return cond; }
+  RustStmt *getStmts() { return stmts; }
   std::string output(int level) const;
 };
 
-class CppIfStmt : public CppStmt {
+class RustIfStmt : public RustStmt {
 private:
-  CppCondClause *clause;
-  CppSeqStmt *elsestmt; // maybe is nullptr
+  RustCondClause *clause;
+  RustSeqStmt *elsestmt; // maybe is nullptr
 
 public:
-  CppIfStmt(Function *_func, CppCondClause *_clause,
-            CppSeqStmt *_elsestmt = nullptr)
-      : CppStmt(_func) {
+  RustIfStmt(Function *_func, RustCondClause *_clause,
+            RustSeqStmt *_elsestmt = nullptr)
+      : RustStmt(_func) {
     clause = _clause;
     elsestmt = _elsestmt;
   };
   std::string output(int level) const;
 };
 
-class CppIteration : public CppStmt {
+class RustIteration : public RustStmt {
 private:
   SymbolEntry *se;
-  CppRange *range;
+  RustRange *range;
   bool isReverse;
 
-  CppExpr *cond = nullptr;
+  RustExpr *cond = nullptr;
 
 public:
-  CppIteration(SymbolEntry *_se, CppRange *_range, bool _isReverse = false)
-      : CppStmt(nullptr), se(_se), range(_range), isReverse(_isReverse){};
-  CppIteration(CppExpr *_cond) : CppStmt(nullptr), cond(_cond){};
+  RustIteration(SymbolEntry *_se, RustRange *_range, bool _isReverse = false)
+      : RustStmt(nullptr), se(_se), range(_range), isReverse(_isReverse){};
+  RustIteration(RustExpr *_cond) : RustStmt(nullptr), cond(_cond){};
   std::string output(int level) const;
 };
 
-class CppLoopStmt : public CppStmt {
+class RustLoopStmt : public RustStmt {
 private:
-  CppIteration *cIter;
-  CppSeqStmt *loop;
+  RustIteration *cIter;
+  RustSeqStmt *loop;
 
 public:
-  CppLoopStmt(Function *_func, CppIteration *_cIter, CppSeqStmt *_loop)
-      : CppStmt(_func), cIter(_cIter), loop(_loop){};
+  RustLoopStmt(Function *_func, RustIteration *_cIter, RustSeqStmt *_loop)
+      : RustStmt(_func), cIter(_cIter), loop(_loop){};
   std::string output(int level) const;
 };
 
-class CppChoice : public CppStmt {
+class RustChoice : public RustStmt {
 private:
-  CppExpr *cExpr;
-  CppRange *range;
+  RustExpr *cExpr;
+  RustRange *range;
   bool isOther = false;
   bool isExpr = false;
   bool isRange = false;
 
 public:
-  CppChoice(CppExpr *_cExpr) : CppStmt(nullptr), cExpr(_cExpr) {
+  RustChoice(RustExpr *_cExpr) : RustStmt(nullptr), cExpr(_cExpr) {
     isExpr = true;
   };
-  CppChoice(CppRange *_range) : CppStmt(nullptr), range(_range) {
+  RustChoice(RustRange *_range) : RustStmt(nullptr), range(_range) {
     isRange = true;
   };
   bool getIsExpr() { return isExpr; }
   bool getIsRange() { return isRange; }
   bool getIsOther() { return isOther; }
-  CppExpr *getExpr() { return cExpr; }
-  CppRange *getRange() { return range; }
-  CppChoice(bool _isOther) : CppStmt(nullptr), isOther(_isOther){};
+  RustExpr *getExpr() { return cExpr; }
+  RustRange *getRange() { return range; }
+  RustChoice(bool _isOther) : RustStmt(nullptr), isOther(_isOther){};
   std::string output(int level) const { return ""; };
 };
 
-class CppAlternative : public CppStmt {
+class RustAlternative : public RustStmt {
 private:
-  CppChoice *choices;
-  CppSeqStmt *stmts;
+  RustChoice *choices;
+  RustSeqStmt *stmts;
 
 public:
-  CppAlternative(CppChoice *_choices, CppSeqStmt *_stmts)
-      : CppStmt(nullptr), choices(_choices), stmts(_stmts){};
-  CppChoice *getChoices() { return choices; }
-  CppSeqStmt *getStmts() { return stmts; }
+  RustAlternative(RustChoice *_choices, RustSeqStmt *_stmts)
+      : RustStmt(nullptr), choices(_choices), stmts(_stmts){};
+  RustChoice *getChoices() { return choices; }
+  RustSeqStmt *getStmts() { return stmts; }
   std::string output(int level) const {};
 };
 
-class CppCaseStmt : public CppStmt {
+class RustCaseStmt : public RustStmt {
 private:
-  CppExpr *cExpr;
-  CppAlternative *alter;
+  RustExpr *cExpr;
+  RustAlternative *alter;
 
 public:
-  CppCaseStmt(Function *_func, CppExpr *_cExpr, CppAlternative *_alter)
-      : CppStmt(_func), cExpr(_cExpr), alter(_alter){};
+  RustCaseStmt(Function *_func, RustExpr *_cExpr, RustAlternative *_alter)
+      : RustStmt(_func), cExpr(_cExpr), alter(_alter){};
   std::string output(int level) const;
 };
 
-class CppExitStmt : public CppStmt {
+class RustExitStmt : public RustStmt {
 private:
-  CppExpr *cCond;
+  RustExpr *cCond;
 
 public:
-  CppExitStmt(CppExpr *_cCond = nullptr) : CppStmt(nullptr), cCond(_cCond){};
+  RustExitStmt(RustExpr *_cCond = nullptr) : RustStmt(nullptr), cCond(_cCond){};
   std::string output(int level) const;
 };
 
-class CppBlockStmt : public CppStmt {
+class RustBlockStmt : public RustStmt {
 private:
-  CppSeqStmt *stmts;
+  RustSeqStmt *stmts;
   std::vector<Operand *> declvec;
 
 public:
-  CppBlockStmt(Function *_func, CppSeqStmt *_stmts)
-      : CppStmt(_func), stmts(_stmts){};
+  RustBlockStmt(Function *_func, RustSeqStmt *_stmts)
+      : RustStmt(_func), stmts(_stmts){};
   void addOps(Operand *_op) { declvec.push_back(_op); }
   std::string output(int level) const;
 };
 
-class CppFuncDecl: public CppStmt {
+class RustFuncDecl: public RustStmt {
 private:
   SymbolEntry* se;
 
 public:
-  CppFuncDecl(Function *_func, SymbolEntry* _se);
+  RustFuncDecl(Function *_func, SymbolEntry* _se);
   std::string output(int level) const;
 };
 

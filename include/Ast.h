@@ -11,10 +11,10 @@
 using namespace std;
 
 class SymbolEntry;
-class CppUnit;
+class RustUnit;
 class Function;
 class Procedure;
-class CppBuilder;
+class RustBuilder;
 
 // Split up Ada grammar to some Grammar Node
 // The Nodes are following Ada grammar.
@@ -26,16 +26,16 @@ private:
   Node *next;
 
 protected:
-  static CppBuilder *builder;
+  static RustBuilder *builder;
 
 public:
   Node();
   int getSeq() const { return seq; };
   void setNext(Node *node);
   Node *getNext() { return next; }
-  static void setCppBuilder(CppBuilder *cb) { builder = cb; };
+  static void setRustBuilder(RustBuilder *cb) { builder = cb; };
   virtual void dump(int level) = 0;
-  virtual void genCppCode(Node *parent){};
+  virtual void genRustCode(Node *parent){};
 };
 
 class OpSignNode : public Node {
@@ -70,29 +70,29 @@ public:
   OpSignNode(int _kind) : kind(_kind){};
   int getKind() { return kind; }
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class ExprNode : public Node {
 protected:
-  CppExpr *cExpr;
+  RustExpr *cExpr;
 
 public:
   virtual Type *getType() = 0;
-  CppExpr *getCppExpr() { return cExpr; };
-  virtual void genCppCode(Node *parent){};
+  RustExpr *getRustExpr() { return cExpr; };
+  virtual void genRustCode(Node *parent){};
 };
 
 class StmtNode : public Node {
 protected:
   StmtNode *next;
-  CppStmt *cStmt;
+  RustStmt *cStmt;
 
 public:
-  CppStmt *getCppStmt() { return cStmt; }
+  RustStmt *getRustStmt() { return cStmt; }
   void setNext(StmtNode *node);
   StmtNode *getNext() { return next; }
-  virtual void genCppCode(Node *parent){};
+  virtual void genRustCode(Node *parent){};
 };
 
 class Range : public StmtNode {
@@ -105,7 +105,7 @@ public:
       : lowerbound(_lowerbound), upperbound(_upperbound){};
   Type *getType() { return lowerbound->getType(); }
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class Id : public ExprNode {
@@ -128,7 +128,7 @@ public:
   Id *getId() { return name; }
   ExprNode *getExpr() { return expr; }
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class Constant : public ExprNode {
@@ -139,7 +139,7 @@ public:
   Constant(SymbolEntry *_se) : se(_se){};
   Type *getType() { return se->getType(); }
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class FactorExpr : public ExprNode {
@@ -155,7 +155,7 @@ public:
   FactorExpr(ExprNode *_expr, int _op) : expr(_expr), op(_op){};
   Type *getType() { return expr->getType(); }
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class BinaryExpr : public ExprNode {
@@ -183,7 +183,7 @@ public:
   };
   Type *getType() { return expr1->getType(); }
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class SeqNode : public StmtNode {
@@ -193,7 +193,7 @@ private:
 public:
   SeqNode(StmtNode *_stmt1, StmtNode *_stmt2) : stmt1(_stmt1), stmt2(_stmt2){};
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class DefId : public StmtNode {
@@ -208,7 +208,7 @@ public:
   void setConst() { id->setConst(); }
   bool getConst() { return id->getConst(); }
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class InitOptStmt : public StmtNode {
@@ -218,9 +218,9 @@ private:
 public:
   InitOptStmt(ExprNode *_expr) : expr(_expr){};
   ExprNode *getExpr() { return expr; }
-  CppExpr *getCppExpr() { return expr->getCppExpr(); }
+  RustExpr *getRustExpr() { return expr->getRustExpr(); }
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class ParamNode : public StmtNode {
@@ -232,7 +232,7 @@ public:
   ParamNode(SymbolEntry *_se, InitOptStmt *_init) : se(_se), init(_init) {}
   SymbolEntry *getParamSymbol() { return se; }
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class ProcedureSpec : public StmtNode {
@@ -245,7 +245,7 @@ public:
       : se(_se), params(_params) {}
   SymbolEntry *getProcedureSymbol() { return se; }
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class ProcedureDecl : public StmtNode {
@@ -256,7 +256,7 @@ public:
   ProcedureDecl(ProcedureSpec *_spec) : spec(_spec) {}
   SymbolEntry *getProcedureSymbol() { return spec->getProcedureSymbol(); }
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class ObjectDeclStmt : public StmtNode {
@@ -267,7 +267,7 @@ private:
 public:
   ObjectDeclStmt(DefId *_id, InitOptStmt *_init) : id(_id), init(_init) {}
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class DeclStmt : public StmtNode {
@@ -279,7 +279,7 @@ public:
   DeclStmt(ObjectDeclStmt *_objectDecl) : objectDecl(_objectDecl) {}
   DeclStmt(ProcedureDecl *_procedureDecl) : procedureDecl(_procedureDecl) {}
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class ProcedureDef;
@@ -293,14 +293,14 @@ public:
   DeclItemOrBodyStmt(DeclStmt *_decl) : decl(_decl) {}
   DeclItemOrBodyStmt(ProcedureDef *_prof) : prof(_prof) {}
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class NullStmt : public StmtNode {
 public:
   NullStmt(){};
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class AssignStmt : public StmtNode {
@@ -311,7 +311,7 @@ private:
 public:
   AssignStmt(SymbolEntry *_se, ExprNode *_expr) : se(_se), expr(_expr){};
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class ReturnStmt : public StmtNode {
@@ -321,7 +321,7 @@ private:
 public:
   ReturnStmt(ExprNode *_retValue = nullptr) : retValue(_retValue){};
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class CallStmt : public StmtNode {
@@ -333,7 +333,7 @@ public:
   Id *getId() { return id->getId(); }
   ExprNode *getParam() { return id->getExpr(); }
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class Stmt : public StmtNode {
@@ -343,7 +343,7 @@ private:
 public:
   Stmt(StmtNode *_stmt) : stmt(_stmt){};
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class ProcedureDef : public StmtNode {
@@ -359,7 +359,7 @@ public:
       : spec(_spec), items(_items), stmts(_stmts), prev(_prev){};
   SymbolEntry *getProcedureSymbol() { return spec->getProcedureSymbol(); }
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class CondClause : public StmtNode {
@@ -370,7 +370,7 @@ private:
 public:
   CondClause(ExprNode *_cond, Stmt *_stmts) : cond(_cond), stmts(_stmts){};
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class IfStmt : public StmtNode {
@@ -382,7 +382,7 @@ public:
   IfStmt(CondClause *_clause, Stmt *_elsestmt)
       : clause(_clause), elsestmt(_elsestmt){};
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class DiscreteRange : public StmtNode {
@@ -396,7 +396,7 @@ public:
   DiscreteRange(Range *_range) : range(_range){};
   SymbolEntry *getSymbol() { return se; }
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class Choice : public StmtNode {
@@ -410,7 +410,7 @@ public:
   Choice(DiscreteRange *_discret) : discret(_discret){};
   Choice(bool _others) : others(_others){};
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class Alternative : public StmtNode {
@@ -422,7 +422,7 @@ public:
   Alternative(Choice *_choices, Stmt *_stmts)
       : choices(_choices), stmts(_stmts){};
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class CaseStmt : public StmtNode {
@@ -433,7 +433,7 @@ private:
 public:
   CaseStmt(ExprNode *_expr, Alternative *_alter) : expr(_expr), alter(_alter){};
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class ExitStmt : public StmtNode {
@@ -443,7 +443,7 @@ private:
 public:
   ExitStmt(ExprNode *_cond) : cond(_cond){};
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class BasicLoopStmt : public StmtNode {
@@ -453,7 +453,7 @@ private:
 public:
   BasicLoopStmt(Stmt *_stmts) : stmts(_stmts){};
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class IterPart : public StmtNode {
@@ -464,7 +464,7 @@ public:
   IterPart(SymbolEntry *_se) : se(_se){};
   void dump(int level);
   SymbolEntry *getSymbol() { return se; }
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class Iteration : public StmtNode {
@@ -480,7 +480,7 @@ public:
   Iteration(IterPart *_iter, OpSignNode *_sign, DiscreteRange *_range)
       : iter(_iter), sign(_sign), range(_range){};
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class LabelOpt : public StmtNode {
@@ -490,7 +490,7 @@ private:
 public:
   LabelOpt(SymbolEntry *_se) : se(_se){};
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class LoopStmt : public StmtNode {
@@ -503,7 +503,7 @@ public:
   LoopStmt(LabelOpt *_label, Iteration *_iter, BasicLoopStmt *_loop)
       : label(_label), iter(_iter), loop(_loop){};
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class Block : public StmtNode {
@@ -516,7 +516,7 @@ public:
   Block(LabelOpt *_label, DeclItemOrBodyStmt *_decl, Stmt *_stmts)
       : label(_label), decl(_decl), stmts(_stmts){};
   void dump(int level);
-  void genCppCode(Node *parent);
+  void genRustCode(Node *parent);
 };
 
 class Ast {
@@ -527,7 +527,7 @@ public:
   Ast() { root = nullptr; }
   void setRoot(Node *n) { root = n; }
   void dump();
-  void genCppCode(CppUnit *unit);
+  void genRustCode(RustUnit *unit);
 };
 
 #endif

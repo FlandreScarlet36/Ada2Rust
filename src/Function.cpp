@@ -5,7 +5,7 @@
 
 extern FILE *yyout;
 
-Function::Function(CppUnit *unit, SymbolEntry *symbol) {
+Function::Function(RustUnit *unit, SymbolEntry *symbol) {
   unit->insertFunc(this);
   symPtr = symbol;
   parent = unit;
@@ -63,9 +63,9 @@ std::string Function::getParamStr() const {
     return paramStr;
   }
   for (auto i = 0; i < paramType.size() - 1; i++) {
-    paramStr += paramType[i]->toCppStr() + " " + paramIds[i]->dump() + ", ";
+    paramStr += paramType[i]->toRustStr() + " " + paramIds[i]->dump() + ", ";
   }
-  paramStr += paramType.back()->toCppStr() + " " + paramIds.back()->dump();
+  paramStr += paramType.back()->toRustStr() + " " + paramIds.back()->dump();
   paramStr += ")";
   return paramStr;
 }

@@ -10,7 +10,7 @@ extern FILE *yyout;
 
 int yyparse();
 Ast ast;
-CppUnit unit;
+RustUnit unit;
 
 char outfile[256] = "a.out";
 bool dump_token = false;
@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
     ast.dump();
 
   if (dump_type == CPP) {
-    ast.genCppCode(&unit);
+    ast.genRustCode(&unit);
     unit.output();
   }
   return 0;

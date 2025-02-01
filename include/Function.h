@@ -13,28 +13,28 @@
 
 #define MAX_OUTPUT_LENGTH 100000
 
-class CppUnit;
+class RustUnit;
 
 // Ada Procedure and Ada Function => Cpp Class
 class Function {
 private:
   // Name of Procedure or Function
   SymbolEntry *symPtr;
-  CppUnit *parent;
+  RustUnit *parent;
   Function *prev = nullptr;
 
   // Some declared operands.
   std::vector<Operand *> declOps;
   // Some declarations.
-  std::vector<CppStmt *> decls;
+  std::vector<RustStmt *> decls;
   // Some procedure.
   std::vector<Function *> subFuncs;
 
   // Some statements.
-  std::vector<CppStmt *> stats;
+  std::vector<RustStmt *> stats;
 
 public:
-  Function(CppUnit *unit, SymbolEntry *symbol);
+  Function(RustUnit *unit, SymbolEntry *symbol);
   Function(Function *func, SymbolEntry *symbol);
   ~Function();
   void addDeclOps(Operand *op) { declOps.push_back(op); }
@@ -47,8 +47,8 @@ public:
   bool isProcedure() { return getType()->isProcedure(); }
   bool isFunction() { return getType()->isFunction(); }
   bool haveDeclOp() const { return !declOps.empty(); }
-  void insertStmts(CppStmt *stmt) { stats.push_back(stmt); }
-  void insertDecls(CppStmt *decl) { decls.push_back(decl); }
+  void insertStmts(RustStmt *stmt) { stats.push_back(stmt); }
+  void insertDecls(RustStmt *decl) { decls.push_back(decl); }
   std::string getDeclStr(int level) const;
   std::string getStmtStr(int level) const;
   std::string getParamStr() const;
