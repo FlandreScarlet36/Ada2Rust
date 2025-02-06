@@ -1,5 +1,5 @@
-#ifndef __ADA2C_TYPE_H__
-#define __ADA2C_TYPE_H__
+#ifndef __ADA2RUST_TYPE_H__
+#define __ADA2RUST_TYPE_H__
 
 #include <string>
 #include <vector>

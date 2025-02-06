@@ -1,5 +1,5 @@
-#ifndef __ADA2C_STATEMENT_H__
-#define __ADA2C_STATEMENT_H__
+#ifndef __ADA2RUST_STATEMENT_H__
+#define __ADA2RUST_STATEMENT_H__
 
 #include "Operand.h"
 #include "SymbolTable.h"

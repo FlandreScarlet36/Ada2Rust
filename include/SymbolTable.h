@@ -1,5 +1,5 @@
-#ifndef __ADA2C_SYMBOLTALBE_H__
-#define __ADA2C_SYMBOLTALBE_H__
+#ifndef __ADA2RUST_SYMBOLTALBE_H__
+#define __ADA2RUST_SYMBOLTALBE_H__
 
 #include "Type.h"
 #include <map>

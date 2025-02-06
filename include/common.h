@@ -1,5 +1,5 @@
-#ifndef __ADA2C_COMMON_H__
-#define __ADA2C_COMMON_H__
+#ifndef __ADA2RUST_COMMON_H__
+#define __ADA2RUST_COMMON_H__
 
 enum dump_type_t
 {

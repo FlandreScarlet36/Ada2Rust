@@ -1,5 +1,5 @@
-#ifndef __ADA2C_FUNCTION_H__
-#define __ADA2C_FUNCTION_H__
+#ifndef __ADA2RUST_FUNCTION_H__
+#define __ADA2RUST_FUNCTION_H__
 
 #include "Operand.h"
 #include "Statement.h"

@@ -34,8 +34,8 @@
 /* Undocumented macros, especially those whose name start with YY_,
    are private implementation details.  Do not rely on them.  */
 
-#ifndef YY_YY_MNT_D_WORKSPACE_ADA2C_PROJECT_INCLUDE_PARSER_H_INCLUDED
-# define YY_YY_MNT_D_WORKSPACE_ADA2C_PROJECT_INCLUDE_PARSER_H_INCLUDED
+#ifndef YY_YY_MNT_D_WORKSPACE_ADA2RUST_PROJECT_INCLUDE_PARSER_H_INCLUDED
+# define YY_YY_MNT_D_WORKSPACE_ADA2RUST_PROJECT_INCLUDE_PARSER_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -44,12 +44,12 @@
 extern int yydebug;
 #endif
 /* "%code requires" blocks.  */
-#line 27 "/mnt/d/WorkSpace/Ada2C-Project/src/parser.y"
+#line 27 "/mnt/d/WorkSpace/ADA2RUST-Project/src/parser.y"
 
     #include "SymbolTable.h"
     #include "Ast.h"
 
-#line 53 "/mnt/d/WorkSpace/Ada2C-Project/include/parser.h"
+#line 53 "/mnt/d/WorkSpace/ADA2RUST-Project/include/parser.h"
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -166,7 +166,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 32 "/mnt/d/WorkSpace/Ada2C-Project/src/parser.y"
+#line 32 "/mnt/d/WorkSpace/ADA2RUST-Project/src/parser.y"
 
     char* StrType;
     int IntType;
@@ -175,7 +175,7 @@ union YYSTYPE
     OpSignNode* SignType;
     Type* type;
 
-#line 179 "/mnt/d/WorkSpace/Ada2C-Project/include/parser.h"
+#line 179 "/mnt/d/WorkSpace/ADA2RUST-Project/include/parser.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -188,4 +188,4 @@ extern YYSTYPE yylval;
 
 int yyparse (void);
 
-#endif /* !YY_YY_MNT_D_WORKSPACE_ADA2C_PROJECT_INCLUDE_PARSER_H_INCLUDED  */
+#endif /* !YY_YY_MNT_D_WORKSPACE_ADA2RUST_PROJECT_INCLUDE_PARSER_H_INCLUDED  */

@@ -1,5 +1,5 @@
-#ifndef __ADA2C_CPPTYPE_H__
-#define __ADA2C_CPPTYPE_H__
+#ifndef __ADA2RUST_RUSTTYPE_H__
+#define __ADA2RUST_RUSTTYPE_H__
 
 #include <iostream>
 
@@ -16,7 +16,7 @@ public:
     return i;
   }
   AdaInteger(int _value) : value(_value){};
-  // Define some operator or function which used in Ada grammar/
+  // Define some operator or function which used in Ada grammar
   int getValue() { return value; }
   void setValue(int _value) { value = _value; }
   void operator=(AdaInteger _right) { value = _right.getValue(); }
@@ -46,7 +46,7 @@ public:
     return i;
   }
   AdaNatural(int _value) : value(_value){};
-  // Define some operator or function which used in Ada grammar/
+  // Define some operator or function which used in Ada grammar
   int getValue() { return value; }
   void setValue(int _value) { value = _value; }
   static void output();

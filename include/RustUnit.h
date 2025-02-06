@@ -1,5 +1,5 @@
-#ifndef __ADA2C_CPP_UNIT_H__
-#define __ADA2C_CPP_UNIT_H__
+#ifndef __ADA2RUST_RUST_UNIT_H__
+#define __ADA2RUST_RUST_UNIT_H__
 
 #include "RustType.h"
 #include "Function.h"

@@ -1,5 +1,5 @@
-#ifndef __ADA2C_CPPBUILDER_H__
-#define __ADA2C_CPPBUILDER_H__
+#ifndef __ADA2RUST_RUSTBUILDER_H__
+#define __ADA2RUST_RUSTBUILDER_H__
 
 #include <stack>
 class RustUnit;
