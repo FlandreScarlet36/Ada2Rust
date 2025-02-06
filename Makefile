@@ -92,11 +92,11 @@ test-all:app
 		FILE=$${file##*/}
 		TOKS=$${file%.*}.toks
 		AST=$${file%.*}.ast
-		CPP=$${file%.*}.cpp
+		RS=$${file%.*}.RS
 		LOG=$${file%.*}.log
 		$(BINARY) $${file} -t -o $${TOKS}
 		$(BINARY) $${file} -a -o $${AST}
-		$(BINARY) $${file} -c -o $${CPP}
+		$(BINARY) $${file} -c -o $${RS}
 		if [ $$? != 0 ]; then
 			echo "\033[1;31mFAIL:\033[0m $${FILE}\t\033[1;31mCompiler Error\033[0m"
 		else
@@ -117,7 +117,7 @@ test-all:app
 test-example:app
 	$(BINARY) $(EXAMPLE_PATH)/src/example.adb -t -o $(EXAMPLE_PATH)/src/example.toks
 	$(BINARY) $(EXAMPLE_PATH)/src/example.adb -a -o $(EXAMPLE_PATH)/src/example.ast
-	$(BINARY) $(EXAMPLE_PATH)/src/example.adb -c -o $(EXAMPLE_PATH)/src/example.cpp
+	$(BINARY) $(EXAMPLE_PATH)/src/example.adb -c -o $(EXAMPLE_PATH)/src/example.rs
 
 run:
 	@gprbuild -p $(EXAMPLE_PATH)/default.gpr -Xver=opt

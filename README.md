@@ -4,7 +4,7 @@
 
 - [x] lexer
 - [x] parser
-- [ ] rustType.cpp
+- [x] RustType.cpp
 - [ ] Ast.cpp: genRustCode
 - [ ] Function.cpp:output
 - [ ] Statement.cpp: setnext output

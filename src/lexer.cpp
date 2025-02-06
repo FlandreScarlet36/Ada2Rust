@@ -1,6 +1,6 @@
-#line 2 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.cpp"
+#line 2 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.cpp"
 
-#line 4 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.cpp"
+#line 4 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -495,8 +495,8 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
-#line 4 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 1 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 4 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
     #define YY_NO_UNPUT
     #define YY_NO_INPUT
     #define ONLY_FOR_LEX
@@ -612,8 +612,8 @@ char *yytext;
           *cp -= ('a' - 'A');
       }
     }
-#line 616 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.cpp"
-#line 617 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.cpp"
+#line 616 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.cpp"
+#line 617 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.cpp"
 
 #define INITIAL 0
 
@@ -830,9 +830,9 @@ YY_DECL
 		}
 
 	{
-#line 129 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 129 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 
-#line 836 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.cpp"
+#line 836 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.cpp"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -901,7 +901,7 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 130 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 130 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("ADD\t+");
@@ -910,7 +910,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 135 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 135 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("SUB\t-");
@@ -919,7 +919,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 140 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 140 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("MUL\t*");
@@ -928,7 +928,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 145 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 145 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("DIV\t/");
@@ -937,7 +937,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 150 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 150 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("EQ\t=");
@@ -946,7 +946,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 155 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 155 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("LTLT\t<<");
@@ -955,7 +955,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 160 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 160 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("GTGT\t>>");
@@ -964,7 +964,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 165 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 165 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("BOX\t<>");
@@ -973,7 +973,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 170 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 170 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("LTEQ\t<=");
@@ -982,7 +982,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 175 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 175 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("EXPON\t**");
@@ -991,7 +991,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 180 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 180 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("NE\t/=");
@@ -1000,7 +1000,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 185 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 185 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("LE\t<");
@@ -1009,7 +1009,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 190 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 190 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("GE\t>");
@@ -1018,7 +1018,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 195 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 195 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("GTEQ\t>=");
@@ -1027,7 +1027,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 200 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 200 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("ASSIGN\t:=");
@@ -1036,7 +1036,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 205 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 205 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("RIGHTSHAFT\t=>");
@@ -1045,7 +1045,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 210 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 210 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("COLON\t:");
@@ -1054,7 +1054,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 215 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 215 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("SEMICOLON\t;");
@@ -1063,7 +1063,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 220 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 220 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("LPAREN\t(");
@@ -1072,7 +1072,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 225 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 225 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("RPAREN\t)");
@@ -1081,7 +1081,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 230 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 230 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("COMMA\t,");
@@ -1090,7 +1090,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 235 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 235 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("SINGLEAND\t&");
@@ -1099,7 +1099,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 240 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 240 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("SINGLEOR\t|");
@@ -1108,7 +1108,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 245 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 245 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("TIC\t'");
@@ -1117,7 +1117,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 250 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 250 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("DOTDOT\t..");
@@ -1126,7 +1126,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 256 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 256 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     int min;
     int max;
@@ -1159,7 +1159,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 286 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 286 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     int num = atoi(yytext);
     if(dump_token)
@@ -1170,7 +1170,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 294 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 294 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     char *token;
     token = new char[strlen(yytext) - 1];
@@ -1184,28 +1184,28 @@ YY_RULE_SETUP
 case 29:
 /* rule 29 can match eol */
 YY_RULE_SETUP
-#line 304 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 304 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     newoffsets = 0;
 }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 308 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 308 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 
 	YY_BREAK
 case 31:
 /* rule 31 can match eol */
 YY_RULE_SETUP
-#line 309 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 309 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 311 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 311 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 ECHO;
 	YY_BREAK
-#line 1209 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.cpp"
+#line 1209 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.cpp"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2222,6 +2222,6 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 311 "/mnt/hgfs/Graduation/AdaToC-Compiler-main/src/lexer.l"
+#line 311 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 
 
