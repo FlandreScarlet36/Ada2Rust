@@ -175,11 +175,11 @@ impl std::ops::Add for AdaString {
     }
 }
 
-impl std::ops::Add<&str> for AdaString {
+impl std::ops::Add<&String> for AdaString {
     type Output = AdaString;
 
-    fn add(self, other: &str) -> AdaString {
-        AdaString::new(&(self.value + other))
+    fn add(self, other: &String) -> AdaString {
+        AdaString::new(&(self.value + &other))
     }
 }
 
@@ -189,19 +189,14 @@ impl fmt::Display for AdaString {
     }
 }
 
- class example {
- private:
-    static AdaInteger I;
+pub fn example() {
+    let mut I = AdaInteger::new(1);
 
- public:
-    static void main() {
-        while(true) {
-            const AdaString Name = "Num is: " + AdaInteger::Image(I);
-            if(I == 4) {
-                break;
-            }
-            I = I + 1;
+    loop {
+        let Name = AdaString::new("Num is: " + Integer::Image(I));
+        if I == 4 {
+            break;
         }
+        I = I + 1;
     }
- };
-AdaInteger example::I = 1;
+}

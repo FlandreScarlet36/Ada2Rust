@@ -43,6 +43,9 @@ public:
   }
   void output() const;
   static std::string getOpFullName(Function* func, Operand* op); 
+  static std::string getOpName(Operand* op);
+  std::vector<Function *> getFuncList() { return funcList; }
+  std::map<Function *, std::vector<Operand*>*> getOpList() { return opList; }
 };
 
 #endif

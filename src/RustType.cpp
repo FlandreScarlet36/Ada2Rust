@@ -191,11 +191,11 @@ impl std::ops::Add for AdaString {
     }
 }
 
-impl std::ops::Add<&str> for AdaString {
+impl std::ops::Add<&String> for AdaString {
     type Output = AdaString;
 
-    fn add(self, other: &str) -> AdaString {
-        AdaString::new(&(self.value + other))
+    fn add(self, other: &String) -> AdaString {
+        AdaString::new(&(self.value + &other))
     }
 }
 
