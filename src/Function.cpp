@@ -88,9 +88,17 @@ std::string Function::getStmtStr(int level) const {
 std::string Function::getVarStr(int level) const {
   std::string varStr;
   std::string indent(level, ' '); // 创建缩进字符串
-  for (auto item : parent->getOpList()) {
-    Function *func = item.first;
-    std::vector<Operand *> *vec = item.second;
+  std::vector<Operand *> *vec = nullptr;
+
+
+  // 遍历opList以找到对应的vec
+  for (const auto &pair : parent->getOpList()) {
+    if (pair.first == this) {
+      vec = pair.second;
+      break;
+    }
+  }
+  if (vec) {
     for (auto op : *vec) {
       // Simple Operand Name
       // std::string opName = getOpFullName(func, op);
