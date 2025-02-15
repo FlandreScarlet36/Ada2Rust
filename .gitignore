@@ -1,3 +1,6 @@
-PhaseOne_Case/*.tok
+PhaseOne_Case/*.toks
 PhaseOne_Case/*.cpp
 PhaseOne_Case/*.ast
+PhaseOne_Case/*.RS
+PhaseOne_Case/*.rs
+case

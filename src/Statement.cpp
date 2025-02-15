@@ -284,35 +284,19 @@ std::string RustCondClause::output(int level) const {
 
 // 输出 RustIfStmt 的字符串表示
 std::string RustIfStmt::output(int level) const {
-  std::string res;
-  char temp[200];
+  char res[2000];
   if (elsestmt) {
     std::string elseStr = elsestmt->output(level + 4);
-    sprintf(temp, "%*cif %s {\n%s%*c} else {\n%s%*c}\n",
-            level, ' ', clause->output(level).c_str(),
-            clause->output(level + 4).c_str(), level, ' ',
-            elseStr.c_str(), level, ' ');
-    res = std::string(temp);
-    // 输出示例:
-    // if condition {
-    //     stmts
-    // } else {
-    //     elseStmts
-    // }
-    // 具体示例:
-    // if x > 0 {
-    //     println!("Positive");
-    // } else {
-    //     println!("Negative");
-    // }
-  } else {
-    sprintf(temp, "%*cif %s {\n%s%*c}\n",
-            level, ' ', clause->output(level).c_str(),
-            clause->output(level + 4).c_str(), level, ' ');
-    res = std::string(temp);
+    sprintf(res, R"deli(%s%*celse {
+%s%*c}
+)deli",
+            clause->output(level).c_str(), level, ' ', elseStr.c_str(), level,
+            ' ');
+    return std::string(res);
   }
-  return res;
+  return clause->output(level);
 }
+
 
 // 输出 RustIteration 的字符串表示
 std::string RustIteration::output(int level) const {

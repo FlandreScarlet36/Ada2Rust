@@ -100,7 +100,7 @@ std::string Function::getVarStr(int level) const {
         varStr += indent + "let mut " + opName + " = " + op->typeName() + "::new(" + init->output() + ");\n";
         // let mut I = AdaInteger::new(1);
       } else {
-        varStr += indent + "let mut " + op->typeName() + " " + opName + ";\n";
+        varStr += indent + "let mut " + opName + ": " + op->typeName() + ";\n";
         // let mut I = AdaInteger::new(0);
       }
     }
