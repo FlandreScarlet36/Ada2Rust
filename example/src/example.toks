@@ -15,14 +15,28 @@
 [TOKEN]: 	CONSTANT	constant
 [TOKEN]: 	STRING	String
 [TOKEN]: 	ASSIGN	:=
-[TOKEN]: 	STRINGLITERAL	Num is: 
-[TOKEN]: 	SINGLEAND	&
 [TOKEN]: 	INTEGER	Integer
 [TOKEN]: 	TIC	'
 [TOKEN]: 	Identifier	Image
 [TOKEN]: 	LPAREN	(
 [TOKEN]: 	Identifier	I
 [TOKEN]: 	RPAREN	)
+[TOKEN]: 	SINGLEAND	&
+[TOKEN]: 	STRINGLITERAL	Num is: 
+[TOKEN]: 	SEMICOLON	;
+[TOKEN]: 	Identifier	NewName
+[TOKEN]: 	COLON	:
+[TOKEN]: 	STRING	String
+[TOKEN]: 	ASSIGN	:=
+[TOKEN]: 	STRINGLITERAL	123
+[TOKEN]: 	SEMICOLON	;
+[TOKEN]: 	Identifier	Str
+[TOKEN]: 	COLON	:
+[TOKEN]: 	STRING	String
+[TOKEN]: 	ASSIGN	:=
+[TOKEN]: 	Identifier	Name
+[TOKEN]: 	SINGLEAND	&
+[TOKEN]: 	Identifier	NewName
 [TOKEN]: 	SEMICOLON	;
 [TOKEN]: 	BEGIN	begin
 [TOKEN]: 	EXIT	exit

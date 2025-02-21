@@ -17,14 +17,6 @@ std::string RustUnit::getOpName(Operand *op) {
   return op->getName();
 }
 
-std::vector<Operand*>* RustUnit::getOperandsForFunction(Function *func) const {
-  auto it = opList.find(func);
-  if (it != opList.end()) {
-    return it->second;
-  }
-  return nullptr; // 如果没有找到对应的vec，返回nullptr
-}
-
 void RustUnit::output() const {
   AdaInteger::getInstance().output();
   AdaNatural::getInstance().output();

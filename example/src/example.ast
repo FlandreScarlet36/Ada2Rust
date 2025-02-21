@@ -19,7 +19,6 @@ program
                                         InitOptStmt
                                             BinaryExpr
                                                 OpSign: &
-                                                    Literal	type: String	value: "Num is: "
                                                     Id
                                                         Id
                                                             Id
@@ -28,6 +27,24 @@ program
                                                         Name PAREN Value
                                                             Id
                                                                 name: I	scope: 2	type: Integer
+                                                    Literal	type: String	value: "Num is: ".into()
+                            DeclItemOrBodyStmt
+                                DeclStmt
+                                    ObjectDeclStmt
+                                        DefId	name: NewName	type: String	isConst: false
+                                        InitOptStmt
+                                            Literal	type: String	value: "123".into()
+                            DeclItemOrBodyStmt
+                                DeclStmt
+                                    ObjectDeclStmt
+                                        DefId	name: Str	type: String	isConst: false
+                                        InitOptStmt
+                                            BinaryExpr
+                                                OpSign: &
+                                                    Id
+                                                        name: Name	scope: 2	type: String
+                                                    Id
+                                                        name: NewName	scope: 2	type: String
                             Stmt
                                 ExitStmt
                                     BinaryExpr

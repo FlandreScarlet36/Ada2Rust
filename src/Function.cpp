@@ -31,8 +31,12 @@ std::string Function::getDeclStr(int level) const {
   // 1. 处理操作数声明
   for (auto op : declOps) {
     char temp[100];
-    sprintf(temp, "%*cstatic %s %s;\n", level, ' ', op->typeName().c_str(),
-            op->getName().c_str());
+    RustExpr *init = op->getInit();
+    if(init) {
+      sprintf(temp, "%*clet mut %s: %s = %s;\n", level, ' ',
+              op->getName().c_str(), op->typeName().c_str(), init->output().c_str());
+    } else
+      sprintf(temp, "%*clet mut %s: %s;\n", level, ' ', op->getName().c_str(), op->typeName().c_str());
     declStr += std::string(temp);
   }
   // 2. 处理其他声明
@@ -84,38 +88,6 @@ std::string Function::getStmtStr(int level) const {
   return stats.front()->output(level);
 }
 
-// 获取变量声明字符串
-std::string Function::getVarStr(int level) const {
-  std::string varStr;
-  std::string indent(level, ' '); // 创建缩进字符串
-  std::vector<Operand *> *vec = nullptr;
-
-
-  // 遍历opList以找到对应的vec
-  for (const auto &pair : parent->getOpList()) {
-    if (pair.first == this) {
-      vec = pair.second;
-      break;
-    }
-  }
-  if (vec) {
-    for (auto op : *vec) {
-      // Simple Operand Name
-      // std::string opName = getOpFullName(func, op);
-      std::string opName = parent->getOpName(op);
-      RustExpr *init = op->getInit();
-      if (init) {
-        varStr += indent + "let mut " + opName + " = " + op->typeName() + "::new(" + init->output() + ");\n";
-        // let mut I = AdaInteger::new(1);
-      } else {
-        varStr += indent + "let mut " + opName + ": " + op->typeName() + ";\n";
-        // let mut I = AdaInteger::new(0);
-      }
-    }
-  }
-  return varStr;
-}
-
 // 输出函数的Rust代码
 std::string Function::output(int level) const {
   // 将Ada语法的过程转换为Rust语法的函数
@@ -137,15 +109,14 @@ std::string Function::output(int level) const {
   std::string paramStr = getParamStr();
   // 3. 获取语句字符串
   std::string stmtStr = getStmtStr(level + 4);
-  // 4. 获取变量声明字符串
-  std::string varStr = getVarStr(level + 4);
   
   char resStr[MAX_OUTPUT_LENGTH];
   sprintf(resStr, R"deli(
-pub fn %s%s {
+%*cfn %s%s {
 %s
-%s}
+%s%*c}
 )deli",
-          symPtr->dump().c_str(), paramStr.c_str(), varStr.c_str(), stmtStr.c_str());
+  level, ' ', symPtr->dump().c_str(), paramStr.c_str(), declStr.c_str(), stmtStr.c_str(), level, ' ');
+  
   return std::string(resStr);
 }

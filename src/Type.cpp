@@ -15,7 +15,7 @@ std::string IntegerType::dump() {
 }
 
 std::string IntegerType::toRustStr() {
-    return "AdaInteger";
+    return "i32";
 }
 
 std::string BooleanType::dump() {
@@ -40,7 +40,7 @@ std::string NaturalType::dump() {
 
 std::string NaturalType::toRustStr() {
     AdaNatural::getInstance();
-    return "AdaNatural";
+    return "u32";
 }
 
 std::string ProcedureType::dump() {

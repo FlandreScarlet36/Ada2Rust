@@ -312,7 +312,6 @@ public:
 class RustFuncDecl: public RustStmt {
 private:
   SymbolEntry* se;
-
 public:
   RustFuncDecl(Function *_func, SymbolEntry* _se);
   std::string output(int level) const;

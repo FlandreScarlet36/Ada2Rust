@@ -44,31 +44,19 @@ RustStmt::RustStmt(Function *func) {
 std::string RustId::output() const {
   if (name) {
     if (expr) {
-      std::string paramStr;
-      RustExpr *temp = expr;
-      paramStr += temp->output();
-      while (temp->getNext()) {
-        temp = dynamic_cast<RustExpr *>(temp->getNext());
-        paramStr += ", " + temp->output();
-      }
       char res[100];
-      sprintf(res, "%s(%s)", name->output().c_str(), paramStr.c_str());
-      // 输出示例: "name(param1, param2, ...)"
-      // 具体示例: "foo(1, 2, 3)"
+      sprintf(res, "%s.%s()", expr->output().c_str(), name->output().c_str());
+      // 输出示例: "expr.name()"
+      // 具体示例: "x.name()"
       return std::string(res);
     } else {
       char res[100];
-      sprintf(res, "%s::%s", name->output().c_str(), attr.c_str());
-      // 输出示例: "name::attr"
-      // 具体示例: "module::function"
+      sprintf(res, "%s", attr.c_str());
+      // 输出示例: "name"
       return std::string(res);
     }
   } else {
-    if (se->getType()->isProcedure()) {
-      return se->dump() + "::main";
-    } else {
       return se->dump();
-    }
   }
 }
 
@@ -163,7 +151,7 @@ std::string RustBinaryExpr::output() const {
       } else if (sign == RustBinaryExpr::NOTIN) {
         // 处理 NOT IN 操作符
       } else {
-        sprintf(temp, "%s %s %s", cExpr1->output().c_str(), opSignName.c_str(),
+        sprintf(temp, "%s %s &%s", cExpr1->output().c_str(), opSignName.c_str(),
                 se->dump().c_str());
         // 输出示例: "expr1 opSignName se"
         // 具体示例: "x + y"
@@ -464,15 +452,15 @@ std::string RustBlockStmt::output(int level) const {
     //  typeName = "const " + typeName;
     //}
     if (init)
-      sprintf(temp, "%*clet %s = %s::new(%s);\n", level, ' ', 
+      sprintf(temp, "%*clet %s: %s = %s;\n", level, ' ', 
               op->getName().c_str(), typeName.c_str(), init->output().c_str());
     else
-      sprintf(temp, "%*clet %s = %s::new();\n", level, ' ',
+      sprintf(temp, "%*clet %s: %s;\n", level, ' ',
               op->getName().c_str(), typeName.c_str());
     // 输出示例:
-    // let name = typeName::new(init);
+    // let name: typeName = init;
     // 具体示例:
-    // let x = AdaInteger::new(42);
+    // let x: AdaInteger = 42;
     res += temp;
   }
   res += stmts->output(level);
@@ -487,9 +475,9 @@ RustFuncDecl::RustFuncDecl(Function *_func, SymbolEntry *_se) : RustStmt(nullptr
 
 // 输出 RustFuncDecl 的字符串表示
 std::string RustFuncDecl::output(int level) const {
-  char res[50];
-  sprintf(res, "%*cfn %s;", level, ' ', se->dump().c_str());
-  // 输出示例:
-  // fn function_name;
+  char res[200];
+  //std::string paramStr=func->getParamStr();
+  //sprintf(res, "%*cfn %s();", level, ' ', se->dump().c_str());
+  // Rust不需要声明函数
   return std::string(res);
 }
