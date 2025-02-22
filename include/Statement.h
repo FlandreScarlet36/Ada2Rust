@@ -67,6 +67,8 @@ public:
   RustId(RustId *_id, RustExpr *_expr) : name(_id), expr(_expr){};
   RustId(RustId *_id, std::string _attr) : name(_id), attr(_attr){};
   RustExpr *getParam() { return expr; }
+  RustId *getName() { return name; }
+  SymbolEntry *getSE() { return se; }
   std::string output() const;
 };
 

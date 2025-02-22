@@ -75,9 +75,9 @@ std::string Function::getParamStr() const {
   }
   // 生成参数字符串
   for (auto i = 0; i < paramType.size() - 1; i++) {
-    paramStr += paramType[i]->toRustStr() + " " + paramIds[i]->dump() + ", ";
+    paramStr += paramIds[i]->dump() + ": " + paramType[i]->toRustStr() + ", ";
   }
-  paramStr += paramType.back()->toRustStr() + " " + paramIds.back()->dump();
+  paramStr += paramIds.back()->dump() + ": " + paramType.back()->toRustStr();
   paramStr += ")";
   return paramStr;
 }

@@ -1,4 +1,4 @@
-procedure case5 is
+procedure case4 is
     procedure Compute_A (V : Natural);
     --  Forward declaration of Compute_A
 
@@ -19,4 +19,4 @@ procedure case5 is
     end Compute_A;
 begin
    Compute_A (15);
-end case5;
+end case4;

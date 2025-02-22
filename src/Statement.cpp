@@ -222,8 +222,13 @@ std::string RustCallStmt::output(int level) const {
   if (!cId->getParam()) {
     paramStr = "()";
   }
-  sprintf(temp, "%*c%s%s;\n", level, ' ', cId->output().c_str(),
-          paramStr.c_str());
+  else {
+    paramStr = cId->getParam()->output();
+  }
+  if(cId->getName())
+    sprintf(temp, "%*c%s(%s);\n", level, ' ',cId->getName()->output().c_str() ,paramStr.c_str());
+  else
+    sprintf(temp, "%*c%s(%s);\n", level, ' ',cId->output().c_str() ,paramStr.c_str());
   // 输出示例: "    cId();"
   // 具体示例: "    foo();"
   return std::string(temp);
