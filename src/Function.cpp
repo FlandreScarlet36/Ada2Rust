@@ -99,7 +99,7 @@ std::string Function::output(int level) const {
     end main;
   */
   /*
-    pub fn main() {
+    fn main() {
         ...
     }
   */

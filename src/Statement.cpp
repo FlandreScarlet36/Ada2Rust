@@ -220,7 +220,7 @@ std::string RustCallStmt::output(int level) const {
   char temp[200];
   std::string paramStr;
   if (!cId->getParam()) {
-    paramStr = "()";
+    paramStr = "";
   }
   else {
     paramStr = cId->getParam()->output();
@@ -348,6 +348,9 @@ std::string RustCaseStmt::output(int level) const {
   RustSeqStmt *elseStmts;
   RustAlternative *temp = alter;
   bool firstCase = true;
+  char matchStr[200];
+  sprintf(matchStr, "%*cmatch %s {\n", level, ' ', exprStr.c_str());
+  resStr += std::string(matchStr);
   while (temp) {
     char tempIf[300];
     RustChoice *choices = temp->getChoices();
@@ -357,17 +360,14 @@ std::string RustCaseStmt::output(int level) const {
     while (choices) {
       char tempCond[50];
       if (choices->getIsExpr()) {
-        sprintf(tempCond, "%s == %s", exprStr.c_str(),
-                choices->getExpr()->output().c_str());
-        // 输出示例: "expr == choice_expr"
-        // 具体示例: "x == 1"
+        sprintf(tempCond, "%s", choices->getExpr()->output().c_str());
+        // 输出示例: "choice_expr"
       } else if (choices->getIsRange()) {
-        sprintf(tempCond, "%s >= %s && %s <= %s", exprStr.c_str(),
+        sprintf(tempCond, "%s..=%s", 
                 choices->getRange()->getLow()->output().c_str(),
-                exprStr.c_str(),
                 choices->getRange()->getUpper()->output().c_str());
-        // 输出示例: "expr >= range_low && expr <= range_high"
-        // 具体示例: "x >= 1 && x <= 10"
+        // 输出示例: "range_low..=range_high"
+        // 具体示例: "1..=10"
       } else {
         haveElse = true;
         elseStmts = stmts;
@@ -377,50 +377,41 @@ std::string RustCaseStmt::output(int level) const {
         condStr += std::string(tempCond);
         isFirst = false;
       } else {
-        condStr += std::string(" || ") + std::string(tempCond);
+        condStr += std::string(" | ") + std::string(tempCond);
       }
       choices = dynamic_cast<RustChoice *>(choices->getNext());
     }
     if (condStr.empty())
-      break;
-    if (firstCase) {
-      sprintf(tempIf, R"deli(%*cif %s {
+    break;
+    sprintf(tempIf, R"deli(%*c%s => {
 %s%*c}
 )deli",
-              level, ' ', condStr.c_str(), stmts->output(level + 4).c_str(),
-              level, ' ');
+              level + 4, ' ', condStr.c_str(), stmts->output(level + 8).c_str(),
+              level + 4, ' ');
       // 输出示例:
-      // if (cond) {
-      //     stmts
-      // }
-      firstCase = false;
-      resStr += std::string(tempIf);
-    } else {
-      sprintf(tempIf, R"deli(%*celse if %s {
-%s%*c}
-)deli",
-              level, ' ', condStr.c_str(), stmts->output(level + 4).c_str(),
-              level, ' ');
-      // 输出示例:
-      // else if (cond) {
+      // match (cond) {
       //     stmts
       // }
       resStr += std::string(tempIf);
-    }
     temp = dynamic_cast<RustAlternative *>(temp->getNext());
   }
-
   if (haveElse) {
     char tempElse[300];
-    sprintf(tempElse, R"deli(%*celse{
+    sprintf(tempElse, R"deli(%*c_ => {
 %s%*c}
+%*c}
 )deli",
-            level, ' ', elseStmts->output(level + 4).c_str(), level, ' ');
+            level + 4, ' ', elseStmts->output(level + 8).c_str(), level + 4, ' ', level, ' ');
     // 输出示例:
-    // else {
+    // _ => {
     //     elseStmts
     // }
     resStr += std::string(tempElse);
+  }
+  else {
+    char tempEnd[50];
+    sprintf(tempEnd, "%*c_ => {}\n%*c}\n", level+4, ' ', level, ' ');
+    resStr += std::string(tempEnd);
   }
   return resStr;
 }
