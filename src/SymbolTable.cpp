@@ -25,7 +25,7 @@ std::string ConstantSymbolEntry::dump() {
     buffer << value;
     return buffer.str();
   } else if (type->isString()) {
-    std::string res = "\"" + str + "\".into()";
+    std::string res = "AdaString::from(\"" + str + "\")";
     return res;
   } else if (type->isBoolean()) {
     if (bvalue)
