@@ -1,0 +1,58 @@
+program
+    Range: Ada.Text_IO
+    Range: Ada.Text_IO
+    ProcedureDef
+        Procedure	name: case13	type: Procedure
+        DeclItemOrBodyStmt
+            DeclStmt
+                ObjectDeclStmt
+                    DefId	name: B	type: Boolean	isConst: false
+        Stmt
+            LoopStmt
+                Iteration
+                    IterPart	name: I
+                    DiscreteRange
+                        Range
+                            Literal	type: Integer	value: 1
+                            Literal	type: Integer	value: 10
+                BasicLoopStmt
+                    Stmt
+                        CaseStmt
+                            Id
+                                name: I	scope: 3	type: Integer
+                            Alternative
+                                Choice
+                                    Literal	type: Integer	value: 1
+                                OR
+                                Choice
+                                    Literal	type: Integer	value: 3
+                                OR
+                                Choice
+                                    Literal	type: Integer	value: 5
+                                OR
+                                Choice
+                                    Literal	type: Integer	value: 7
+                                OR
+                                Choice
+                                    Literal	type: Integer	value: 9
+                                Stmt
+                                    AssignStmt	name: B	type: Boolean
+                                        Literal	type: Boolean	value: true
+                            Alternative
+                                Choice
+                                    Literal	type: Integer	value: 2
+                                OR
+                                Choice
+                                    Literal	type: Integer	value: 4
+                                OR
+                                Choice
+                                    Literal	type: Integer	value: 6
+                                OR
+                                Choice
+                                    Literal	type: Integer	value: 8
+                                OR
+                                Choice
+                                    Literal	type: Integer	value: 10
+                                Stmt
+                                    AssignStmt	name: B	type: Boolean
+                                        Literal	type: Boolean	value: false

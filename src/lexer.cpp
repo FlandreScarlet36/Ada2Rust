@@ -1157,38 +1157,36 @@ case 28:
 YY_RULE_SETUP
 #line 272 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
-    int min;
-    int max;
+    int min = 0;
+    int max = NUM_KEYWORDS - 1;
     int guess, compare;
 
-    min = 0;
-    max = NUM_KEYWORDS - 1;
-    guess = (min + max) / 2;
-    char *token;
-    token = new char[strlen(yytext) + 1];
-    strcpy(token, yytext);
+    std::string token(yytext);
     to_upper(yytext);
 
-    for (guess = (min + max) / 2; min <= max; guess = (min + max) / 2) {
-      if ((compare = strcmp(key_tab[guess].keyword, yytext)) < 0) {
-        min = guess + 1;
-      } else if (compare > 0) {
-        max = guess - 1;
-      } else {
-        if(dump_token)
-            DUMP_TOKEN(std::string(key_tab[guess].keyword) + std::string("\t") + std::string(token));
-        return key_tab[guess].keyword_value;
-      }
+    while (min <= max) {
+        guess = (min + max) / 2;
+        compare = strcmp(key_tab[guess].keyword, yytext);
+        if (compare < 0) {
+            min = guess + 1;
+        } else if (compare > 0) {
+            max = guess - 1;
+        } else {
+            if (dump_token)
+                DUMP_TOKEN(std::string(key_tab[guess].keyword) + "\t" + token);
+            return key_tab[guess].keyword_value;
+        }
     }
-    if(dump_token)
-        DUMP_TOKEN("Identifier\t" + std::string(token));
-    yylval.StrType = token;
+
+    if (dump_token)
+        DUMP_TOKEN("Identifier\t" + token);
+    yylval.StrType = strdup(token.c_str());
     return Identifier;
 }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 302 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 300 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     int num = atoi(yytext);
     if(dump_token)
@@ -1199,7 +1197,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 310 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 308 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     char *token;
     token = new char[strlen(yytext) - 1];
@@ -1213,28 +1211,28 @@ YY_RULE_SETUP
 case 31:
 /* rule 31 can match eol */
 YY_RULE_SETUP
-#line 320 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 318 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     newoffsets = 0;
 }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 324 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 322 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 
 	YY_BREAK
 case 33:
 /* rule 33 can match eol */
 YY_RULE_SETUP
-#line 325 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 323 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 327 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 325 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 ECHO;
 	YY_BREAK
-#line 1238 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.cpp"
+#line 1236 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.cpp"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2251,6 +2249,6 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 327 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 325 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 
 

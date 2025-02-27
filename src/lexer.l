@@ -270,32 +270,30 @@ LINECOMMENT --.*\n
 }
 
 {ID} {
-    int min;
-    int max;
+    int min = 0;
+    int max = NUM_KEYWORDS - 1;
     int guess, compare;
 
-    min = 0;
-    max = NUM_KEYWORDS - 1;
-    guess = (min + max) / 2;
-    char *token;
-    token = new char[strlen(yytext) + 1];
-    strcpy(token, yytext);
+    std::string token(yytext);
     to_upper(yytext);
 
-    for (guess = (min + max) / 2; min <= max; guess = (min + max) / 2) {
-      if ((compare = strcmp(key_tab[guess].keyword, yytext)) < 0) {
-        min = guess + 1;
-      } else if (compare > 0) {
-        max = guess - 1;
-      } else {
-        if(dump_token)
-            DUMP_TOKEN(std::string(key_tab[guess].keyword) + std::string("\t") + std::string(token));
-        return key_tab[guess].keyword_value;
-      }
+    while (min <= max) {
+        guess = (min + max) / 2;
+        compare = strcmp(key_tab[guess].keyword, yytext);
+        if (compare < 0) {
+            min = guess + 1;
+        } else if (compare > 0) {
+            max = guess - 1;
+        } else {
+            if (dump_token)
+                DUMP_TOKEN(std::string(key_tab[guess].keyword) + "\t" + token);
+            return key_tab[guess].keyword_value;
+        }
     }
-    if(dump_token)
-        DUMP_TOKEN("Identifier\t" + std::string(token));
-    yylval.StrType = token;
+
+    if (dump_token)
+        DUMP_TOKEN("Identifier\t" + token);
+    yylval.StrType = strdup(token.c_str());
     return Identifier;
 }
 
