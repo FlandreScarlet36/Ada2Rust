@@ -649,7 +649,7 @@ void PutlineStmt::genRustCode(Node *parent) {
 }
 
 void PackageCall::dump(int level) {
-  fprintf(yyout, "%*cRange: %s\n", level, ' ', packageName.c_str());
+  fprintf(yyout, "%*cPackage: %s\n", level, ' ', packageName.c_str());
 }
 
 void PackageCall::genRustCode(Node *parent) {

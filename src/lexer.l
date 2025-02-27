@@ -63,6 +63,7 @@
          {"FOR", FOR},
          {"FUNCTION", FUNCTION},
          {"GENERIC", GENERIC},
+         {"GET", GET},
          {"GOTO", GOTO},
          {"IF", IF},
          {"IN", IN},
@@ -84,6 +85,8 @@
          {"PRIVATE", PRIVATE},
          {"PROCEDURE", PROCEDURE},
          {"PROTECTED", PROTECTED},
+         {"PUT", PUT},
+         {"PUT_LINE", PUT_LINE},
          {"RAISE", RAISE},
          {"RANGE", RANGE},
          {"RECORD", RECORD},
@@ -107,10 +110,7 @@
          {"WHEN", WHEN},
          {"WHILE", WHILE},
          {"WITH", WITH},
-         {"XOR", XOR},
-         {"PUT_LINE", PUT_LINE},
-         {"GET", GET},
-         {"PUT",PUT}};
+         {"XOR", XOR}};
     
     void to_upper(char *str) {
       char *cp;

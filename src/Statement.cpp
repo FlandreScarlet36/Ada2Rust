@@ -73,7 +73,7 @@ std::string RustFactor::output() const {
   case RustFactor::ABS:
     opMethod = "";
   }
-  return opMethod + cExpr->output();
+  return opMethod + rustExpr->output();
 }
 
 // 输出 RustBinaryExpr 的字符串表示
@@ -140,7 +140,7 @@ std::string RustBinaryExpr::output() const {
 
   char temp[80];
   if (isUnary) {
-    sprintf(temp, "%s%s", opSignName.c_str(), cExpr1->output().c_str());
+    sprintf(temp, "%s%s", opSignName.c_str(), rustExpr1->output().c_str());
     // 输出示例: "opSignName expr1"
     // 具体示例: "-x"
     return std::string(temp);
@@ -151,24 +151,24 @@ std::string RustBinaryExpr::output() const {
       } else if (sign == RustBinaryExpr::NOTIN) {
         // 处理 NOT IN 操作符
       } else {
-        sprintf(temp, "%s %s &%s", cExpr1->output().c_str(), opSignName.c_str(),
+        sprintf(temp, "%s %s &%s", rustExpr1->output().c_str(), opSignName.c_str(),
                 se->dump().c_str());
         // 输出示例: "expr1 opSignName se"
         // 具体示例: "x + y"
       }
     }
-    if (cRange) {
-      RustExpr *low = cRange->getLow();
-      RustExpr *upper = cRange->getUpper();
+    if (rustRange) {
+      RustExpr *low = rustRange->getLow();
+      RustExpr *upper = rustRange->getUpper();
       if (sign == RustBinaryExpr::IN) {
-        sprintf(temp, "%s >= %s && %s <= %s", cExpr1->output().c_str(),
-                low->output().c_str(), cExpr1->output().c_str(),
+        sprintf(temp, "%s >= %s && %s <= %s", rustExpr1->output().c_str(),
+                low->output().c_str(), rustExpr1->output().c_str(),
                 upper->output().c_str());
         // 输出示例: "expr1 >= low && expr1 <= upper"
         // 具体示例: "x >= 1 && x <= 10"
       } else if (sign == RustBinaryExpr::NOTIN) {
-        sprintf(temp, "%s < %s || %s > %s", cExpr1->output().c_str(),
-                low->output().c_str(), cExpr1->output().c_str(),
+        sprintf(temp, "%s < %s || %s > %s", rustExpr1->output().c_str(),
+                low->output().c_str(), rustExpr1->output().c_str(),
                 upper->output().c_str());
         // 输出示例: "expr1 < low || expr1 > upper"
         // 具体示例: "x < 1 || x > 10"
@@ -179,8 +179,8 @@ std::string RustBinaryExpr::output() const {
     }
     return std::string(temp);
   } else {
-    sprintf(temp, "%s %s %s", cExpr1->output().c_str(), opSignName.c_str(),
-            cExpr2->output().c_str());
+    sprintf(temp, "%s %s %s", rustExpr1->output().c_str(), opSignName.c_str(),
+            rustExpr2->output().c_str());
     // 输出示例: "expr1 opSignName expr2"
     // 具体示例: "a + b"
     return std::string(temp);
@@ -209,7 +209,16 @@ std::string RustDummyStmt::output(int level) const {
 std::string RustAssignStmt::output(int level) const {
   char temp[200];
   sprintf(temp, "%*c%s = %s;\n", level, ' ', se->dump().c_str(),
-          cExpr->output().c_str());
+          rustExpr->output().c_str());
+  // 输出示例: "    se = expr;"
+  // 具体示例: "    x = 42;"
+  return std::string(temp);
+}
+
+std::string RustPutLineStmt::output(int level) const {
+  char temp[200];
+
+  sprintf(temp, "%*cprintln!(\"%s\");\n", level, ' ', str.c_str());
   // 输出示例: "    se = expr;"
   // 具体示例: "    x = 42;"
   return std::string(temp);
@@ -219,16 +228,16 @@ std::string RustAssignStmt::output(int level) const {
 std::string RustCallStmt::output(int level) const {
   char temp[200];
   std::string paramStr;
-  if (!cId->getParam()) {
+  if (!rustId->getParam()) {
     paramStr = "";
   }
   else {
-    paramStr = cId->getParam()->output();
+    paramStr = rustId->getParam()->output();
   }
-  if(cId->getName())
-    sprintf(temp, "%*c%s(%s);\n", level, ' ',cId->getName()->output().c_str() ,paramStr.c_str());
+  if(rustId->getName())
+    sprintf(temp, "%*c%s(%s);\n", level, ' ',rustId->getName()->output().c_str() ,paramStr.c_str());
   else
-    sprintf(temp, "%*c%s(%s);\n", level, ' ',cId->output().c_str() ,paramStr.c_str());
+    sprintf(temp, "%*c%s(%s);\n", level, ' ',rustId->output().c_str() ,paramStr.c_str());
   // 输出示例: "    cId();"
   // 具体示例: "    foo();"
   return std::string(temp);
@@ -313,11 +322,11 @@ std::string RustIteration::output(int level) const {
 // 输出 RustLoopStmt 的字符串表示
 std::string RustLoopStmt::output(int level) const {
   char res[4000];
-  if (cIter) {
+  if (rustIter) {
     sprintf(res, R"deli(%*c%s {
 %s%*c}
 )deli",
-            level, ' ', cIter->output(level).c_str(),
+            level, ' ', rustIter->output(level).c_str(),
             loop->output(level + 4).c_str(), level, ' ');
     // 输出示例:
     // iter {
@@ -343,7 +352,7 @@ std::string RustLoopStmt::output(int level) const {
 // 输出 RustCaseStmt 的字符串表示
 std::string RustCaseStmt::output(int level) const {
   std::string resStr;
-  std::string exprStr = cExpr->output();
+  std::string exprStr = rustExpr->output();
   bool haveElse = false;
   RustSeqStmt *elseStmts;
   RustAlternative *temp = alter;
@@ -419,12 +428,12 @@ std::string RustCaseStmt::output(int level) const {
 // 输出 RustExitStmt 的字符串表示
 std::string RustExitStmt::output(int level) const {
   char res[200];
-  if (cCond) {
+  if (rustCond) {
     sprintf(res, R"deli(%*cif %s {
 %*cbreak;
 %*c}
 )deli",
-            level, ' ', cCond->output().c_str(), level + 4, ' ', level, ' ');
+            level, ' ', rustCond->output().c_str(), level + 4, ' ', level, ' ');
     // 输出示例:
     // if (cond) {
     //     break;

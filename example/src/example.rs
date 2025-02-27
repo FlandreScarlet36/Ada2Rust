@@ -32,18 +32,7 @@ impl Image for i32 {
 }
 
 
- fn case13() {
-    let mut B: bool;
+ fn Greet() {
 
-    for I in 1..=10 {
-        match I {
-            1 | 3 | 5 | 7 | 9 => {
-                B = true;
-            }
-            2 | 4 | 6 | 8 | 10 => {
-                B = false;
-            }
-            _ => {}
-        }
-    }
+    println!("hello!");
  }

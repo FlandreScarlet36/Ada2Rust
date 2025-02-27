@@ -566,6 +566,7 @@ char *yytext;
          {"FOR", FOR},
          {"FUNCTION", FUNCTION},
          {"GENERIC", GENERIC},
+         {"GET", GET},
          {"GOTO", GOTO},
          {"IF", IF},
          {"IN", IN},
@@ -587,6 +588,8 @@ char *yytext;
          {"PRIVATE", PRIVATE},
          {"PROCEDURE", PROCEDURE},
          {"PROTECTED", PROTECTED},
+         {"PUT", PUT},
+         {"PUT_LINE", PUT_LINE},
          {"RAISE", RAISE},
          {"RANGE", RANGE},
          {"RECORD", RECORD},
@@ -610,10 +613,7 @@ char *yytext;
          {"WHEN", WHEN},
          {"WHILE", WHILE},
          {"WITH", WITH},
-         {"XOR", XOR},
-         {"PUT_LINE", PUT_LINE},
-         {"GET", GET},
-         {"PUT",PUT}};
+         {"XOR", XOR}};
     
     void to_upper(char *str) {
       char *cp;

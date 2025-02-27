@@ -44,9 +44,9 @@ public:
 
 class RustPutStmt : public RustStmt {
 private:
-  RustExpr *cExpr;
+  RustExpr *rustExpr;
 public:
-  RustPutStmt(RustExpr *_cExpr) : RustStmt(nullptr), cExpr(_cExpr){};
+  RustPutStmt(RustExpr *_rustExpr) : RustStmt(nullptr), rustExpr(_rustExpr){};
   std::string output(int level) const { return ""; };
 };
 
@@ -60,12 +60,12 @@ public:
 
 class RustPutLineStmt : public RustStmt {
 private:
-  RustExpr *cExpr;
+  RustExpr *rustExpr;
   std::string str;
 public:
-  RustPutLineStmt(RustExpr *_cExpr) : RustStmt(nullptr), cExpr(_cExpr){};
+  RustPutLineStmt(RustExpr *_rustExpr) : RustStmt(nullptr), rustExpr(_rustExpr){};
   RustPutLineStmt(std::string _str) : RustStmt(nullptr), str(_str){};
-  std::string output(int level) const { return ""; };
+  std::string output(int level) const;
 };
 
 class RustPackageCall : public RustStmt {
@@ -78,14 +78,14 @@ public:
 
 class RustRange : public RustStmt {
 private:
-  RustExpr *cLow;
-  RustExpr *cUpper;
+  RustExpr *rustLow;
+  RustExpr *rustUpper;
 
 public:
   RustRange(RustExpr *_low, RustExpr *_upper)
-      : RustStmt(nullptr), cLow(_low), cUpper(_upper){};
-  RustExpr *getLow() { return cLow; }
-  RustExpr *getUpper() { return cUpper; }
+      : RustStmt(nullptr), rustLow(_low), rustUpper(_upper){};
+  RustExpr *getLow() { return rustLow; }
+  RustExpr *getUpper() { return rustUpper; }
   std::string output(int level) const { return ""; };
 };
 
@@ -117,7 +117,7 @@ public:
 
 class RustFactor : public RustExpr {
 private:
-  RustExpr *cExpr;
+  RustExpr *rustExpr;
   int op;
 
 public:
@@ -125,14 +125,14 @@ public:
     NOT,
     ABS,
   };
-  RustFactor(RustExpr *_expr, int _op) : cExpr(_expr), op(_op){};
+  RustFactor(RustExpr *_expr, int _op) : rustExpr(_expr), op(_op){};
   std::string output() const;
 };
 
 class RustBinaryExpr : public RustExpr {
 private:
-  RustExpr *cExpr1, *cExpr2;
-  RustRange *cRange;
+  RustExpr *rustExpr1, *rustExpr2;
+  RustRange *rustRange;
   SymbolEntry *se;
   int sign;
   bool isUnary;
@@ -163,16 +163,16 @@ public:
     EXPON,
   };
   RustBinaryExpr(RustExpr *_expr1, RustExpr *_expr2, int _sign)
-      : cExpr1(_expr1), cExpr2(_expr2), sign(_sign){};
-  RustBinaryExpr(RustExpr *_expr1, int _sign) : cExpr1(_expr1), sign(_sign) {
+      : rustExpr1(_expr1), rustExpr2(_expr2), sign(_sign){};
+  RustBinaryExpr(RustExpr *_expr1, int _sign) : rustExpr1(_expr1), sign(_sign) {
     isUnary = true;
   };
   RustBinaryExpr(RustExpr *_expr1, RustRange *_range, int _sign)
-      : cExpr1(_expr1), cRange(_range), sign(_sign) {
+      : rustExpr1(_expr1), rustRange(_range), sign(_sign) {
     isMember = true;
   };
   RustBinaryExpr(RustExpr *_expr1, SymbolEntry *_se, int _sign)
-      : cExpr1(_expr1), se(_se), sign(_sign) {
+      : rustExpr1(_expr1), se(_se), sign(_sign) {
     isMember = true;
   };
   std::string output() const;
@@ -199,23 +199,23 @@ public:
 class RustAssignStmt : public RustStmt {
 private:
   SymbolEntry *se;
-  RustExpr *cExpr;
+  RustExpr *rustExpr;
 
 public:
-  RustAssignStmt(Function *func, SymbolEntry *_se, RustExpr *_cExpr)
+  RustAssignStmt(Function *func, SymbolEntry *_se, RustExpr *_rExpr)
       : RustStmt(func) {
     se = _se;
-    cExpr = _cExpr;
+    rustExpr = _rExpr;
   };
   std::string output(int level) const;
 };
 
 class RustCallStmt : public RustStmt {
 private:
-  RustId *cId;
+  RustId *rustId;
 
 public:
-  RustCallStmt(Function *_func, RustId *_cId) : RustStmt(_func), cId(_cId){};
+  RustCallStmt(Function *_func, RustId *_rId) : RustStmt(_func), rustId(_rId){};
   std::string output(int level) const;
 };
 
@@ -267,25 +267,25 @@ public:
 
 class RustLoopStmt : public RustStmt {
 private:
-  RustIteration *cIter;
+  RustIteration *rustIter;
   RustSeqStmt *loop;
 
 public:
-  RustLoopStmt(Function *_func, RustIteration *_cIter, RustSeqStmt *_loop)
-      : RustStmt(_func), cIter(_cIter), loop(_loop){};
+  RustLoopStmt(Function *_func, RustIteration *_rustIter, RustSeqStmt *_loop)
+      : RustStmt(_func), rustIter(_rustIter), loop(_loop){};
   std::string output(int level) const;
 };
 
 class RustChoice : public RustStmt {
 private:
-  RustExpr *cExpr;
+  RustExpr *rustExpr;
   RustRange *range;
   bool isOther = false;
   bool isExpr = false;
   bool isRange = false;
 
 public:
-  RustChoice(RustExpr *_cExpr) : RustStmt(nullptr), cExpr(_cExpr) {
+  RustChoice(RustExpr *_rustExpr) : RustStmt(nullptr), rustExpr(_rustExpr) {
     isExpr = true;
   };
   RustChoice(RustRange *_range) : RustStmt(nullptr), range(_range) {
@@ -294,7 +294,7 @@ public:
   bool getIsExpr() { return isExpr; }
   bool getIsRange() { return isRange; }
   bool getIsOther() { return isOther; }
-  RustExpr *getExpr() { return cExpr; }
+  RustExpr *getExpr() { return rustExpr; }
   RustRange *getRange() { return range; }
   RustChoice(bool _isOther) : RustStmt(nullptr), isOther(_isOther){};
   std::string output(int level) const { return ""; };
@@ -315,21 +315,21 @@ public:
 
 class RustCaseStmt : public RustStmt {
 private:
-  RustExpr *cExpr;
+  RustExpr *rustExpr;
   RustAlternative *alter;
 
 public:
-  RustCaseStmt(Function *_func, RustExpr *_cExpr, RustAlternative *_alter)
-      : RustStmt(_func), cExpr(_cExpr), alter(_alter){};
+  RustCaseStmt(Function *_func, RustExpr *_rustExpr, RustAlternative *_alter)
+      : RustStmt(_func), rustExpr(_rustExpr), alter(_alter){};
   std::string output(int level) const;
 };
 
 class RustExitStmt : public RustStmt {
 private:
-  RustExpr *cCond;
+  RustExpr *rustCond;
 
 public:
-  RustExitStmt(RustExpr *_cCond = nullptr) : RustStmt(nullptr), cCond(_cCond){};
+  RustExitStmt(RustExpr *_rustCond = nullptr) : RustStmt(nullptr), rustCond(_rustCond){};
   std::string output(int level) const;
 };
 

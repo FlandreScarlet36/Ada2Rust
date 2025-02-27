@@ -1,15 +1,7 @@
 with Ada.Text_IO;
 use Ada.Text_IO;
 
-procedure case13 is
-    B : Boolean;
+procedure Greet is
 begin
-   for I in 1 .. 10 loop
-      case I is
-         when 1 | 3 | 5 | 7 | 9  =>
-            B := True;
-         when 2 | 4 | 6 | 8 | 10  =>
-            B := False;
-      end case;
-   end loop;
-end case13;
+    Put_Line("hello!");
+end Greet;
