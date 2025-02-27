@@ -374,8 +374,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 32
-#define YY_END_OF_BUFFER 33
+#define YY_NUM_RULES 34
+#define YY_END_OF_BUFFER 35
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -383,13 +383,14 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static const flex_int16_t yy_accept[48] =
+static const flex_int16_t yy_accept[52] =
     {   0,
-        0,    0,   33,   32,   30,   29,   29,   32,   22,   24,
-       19,   20,    3,    1,   21,    2,   32,    4,   27,   27,
-       17,   18,   12,    5,   13,   26,   23,   29,    0,   28,
-       10,    0,   25,   11,   27,   15,    6,    9,    8,   16,
-       14,    7,   26,    0,    0,   31,    0
+        0,    0,   35,   34,   32,   31,   31,   34,   22,   24,
+       19,   20,    3,    1,   21,    2,   25,    4,   29,   29,
+       17,   18,   12,    5,   13,   28,   23,   31,    0,   30,
+       10,    0,   26,   11,   29,   15,    6,    9,    8,   16,
+       14,    7,    0,   28,    0,    0,   33,   27,   27,    0,
+        0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -427,59 +428,65 @@ static const YY_CHAR yy_ec[256] =
 static const YY_CHAR yy_meta[26] =
     {   0,
         1,    1,    2,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    3,    3,    1,    1,    1,
-        1,    1,    3,    3,    1
+        1,    1,    1,    3,    1,    4,    4,    1,    1,    1,
+        1,    1,    4,    4,    1
     } ;
 
-static const flex_int16_t yy_base[51] =
+static const flex_int16_t yy_base[56] =
     {   0,
-        0,    0,   58,   59,   59,   59,   54,   51,   59,   59,
-       59,   59,   45,   59,   59,   41,   39,   31,   59,   10,
-       30,   59,    8,   28,   10,   25,   59,   59,   39,   36,
-       59,   37,   59,   59,   17,   59,   59,   59,   59,   59,
-       59,   59,   15,   19,   35,   59,   59,   42,   34,   45
+        0,    0,   70,   71,   71,   71,   66,   63,   71,   71,
+       71,   71,   57,   71,   71,   53,   51,   43,   71,   10,
+       42,   71,    8,   40,   10,   19,   71,   71,   56,   55,
+       71,   56,   71,   71,   18,   71,   71,   71,   71,   71,
+       71,   71,   35,   22,   21,   46,   71,   21,   18,   24,
+       71,   47,   49,   53,   35
     } ;
 
-static const flex_int16_t yy_def[51] =
+static const flex_int16_t yy_def[56] =
     {   0,
-       47,    1,   47,   47,   47,   47,   47,   48,   47,   47,
-       47,   47,   47,   47,   47,   47,   47,   47,   47,   47,
-       47,   47,   47,   47,   47,   49,   47,   47,   48,   47,
-       47,   50,   47,   47,   47,   47,   47,   47,   47,   47,
-       47,   47,   49,   47,   50,   47,    0,   47,   47,   47
+       51,    1,   51,   51,   51,   51,   51,   52,   51,   51,
+       51,   51,   51,   51,   51,   51,   51,   51,   51,   51,
+       51,   51,   51,   51,   51,   53,   51,   51,   52,   51,
+       51,   54,   51,   51,   51,   51,   51,   51,   51,   51,
+       51,   51,   51,   53,   51,   54,   51,   55,   55,   51,
+        0,   51,   51,   51,   51
     } ;
 
-static const flex_int16_t yy_nxt[85] =
+static const flex_int16_t yy_nxt[97] =
     {   0,
         4,    5,    6,    7,    8,    9,   10,   11,   12,   13,
        14,   15,   16,   17,   18,   19,   20,   21,   22,   23,
        24,   25,   26,    4,   27,   35,   35,   37,   38,   39,
-       41,   42,   35,   35,   43,   43,   43,   46,   44,   46,
-       29,   43,   29,   30,   29,   45,   45,   45,   44,   40,
-       36,   34,   33,   32,   31,   30,   28,   47,    3,   47,
-       47,   47,   47,   47,   47,   47,   47,   47,   47,   47,
-       47,   47,   47,   47,   47,   47,   47,   47,   47,   47,
-       47,   47,   47,   47
+       41,   42,   43,   35,   35,   43,   44,   44,   49,   49,
+       49,   50,   45,   44,   50,   45,   49,   29,   47,   29,
+       29,   44,   44,   46,   46,   46,   46,   48,   47,   29,
+       30,   40,   36,   34,   33,   32,   31,   30,   28,   51,
+        3,   51,   51,   51,   51,   51,   51,   51,   51,   51,
+       51,   51,   51,   51,   51,   51,   51,   51,   51,   51,
+       51,   51,   51,   51,   51,   51
+
     } ;
 
-static const flex_int16_t yy_chk[85] =
+static const flex_int16_t yy_chk[97] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,   20,   20,   23,   23,   23,
-       25,   25,   35,   35,   44,   44,   49,   45,   43,   32,
-       30,   44,   48,   29,   48,   50,   50,   50,   26,   24,
-       21,   18,   17,   16,   13,    8,    7,    3,   47,   47,
-       47,   47,   47,   47,   47,   47,   47,   47,   47,   47,
-       47,   47,   47,   47,   47,   47,   47,   47,   47,   47,
-       47,   47,   47,   47
+       25,   25,   26,   35,   35,   44,   45,   45,   55,   50,
+       50,   49,   26,   45,   48,   44,   50,   52,   46,   52,
+       52,   53,   53,   54,   54,   54,   54,   43,   32,   30,
+       29,   24,   21,   18,   17,   16,   13,    8,    7,    3,
+       51,   51,   51,   51,   51,   51,   51,   51,   51,   51,
+       51,   51,   51,   51,   51,   51,   51,   51,   51,   51,
+       51,   51,   51,   51,   51,   51
+
     } ;
 
 /* Table of booleans, true if rule could match eol. */
-static const flex_int32_t yy_rule_can_match_eol[33] =
+static const flex_int32_t yy_rule_can_match_eol[35] =
     {   0,
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0,     };
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0,     };
 
 static yy_state_type yy_last_accepting_state;
 static char *yy_last_accepting_cpos;
@@ -522,7 +529,7 @@ char *yytext;
     }
     #define YY_USER_ACTION update_loc();  
     
-    #define NUM_KEYWORDS 75
+    #define NUM_KEYWORDS 78
     typedef struct {
       char *keyword;
       int keyword_value;
@@ -603,7 +610,10 @@ char *yytext;
          {"WHEN", WHEN},
          {"WHILE", WHILE},
          {"WITH", WITH},
-         {"XOR", XOR}};
+         {"XOR", XOR},
+         {"PUT_LINE", PUT_LINE},
+         {"GET", GET},
+         {"PUT",PUT}};
     
     void to_upper(char *str) {
       char *cp;
@@ -612,8 +622,8 @@ char *yytext;
           *cp -= ('a' - 'A');
       }
     }
-#line 616 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.cpp"
-#line 617 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.cpp"
+#line 626 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.cpp"
+#line 627 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.cpp"
 
 #define INITIAL 0
 
@@ -830,9 +840,9 @@ YY_DECL
 		}
 
 	{
-#line 129 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 133 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 
-#line 836 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.cpp"
+#line 846 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.cpp"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -859,13 +869,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 48 )
+				if ( yy_current_state >= 52 )
 					yy_c = yy_meta[yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 59 );
+		while ( yy_base[yy_current_state] != 71 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -901,7 +911,7 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 130 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 134 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("ADD\t+");
@@ -910,7 +920,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 135 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 139 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("SUB\t-");
@@ -919,7 +929,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 140 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 144 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("MUL\t*");
@@ -928,7 +938,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 145 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 149 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("DIV\t/");
@@ -937,7 +947,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 150 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 154 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("EQ\t=");
@@ -946,7 +956,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 155 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 159 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("LTLT\t<<");
@@ -955,7 +965,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 160 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 164 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("GTGT\t>>");
@@ -964,7 +974,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 165 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 169 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("BOX\t<>");
@@ -973,7 +983,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 170 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 174 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("LTEQ\t<=");
@@ -982,7 +992,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 175 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 179 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("EXPON\t**");
@@ -991,7 +1001,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 180 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 184 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("NE\t/=");
@@ -1000,7 +1010,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 185 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 189 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("LE\t<");
@@ -1009,7 +1019,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 190 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 194 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("GE\t>");
@@ -1018,7 +1028,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 195 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 199 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("GTEQ\t>=");
@@ -1027,7 +1037,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 200 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 204 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("ASSIGN\t:=");
@@ -1036,7 +1046,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 205 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 209 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("RIGHTSHAFT\t=>");
@@ -1045,7 +1055,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 210 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 214 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("COLON\t:");
@@ -1054,7 +1064,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 215 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 219 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("SEMICOLON\t;");
@@ -1063,7 +1073,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 220 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 224 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("LPAREN\t(");
@@ -1072,7 +1082,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 225 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 229 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("RPAREN\t)");
@@ -1081,7 +1091,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 230 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 234 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("COMMA\t,");
@@ -1090,7 +1100,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 235 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 239 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("SINGLEAND\t&");
@@ -1099,7 +1109,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 240 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 244 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("SINGLEOR\t|");
@@ -1108,7 +1118,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 245 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 249 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("TIC\t'");
@@ -1117,16 +1127,35 @@ YY_RULE_SETUP
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 250 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 254 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+{
+    if(dump_token) 
+        DUMP_TOKEN("ONEDOT\t.");
+    return ONEDOT;
+}
+	YY_BREAK
+case 26:
+YY_RULE_SETUP
+#line 259 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     if(dump_token) 
         DUMP_TOKEN("DOTDOT\t..");
     return DOTDOT;
 }
 	YY_BREAK
-case 26:
+case 27:
 YY_RULE_SETUP
-#line 256 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 265 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+{
+    if(dump_token)
+        DUMP_TOKEN("PACKAGEID\t" + std::string(yytext));
+    yylval.StrType = strdup(yytext);
+    return PACKAGEID;
+}
+	YY_BREAK
+case 28:
+YY_RULE_SETUP
+#line 272 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     int min;
     int max;
@@ -1157,9 +1186,9 @@ YY_RULE_SETUP
     return Identifier;
 }
 	YY_BREAK
-case 27:
+case 29:
 YY_RULE_SETUP
-#line 286 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 302 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     int num = atoi(yytext);
     if(dump_token)
@@ -1168,9 +1197,9 @@ YY_RULE_SETUP
     return DECIMIAL;
 }
 	YY_BREAK
-case 28:
+case 30:
 YY_RULE_SETUP
-#line 294 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 310 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     char *token;
     token = new char[strlen(yytext) - 1];
@@ -1181,31 +1210,31 @@ YY_RULE_SETUP
     return STRINGLITERAL;
 }
 	YY_BREAK
-case 29:
-/* rule 29 can match eol */
+case 31:
+/* rule 31 can match eol */
 YY_RULE_SETUP
-#line 304 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 320 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 {
     newoffsets = 0;
 }
 	YY_BREAK
-case 30:
-YY_RULE_SETUP
-#line 308 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
-
-	YY_BREAK
-case 31:
-/* rule 31 can match eol */
-YY_RULE_SETUP
-#line 309 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
-{}
-	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 311 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 324 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+
+	YY_BREAK
+case 33:
+/* rule 33 can match eol */
+YY_RULE_SETUP
+#line 325 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+{}
+	YY_BREAK
+case 34:
+YY_RULE_SETUP
+#line 327 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 ECHO;
 	YY_BREAK
-#line 1209 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.cpp"
+#line 1238 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.cpp"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1502,7 +1531,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 48 )
+			if ( yy_current_state >= 52 )
 				yy_c = yy_meta[yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
@@ -1530,11 +1559,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 48 )
+		if ( yy_current_state >= 52 )
 			yy_c = yy_meta[yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
-	yy_is_jam = (yy_current_state == 47);
+	yy_is_jam = (yy_current_state == 51);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -2222,6 +2251,6 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 311 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
+#line 327 "/mnt/hgfs/Graduation/Ada2Rust/src/lexer.l"
 
 

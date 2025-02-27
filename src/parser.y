@@ -36,10 +36,12 @@
     ExprNode* ExprType;
     OpSignNode* SignType;
     Type* type;
+    PackageCall* packageCall;
 }
 
 %start Program
 %token TIC
+%token ONEDOT
 %token DOTDOT
 %token LTLT
 %token BOX
@@ -126,14 +128,17 @@
 %token WHILE
 %token WITH
 %token XOR
+%token PUT_LINE
+%token PUT
+%token GET
 %token <BoolType> TRuE FALsE
 %token <IntType> DECIMIAL
-%token <StrType> Identifier STRINGLITERAL
+%token <StrType> Identifier STRINGLITERAL PACKAGEID
 %token INTEGER STRING NATURAL BOOLEAN
 %token COLON SEMICOLON LPAREN RPAREN COMMA
 %token SINGLEAND SINGLEOR
 
-%type<StmtType> CompUnit Unit SubprogDecl SubprogBody SubprogSpec FormalPartOpt FormalPart Params Param DefIds DefId InitOpt DeclPart DeclItemOrBody DeclItemOrBodys ObjectDecl Decl Statements Statement SimpleStmt CompoundStmt NullStmt AssignStmt ReturnStmt ProcedureCall ExitStmt IfStmt CaseStmt LoopStmt Iteration IterPart LabelOpt Block CondClause CondClauses ElseOpt Range RangeConstrOpt DiscreteRange DiscreteWithRange Choice Choices Alternative Alternatives BasicLoop BlockBody BlockDecl
+%type<StmtType> CompUnit Unit PackageCall SubprogDecl SubprogBody SubprogSpec FormalPartOpt FormalPart Params Param DefIds DefId InitOpt DeclPart DeclItemOrBody DeclItemOrBodys ObjectDecl Decl Statements Statement PutStmt PutlineStmt GetStmt SimpleStmt CompoundStmt NullStmt AssignStmt ReturnStmt ProcedureCall ExitStmt IfStmt CaseStmt LoopStmt Iteration IterPart LabelOpt Block CondClause CondClauses ElseOpt Range RangeConstrOpt DiscreteRange DiscreteWithRange Choice Choices Alternative Alternatives BasicLoop BlockBody BlockDecl
 %type<type> Type
 %type<StrType> AttributeId
 %type<ExprType> Expression Condition CondPart IdOpt WhenOpt Literal ParenthesizedPrimary Primary Factor Term SimpleExpression Relation Attribute Value Values IndexedComp Name
@@ -162,6 +167,23 @@ Unit
     }
 	| SubprogBody {
         $$ = $1;
+    }
+    | PackageCall {
+        $$ = $1;
+    }
+    ;
+
+
+PackageCall
+    : WITH PACKAGEID SEMICOLON {
+        DEBUG_YACC("================Enter PackageCall=================");
+        $$ = new PackageCall($2);
+        DEBUG_YACC("================Leave PackageCall=================");
+    }
+    | USE PACKAGEID SEMICOLON {
+        DEBUG_YACC("================Enter PackageCall=================");
+        $$ = new PackageCall($2);
+        DEBUG_YACC("================Leave PackageCall=================");
     }
     ;
 
@@ -396,7 +418,37 @@ SimpleStmt
     | ExitStmt {
         $$ = $1;
     }
+    | PutStmt {
+        $$ = $1;
+    }
+    | PutlineStmt {
+        $$ = $1;
+    }
+    | GetStmt {
+        $$ = $1;
+    }
 	;
+
+PutStmt
+    : PUT LPAREN SimpleExpression RPAREN SEMICOLON {
+        $$ = new PutStmt($3);
+    }
+    ;
+
+PutlineStmt
+    : PUT_LINE LPAREN Identifier RPAREN SEMICOLON {
+        $$ = new PutlineStmt($3);
+    }
+    | PUT_LINE LPAREN STRINGLITERAL RPAREN SEMICOLON {
+        $$ = new PutlineStmt($3);
+    }
+    ;
+
+GetStmt
+    : GET LPAREN Identifier RPAREN SEMICOLON {
+        $$ = new GetStmt($3);
+    }
+    ;
 
 CompoundStmt
     : IfStmt {

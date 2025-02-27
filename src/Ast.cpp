@@ -367,7 +367,7 @@ void ProcedureDecl::dump(int level) {
 
 void ProcedureDecl::genRustCode(Node *parent) {
   Function *curFunc = builder->getCurrFunc();
-  cStmt = new RustFuncDecl(curFunc, getProcedureSymbol());
+  rustStmt = new RustFuncDecl(curFunc, getProcedureSymbol());
 }
 
 void ObjectDeclStmt::dump(int level) {
@@ -428,11 +428,11 @@ void DeclStmt::dump(int level) {
 void DeclStmt::genRustCode(Node *parent) {
   if (objectDecl) {
     objectDecl->genRustCode(parent);
-    cStmt = objectDecl->getRustStmt();
+    rustStmt = objectDecl->getRustStmt();
   }
   if (procedureDecl) {
     procedureDecl->genRustCode(parent);
-    cStmt = procedureDecl->getRustStmt();
+    rustStmt = procedureDecl->getRustStmt();
   }
 }
 
@@ -449,7 +449,7 @@ void DeclItemOrBodyStmt::dump(int level) {
 void DeclItemOrBodyStmt::genRustCode(Node *parent) {
   if (decl) {
     decl->genRustCode(parent);
-    cStmt = decl->getRustStmt();
+    rustStmt = decl->getRustStmt();
   }
   if (prof) {
     prof->genRustCode(parent);
@@ -463,9 +463,9 @@ void NullStmt::dump(int level) { fprintf(yyout, "%*cNullStmt\n", level, ' '); }
 void NullStmt::genRustCode(Node *parent) {
   if (dynamic_cast<ProcedureDef *>(parent)) {
     Function *curFunc = builder->getCurrFunc();
-    cStmt = new RustDummyStmt(curFunc);
+    rustStmt = new RustDummyStmt(curFunc);
   } else {
-    cStmt = new RustDummyStmt();
+    rustStmt = new RustDummyStmt();
   }
 }
 
@@ -483,9 +483,9 @@ void AssignStmt::genRustCode(Node *parent) {
   expr->genRustCode(parent);
   if (dynamic_cast<ProcedureDef *>(parent)) {
     Function *func = builder->getCurrFunc();
-    cStmt = new RustAssignStmt(func, se, expr->getRustExpr());
+    rustStmt = new RustAssignStmt(func, se, expr->getRustExpr());
   } else {
-    cStmt = new RustAssignStmt(nullptr, se, expr->getRustExpr());
+    rustStmt = new RustAssignStmt(nullptr, se, expr->getRustExpr());
   }
 }
 
@@ -509,9 +509,9 @@ void CallStmt::genRustCode(Node *parent) {
   RustId *cId = dynamic_cast<RustId *>(id->getRustExpr());
   if (dynamic_cast<ProcedureDef *>(parent)) {
     Function *curFunc = builder->getCurrFunc();
-    cStmt = new RustCallStmt(curFunc, cId);
+    rustStmt = new RustCallStmt(curFunc, cId);
   } else {
-    cStmt = new RustCallStmt(nullptr, cId);
+    rustStmt = new RustCallStmt(nullptr, cId);
   }
 }
 
@@ -527,13 +527,13 @@ void Stmt::genRustCode(Node *parent) {
   stmt->genRustCode(this);
   if (dynamic_cast<ProcedureDef *>(parent)) {
     Function *curFunc = builder->getCurrFunc();
-    cStmt = new RustSeqStmt(curFunc, stmt->getRustStmt());
+    rustStmt = new RustSeqStmt(curFunc, stmt->getRustStmt());
   } else {
-    cStmt = new RustSeqStmt(nullptr, stmt->getRustStmt());
+    rustStmt = new RustSeqStmt(nullptr, stmt->getRustStmt());
   }
   if (this->getNext()) {
     this->getNext()->genRustCode(this);
-    cStmt->setNext(this->getNext()->getRustStmt());
+    rustStmt->setNext(this->getNext()->getRustStmt());
   }
 }
 
@@ -579,11 +579,11 @@ void CondClause::dump(int level) {
 void CondClause::genRustCode(Node *parent) {
   cond->genRustCode(parent);
   stmts->genRustCode(this);
-  cStmt = new RustCondClause(nullptr, cond->getRustExpr(),
+  rustStmt = new RustCondClause(nullptr, cond->getRustExpr(),
                             dynamic_cast<RustSeqStmt *>(stmts->getRustStmt()));
   if (this->getNext()) {
     this->getNext()->genRustCode(this);
-    cStmt->setNext(this->getNext()->getRustStmt());
+    rustStmt->setNext(this->getNext()->getRustStmt());
   }
 }
 
@@ -606,10 +606,54 @@ void IfStmt::genRustCode(Node *parent) {
   }
   if (dynamic_cast<ProcedureDef *>(parent)) {
     Function *curFunc = builder->getCurrFunc();
-    cStmt = new RustIfStmt(curFunc, cClause, cElseStmt);
+    rustStmt = new RustIfStmt(curFunc, cClause, cElseStmt);
   } else {
-    cStmt = new RustIfStmt(nullptr, cClause, cElseStmt);
+    rustStmt = new RustIfStmt(nullptr, cClause, cElseStmt);
   }
+}
+
+void PutStmt::dump(int level) {
+  fprintf(yyout, "%*cPutStmt\n", level, ' ');
+  expr->dump(level + 4);
+}
+
+void PutStmt::genRustCode(Node *parent) {
+  expr->genRustCode(parent);
+  rustStmt = new RustPutStmt(expr->getRustExpr());
+}
+
+void GetStmt::dump(int level) {
+  fprintf(yyout, "%*cGetStmt\n", level, ' ');
+  cout << str << endl;
+}
+
+void GetStmt::genRustCode(Node *parent) {
+  rustStmt = new RustGetStmt(str);
+}
+
+void PutlineStmt::dump(int level) {
+  fprintf(yyout, "%*cPutLineStmt\n", level, ' ');
+  if (expr)
+    expr->dump(level + 4);
+  if (str != "")
+    fprintf(yyout, "%*cString: %s\n", level + 4, ' ', str.c_str());
+}
+
+void PutlineStmt::genRustCode(Node *parent) {
+  if (expr) {
+    expr->genRustCode(parent);
+    rustStmt = new RustPutLineStmt(expr->getRustExpr());
+  } else {
+    rustStmt = new RustPutLineStmt(str);
+  }
+}
+
+void PackageCall::dump(int level) {
+  fprintf(yyout, "%*cRange: %s\n", level, ' ', packageName.c_str());
+}
+
+void PackageCall::genRustCode(Node *parent) {
+  rustStmt = new RustPackageCall(packageName);
 }
 
 void Range::dump(int level) {
@@ -621,7 +665,7 @@ void Range::dump(int level) {
 void Range::genRustCode(Node *parent) {
   lowerbound->genRustCode(parent);
   upperbound->genRustCode(parent);
-  cStmt = new RustRange(lowerbound->getRustExpr(), upperbound->getRustExpr());
+  rustStmt = new RustRange(lowerbound->getRustExpr(), upperbound->getRustExpr());
 }
 
 void DiscreteRange::dump(int level) {
@@ -641,7 +685,7 @@ void DiscreteRange::dump(int level) {
 
 void DiscreteRange::genRustCode(Node *parent) {
   range->genRustCode(parent);
-  cStmt = range->getRustStmt();
+  rustStmt = range->getRustStmt();
 }
 
 void Choice::dump(int level) {
@@ -662,18 +706,18 @@ void Choice::dump(int level) {
 void Choice::genRustCode(Node *parent) {
   if (expr) {
     expr->genRustCode(parent);
-    cStmt = new RustChoice(dynamic_cast<RustExpr *>(expr->getRustExpr()));
+    rustStmt = new RustChoice(dynamic_cast<RustExpr *>(expr->getRustExpr()));
   }
   if (discret) {
     discret->genRustCode(parent);
-    cStmt = new RustChoice(dynamic_cast<RustRange *>(discret->getRustStmt()));
+    rustStmt = new RustChoice(dynamic_cast<RustRange *>(discret->getRustStmt()));
   }
   if (others) {
-    cStmt = new RustChoice(true);
+    rustStmt = new RustChoice(true);
   }
   if (this->getNext()) {
     this->getNext()->genRustCode(parent);
-    cStmt->setNext(this->getNext()->getRustStmt());
+    rustStmt->setNext(this->getNext()->getRustStmt());
   }
 }
 
@@ -688,11 +732,11 @@ void Alternative::dump(int level) {
 void Alternative::genRustCode(Node *parent) {
   choices->genRustCode(parent);
   stmts->genRustCode(parent);
-  cStmt = new RustAlternative(dynamic_cast<RustChoice *>(choices->getRustStmt()),
+  rustStmt = new RustAlternative(dynamic_cast<RustChoice *>(choices->getRustStmt()),
                              dynamic_cast<RustSeqStmt *>(stmts->getRustStmt()));
   if (this->getNext()) {
     this->getNext()->genRustCode(parent);
-    cStmt->setNext(this->getNext()->getRustStmt());
+    rustStmt->setNext(this->getNext()->getRustStmt());
   }
 }
 
@@ -708,11 +752,11 @@ void CaseStmt::genRustCode(Node *parent) {
   alter->genRustCode(parent);
   if (dynamic_cast<ProcedureDef *>(parent)) {
     Function *curFunc = builder->getCurrFunc();
-    cStmt =
+    rustStmt =
         new RustCaseStmt(curFunc, expr->getRustExpr(),
                         dynamic_cast<RustAlternative *>(alter->getRustStmt()));
   } else {
-    cStmt =
+    rustStmt =
         new RustCaseStmt(nullptr, expr->getRustExpr(),
                         dynamic_cast<RustAlternative *>(alter->getRustStmt()));
   }
@@ -727,9 +771,9 @@ void ExitStmt::dump(int level) {
 void ExitStmt::genRustCode(Node *parent) {
   if (cond) {
     cond->genRustCode(parent);
-    cStmt = new RustExitStmt(cond->getRustExpr());
+    rustStmt = new RustExitStmt(cond->getRustExpr());
   } else {
-    cStmt = new RustExitStmt();
+    rustStmt = new RustExitStmt();
   }
 }
 
@@ -740,7 +784,7 @@ void BasicLoopStmt::dump(int level) {
 
 void BasicLoopStmt::genRustCode(Node *parent) {
   stmts->genRustCode(parent);
-  cStmt = stmts->getRustStmt();
+  rustStmt = stmts->getRustStmt();
 }
 
 void IterPart::dump(int level) {
@@ -770,12 +814,12 @@ void Iteration::genRustCode(Node *parent) {
     bool reverse = false;
     if (sign)
       reverse = true;
-    cStmt = new RustIteration(iter->getSymbol(),
+    rustStmt = new RustIteration(iter->getSymbol(),
                              dynamic_cast<RustRange *>(range->getRustStmt()),
                              reverse);
   } else {
     cond->genRustCode(parent);
-    cStmt = new RustIteration(cond->getRustExpr());
+    rustStmt = new RustIteration(cond->getRustExpr());
   }
 }
 
@@ -807,10 +851,10 @@ void LoopStmt::genRustCode(Node *parent) {
 
   if (dynamic_cast<ProcedureDef *>(parent)) {
     Function *curFunc = builder->getCurrFunc();
-    cStmt = new RustLoopStmt(curFunc, cIter,
+    rustStmt = new RustLoopStmt(curFunc, cIter,
                             dynamic_cast<RustSeqStmt *>(loop->getRustStmt()));
   } else {
-    cStmt = new RustLoopStmt(nullptr, cIter,
+    rustStmt = new RustLoopStmt(nullptr, cIter,
                             dynamic_cast<RustSeqStmt *>(loop->getRustStmt()));
   }
   loopIter.pop();
@@ -828,10 +872,10 @@ void Block::genRustCode(Node *parent) {
   stmts->genRustCode(this);
   if (dynamic_cast<ProcedureDef *>(parent)) {
     Function *func = builder->getCurrFunc();
-    cStmt =
+    rustStmt =
         new RustBlockStmt(func, dynamic_cast<RustSeqStmt *>(stmts->getRustStmt()));
   } else {
-    cStmt = new RustBlockStmt(nullptr,
+    rustStmt = new RustBlockStmt(nullptr,
                              dynamic_cast<RustSeqStmt *>(stmts->getRustStmt()));
   }
   decl->genRustCode(this);

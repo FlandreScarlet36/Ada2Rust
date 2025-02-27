@@ -17,6 +17,8 @@ procedure case4 is
           --  Call to Compute_B
        end if;
     end Compute_A;
+    A : Integer := 12;
+    B : Integer := 44;
 begin
    Compute_A (15);
 end case4;

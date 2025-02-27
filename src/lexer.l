@@ -26,7 +26,7 @@
     }
     #define YY_USER_ACTION update_loc();  
     
-    #define NUM_KEYWORDS 75
+    #define NUM_KEYWORDS 78
     typedef struct {
       char *keyword;
       int keyword_value;
@@ -107,7 +107,10 @@
          {"WHEN", WHEN},
          {"WHILE", WHILE},
          {"WITH", WITH},
-         {"XOR", XOR}};
+         {"XOR", XOR},
+         {"PUT_LINE", PUT_LINE},
+         {"GET", GET},
+         {"PUT",PUT}};
     
     void to_upper(char *str) {
       char *cp;
@@ -119,6 +122,7 @@
 %}
 
 DECIMIAL ([1-9][0-9]*|0)
+PACKAGEID [a-zA-Z](_?[a-zA-Z0-9])*\.[a-zA-Z](_?[a-zA-Z0-9])*
 ID [a-zA-Z](_?[a-zA-Z0-9])*
 STRINGLITERAL \"(\"\"|[^\n\"])*\"
 EOL (\r\n|\n|\r)
@@ -247,10 +251,22 @@ LINECOMMENT --.*\n
         DUMP_TOKEN("TIC\t'");
     return TIC;
 }
+"." {
+    if(dump_token) 
+        DUMP_TOKEN("ONEDOT\t.");
+    return ONEDOT;
+}
 ".." {
     if(dump_token) 
         DUMP_TOKEN("DOTDOT\t..");
     return DOTDOT;
+}
+
+{PACKAGEID} {
+    if(dump_token)
+        DUMP_TOKEN("PACKAGEID\t" + std::string(yytext));
+    yylval.StrType = strdup(yytext);
+    return PACKAGEID;
 }
 
 {ID} {

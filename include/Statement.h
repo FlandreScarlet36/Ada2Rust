@@ -42,6 +42,40 @@ public:
   virtual std::string output() const = 0;
 };
 
+class RustPutStmt : public RustStmt {
+private:
+  RustExpr *cExpr;
+public:
+  RustPutStmt(RustExpr *_cExpr) : RustStmt(nullptr), cExpr(_cExpr){};
+  std::string output(int level) const { return ""; };
+};
+
+class RustGetStmt : public RustStmt {
+private:
+  std::string str;
+public:
+  RustGetStmt(const std::string &_str) : RustStmt(nullptr), str(_str){};
+  std::string output(int level) const { return ""; };
+};
+
+class RustPutLineStmt : public RustStmt {
+private:
+  RustExpr *cExpr;
+  std::string str;
+public:
+  RustPutLineStmt(RustExpr *_cExpr) : RustStmt(nullptr), cExpr(_cExpr){};
+  RustPutLineStmt(std::string _str) : RustStmt(nullptr), str(_str){};
+  std::string output(int level) const { return ""; };
+};
+
+class RustPackageCall : public RustStmt {
+private:
+  std::string packageName;
+public:
+  RustPackageCall(std::string _packageName) : RustStmt(nullptr), packageName(_packageName){};
+  std::string output(int level) const { return ""; };
+};
+
 class RustRange : public RustStmt {
 private:
   RustExpr *cLow;

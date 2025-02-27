@@ -1,8 +1,8 @@
-/* A Bison parser, made by GNU Bison 3.5.1.  */
+/* A Bison parser, made by GNU Bison 3.8.2.  */
 
 /* Bison interface for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2020 Free Software Foundation,
+   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2021 Free Software Foundation,
    Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -16,7 +16,7 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
 
 /* As a special exception, you may create a larger work that contains
    part or all of the Bison parser skeleton and distribute that work
@@ -31,11 +31,12 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-/* Undocumented macros, especially those whose name start with YY_,
-   are private implementation details.  Do not rely on them.  */
+/* DO NOT RELY ON FEATURES THAT ARE NOT DOCUMENTED in the manual,
+   especially those whose name start with YY_ or yy_.  They are
+   private implementation details that can be changed or removed.  */
 
-#ifndef YY_YY_MNT_D_WORKSPACE_ADA2RUST_PROJECT_INCLUDE_PARSER_H_INCLUDED
-# define YY_YY_MNT_D_WORKSPACE_ADA2RUST_PROJECT_INCLUDE_PARSER_H_INCLUDED
+#ifndef YY_YY_MNT_HGFS_GRADUATION_ADA2RUST_INCLUDE_PARSER_H_INCLUDED
+# define YY_YY_MNT_HGFS_GRADUATION_ADA2RUST_INCLUDE_PARSER_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -44,129 +45,139 @@
 extern int yydebug;
 #endif
 /* "%code requires" blocks.  */
-#line 27 "/mnt/d/WorkSpace/ADA2RUST-Project/src/parser.y"
+#line 27 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
 
     #include "SymbolTable.h"
     #include "Ast.h"
 
-#line 53 "/mnt/d/WorkSpace/ADA2RUST-Project/include/parser.h"
+#line 54 "/mnt/hgfs/Graduation/Ada2Rust/include/parser.h"
 
-/* Token type.  */
+/* Token kinds.  */
 #ifndef YYTOKENTYPE
 # define YYTOKENTYPE
   enum yytokentype
   {
-    TIC = 258,
-    DOTDOT = 259,
-    LTLT = 260,
-    BOX = 261,
-    LTEQ = 262,
-    GTEQ = 263,
-    EXPON = 264,
-    NE = 265,
-    GTGT = 266,
-    GE = 267,
-    LE = 268,
-    EQ = 269,
-    ASSIGN = 270,
-    RIGHTSHAFT = 271,
-    ABORT = 272,
-    ABS = 273,
-    ABSTRACT = 274,
-    ACCEPT = 275,
-    ACCESS = 276,
-    ALIASED = 277,
-    ALL = 278,
-    AND = 279,
-    ARRAY = 280,
-    AT = 281,
-    BEGiN = 282,
-    BODY = 283,
-    CASE = 284,
-    CONSTANT = 285,
-    DECLARE = 286,
-    DELAY = 287,
-    DELTA = 288,
-    DIGITS = 289,
-    DO = 290,
-    ELSE = 291,
-    ELSIF = 292,
-    END = 293,
-    ENTRY = 294,
-    EXCEPTION = 295,
-    EXIT = 296,
-    FOR = 297,
-    FUNCTION = 298,
-    GENERIC = 299,
-    GOTO = 300,
-    IF = 301,
-    IN = 302,
-    IS = 303,
-    LIMITED = 304,
-    LOOP = 305,
-    MUL = 306,
-    DIV = 307,
-    MOD = 308,
-    NEW = 309,
-    NOT = 310,
-    SUB = 311,
-    ADD = 312,
-    NuLL = 313,
-    OF = 314,
-    OR = 315,
-    OTHERS = 316,
-    OUT = 317,
-    PACKAGE = 318,
-    PRAGMA = 319,
-    PRIVATE = 320,
-    PROCEDURE = 321,
-    PROTECTED = 322,
-    RAISE = 323,
-    RANGE = 324,
-    RECORD = 325,
-    REM = 326,
-    RENAMES = 327,
-    REQUEUE = 328,
-    RETURN = 329,
-    REVERSE = 330,
-    SELECT = 331,
-    SEPARATE = 332,
-    SUBTYPE = 333,
-    TAGGED = 334,
-    TASK = 335,
-    TERMINATE = 336,
-    THEN = 337,
-    TYPE = 338,
-    UNTIL = 339,
-    USE = 340,
-    WHEN = 341,
-    WHILE = 342,
-    WITH = 343,
-    XOR = 344,
-    TRuE = 345,
-    FALsE = 346,
-    DECIMIAL = 347,
-    Identifier = 348,
-    STRINGLITERAL = 349,
-    INTEGER = 350,
-    STRING = 351,
-    NATURAL = 352,
-    BOOLEAN = 353,
-    COLON = 354,
-    SEMICOLON = 355,
-    LPAREN = 356,
-    RPAREN = 357,
-    COMMA = 358,
-    SINGLEAND = 359,
-    SINGLEOR = 360
+    YYEMPTY = -2,
+    YYEOF = 0,                     /* "end of file"  */
+    YYerror = 256,                 /* error  */
+    YYUNDEF = 257,                 /* "invalid token"  */
+    TIC = 258,                     /* TIC  */
+    ONEDOT = 259,                  /* ONEDOT  */
+    DOTDOT = 260,                  /* DOTDOT  */
+    LTLT = 261,                    /* LTLT  */
+    BOX = 262,                     /* BOX  */
+    LTEQ = 263,                    /* LTEQ  */
+    GTEQ = 264,                    /* GTEQ  */
+    EXPON = 265,                   /* EXPON  */
+    NE = 266,                      /* NE  */
+    GTGT = 267,                    /* GTGT  */
+    GE = 268,                      /* GE  */
+    LE = 269,                      /* LE  */
+    EQ = 270,                      /* EQ  */
+    ASSIGN = 271,                  /* ASSIGN  */
+    RIGHTSHAFT = 272,              /* RIGHTSHAFT  */
+    ABORT = 273,                   /* ABORT  */
+    ABS = 274,                     /* ABS  */
+    ABSTRACT = 275,                /* ABSTRACT  */
+    ACCEPT = 276,                  /* ACCEPT  */
+    ACCESS = 277,                  /* ACCESS  */
+    ALIASED = 278,                 /* ALIASED  */
+    ALL = 279,                     /* ALL  */
+    AND = 280,                     /* AND  */
+    ARRAY = 281,                   /* ARRAY  */
+    AT = 282,                      /* AT  */
+    BEGiN = 283,                   /* BEGiN  */
+    BODY = 284,                    /* BODY  */
+    CASE = 285,                    /* CASE  */
+    CONSTANT = 286,                /* CONSTANT  */
+    DECLARE = 287,                 /* DECLARE  */
+    DELAY = 288,                   /* DELAY  */
+    DELTA = 289,                   /* DELTA  */
+    DIGITS = 290,                  /* DIGITS  */
+    DO = 291,                      /* DO  */
+    ELSE = 292,                    /* ELSE  */
+    ELSIF = 293,                   /* ELSIF  */
+    END = 294,                     /* END  */
+    ENTRY = 295,                   /* ENTRY  */
+    EXCEPTION = 296,               /* EXCEPTION  */
+    EXIT = 297,                    /* EXIT  */
+    FOR = 298,                     /* FOR  */
+    FUNCTION = 299,                /* FUNCTION  */
+    GENERIC = 300,                 /* GENERIC  */
+    GOTO = 301,                    /* GOTO  */
+    IF = 302,                      /* IF  */
+    IN = 303,                      /* IN  */
+    IS = 304,                      /* IS  */
+    LIMITED = 305,                 /* LIMITED  */
+    LOOP = 306,                    /* LOOP  */
+    MUL = 307,                     /* MUL  */
+    DIV = 308,                     /* DIV  */
+    MOD = 309,                     /* MOD  */
+    NEW = 310,                     /* NEW  */
+    NOT = 311,                     /* NOT  */
+    SUB = 312,                     /* SUB  */
+    ADD = 313,                     /* ADD  */
+    NuLL = 314,                    /* NuLL  */
+    OF = 315,                      /* OF  */
+    OR = 316,                      /* OR  */
+    OTHERS = 317,                  /* OTHERS  */
+    OUT = 318,                     /* OUT  */
+    PACKAGE = 319,                 /* PACKAGE  */
+    PRAGMA = 320,                  /* PRAGMA  */
+    PRIVATE = 321,                 /* PRIVATE  */
+    PROCEDURE = 322,               /* PROCEDURE  */
+    PROTECTED = 323,               /* PROTECTED  */
+    RAISE = 324,                   /* RAISE  */
+    RANGE = 325,                   /* RANGE  */
+    RECORD = 326,                  /* RECORD  */
+    REM = 327,                     /* REM  */
+    RENAMES = 328,                 /* RENAMES  */
+    REQUEUE = 329,                 /* REQUEUE  */
+    RETURN = 330,                  /* RETURN  */
+    REVERSE = 331,                 /* REVERSE  */
+    SELECT = 332,                  /* SELECT  */
+    SEPARATE = 333,                /* SEPARATE  */
+    SUBTYPE = 334,                 /* SUBTYPE  */
+    TAGGED = 335,                  /* TAGGED  */
+    TASK = 336,                    /* TASK  */
+    TERMINATE = 337,               /* TERMINATE  */
+    THEN = 338,                    /* THEN  */
+    TYPE = 339,                    /* TYPE  */
+    UNTIL = 340,                   /* UNTIL  */
+    USE = 341,                     /* USE  */
+    WHEN = 342,                    /* WHEN  */
+    WHILE = 343,                   /* WHILE  */
+    WITH = 344,                    /* WITH  */
+    XOR = 345,                     /* XOR  */
+    PUT_LINE = 346,                /* PUT_LINE  */
+    PUT = 347,                     /* PUT  */
+    GET = 348,                     /* GET  */
+    TRuE = 349,                    /* TRuE  */
+    FALsE = 350,                   /* FALsE  */
+    DECIMIAL = 351,                /* DECIMIAL  */
+    Identifier = 352,              /* Identifier  */
+    STRINGLITERAL = 353,           /* STRINGLITERAL  */
+    PACKAGEID = 354,               /* PACKAGEID  */
+    INTEGER = 355,                 /* INTEGER  */
+    STRING = 356,                  /* STRING  */
+    NATURAL = 357,                 /* NATURAL  */
+    BOOLEAN = 358,                 /* BOOLEAN  */
+    COLON = 359,                   /* COLON  */
+    SEMICOLON = 360,               /* SEMICOLON  */
+    LPAREN = 361,                  /* LPAREN  */
+    RPAREN = 362,                  /* RPAREN  */
+    COMMA = 363,                   /* COMMA  */
+    SINGLEAND = 364,               /* SINGLEAND  */
+    SINGLEOR = 365                 /* SINGLEOR  */
   };
+  typedef enum yytokentype yytoken_kind_t;
 #endif
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 32 "/mnt/d/WorkSpace/ADA2RUST-Project/src/parser.y"
+#line 32 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
 
     char* StrType;
     int IntType;
@@ -174,8 +185,9 @@ union YYSTYPE
     ExprNode* ExprType;
     OpSignNode* SignType;
     Type* type;
+    PackageCall* packageCall;
 
-#line 179 "/mnt/d/WorkSpace/ADA2RUST-Project/include/parser.h"
+#line 191 "/mnt/hgfs/Graduation/Ada2Rust/include/parser.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -186,6 +198,8 @@ typedef union YYSTYPE YYSTYPE;
 
 extern YYSTYPE yylval;
 
+
 int yyparse (void);
 
-#endif /* !YY_YY_MNT_D_WORKSPACE_ADA2RUST_PROJECT_INCLUDE_PARSER_H_INCLUDED  */
+
+#endif /* !YY_YY_MNT_HGFS_GRADUATION_ADA2RUST_INCLUDE_PARSER_H_INCLUDED  */

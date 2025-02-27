@@ -86,10 +86,10 @@ public:
 class StmtNode : public Node {
 protected:
   StmtNode *next;
-  RustStmt *cStmt;
+  RustStmt *rustStmt;
 
 public:
-  RustStmt *getRustStmt() { return cStmt; }
+  RustStmt *getRustStmt() { return rustStmt; }
   void setNext(StmtNode *node);
   StmtNode *getNext() { return next; }
   virtual void genRustCode(Node *parent){};
@@ -295,6 +295,45 @@ public:
   void dump(int level);
   void genRustCode(Node *parent);
 };
+
+class PutStmt : public StmtNode {
+  private:
+    ExprNode *expr;
+  public:
+    PutStmt(ExprNode *_expr) : expr(_expr){};
+    void dump(int level);
+    void genRustCode(Node *parent);
+  };
+  
+  class GetStmt : public StmtNode {
+  private:
+    std::string str;
+  public:
+    GetStmt(const std::string &_str) : str(_str){};
+    void dump(int level);
+    void genRustCode(Node *parent);
+  };
+  
+  class PutlineStmt : public StmtNode {
+  private:
+    ExprNode *expr;
+    std::string str;
+  public:
+    PutlineStmt(ExprNode *_expr) : expr(_expr){}; 
+    PutlineStmt(const std::string &_str) : str(_str){}; 
+    void dump(int level);
+    void genRustCode(Node *parent);
+  };
+  
+  class PackageCall : public StmtNode {
+  private:
+    std::string packageName;
+  
+  public:
+    PackageCall(const char* _packageName) : packageName(_packageName) {}
+    void dump(int level);
+    void genRustCode(Node *parent);
+  };
 
 class NullStmt : public StmtNode {
 public:
