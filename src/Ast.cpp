@@ -618,6 +618,7 @@ void PutStmt::dump(int level) {
 }
 
 void PutStmt::genRustCode(Node *parent) { 
+  expr->genRustCode(parent);
   rustStmt = new RustPutStmt(expr->getRustExpr());
 }
 

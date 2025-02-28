@@ -1,28 +1,95 @@
 program
-    Package: Ada.Text_IO
-    Package: Ada.Text_IO
     ProcedureDef
-        Procedure	name: Greet	type: Procedure
+        Procedure	name: case4	type: Procedure
+        DeclItemOrBodyStmt
+            DeclStmt
+                ProcedureDecl
+                    Procedure	name: Compute_A	type: Procedure
+        DeclItemOrBodyStmt
+            ProcedureDef
+                Procedure	name: Compute_B	type: Procedure
+                Stmt
+                    IfStmt
+                        CondClause
+                            BinaryExpr
+                                OpSign: >
+                                    Id
+                                        name: V	scope: 1	type: Natural
+                                    Literal	type: Integer	value: 5
+                            Stmt
+                                CallStmt
+                                    Id
+                                        Id
+                                            name: Compute_A	scope: 2	type: Procedure
+                                        Name PAREN Value
+                                            BinaryExpr
+                                                OpSign: -
+                                                    Id
+                                                        name: V	scope: 1	type: Natural
+                                                    Literal	type: Integer	value: 1
+        DeclItemOrBodyStmt
+            ProcedureDef
+                Procedure	name: Compute_A	type: Procedure
+                Stmt
+                    IfStmt
+                        CondClause
+                            BinaryExpr
+                                OpSign: >
+                                    Id
+                                        name: V	scope: 1	type: Natural
+                                    Literal	type: Integer	value: 2
+                            Stmt
+                                CallStmt
+                                    Id
+                                        Id
+                                            name: Compute_B	scope: 2	type: Procedure
+                                        Name PAREN Value
+                                            BinaryExpr
+                                                OpSign: -
+                                                    Id
+                                                        name: V	scope: 1	type: Natural
+                                                    Literal	type: Integer	value: 1
+        DeclItemOrBodyStmt
+            ProcedureDef
+                Procedure	name: Compute_C	type: Procedure
+                DeclItemOrBodyStmt
+                    DeclStmt
+                        ObjectDeclStmt
+                            DefId	name: R	type: Integer	isConst: false
+                Stmt
+                    AssignStmt	name: R	type: Integer
+                        BinaryExpr
+                            OpSign: +
+                                Id
+                                    name: V	scope: 1	type: Integer
+                                Id
+                                    name: W	scope: 1	type: Integer
         DeclItemOrBodyStmt
             DeclStmt
                 ObjectDeclStmt
-                    DefId	name: A	type: Integer	isConst: false
+                    DefId	name: A	type: Integer	isConst: true
                     InitOptStmt
-                        Literal	type: Integer	value: 0
+                        Literal	type: Integer	value: 12
         DeclItemOrBodyStmt
             DeclStmt
                 ObjectDeclStmt
-                    DefId	name: B	type: Integer	isConst: false
+                    DefId	name: B	type: Integer	isConst: true
+                    InitOptStmt
+                        Literal	type: Integer	value: 44
         Stmt
-            PutStmt
+            CallStmt
                 Id
-                    name: A	scope: 2	type: Integer
+                    Id
+                        name: Compute_A	scope: 2	type: Procedure
+                    Name PAREN Value
+                        Literal	type: Integer	value: 15
         Stmt
-            GetStmt  name: B  type: Integer
-        Stmt
-            PutStmt
+            CallStmt
                 Id
-                    name: B	scope: 2	type: Integer
-        Stmt
-            PutLineStmt
-                String: hello!
+                    Id
+                        name: Compute_C	scope: 2	type: Procedure
+                    Name PAREN Value
+                        Id
+                            name: A	scope: 2	type: Integer
+                        Id
+                            name: B	scope: 2	type: Integer

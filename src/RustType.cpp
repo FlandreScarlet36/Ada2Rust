@@ -13,6 +13,13 @@ const LAST: i32 = std::i32::MAX;
 // 定义一个新的类型 AdaString 来包装 String
 struct AdaString(String);
 
+// 为 AdaString 实现 Display trait
+impl fmt::Display for AdaString {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{}", self.0)
+    }
+}
+
 // 为 AdaString 实现 Add trait
 impl Add for AdaString {
     type Output = AdaString;

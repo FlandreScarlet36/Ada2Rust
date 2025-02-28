@@ -67,6 +67,7 @@ public:
   RustPutlineStmt(std::string _str) : RustStmt(nullptr), se(nullptr), str(_str){};
   std::string output(int level) const;
 };
+
 class RustPackageCall : public RustStmt {
 private:
   std::string packageName;

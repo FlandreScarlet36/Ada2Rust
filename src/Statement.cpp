@@ -224,7 +224,7 @@ std::string RustPutStmt::output(int level) const {
 std::string RustGetStmt::output(int level) const {
   char res[600];
   sprintf(res, R"deli(%*clet mut %s = String::new();
-%*cio::stdin().read_line(&mut %s).expect(\"Failed to read line\");
+%*cio::stdin().read_line(&mut %s).expect("Failed to read line");
 %*clet %s: %s = %s.trim().parse().unwrap();
   )deli",
   level, ' ', id->dump().c_str(), 
