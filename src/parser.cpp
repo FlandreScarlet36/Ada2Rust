@@ -715,18 +715,18 @@ static const yytype_int16 yyrline[] =
      270,   273,   276,   281,   282,   288,   288,   307,   308,   315,
      318,   324,   335,   350,   353,   360,   368,   371,   378,   381,
      387,   390,   397,   400,   406,   409,   412,   415,   418,   421,
-     424,   427,   433,   439,   442,   448,   454,   457,   460,   463,
-     469,   475,   487,   490,   496,   502,   508,   509,   515,   521,
-     524,   531,   537,   543,   548,   549,   555,   561,   562,   573,
-     579,   582,   589,   592,   595,   601,   606,   612,   623,   624,
-     631,   635,   639,   646,   654,   655,   661,   667,   668,   675,
-     680,   685,   686,   692,   698,   703,   704,   710,   719,   722,
-     725,   731,   734,   737,   743,   746,   752,   755,   758,   761,
-     768,   771,   774,   777,   780,   783,   789,   792,   798,   801,
-     804,   810,   813,   819,   822,   825,   831,   834,   840,   843,
-     846,   849,   855,   858,   861,   864,   870,   873,   876,   882,
-     889,   892,   895,   903,   909,   912,   919,   925,   931,   937,
-     943,   947,   951,   954,   958
+     424,   427,   433,   440,   443,   449,   459,   462,   465,   468,
+     474,   480,   492,   495,   501,   507,   513,   514,   520,   526,
+     529,   536,   542,   548,   553,   554,   560,   566,   567,   578,
+     584,   587,   594,   597,   600,   606,   611,   617,   628,   629,
+     636,   640,   644,   651,   659,   660,   666,   672,   673,   680,
+     685,   690,   691,   697,   703,   708,   709,   715,   724,   727,
+     730,   736,   739,   742,   748,   751,   757,   760,   763,   766,
+     773,   776,   779,   782,   785,   788,   794,   797,   803,   806,
+     809,   815,   818,   824,   827,   830,   836,   839,   845,   848,
+     851,   854,   860,   863,   866,   869,   875,   878,   881,   887,
+     894,   897,   900,   908,   914,   917,   924,   930,   936,   942,
+     948,   952,   956,   959,   963
 };
 #endif
 
@@ -1995,7 +1995,7 @@ yyreduce:
     break;
 
   case 53: /* PutlineStmt: PUT_LINE LPAREN Identifier RPAREN SEMICOLON  */
-#line 439 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 440 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                                   {
         (yyval.StmtType) = new PutlineStmt((yyvsp[-2].StrType));
     }
@@ -2003,7 +2003,7 @@ yyreduce:
     break;
 
   case 54: /* PutlineStmt: PUT_LINE LPAREN STRINGLITERAL RPAREN SEMICOLON  */
-#line 442 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 443 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                                      {
         (yyval.StmtType) = new PutlineStmt((yyvsp[-2].StrType));
     }
@@ -2011,55 +2011,59 @@ yyreduce:
     break;
 
   case 55: /* GetStmt: GET LPAREN Identifier RPAREN SEMICOLON  */
-#line 448 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 449 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                              {
-        (yyval.StmtType) = new GetStmt((yyvsp[-2].StrType));
+        IdentifierSymbolEntry *se = dynamic_cast<IdentifierSymbolEntry*>(identifiers->lookup((yyvsp[-2].StrType)));            
+        if(!se) {
+            std::cerr << "[YACC ERROR]: Can't not get symbolEntry: "<< (yyvsp[-2].StrType) << "\n";
+        }
+        (yyval.StmtType) = new GetStmt(se);
     }
-#line 2019 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2023 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 56: /* CompoundStmt: IfStmt  */
-#line 454 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 459 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
              {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 2027 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2031 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 57: /* CompoundStmt: CaseStmt  */
-#line 457 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 462 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                    {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 2035 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2039 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 58: /* CompoundStmt: LoopStmt  */
-#line 460 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 465 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                    {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 2043 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2047 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 59: /* CompoundStmt: Block  */
-#line 463 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 468 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                 {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 2051 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2055 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 60: /* NullStmt: NuLL SEMICOLON  */
-#line 469 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 474 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                      {
         (yyval.StmtType) = new NullStmt();
     }
-#line 2059 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2063 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 61: /* AssignStmt: Identifier ASSIGN Expression SEMICOLON  */
-#line 475 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 480 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                              {
         DEBUG_YACC("================Enter AssignStmt=================");
         SymbolEntry *se = identifiers->lookup((yyvsp[-3].StrType));
@@ -2069,134 +2073,134 @@ yyreduce:
         (yyval.StmtType) = new AssignStmt(se, (yyvsp[-1].ExprType));
         DEBUG_YACC("================Leave AssignStmt=================");
     }
-#line 2073 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2077 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 62: /* ReturnStmt: RETURN SEMICOLON  */
-#line 487 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 492 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                        {
         (yyval.StmtType) = new ReturnStmt(nullptr);
     }
-#line 2081 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2085 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 63: /* ReturnStmt: RETURN Expression SEMICOLON  */
-#line 490 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 495 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                       {
         (yyval.StmtType) = new ReturnStmt((yyvsp[-1].ExprType));
     }
-#line 2089 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2093 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 64: /* ProcedureCall: Name SEMICOLON  */
-#line 496 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 501 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                      {
         (yyval.StmtType) = new CallStmt(dynamic_cast<Id*>((yyvsp[-1].ExprType)));
     }
-#line 2097 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2101 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 65: /* ExitStmt: EXIT IdOpt WhenOpt SEMICOLON  */
-#line 502 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 507 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                    {
         (yyval.StmtType) = new ExitStmt((yyvsp[-1].ExprType));
     }
-#line 2105 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2109 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 66: /* WhenOpt: %empty  */
-#line 508 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 513 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
              { (yyval.ExprType) = nullptr; }
-#line 2111 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2115 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 67: /* WhenOpt: WHEN Condition  */
-#line 509 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 514 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                          {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2119 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2123 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 68: /* IfStmt: IF CondClauses ElseOpt END IF SEMICOLON  */
-#line 515 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 520 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                               {
         (yyval.StmtType) = new IfStmt(dynamic_cast<CondClause*>((yyvsp[-4].StmtType)), dynamic_cast<Stmt*>((yyvsp[-3].StmtType)));
     }
-#line 2127 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2131 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 69: /* CondClauses: CondClause  */
-#line 521 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 526 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                  {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 2135 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2139 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 70: /* CondClauses: CondClauses ELSIF CondClause  */
-#line 524 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 529 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                        {
         (yyval.StmtType) = (yyvsp[-2].StmtType);
         (yyvsp[-2].StmtType)->setNext((yyvsp[0].StmtType));
     }
-#line 2144 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2148 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 71: /* CondClause: CondPart Statements  */
-#line 531 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 536 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                           {
         (yyval.StmtType) = new CondClause((yyvsp[-1].ExprType), dynamic_cast<Stmt*>((yyvsp[0].StmtType)));
     }
-#line 2152 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2156 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 72: /* CondPart: Condition THEN  */
-#line 537 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 542 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                      {
         (yyval.ExprType) = (yyvsp[-1].ExprType);
     }
-#line 2160 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2164 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 73: /* Condition: Expression  */
-#line 543 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 548 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                  {
         (yyval.ExprType) = (yyvsp[0].ExprType); 
     }
-#line 2168 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2172 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 74: /* ElseOpt: %empty  */
-#line 548 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 553 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                  { (yyval.StmtType) = nullptr; }
-#line 2174 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2178 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 75: /* ElseOpt: ELSE Statements  */
-#line 549 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 554 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                           {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 2182 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2186 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 76: /* CaseStmt: CASE Expression IS Alternatives END CASE SEMICOLON  */
-#line 555 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 560 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                                          {
         (yyval.StmtType) = new CaseStmt((yyvsp[-5].ExprType), dynamic_cast<Alternative*>((yyvsp[-3].StmtType)));
     }
-#line 2190 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2194 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 77: /* Alternatives: %empty  */
-#line 561 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 566 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
              { (yyval.StmtType) = nullptr; }
-#line 2196 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2200 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 78: /* Alternatives: Alternatives Alternative  */
-#line 562 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 567 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                    {
         if((yyvsp[-1].StmtType)) {
             (yyval.StmtType) = (yyvsp[-1].StmtType);
@@ -2205,78 +2209,78 @@ yyreduce:
             (yyval.StmtType) = (yyvsp[0].StmtType);
         }
     }
-#line 2209 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2213 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 79: /* Alternative: WHEN Choices RIGHTSHAFT Statements  */
-#line 573 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 578 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                          {
         (yyval.StmtType) = new Alternative(dynamic_cast<Choice*>((yyvsp[-2].StmtType)), dynamic_cast<Stmt*>((yyvsp[0].StmtType)));
     }
-#line 2217 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2221 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 80: /* Choices: Choice  */
-#line 579 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 584 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
              {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 2225 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2229 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 81: /* Choices: Choices SINGLEOR Choice  */
-#line 582 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 587 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                   {
         (yyval.StmtType) = (yyvsp[-2].StmtType);
         (yyvsp[-2].StmtType)->setNext((yyvsp[0].StmtType));
     }
-#line 2234 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2238 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 82: /* Choice: Expression  */
-#line 589 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 594 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                  {
         (yyval.StmtType) = new Choice((yyvsp[0].ExprType));
     }
-#line 2242 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2246 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 83: /* Choice: DiscreteWithRange  */
-#line 592 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 597 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                             {
         (yyval.StmtType) = new Choice(dynamic_cast<DiscreteRange*>((yyvsp[0].StmtType)));
     }
-#line 2250 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2254 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 84: /* Choice: OTHERS  */
-#line 595 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 600 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                  {
         (yyval.StmtType) = new Choice(true);
     }
-#line 2258 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2262 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 85: /* DiscreteWithRange: Identifier RANGE Range  */
-#line 601 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 606 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                              {
         Type* type = dynamic_cast<Range*>((yyvsp[0].StmtType))->getType();
         SymbolEntry* se = new IdentifierSymbolEntry(type, (yyvsp[-2].StrType), identifiers->getLevel());
         (yyval.StmtType) = new DiscreteRange(se, dynamic_cast<Range*>((yyvsp[0].StmtType)));
     }
-#line 2268 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2272 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 86: /* DiscreteWithRange: Range  */
-#line 606 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 611 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                 {
         (yyval.StmtType) = new DiscreteRange(dynamic_cast<Range*>((yyvsp[0].StmtType)));
     }
-#line 2276 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2280 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 87: /* LoopStmt: LabelOpt Iteration BasicLoop IdOpt SEMICOLON  */
-#line 612 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 617 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                                    {
         (yyval.StmtType) = new LoopStmt(dynamic_cast<LabelOpt*>((yyvsp[-4].StmtType)), dynamic_cast<Iteration*>((yyvsp[-3].StmtType)), dynamic_cast<BasicLoopStmt*>((yyvsp[-2].StmtType)));
         if(!whileIters.empty() && whileIters.back()) {
@@ -2286,504 +2290,504 @@ yyreduce:
         }
         whileIters.pop_back();
     }
-#line 2290 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2294 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 88: /* LabelOpt: %empty  */
-#line 623 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 628 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                   { (yyval.StmtType) = nullptr; }
-#line 2296 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2300 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 89: /* LabelOpt: Identifier COLON  */
-#line 624 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 629 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                            {
         SymbolEntry *se = new IdentifierSymbolEntry(TypeSystem::integerType, (yyvsp[-1].StrType), identifiers->getLevel());
         identifiers->install((yyvsp[-1].StrType), se);
         (yyval.StmtType) = new LabelOpt(se);
     }
-#line 2306 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2310 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 90: /* Iteration: %empty  */
-#line 631 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 636 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                    {
         whileIters.push_back(false);
         (yyval.StmtType) = nullptr; 
     }
-#line 2315 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2319 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 91: /* Iteration: WHILE Condition  */
-#line 635 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 640 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                           {
         (yyval.StmtType) = new Iteration((yyvsp[0].ExprType));
         whileIters.push_back(false);
     }
-#line 2324 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2328 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 92: /* Iteration: IterPart ReverseOpt DiscreteRange  */
-#line 639 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 644 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                             {
         (yyval.StmtType) = new Iteration(dynamic_cast<IterPart*>((yyvsp[-2].StmtType)), (yyvsp[-1].SignType), dynamic_cast<DiscreteRange*>((yyvsp[0].StmtType)));
         whileIters.push_back(true);
     }
-#line 2333 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2337 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 93: /* IterPart: FOR Identifier IN  */
-#line 646 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 651 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                         {
         identifiers = new SymbolTable(identifiers);
         SymbolEntry *se = new IdentifierSymbolEntry(TypeSystem::integerType, (yyvsp[-1].StrType), identifiers->getLevel());
         identifiers->install((yyvsp[-1].StrType), se);
         (yyval.StmtType) = new IterPart(se);
     }
-#line 2344 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2348 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 94: /* ReverseOpt: %empty  */
-#line 654 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 659 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                     { (yyval.SignType) = nullptr; }
-#line 2350 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2354 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 95: /* ReverseOpt: REVERSE  */
-#line 655 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 660 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                   {
         (yyval.SignType) = new OpSignNode(OpSignNode::REVERSE);
     }
-#line 2358 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2362 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 96: /* BasicLoop: LOOP Statements END LOOP  */
-#line 661 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 666 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                {
         (yyval.StmtType) = new BasicLoopStmt(dynamic_cast<Stmt*>((yyvsp[-2].StmtType)));
     }
-#line 2366 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2370 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 97: /* IdOpt: %empty  */
-#line 667 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 672 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                  { (yyval.ExprType) = nullptr; }
-#line 2372 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2376 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 98: /* IdOpt: Identifier  */
-#line 668 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 673 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                      {
         SymbolEntry* se = identifiers->lookup((yyvsp[0].StrType));
         (yyval.ExprType) = new Id(se);
     }
-#line 2381 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2385 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 99: /* DiscreteRange: Identifier RangeConstrOpt  */
-#line 675 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 680 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                 {
         SymbolEntry *se = new IdentifierSymbolEntry(TypeSystem::integerType, (yyvsp[-1].StrType), identifiers->getLevel());
         identifiers->install((yyvsp[-1].StrType), se);
         (yyval.StmtType) = new DiscreteRange(se, dynamic_cast<Range*>((yyvsp[0].StmtType)));
     }
-#line 2391 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2395 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 100: /* DiscreteRange: Range  */
-#line 680 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 685 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                 {
         (yyval.StmtType) = new DiscreteRange(dynamic_cast<Range*>((yyvsp[0].StmtType)));
     }
-#line 2399 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2403 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 101: /* RangeConstrOpt: %empty  */
-#line 685 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 690 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                         { (yyval.StmtType) = nullptr; }
-#line 2405 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2409 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 102: /* RangeConstrOpt: RANGE Range  */
-#line 686 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 691 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                       {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 2413 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2417 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 103: /* Range: SimpleExpression DOTDOT SimpleExpression  */
-#line 692 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 697 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                                {
         (yyval.StmtType) = new Range((yyvsp[-2].ExprType), (yyvsp[0].ExprType));
     }
-#line 2421 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2425 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 104: /* Block: LabelOpt BlockDecl BlockBody END IdOpt SEMICOLON  */
-#line 698 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 703 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                                        {
         (yyval.StmtType) = new Block(dynamic_cast<LabelOpt*>((yyvsp[-5].StmtType)), dynamic_cast<DeclItemOrBodyStmt*>((yyvsp[-4].StmtType)), dynamic_cast<Stmt*>((yyvsp[-3].StmtType)));
     }
-#line 2429 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2433 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 105: /* BlockDecl: %empty  */
-#line 703 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 708 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                    { (yyval.StmtType) = nullptr; }
-#line 2435 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2439 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 106: /* BlockDecl: DECLARE DeclPart  */
-#line 704 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 709 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                            {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 2443 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2447 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 107: /* BlockBody: BEGiN Statements  */
-#line 710 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 715 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                        {
         DEBUG_YACC("================Enter BlockBody=================");
         (yyval.StmtType) = (yyvsp[0].StmtType);
         DEBUG_YACC("================Enter BlockBody=================");
 
     }
-#line 2454 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2458 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 108: /* Expression: Relation  */
-#line 719 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 724 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2462 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2466 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 109: /* Expression: Expression Logical Relation  */
-#line 722 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 727 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                       {
         (yyval.ExprType) = new BinaryExpr((yyvsp[-2].ExprType), (yyvsp[0].ExprType), (yyvsp[-1].SignType));
     }
-#line 2470 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2474 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 110: /* Expression: Expression ShortCircuit Relation  */
-#line 725 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 730 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                            {
         (yyval.ExprType) = new BinaryExpr((yyvsp[-2].ExprType), (yyvsp[0].ExprType), (yyvsp[-1].SignType));
     }
-#line 2478 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2482 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 111: /* Logical: AND  */
-#line 731 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 736 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
           {
         (yyval.SignType) = new OpSignNode(OpSignNode::AND);
     }
-#line 2486 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2490 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 112: /* Logical: OR  */
-#line 734 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 739 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
              {
         (yyval.SignType) = new OpSignNode(OpSignNode::OR);
     }
-#line 2494 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2498 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 113: /* Logical: XOR  */
-#line 737 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 742 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
               {
         (yyval.SignType) = new OpSignNode(OpSignNode::XOR);
     }
-#line 2502 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2506 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 114: /* ShortCircuit: AND THEN  */
-#line 743 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 748 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                {
         (yyval.SignType) = new OpSignNode(OpSignNode::ANDTHEN);
     }
-#line 2510 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2514 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 115: /* ShortCircuit: OR ELSE  */
-#line 746 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 751 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                   {
         (yyval.SignType) = new OpSignNode(OpSignNode::ORELSE);
     }
-#line 2518 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2522 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 116: /* Relation: SimpleExpression  */
-#line 752 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 757 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                        {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2526 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2530 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 117: /* Relation: SimpleExpression Relational SimpleExpression  */
-#line 755 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 760 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                                        {
         (yyval.ExprType) = new BinaryExpr((yyvsp[-2].ExprType), (yyvsp[0].ExprType), (yyvsp[-1].SignType));
     }
-#line 2534 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2538 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 118: /* Relation: SimpleExpression Membership Range  */
-#line 758 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 763 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                             {
         (yyval.ExprType) = new BinaryExpr((yyvsp[-2].ExprType), dynamic_cast<Range*>((yyvsp[0].StmtType)), (yyvsp[-1].SignType));
     }
-#line 2542 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2546 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 119: /* Relation: SimpleExpression Membership Identifier  */
-#line 761 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 766 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                                  {
         SymbolEntry* se = new IdentifierSymbolEntry(TypeSystem::integerType, (yyvsp[0].StrType), identifiers->getLevel());
         (yyval.ExprType) = new BinaryExpr((yyvsp[-2].ExprType), se, (yyvsp[-1].SignType));
     }
-#line 2551 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2555 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 120: /* Relational: EQ  */
-#line 768 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 773 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
          {
         (yyval.SignType) = new OpSignNode(OpSignNode::EQ);
     }
-#line 2559 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2563 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 121: /* Relational: NE  */
-#line 771 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 776 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
              {
         (yyval.SignType) = new OpSignNode(OpSignNode::NE);
     }
-#line 2567 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2571 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 122: /* Relational: LE  */
-#line 774 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 779 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
              {
         (yyval.SignType) = new OpSignNode(OpSignNode::LE);
     }
-#line 2575 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2579 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 123: /* Relational: LTEQ  */
-#line 777 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 782 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                {
         (yyval.SignType) = new OpSignNode(OpSignNode::LTEQ);
     }
-#line 2583 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2587 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 124: /* Relational: GE  */
-#line 780 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 785 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
              {
         (yyval.SignType) = new OpSignNode(OpSignNode::GE);
     }
-#line 2591 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2595 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 125: /* Relational: GTEQ  */
-#line 783 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 788 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                {
         (yyval.SignType) = new OpSignNode(OpSignNode::GTEQ);
     }
-#line 2599 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2603 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 126: /* Membership: IN  */
-#line 789 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 794 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
          {
         (yyval.SignType) = new OpSignNode(OpSignNode::IN);
     }
-#line 2607 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2611 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 127: /* Membership: NOT IN  */
-#line 792 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 797 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                  {
         (yyval.SignType) = new OpSignNode(OpSignNode::NOTIN);
     }
-#line 2615 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2619 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 128: /* SimpleExpression: Unary Term  */
-#line 798 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 803 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                  {
         (yyval.ExprType) = new BinaryExpr((yyvsp[0].ExprType), (yyvsp[-1].SignType));
     }
-#line 2623 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2627 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 129: /* SimpleExpression: Term  */
-#line 801 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 806 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2631 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2635 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 130: /* SimpleExpression: SimpleExpression Adding Term  */
-#line 804 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 809 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                        {
         (yyval.ExprType) = new BinaryExpr((yyvsp[-2].ExprType), (yyvsp[0].ExprType), (yyvsp[-1].SignType));
     }
-#line 2639 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2643 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 131: /* Unary: ADD  */
-#line 810 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 815 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
           {
         (yyval.SignType) = new OpSignNode(OpSignNode::ADD);
     }
-#line 2647 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2651 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 132: /* Unary: SUB  */
-#line 813 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 818 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
               {
         (yyval.SignType) = new OpSignNode(OpSignNode::SUB);
     }
-#line 2655 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2659 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 133: /* Adding: ADD  */
-#line 819 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 824 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
           {
         (yyval.SignType) = new OpSignNode(OpSignNode::ADD);
     }
-#line 2663 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2667 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 134: /* Adding: SUB  */
-#line 822 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 827 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
               {
         (yyval.SignType) = new OpSignNode(OpSignNode::SUB);
     }
-#line 2671 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2675 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 135: /* Adding: SINGLEAND  */
-#line 825 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 830 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                     {
         (yyval.SignType) = new OpSignNode(OpSignNode::SINGLEAND);
     }
-#line 2679 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2683 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 136: /* Term: Factor  */
-#line 831 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 836 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
              {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2687 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2691 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 137: /* Term: Term Multiplying Factor  */
-#line 834 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 839 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                   {
         (yyval.ExprType) = new BinaryExpr((yyvsp[-2].ExprType), (yyvsp[0].ExprType), (yyvsp[-1].SignType));
     }
-#line 2695 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2699 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 138: /* Multiplying: MUL  */
-#line 840 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 845 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
           {
         (yyval.SignType) = new OpSignNode(OpSignNode::MUL);
     }
-#line 2703 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2707 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 139: /* Multiplying: DIV  */
-#line 843 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 848 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
               {
         (yyval.SignType) = new OpSignNode(OpSignNode::DIV);
     }
-#line 2711 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2715 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 140: /* Multiplying: MOD  */
-#line 846 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 851 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
               {
         (yyval.SignType) = new OpSignNode(OpSignNode::MOD);
     }
-#line 2719 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2723 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 141: /* Multiplying: REM  */
-#line 849 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 854 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
               {
         (yyval.SignType) = new OpSignNode(OpSignNode::REM);
     }
-#line 2727 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2731 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 142: /* Factor: Primary  */
-#line 855 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 860 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
               {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2735 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2739 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 143: /* Factor: NOT Primary  */
-#line 858 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 863 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                       {
         (yyval.ExprType) = new FactorExpr((yyvsp[0].ExprType), FactorExpr::NOT);
     }
-#line 2743 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2747 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 144: /* Factor: ABS Primary  */
-#line 861 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 866 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                       {
         (yyval.ExprType) = new FactorExpr((yyvsp[0].ExprType), FactorExpr::ABS);
     }
-#line 2751 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2755 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 145: /* Factor: Primary EXPON Primary  */
-#line 864 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 869 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                 {
         (yyval.ExprType) = new BinaryExpr((yyvsp[-2].ExprType), (yyvsp[0].ExprType), new OpSignNode(OpSignNode::EXPON));
     }
-#line 2759 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2763 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 146: /* Primary: Literal  */
-#line 870 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 875 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
               {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2767 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2771 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 147: /* Primary: Name  */
-#line 873 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 878 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2775 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2779 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 148: /* Primary: ParenthesizedPrimary  */
-#line 876 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 881 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2783 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2787 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 149: /* Name: Identifier  */
-#line 882 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 887 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                  {
         SymbolEntry* se = identifiers->lookup((yyvsp[0].StrType));
         if(!se) {
@@ -2791,138 +2795,138 @@ yyreduce:
         }
         (yyval.ExprType) = new Id(se);
     }
-#line 2795 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2799 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 150: /* Name: IndexedComp  */
-#line 889 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 894 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                   {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2803 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2807 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 151: /* Name: Attribute  */
-#line 892 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 897 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                 {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2811 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2815 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 152: /* Name: INTEGER  */
-#line 895 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 900 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
               {
         SymbolEntry *se = new IdentifierSymbolEntry(TypeSystem::integerType, "Integer", 0);
         globals->install("Integer", se);
         (yyval.ExprType) = new Id(se);
     }
-#line 2821 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2825 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 153: /* IndexedComp: Name LPAREN Values RPAREN  */
-#line 903 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 908 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                 {
         (yyval.ExprType) = new Id(dynamic_cast<Id*>((yyvsp[-3].ExprType)), (yyvsp[-1].ExprType));
     }
-#line 2829 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2833 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 154: /* Values: Value  */
-#line 909 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 914 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
             {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2837 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2841 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 155: /* Values: Values COMMA Value  */
-#line 912 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 917 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                              {
         (yyval.ExprType) = (yyvsp[-2].ExprType);
         (yyvsp[-2].ExprType)->setNext((yyvsp[0].ExprType));
     }
-#line 2846 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2850 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 156: /* Value: Expression  */
-#line 919 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 924 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                  {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2854 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2858 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 157: /* Attribute: Name TIC AttributeId  */
-#line 925 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 930 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                            {
         (yyval.ExprType) = new Id(dynamic_cast<Id*>((yyvsp[-2].ExprType)), (yyvsp[0].StrType));
     }
-#line 2862 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2866 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 158: /* AttributeId: Identifier  */
-#line 931 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 936 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                  {
         (yyval.StrType) = (yyvsp[0].StrType);
     }
-#line 2870 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2874 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 159: /* ParenthesizedPrimary: LPAREN Expression RPAREN  */
-#line 937 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 942 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                {
         (yyval.ExprType) = (yyvsp[-1].ExprType);
     }
-#line 2878 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2882 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 160: /* Literal: DECIMIAL  */
-#line 943 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 948 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                {
         SymbolEntry* se = new ConstantSymbolEntry(TypeSystem::integerType, (yyvsp[0].IntType));
         (yyval.ExprType) = new Constant(se);
     }
-#line 2887 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2891 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 161: /* Literal: STRINGLITERAL  */
-#line 947 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 952 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                         {
         SymbolEntry* se = new ConstantSymbolEntry(TypeSystem::stringType, (yyvsp[0].StrType));
         (yyval.ExprType) = new Constant(se);
     }
-#line 2896 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2900 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 162: /* Literal: NuLL  */
-#line 951 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 956 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                {
         (yyval.ExprType) = nullptr;
     }
-#line 2904 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2908 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 163: /* Literal: TRuE  */
-#line 954 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 959 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
            {
         SymbolEntry* se = new ConstantSymbolEntry(TypeSystem::boolType, true);
         (yyval.ExprType) = new Constant(se);
     }
-#line 2913 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2917 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 164: /* Literal: FALsE  */
-#line 958 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 963 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
             {
         SymbolEntry* se = new ConstantSymbolEntry(TypeSystem::boolType, false);
         (yyval.ExprType) = new Constant(se);
     }
-#line 2922 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2926 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
 
-#line 2926 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2930 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
 
       default: break;
     }
@@ -3115,7 +3119,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 963 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 968 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
 
 
 int yyerror(char const* message)

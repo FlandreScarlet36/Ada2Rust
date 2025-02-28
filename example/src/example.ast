@@ -3,6 +3,26 @@ program
     Package: Ada.Text_IO
     ProcedureDef
         Procedure	name: Greet	type: Procedure
+        DeclItemOrBodyStmt
+            DeclStmt
+                ObjectDeclStmt
+                    DefId	name: A	type: Integer	isConst: false
+                    InitOptStmt
+                        Literal	type: Integer	value: 0
+        DeclItemOrBodyStmt
+            DeclStmt
+                ObjectDeclStmt
+                    DefId	name: B	type: Integer	isConst: false
+        Stmt
+            PutStmt
+                Id
+                    name: A	scope: 2	type: Integer
+        Stmt
+            GetStmt: B
+        Stmt
+            PutStmt
+                Id
+                    name: B	scope: 2	type: Integer
         Stmt
             PutLineStmt
                 String: hello!

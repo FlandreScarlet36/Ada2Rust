@@ -433,6 +433,7 @@ PutStmt
     : PUT LPAREN SimpleExpression RPAREN SEMICOLON {
         $$ = new PutStmt($3);
     }
+
     ;
 
 PutlineStmt
@@ -446,7 +447,11 @@ PutlineStmt
 
 GetStmt
     : GET LPAREN Identifier RPAREN SEMICOLON {
-        $$ = new GetStmt($3);
+        IdentifierSymbolEntry *se = dynamic_cast<IdentifierSymbolEntry*>(identifiers->lookup($3));            
+        if(!se) {
+            std::cerr << "[YACC ERROR]: Can't not get symbolEntry: "<< $3 << "\n";
+        }
+        $$ = new GetStmt(se);
     }
     ;
 

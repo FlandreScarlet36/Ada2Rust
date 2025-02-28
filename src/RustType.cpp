@@ -6,7 +6,8 @@ bool AdaNatural::isUsed = false;
 bool AdaString::isUsed = false;
 
 void AdaInteger::output() {
-  fprintf(yyout, R"(use std::ops::Add;
+  fprintf(yyout, R"(use std::io::{self, Write};
+use std::ops::Add;
 const LAST: i32 = std::i32::MAX;
 
 // 定义一个新的类型 AdaString 来包装 String

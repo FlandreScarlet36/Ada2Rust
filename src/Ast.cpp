@@ -617,34 +617,31 @@ void PutStmt::dump(int level) {
   expr->dump(level + 4);
 }
 
-void PutStmt::genRustCode(Node *parent) {
-  expr->genRustCode(parent);
+void PutStmt::genRustCode(Node *parent) { 
   rustStmt = new RustPutStmt(expr->getRustExpr());
 }
 
 void GetStmt::dump(int level) {
-  fprintf(yyout, "%*cGetStmt\n", level, ' ');
-  cout << str << endl;
+  fprintf(yyout, "%*cGetStmt: %s\n", level, ' ', id->dump().c_str());
 }
 
 void GetStmt::genRustCode(Node *parent) {
-  rustStmt = new RustGetStmt(str);
+  rustStmt = new RustGetStmt(id);
 }
 
 void PutlineStmt::dump(int level) {
   fprintf(yyout, "%*cPutLineStmt\n", level, ' ');
-  if (expr)
-    expr->dump(level + 4);
+  if (se)
+    cout << se->dump() << endl;
   if (str != "")
     fprintf(yyout, "%*cString: %s\n", level + 4, ' ', str.c_str());
 }
 
 void PutlineStmt::genRustCode(Node *parent) {
-  if (expr) {
-    expr->genRustCode(parent);
-    rustStmt = new RustPutLineStmt(expr->getRustExpr());
+  if (se) {
+    rustStmt = new RustPutlineStmt(se);
   } else {
-    rustStmt = new RustPutLineStmt(str);
+    rustStmt = new RustPutlineStmt(str);
   }
 }
 

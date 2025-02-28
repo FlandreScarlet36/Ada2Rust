@@ -47,27 +47,26 @@ private:
   RustExpr *rustExpr;
 public:
   RustPutStmt(RustExpr *_rustExpr) : RustStmt(nullptr), rustExpr(_rustExpr){};
-  std::string output(int level) const { return ""; };
+  std::string output(int level) const;
 };
 
 class RustGetStmt : public RustStmt {
 private:
-  std::string str;
+  IdentifierSymbolEntry *id;
 public:
-  RustGetStmt(const std::string &_str) : RustStmt(nullptr), str(_str){};
-  std::string output(int level) const { return ""; };
-};
-
-class RustPutLineStmt : public RustStmt {
-private:
-  RustExpr *rustExpr;
-  std::string str;
-public:
-  RustPutLineStmt(RustExpr *_rustExpr) : RustStmt(nullptr), rustExpr(_rustExpr){};
-  RustPutLineStmt(std::string _str) : RustStmt(nullptr), str(_str){};
+  RustGetStmt(IdentifierSymbolEntry *_id) : RustStmt(nullptr), id(_id){};
   std::string output(int level) const;
 };
 
+class RustPutlineStmt : public RustStmt {
+private:
+  SymbolEntry *se;
+  std::string str;
+public:
+  RustPutlineStmt(SymbolEntry *_se) : RustStmt(nullptr), se(_se), str(""){};
+  RustPutlineStmt(std::string _str) : RustStmt(nullptr), se(nullptr), str(_str){};
+  std::string output(int level) const;
+};
 class RustPackageCall : public RustStmt {
 private:
   std::string packageName;
@@ -310,7 +309,7 @@ public:
       : RustStmt(nullptr), choices(_choices), stmts(_stmts){};
   RustChoice *getChoices() { return choices; }
   RustSeqStmt *getStmts() { return stmts; }
-  std::string output(int level) const {};
+  std::string output(int level) const { return ""; };
 };
 
 class RustCaseStmt : public RustStmt {

@@ -201,7 +201,6 @@ std::string RustDummyStmt::output(int level) const {
   char temp[80];
   sprintf(temp, "%*c;\n", level, ' ');
   // 输出示例: "    ;"
-  // 具体示例: "    ;"
   return std::string(temp);
 }
 
@@ -215,10 +214,39 @@ std::string RustAssignStmt::output(int level) const {
   return std::string(temp);
 }
 
-std::string RustPutLineStmt::output(int level) const {
+std::string RustPutStmt::output(int level) const {
   char temp[200];
+  sprintf(temp, "%*cprintln!(\"{}\", %s);\n", level, ' ', rustExpr->output().c_str());
+  // 输出示例: "    println!("{}", expr);"
+  return std::string(temp);
+}
 
-  sprintf(temp, "%*cprintln!(\"%s\");\n", level, ' ', str.c_str());
+std::string RustGetStmt::output(int level) const {
+  char res[400];
+  std::string resStr;
+  sprintf(res, "%*clet mut %s = String::new();\n%*cio::stdin().read_line(&mut %s).expect(\"Failed to read line\");\n",
+  level, ' ', id->dump().c_str(), level, ' ', id->dump().c_str());
+  resStr += std::string(res);
+  char temp[200];
+  if(id->getType()->isInteger())
+    sprintf(temp, "%*clet %s: i32 = %s.trim().parse().unwrap();\n", level, ' ', id->dump().c_str(), id->dump().c_str());
+  else if(id->getType()->isNatural())
+    sprintf(temp, "%*clet %s: u32 = %s.trim().parse().unwrap();\n", level, ' ', id->dump().c_str(), id->dump().c_str());
+  else if(id->getType()->isString())
+    sprintf(temp, "%*clet %s: AdaString = %s.trim().parse().unwrap();\n", level, ' ', id->dump().c_str(), id->dump().c_str());
+  // 输出示例: "    io::stdin().read_line(&mut se).unwrap();"
+  // 具体示例: "    io::stdin().read_line(&mut x).unwrap();"
+  resStr += std::string(temp);
+  return resStr;
+}
+
+std::string RustPutlineStmt::output(int level) const {
+  char temp[200];
+  if (se) {
+    sprintf(temp, "%*cprintln!(\"{}\", %s);\n", level, ' ', se->dump().c_str());
+  } else if(str != "") {
+    sprintf(temp, "%*cprintln!(\"%s\");\n", level, ' ', str.c_str());
+  }
   // 输出示例: "    se = expr;"
   // 具体示例: "    x = 42;"
   return std::string(temp);
@@ -356,7 +384,6 @@ std::string RustCaseStmt::output(int level) const {
   bool haveElse = false;
   RustSeqStmt *elseStmts;
   RustAlternative *temp = alter;
-  bool firstCase = true;
   char matchStr[200];
   sprintf(matchStr, "%*cmatch %s {\n", level, ' ', exprStr.c_str());
   resStr += std::string(matchStr);

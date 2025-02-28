@@ -21,12 +21,12 @@ public:
   void setValue(int _value) { value = _value; }
   void operator=(AdaInteger _right) { value = _right.getValue(); }
   AdaInteger &operator+(AdaInteger _right) {
-    AdaInteger res;
+    AdaInteger res=AdaInteger();
     res.setValue(value + _right.getValue());
     return res;
   }
   AdaInteger &operator+(int _right) {
-    AdaInteger res;
+    AdaInteger res=AdaInteger();
     res.setValue(value + _right);
     return res;
   }
