@@ -15,7 +15,7 @@
 
 class RustUnit;
 
-// Ada Procedure and Ada Function => Cpp Class
+// Ada Procedure and Ada Function => Rust Function
 class Function {
 private:
   // Name of Procedure or Function

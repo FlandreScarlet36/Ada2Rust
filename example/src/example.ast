@@ -18,7 +18,7 @@ program
                 Id
                     name: A	scope: 2	type: Integer
         Stmt
-            GetStmt: B
+            GetStmt  name: B  type: Integer
         Stmt
             PutStmt
                 Id

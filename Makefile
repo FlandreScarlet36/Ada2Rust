@@ -12,7 +12,7 @@ BINARY ?= $(BUILD_PATH)/Ada2Compiler
 INC = $(addprefix -I, $(INC_PATH))
 SRC = $(shell find $(SRC_PATH)  -name "*.cpp")
 
-CFLAGS = -O3 -g -Wall -std=c++17 $(INC)
+CFLAGS = -O3 -g -Wall -std=c++17 -w $(INC)
 
 FLEX ?= $(SRC_PATH)/lexer.l
 LEXER ?= $(addsuffix .cpp, $(basename $(FLEX)))

@@ -75,11 +75,11 @@ public:
 
 class ExprNode : public Node {
 protected:
-  RustExpr *cExpr;
+  RustExpr *rustExpr;
 
 public:
   virtual Type *getType() = 0;
-  RustExpr *getRustExpr() { return cExpr; };
+  RustExpr *getRustExpr() { return rustExpr; };
   virtual void genRustCode(Node *parent){};
 };
 

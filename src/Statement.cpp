@@ -222,22 +222,19 @@ std::string RustPutStmt::output(int level) const {
 }
 
 std::string RustGetStmt::output(int level) const {
-  char res[400];
-  std::string resStr;
-  sprintf(res, "%*clet mut %s = String::new();\n%*cio::stdin().read_line(&mut %s).expect(\"Failed to read line\");\n",
-  level, ' ', id->dump().c_str(), level, ' ', id->dump().c_str());
-  resStr += std::string(res);
-  char temp[200];
-  if(id->getType()->isInteger())
-    sprintf(temp, "%*clet %s: i32 = %s.trim().parse().unwrap();\n", level, ' ', id->dump().c_str(), id->dump().c_str());
-  else if(id->getType()->isNatural())
-    sprintf(temp, "%*clet %s: u32 = %s.trim().parse().unwrap();\n", level, ' ', id->dump().c_str(), id->dump().c_str());
-  else if(id->getType()->isString())
-    sprintf(temp, "%*clet %s: AdaString = %s.trim().parse().unwrap();\n", level, ' ', id->dump().c_str(), id->dump().c_str());
-  // 输出示例: "    io::stdin().read_line(&mut se).unwrap();"
-  // 具体示例: "    io::stdin().read_line(&mut x).unwrap();"
-  resStr += std::string(temp);
-  return resStr;
+  char res[600];
+  sprintf(res, R"deli(%*clet mut %s = String::new();
+%*cio::stdin().read_line(&mut %s).expect(\"Failed to read line\");
+%*clet %s: %s = %s.trim().parse().unwrap();
+  )deli",
+  level, ' ', id->dump().c_str(), 
+  level, ' ', id->dump().c_str(), 
+  level, ' ', id->dump().c_str(), id->getType()->toRustStr().c_str(), id->dump().c_str());
+  // 输出示例:
+  // let mut id = String::new();
+  // io::stdin().read_line(&mut id).expect("Failed to read line");
+  // let id: Type = id.trim().parse().unwrap();
+  return std::string(res);
 }
 
 std::string RustPutlineStmt::output(int level) const {

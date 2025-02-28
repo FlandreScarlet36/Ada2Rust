@@ -148,16 +148,16 @@ void Id::genRustCode(Node *parent) {
       ExprNode *temp = dynamic_cast<ExprNode *>(expr->getNext());
       while (temp) {
         temp->genRustCode(parent);
-        cExpr->setNext(temp->getRustExpr());
+        rustExpr->setNext(temp->getRustExpr());
         temp = dynamic_cast<ExprNode *>(temp->getNext());
       }
-      cExpr = new RustId(id, paramExpr);
+      rustExpr = new RustId(id, paramExpr);
     } else {
-      cExpr = new RustId(id, attr);
+      rustExpr = new RustId(id, attr);
     }
   } else {
     // for simple id
-    cExpr = new RustId(se);
+    rustExpr = new RustId(se);
   }
 }
 
@@ -170,7 +170,7 @@ void Constant::dump(int level) {
           value.c_str());
 }
 
-void Constant::genRustCode(Node *parent) { cExpr = new RustConstant(se); }
+void Constant::genRustCode(Node *parent) { rustExpr = new RustConstant(se); }
 
 void FactorExpr::dump(int level) {
   std::string opName;
@@ -190,7 +190,7 @@ void FactorExpr::dump(int level) {
 
 void FactorExpr::genRustCode(Node *parent) {
   expr->genRustCode(parent);
-  cExpr = new RustFactor(expr->getRustExpr(), op);
+  rustExpr = new RustFactor(expr->getRustExpr(), op);
 }
 
 void BinaryExpr::dump(int level) {
@@ -280,23 +280,23 @@ void BinaryExpr::genRustCode(Node *parent) {
   }
   if (isUnary) {
     expr1->genRustCode(parent);
-    cExpr = new RustBinaryExpr(expr1->getRustExpr(), rustOp);
+    rustExpr = new RustBinaryExpr(expr1->getRustExpr(), rustOp);
   } else if (isMember) {
     if (range) {
       expr1->genRustCode(parent);
       range->genRustCode(parent);
-      cExpr = new RustBinaryExpr(expr1->getRustExpr(),
+      rustExpr = new RustBinaryExpr(expr1->getRustExpr(),
                                 dynamic_cast<RustRange *>(range->getRustStmt()),
                                 rustOp);
     }
     if (se) {
       expr1->genRustCode(parent);
-      cExpr = new RustBinaryExpr(expr1->getRustExpr(), se, rustOp);
+      rustExpr = new RustBinaryExpr(expr1->getRustExpr(), se, rustOp);
     }
   } else {
     expr1->genRustCode(parent);
     expr2->genRustCode(parent);
-    cExpr = new RustBinaryExpr(expr1->getRustExpr(), expr2->getRustExpr(), rustOp);
+    rustExpr = new RustBinaryExpr(expr1->getRustExpr(), expr2->getRustExpr(), rustOp);
   }
 }
 
@@ -622,7 +622,7 @@ void PutStmt::genRustCode(Node *parent) {
 }
 
 void GetStmt::dump(int level) {
-  fprintf(yyout, "%*cGetStmt: %s\n", level, ' ', id->dump().c_str());
+  fprintf(yyout, "%*cGetStmt  name: %s  type: %s\n", level, ' ', id->dump().c_str(), id->getType()->dump().c_str());
 }
 
 void GetStmt::genRustCode(Node *parent) {
