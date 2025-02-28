@@ -148,7 +148,7 @@ void Id::genRustCode(Node *parent) {
       ExprNode *temp = dynamic_cast<ExprNode *>(expr->getNext());
       while (temp) {
         temp->genRustCode(parent);
-        rustExpr->setNext(temp->getRustExpr());
+        paramExpr->setNext(temp->getRustExpr());
         temp = dynamic_cast<ExprNode *>(temp->getNext());
       }
       rustExpr = new RustId(id, paramExpr);

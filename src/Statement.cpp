@@ -257,7 +257,15 @@ std::string RustCallStmt::output(int level) const {
     paramStr = "";
   }
   else {
-    paramStr = rustId->getParam()->output();
+    RustExpr *temp = rustId->getParam();
+    paramStr += temp->output();
+    while (temp) {
+      temp = dynamic_cast<RustExpr *>(temp->getNext());
+      if (temp) {
+        paramStr += ", ";
+        paramStr += temp->output();
+      }
+    }
   }
   if(rustId->getName())
     sprintf(temp, "%*c%s(%s);\n", level, ' ',rustId->getName()->output().c_str() ,paramStr.c_str());

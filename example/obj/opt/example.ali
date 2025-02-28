@@ -1,0 +1,31 @@
+V "GNAT Lib v10"
+M P W=b
+A -O2
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U case4%b		example.adb		a9d27e51 NE OO SU IL
+
+D example.adb		20250228130500 a9d27e51 case4%b
+D system.ads		20230707070819 4635ec04 system%s
+G a e
+G c Z b b [case4 standard 1 11 none]
+X 1 example.adb
+1U11*case4 1b11 31l5 31t10
+2U15 Compute_A 2>26 8s13 13b15 19l11 19t20 29s4
+2i26 V{natural} 13b26 15r13 16r24
+5U15 Compute_B 5b15 5>26 11l11 11t20 16s13
+5i26 V{natural} 7r13 8r24
+21U15 Compute_C 21b15 21>26 21>39 25l11 25t20 30s4
+21i26 V{integer} 24r15
+21i39 W{integer} 24r19
+22i7 R{integer} 24m10
+26i5 A{integer} 30r15
+27i5 B{integer} 30r18
+

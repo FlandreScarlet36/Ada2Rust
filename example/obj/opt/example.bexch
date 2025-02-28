@@ -1,0 +1,22 @@
+[GENERATED OBJECT FILE]
+b__example.o
+[PROJECT FILES]
+/mnt/hgfs/Graduation/Ada2Rust/example/default.gpr
+20241222135506 3bfe16c8aceb06e5eb71abff96b06792
+[BOUND OBJECT FILES]
+/mnt/hgfs/Graduation/Ada2Rust/example/obj/opt/example.o
+[GENERATED SOURCE FILES]
+b__example.ads
+b__example.adb
+b__example.ali
+[RESULTING OPTIONS]
+-L/mnt/hgfs/Graduation/Ada2Rust/example/obj/opt/
+-L/mnt/hgfs/Graduation/Ada2Rust/example/obj/opt/
+-L/usr/lib/gcc/x86_64-linux-gnu/10/adalib/
+-shared
+-shared-libgcc
+-lgnat-10
+-ldl
+[RUN PATH OPTION]
+/usr/lib/gcc/x86_64-linux-gnu/10/adalib/
+/usr/lib
