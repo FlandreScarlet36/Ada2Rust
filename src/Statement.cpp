@@ -239,11 +239,7 @@ std::string RustGetStmt::output(int level) const {
 
 std::string RustPutlineStmt::output(int level) const {
   char temp[200];
-  if (se) {
-    sprintf(temp, "%*cprintln!(\"{}\", %s);\n", level, ' ', se->dump().c_str());
-  } else if(str != "") {
-    sprintf(temp, "%*cprintln!(\"%s\");\n", level, ' ', str.c_str());
-  }
+  sprintf(temp, "%*cprintln!(\"{}\", %s);\n", level, ' ', rustExpr->output().c_str());
   // 输出示例: "    se = expr;"
   // 具体示例: "    x = 42;"
   return std::string(temp);

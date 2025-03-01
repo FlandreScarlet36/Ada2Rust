@@ -1,95 +1,35 @@
 program
+    Package: Ada.Text_IO
+    Package: Ada.Text_IO
+    Package: Ada.Integer_Text_IO
+    Package: Ada.Integer_Text_IO
     ProcedureDef
-        Procedure	name: case4	type: Procedure
-        DeclItemOrBodyStmt
-            DeclStmt
-                ProcedureDecl
-                    Procedure	name: Compute_A	type: Procedure
-        DeclItemOrBodyStmt
-            ProcedureDef
-                Procedure	name: Compute_B	type: Procedure
-                Stmt
-                    IfStmt
-                        CondClause
-                            BinaryExpr
-                                OpSign: >
-                                    Id
-                                        name: V	scope: 1	type: Natural
-                                    Literal	type: Integer	value: 5
-                            Stmt
-                                CallStmt
-                                    Id
-                                        Id
-                                            name: Compute_A	scope: 2	type: Procedure
-                                        Name PAREN Value
-                                            BinaryExpr
-                                                OpSign: -
-                                                    Id
-                                                        name: V	scope: 1	type: Natural
-                                                    Literal	type: Integer	value: 1
-        DeclItemOrBodyStmt
-            ProcedureDef
-                Procedure	name: Compute_A	type: Procedure
-                Stmt
-                    IfStmt
-                        CondClause
-                            BinaryExpr
-                                OpSign: >
-                                    Id
-                                        name: V	scope: 1	type: Natural
-                                    Literal	type: Integer	value: 2
-                            Stmt
-                                CallStmt
-                                    Id
-                                        Id
-                                            name: Compute_B	scope: 2	type: Procedure
-                                        Name PAREN Value
-                                            BinaryExpr
-                                                OpSign: -
-                                                    Id
-                                                        name: V	scope: 1	type: Natural
-                                                    Literal	type: Integer	value: 1
-        DeclItemOrBodyStmt
-            ProcedureDef
-                Procedure	name: Compute_C	type: Procedure
-                DeclItemOrBodyStmt
-                    DeclStmt
-                        ObjectDeclStmt
-                            DefId	name: R	type: Integer	isConst: false
-                Stmt
-                    AssignStmt	name: R	type: Integer
-                        BinaryExpr
-                            OpSign: +
-                                Id
-                                    name: V	scope: 1	type: Integer
-                                Id
-                                    name: W	scope: 1	type: Integer
+        Procedure	name: Check_Positive	type: Procedure
         DeclItemOrBodyStmt
             DeclStmt
                 ObjectDeclStmt
-                    DefId	name: A	type: Integer	isConst: true
-                    InitOptStmt
-                        Literal	type: Integer	value: 12
-        DeclItemOrBodyStmt
-            DeclStmt
-                ObjectDeclStmt
-                    DefId	name: B	type: Integer	isConst: true
-                    InitOptStmt
-                        Literal	type: Integer	value: 44
+                    DefId	name: N	type: Integer	isConst: false
         Stmt
-            CallStmt
-                Id
-                    Id
-                        name: Compute_A	scope: 2	type: Procedure
-                    Name PAREN Value
-                        Literal	type: Integer	value: 15
+            PutStmt
+                Literal	type: String	value: AdaString::from("Enter an integer value: ")
         Stmt
-            CallStmt
+            GetStmt  name: N  type: Integer
+        Stmt
+            PutStmt
                 Id
-                    Id
-                        name: Compute_C	scope: 2	type: Procedure
-                    Name PAREN Value
-                        Id
-                            name: A	scope: 2	type: Integer
-                        Id
-                            name: B	scope: 2	type: Integer
+                    name: N	scope: 2	type: Integer
+        Stmt
+            IfStmt
+                CondClause
+                    BinaryExpr
+                        OpSign: >
+                            Id
+                                name: N	scope: 2	type: Integer
+                            Literal	type: Integer	value: 0
+                    Stmt
+                        PutLineStmt
+                            Literal	type: String	value: AdaString::from(" is a positive number")
+                Else
+                    Stmt
+                        PutLineStmt
+                            Literal	type: String	value: AdaString::from(" is not a positive number")

@@ -437,10 +437,7 @@ PutStmt
     ;
 
 PutlineStmt
-    : PUT_LINE LPAREN Identifier RPAREN SEMICOLON {
-        $$ = new PutlineStmt($3);
-    }
-    | PUT_LINE LPAREN STRINGLITERAL RPAREN SEMICOLON {
+    : PUT_LINE LPAREN SimpleExpression RPAREN SEMICOLON {
         $$ = new PutlineStmt($3);
     }
     ;

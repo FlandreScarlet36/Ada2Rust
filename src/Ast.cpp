@@ -632,18 +632,12 @@ void GetStmt::genRustCode(Node *parent) {
 
 void PutlineStmt::dump(int level) {
   fprintf(yyout, "%*cPutLineStmt\n", level, ' ');
-  if (se)
-    cout << se->dump() << endl;
-  if (str != "")
-    fprintf(yyout, "%*cString: %s\n", level + 4, ' ', str.c_str());
+  expr->dump(level + 4);
 }
 
 void PutlineStmt::genRustCode(Node *parent) {
-  if (se) {
-    rustStmt = new RustPutlineStmt(se);
-  } else {
-    rustStmt = new RustPutlineStmt(str);
-  }
+  expr->genRustCode(parent);
+  rustStmt = new RustPutlineStmt(expr->getRustExpr());
 }
 
 void PackageCall::dump(int level) {

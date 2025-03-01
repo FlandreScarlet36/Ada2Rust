@@ -60,11 +60,9 @@ public:
 
 class RustPutlineStmt : public RustStmt {
 private:
-  SymbolEntry *se;
-  std::string str;
+  RustExpr *rustExpr;
 public:
-  RustPutlineStmt(SymbolEntry *_se) : RustStmt(nullptr), se(_se), str(""){};
-  RustPutlineStmt(std::string _str) : RustStmt(nullptr), se(nullptr), str(_str){};
+  RustPutlineStmt(RustExpr *_rustExpr) : RustStmt(nullptr), rustExpr(_rustExpr){};
   std::string output(int level) const;
 };
 

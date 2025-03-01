@@ -316,11 +316,9 @@ class PutStmt : public StmtNode {
   
   class PutlineStmt : public StmtNode {
   private:
-    SymbolEntry *se;
-    std::string str;
+    ExprNode *expr;
   public:
-    PutlineStmt(SymbolEntry *_se) : se(_se){}; 
-    PutlineStmt(const std::string &_str) : str(_str){}; 
+    PutlineStmt(ExprNode *_expr) : expr(_expr){}; 
     void dump(int level);
     void genRustCode(Node *parent);
   };

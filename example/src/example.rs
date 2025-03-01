@@ -1,5 +1,6 @@
 use std::io::{self, Write};
 use std::ops::Add;
+use std::fmt;
 const LAST: i32 = std::i32::MAX;
 
 // 定义一个新的类型 AdaString 来包装 String
@@ -40,30 +41,18 @@ impl Image for i32 {
 }
 
 
- fn case4() {
-    let mut A: i32 = 12;
-    let mut B: i32 = 44;
+ fn Check_Positive() {
+    let mut N: i32;
 
-    fn Compute_B(V: u32) {
-
-        if V > 5 {
-            Compute_A(V - 1);
-        }
+    println!("{}", AdaString::from("Enter an integer value: "));
+    let mut N = String::new();
+    io::stdin().read_line(&mut N).expect("Failed to read line");
+    let N: i32 = N.trim().parse().unwrap();
+      println!("{}", N);
+    if N > 0 {
+        println!("{}", AdaString::from(" is a positive number"));
     }
-
-    fn Compute_A(V: u32) {
-
-        if V > 2 {
-            Compute_B(V - 1);
-        }
+    else {
+        println!("{}", AdaString::from(" is not a positive number"));
     }
-
-    fn Compute_C(V: i32, W: i32) {
-        let mut R: i32;
-
-        R = V + W;
-    }
-
-    Compute_A(15);
-    Compute_C(A, B);
  }
