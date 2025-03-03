@@ -33,6 +33,9 @@ std::string Function::getDeclStr(int level) const {
     char temp[100];
     RustExpr *init = op->getInit();
     if(init) {
+      if(op->getConst()) {
+        sprintf(temp, "%*clet %s: %s = %s;\n", level, ' ', op->getName().c_str(), op->typeName().c_str(), init->output().c_str());
+      } else
       sprintf(temp, "%*clet mut %s: %s = %s;\n", level, ' ',
               op->getName().c_str(), op->typeName().c_str(), init->output().c_str());
     } else

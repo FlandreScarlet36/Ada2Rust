@@ -400,6 +400,9 @@ void ObjectDeclStmt::genRustCode(Node *parent) {
     while (temp) {
       Operand *op =
           new Operand(temp->getSymbolEntry(), temp->getType(), initExpr);
+      if(temp->getConst()) {
+        op->setConst();
+      }
       func->addDeclOps(op);
       unit->insertOp(func, op);
       temp = dynamic_cast<DefId *>(temp->getNext());

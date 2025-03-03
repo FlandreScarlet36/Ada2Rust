@@ -101,6 +101,7 @@ public:
   RustExpr *getParam() { return expr; }
   RustId *getName() { return name; }
   SymbolEntry *getSE() { return se; }
+  std::string *getAttr() { return &attr; }
   std::string output() const;
 };
 

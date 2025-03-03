@@ -28,6 +28,7 @@ public:
   RustExpr *getRustExpr() { return init; }
   RustExpr *getInit() { return init; }
   bool getConst() { return isConst; }
+  void setConst() { isConst = true; }
 };
 
 #endif

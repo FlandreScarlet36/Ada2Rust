@@ -41,16 +41,11 @@ impl Image for i32 {
 }
 
 
- fn add(A: i32, B: i32) -> i32 {
+ fn Constant_Example() {
+    let Length: i32 = 10;
+    let Width: i32 = 5;
+    let mut Area: i32;
 
-    return A + B;
- }
-
- fn function1(A: i32, B: i32) {
-    let mut A: i32 = 1;
-    let mut B: i32 = 2;
-    let mut C: i32 = add(A, B);
-
-    println!("{}", C);
-    println!("{}", Image(C));
+    Area = Length * Width;
+    println!("{}", AdaString::from("The area of the rectangle is: ") + Area.Image());
  }

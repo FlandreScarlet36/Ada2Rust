@@ -44,13 +44,8 @@ RustStmt::RustStmt(Function *func) {
 std::string RustId::output() const {
   
   if (name) {
-    if (attr != "") {
+    if (!attr.empty()) {
       //类型自带的attribute
-      if (name->output() == "Integer"||name->output() == "Natural"||name->output() == "Boolean"||name->output() == "String") {
-        char res[50];
-        sprintf(res, "%s", attr.c_str());
-        return std::string(res);
-      }
       char res[50];
       sprintf(res, "%s.%s()", name->output().c_str(), attr.c_str());
       return std::string(res);
@@ -65,7 +60,11 @@ std::string RustId::output() const {
         paramStr += temp->output();
       }
       char res[50];
-      sprintf(res, "%s(%s)", name->output().c_str(), paramStr.c_str());
+      if(!name->getAttr()->empty()){
+        sprintf(res, "%s.%s()", paramStr.c_str(), name->getAttr()->c_str());
+      } else {
+        sprintf(res, "%s(%s)", name->output().c_str(), paramStr.c_str());
+      }
       return std::string(res);
     } else {
       char res[100];
