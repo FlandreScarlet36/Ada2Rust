@@ -41,18 +41,15 @@ impl Image for i32 {
 }
 
 
- fn Check_Positive() {
-    let mut N: i32;
+ fn add(A: i32, B: i32) -> i32 {
 
-    println!("{}", AdaString::from("Enter an integer value: "));
-    let mut N = String::new();
-    io::stdin().read_line(&mut N).expect("Failed to read line");
-    let N: i32 = N.trim().parse().unwrap();
-      println!("{}", N);
-    if N > 0 {
-        println!("{}", AdaString::from(" is a positive number"));
-    }
-    else {
-        println!("{}", AdaString::from(" is not a positive number"));
-    }
+    return A + B;
+ }
+
+ fn function1(A: i32, B: i32) {
+    let mut A: i32 = 1;
+    let mut B: i32 = 2;
+    let mut C: i32 = add(A, B);
+
+    println!("{}", C);
  }

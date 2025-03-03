@@ -231,6 +231,39 @@ SubprogSpec
         $$ = new ProcedureSpec(se, param);
         DEBUG_YACC("================Leave SubprogSpec=================");
     }
+    | FUNCTION Identifier {
+        DEBUG_YACC("================Enter SubprogSpec=================");
+        // Register procedure name into symbol table.
+        Type* proType = new ProcedureType();
+        SymbolEntry *se = identifiers->lookup($2);
+        if(!se) {
+            se = new IdentifierSymbolEntry(proType, $2, identifiers->getLevel());
+            identifiers->install($2, se);
+        }
+        identifiers = new SymbolTable(identifiers);
+    } FormalPartOpt RETURN Type{
+        SymbolEntry *se = identifiers->lookup($2);
+        ProcedureType* proType = dynamic_cast<ProcedureType*>(se->getType());
+        // Define procedure type.
+        ParamNode* param = nullptr;
+        if($4) {
+            param = dynamic_cast<ParamNode*>($4);
+            std::vector<Type*> paramTypes;
+            std::vector<SymbolEntry*> paramIds;
+            while (param) {
+                SymbolEntry* paramSe = param->getParamSymbol();
+                paramTypes.push_back(paramSe->getType());
+                paramIds.push_back(paramSe);
+                param = dynamic_cast<ParamNode*>(param->getNext());
+            }
+            proType->setParams(paramTypes, paramIds);
+        }
+        if($6)
+        proType->setReturnType($6);
+        // Define SubprogSpec with ast node.
+        $$ = new ProcedureSpec(se, param);
+        DEBUG_YACC("================Leave SubprogSpec=================");
+    }
     ;
 
 FormalPartOpt

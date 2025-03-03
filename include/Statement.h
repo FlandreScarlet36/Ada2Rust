@@ -208,6 +208,14 @@ public:
   std::string output(int level) const;
 };
 
+class RustReturnStmt : public RustStmt {
+private:
+  RustExpr *retValue;
+public:
+  RustReturnStmt(RustExpr *_retValue = nullptr) : RustStmt(nullptr), retValue(_retValue){};
+  std::string output(int level) const;
+};
+
 class RustCallStmt : public RustStmt {
 private:
   RustId *rustId;

@@ -52,6 +52,7 @@ public:
   std::string getDeclStr(int level) const;
   std::string getStmtStr(int level) const;
   std::string getParamStr() const;
+  Type *getReturnType() const;
   std::string getVarStr(int level) const;
   std::string output(int level) const;
 };

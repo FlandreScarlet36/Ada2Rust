@@ -214,6 +214,20 @@ std::string RustAssignStmt::output(int level) const {
   return std::string(temp);
 }
 
+// 输出 RustReturnStmt 的字符串表示
+std::string RustReturnStmt::output(int level) const {
+  char temp[200];
+  if (retValue) {
+    sprintf(temp, "%*creturn %s;\n", level, ' ', retValue->output().c_str());
+    // 输出示例: "    return expr;"
+    // 具体示例: "    return x;"
+  } else {
+    sprintf(temp, "%*creturn;\n", level, ' ');
+    // 输出示例: "    return;"
+  }
+  return std::string(temp);
+}
+
 std::string RustPutStmt::output(int level) const {
   char temp[200];
   sprintf(temp, "%*cprintln!(\"{}\", %s);\n", level, ' ', rustExpr->output().c_str());

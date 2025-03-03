@@ -1,35 +1,44 @@
 program
     Package: Ada.Text_IO
     Package: Ada.Text_IO
-    Package: Ada.Integer_Text_IO
-    Package: Ada.Integer_Text_IO
     ProcedureDef
-        Procedure	name: Check_Positive	type: Procedure
+        Procedure	name: add	type: Function
+        Stmt
+            ReturnStmt
+                BinaryExpr
+                    OpSign: +
+                        Id
+                            name: A	scope: 1	type: Integer
+                        Id
+                            name: B	scope: 1	type: Integer
+    ProcedureDef
+        Procedure	name: function1	type: Procedure
         DeclItemOrBodyStmt
             DeclStmt
                 ObjectDeclStmt
-                    DefId	name: N	type: Integer	isConst: false
-        Stmt
-            PutStmt
-                Literal	type: String	value: AdaString::from("Enter an integer value: ")
-        Stmt
-            GetStmt  name: N  type: Integer
+                    DefId	name: A	type: Integer	isConst: false
+                    InitOptStmt
+                        Literal	type: Integer	value: 1
+        DeclItemOrBodyStmt
+            DeclStmt
+                ObjectDeclStmt
+                    DefId	name: B	type: Integer	isConst: false
+                    InitOptStmt
+                        Literal	type: Integer	value: 2
+        DeclItemOrBodyStmt
+            DeclStmt
+                ObjectDeclStmt
+                    DefId	name: C	type: Integer	isConst: false
+                    InitOptStmt
+                        Id
+                            Id
+                                name: add	scope: 0	type: Function
+                            Name PAREN Value
+                                Id
+                                    name: A	scope: 2	type: Integer
+                                Id
+                                    name: B	scope: 2	type: Integer
         Stmt
             PutStmt
                 Id
-                    name: N	scope: 2	type: Integer
-        Stmt
-            IfStmt
-                CondClause
-                    BinaryExpr
-                        OpSign: >
-                            Id
-                                name: N	scope: 2	type: Integer
-                            Literal	type: Integer	value: 0
-                    Stmt
-                        PutLineStmt
-                            Literal	type: String	value: AdaString::from(" is a positive number")
-                Else
-                    Stmt
-                        PutLineStmt
-                            Literal	type: String	value: AdaString::from(" is not a positive number")
+                    name: C	scope: 2	type: Integer

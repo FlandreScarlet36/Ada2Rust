@@ -239,10 +239,11 @@ class ProcedureSpec : public StmtNode {
 private:
   SymbolEntry *se;
   ParamNode *params;
+  Type *returnType;
 
 public:
-  ProcedureSpec(SymbolEntry *_se, ParamNode *_params = nullptr)
-      : se(_se), params(_params) {}
+  ProcedureSpec(SymbolEntry *_se, ParamNode *_params = nullptr, Type *_returnType = nullptr)
+      : se(_se), params(_params), returnType(_returnType) {}
   SymbolEntry *getProcedureSymbol() { return se; }
   void dump(int level);
   void genRustCode(Node *parent);

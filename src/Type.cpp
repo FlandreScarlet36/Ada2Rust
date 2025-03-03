@@ -44,11 +44,19 @@ std::string NaturalType::toRustStr() {
 }
 
 std::string ProcedureType::dump() {
-    return "Procedure";
+    if(returnType) {
+        return "Function";
+    } else {
+        return "Procedure";
+    }
 }
 
 std::string ProcedureType::toRustStr() {
-    return "Procedure";
+    if(returnType) {
+        return "Function";
+    } else {
+        return "Procedure";
+    }
 }
 
 std::string FunctionType::dump() {

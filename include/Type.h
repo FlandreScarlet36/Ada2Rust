@@ -71,18 +71,23 @@ class ProcedureType : public Type {
 private:
   std::vector<Type *> paramsType;
   std::vector<SymbolEntry *> paramIds;
+  Type *returnType;
 
 public:
-  ProcedureType(): Type(Type::PROCEDURE){};
+  ProcedureType() : Type(Type::PROCEDURE), returnType(nullptr) {};
   ProcedureType(std::vector<Type *> paramsType)
-      : Type(Type::PROCEDURE), paramsType(paramsType){};
+      : Type(Type::PROCEDURE), paramsType(paramsType), returnType(nullptr) {};
   ProcedureType(std::vector<Type *> paramsType,
                 std::vector<SymbolEntry *> paramIds)
-      : Type(Type::PROCEDURE), paramsType(paramsType), paramIds(paramIds){};
+      : Type(Type::PROCEDURE), paramsType(paramsType), paramIds(paramIds), returnType(nullptr) {};
   void setParams(std::vector<Type *> paramsType,
                  std::vector<SymbolEntry *> paramIds) {
     this->paramsType.assign(paramsType.begin(), paramsType.end());
     this->paramIds.assign(paramIds.begin(), paramIds.end());
+  }
+  void setReturnType(Type *ret) {
+    this->returnType = ret;
+    
   }
   std::vector<Type*> getParamType() {
     return paramsType;
@@ -90,6 +95,7 @@ public:
   std::vector<SymbolEntry*> getParamIds() {
     return paramIds;
   }
+  Type *getRetType() { return returnType; };
   std::string dump();
   std::string toRustStr();
 };

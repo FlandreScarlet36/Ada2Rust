@@ -356,6 +356,8 @@ void ProcedureSpec::dump(int level) {
           type.c_str());
   if (params)
     params->dump(level + 4);
+  if (returnType)
+    returnType->dump();
 }
 
 void ProcedureSpec::genRustCode(Node *parent) {}
@@ -497,7 +499,14 @@ void ReturnStmt::dump(int level) {
     fprintf(yyout, "%*cvoid\n", level + 4, ' ');
 }
 
-void ReturnStmt::genRustCode(Node *parent) {}
+void ReturnStmt::genRustCode(Node *parent) {
+  if (retValue) {
+    retValue->genRustCode(parent);
+    rustStmt = new RustReturnStmt(retValue->getRustExpr());
+  } else {
+    rustStmt = new RustReturnStmt();
+  }
+}
 
 void CallStmt::dump(int level) {
   fprintf(yyout, "%*cCallStmt\n", level, ' ');

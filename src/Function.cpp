@@ -82,6 +82,14 @@ std::string Function::getParamStr() const {
   return paramStr;
 }
 
+Type *Function::getReturnType() const{
+  if (symPtr->getType()->isProcedure()) {
+    ProcedureType *type = dynamic_cast<ProcedureType *>(symPtr->getType());
+    return type->getRetType();
+  }
+  return nullptr;
+}
+
 // 获取函数语句字符串
 std::string Function::getStmtStr(int level) const {
   std::string stmtStr;
@@ -111,12 +119,23 @@ std::string Function::output(int level) const {
   std::string stmtStr = getStmtStr(level + 4);
   
   char resStr[MAX_OUTPUT_LENGTH];
+
+  if(getReturnType()) {
+    sprintf(resStr, R"deli(
+%*cfn %s%s -> %s {
+%s
+%s%*c}
+)deli",
+        level, ' ', symPtr->dump().c_str(), paramStr.c_str(), getReturnType()->toRustStr().c_str(), declStr.c_str(), stmtStr.c_str(), level, ' ');
+  }
+  else{
   sprintf(resStr, R"deli(
 %*cfn %s%s {
 %s
 %s%*c}
 )deli",
   level, ' ', symPtr->dump().c_str(), paramStr.c_str(), declStr.c_str(), stmtStr.c_str(), level, ' ');
+  }
   
   return std::string(resStr);
 }
