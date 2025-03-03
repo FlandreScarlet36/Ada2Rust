@@ -42,8 +42,15 @@ RustStmt::RustStmt(Function *func) {
 
 // 输出 RustId 的字符串表示
 std::string RustId::output() const {
+  
   if (name) {
     if (attr != "") {
+      //类型自带的attribute
+      if (name->output() == "Integer"||name->output() == "Natural"||name->output() == "Boolean"||name->output() == "String") {
+        char res[50];
+        sprintf(res, "%s", attr.c_str());
+        return std::string(res);
+      }
       char res[50];
       sprintf(res, "%s.%s()", name->output().c_str(), attr.c_str());
       return std::string(res);

@@ -70,9 +70,12 @@
 [TOKEN]: 	SEMICOLON	;
 [TOKEN]: 	PUT_LINE	Put_Line
 [TOKEN]: 	LPAREN	(
-[TOKEN]: 	Identifier	C
+[TOKEN]: 	INTEGER	Integer
 [TOKEN]: 	TIC	'
 [TOKEN]: 	Identifier	Image
+[TOKEN]: 	LPAREN	(
+[TOKEN]: 	Identifier	C
+[TOKEN]: 	RPAREN	)
 [TOKEN]: 	RPAREN	)
 [TOKEN]: 	SEMICOLON	;
 [TOKEN]: 	END	end

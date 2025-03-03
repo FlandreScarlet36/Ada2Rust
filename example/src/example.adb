@@ -11,5 +11,5 @@ procedure function1(A : Integer; B : Integer) is
    C : Integer := add(A, B);
 begin
    Put(C);
-   Put_Line(C'Image);
+   Put_Line(Integer'Image(C));
 end function1;

@@ -46,5 +46,9 @@ program
             PutLineStmt
                 Id
                     Id
-                        name: C	scope: 2	type: Integer
-                        AttributeId: Image
+                        Id
+                            name: Integer	scope: 0	type: Integer
+                            AttributeId: Image
+                    Name PAREN Value
+                        Id
+                            name: C	scope: 2	type: Integer
