@@ -139,26 +139,31 @@ void Id::dump(int level) {
 }
 
 void Id::genRustCode(Node *parent) {
-  if (name) {
-    name->genRustCode(parent);
-    RustId *id = dynamic_cast<RustId *>(name->getRustExpr());
-    if (expr) {
-      expr->genRustCode(parent);
-      RustExpr *paramExpr = expr->getRustExpr();
-      ExprNode *temp = dynamic_cast<ExprNode *>(expr->getNext());
-      while (temp) {
-        temp->genRustCode(parent);
-        paramExpr->setNext(temp->getRustExpr());
-        temp = dynamic_cast<ExprNode *>(temp->getNext());
-      }
-      rustExpr = new RustId(id, paramExpr);
-    } else {
-      rustExpr = new RustId(id, attr);
-    }
-  } else {
+  if (!name) {
     // for simple id
     rustExpr = new RustId(se);
+    return;
   }
+
+  name->genRustCode(parent);
+  RustId *id = dynamic_cast<RustId *>(name->getRustExpr());
+
+  if (!attr.empty()) {
+    rustExpr = new RustId(id, attr);
+    return;
+  }
+
+  expr->genRustCode(parent);
+  RustExpr *paramExpr = expr->getRustExpr();
+  ExprNode *temp = dynamic_cast<ExprNode *>(expr->getNext());
+
+  while (temp) {
+    temp->genRustCode(parent);
+    paramExpr->setNext(temp->getRustExpr());
+    temp = dynamic_cast<ExprNode *>(temp->getNext());
+  }
+
+  rustExpr = new RustId(id, paramExpr);
 }
 
 void Constant::dump(int level) {

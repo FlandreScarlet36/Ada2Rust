@@ -3,7 +3,7 @@ procedure case14 is
 begin
    loop
       declare
-         Name : constant String := "Num is: " & Integer'Image (I);
+         Name : constant String := "Num is: " & I'Image;
          --               ^ Call to the
          --                 Get_Line function
       begin

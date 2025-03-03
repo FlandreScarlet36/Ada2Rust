@@ -68,6 +68,13 @@
 [TOKEN]: 	Identifier	C
 [TOKEN]: 	RPAREN	)
 [TOKEN]: 	SEMICOLON	;
+[TOKEN]: 	PUT_LINE	Put_Line
+[TOKEN]: 	LPAREN	(
+[TOKEN]: 	Identifier	C
+[TOKEN]: 	TIC	'
+[TOKEN]: 	Identifier	Image
+[TOKEN]: 	RPAREN	)
+[TOKEN]: 	SEMICOLON	;
 [TOKEN]: 	END	end
 [TOKEN]: 	Identifier	function1
 [TOKEN]: 	SEMICOLON	;

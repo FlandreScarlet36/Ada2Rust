@@ -52,4 +52,5 @@ impl Image for i32 {
     let mut C: i32 = add(A, B);
 
     println!("{}", C);
+    println!("{}", C.Image());
  }

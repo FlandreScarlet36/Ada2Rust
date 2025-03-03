@@ -6,7 +6,7 @@ procedure Greet is
 begin
     loop
         Put_Line ("Hello, World!"
-                & Integer'Image (I));
+                & I'Image);
         exit when I = 5;
         I := I + 1;
     end loop;

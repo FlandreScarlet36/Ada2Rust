@@ -43,11 +43,22 @@ RustStmt::RustStmt(Function *func) {
 // 输出 RustId 的字符串表示
 std::string RustId::output() const {
   if (name) {
-    if (expr) {
-      char res[100];
-      sprintf(res, "%s.%s()", expr->output().c_str(), name->output().c_str());
-      // 输出示例: "expr.name()"
-      // 具体示例: "x.name()"
+    if (attr != "") {
+      char res[50];
+      sprintf(res, "%s.%s()", name->output().c_str(), attr.c_str());
+      return std::string(res);
+    } 
+    else if (expr) {
+      std::string paramStr;
+      RustExpr *temp = expr;
+      paramStr += temp->output();
+      if (temp->getNext()) {
+        paramStr += ", ";
+        temp = dynamic_cast<RustExpr *>(temp->getNext());
+        paramStr += temp->output();
+      }
+      char res[50];
+      sprintf(res, "%s(%s)", name->output().c_str(), paramStr.c_str());
       return std::string(res);
     } else {
       char res[100];

@@ -42,3 +42,9 @@ program
             PutStmt
                 Id
                     name: C	scope: 2	type: Integer
+        Stmt
+            PutLineStmt
+                Id
+                    Id
+                        name: C	scope: 2	type: Integer
+                        AttributeId: Image
