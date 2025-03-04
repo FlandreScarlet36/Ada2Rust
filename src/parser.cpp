@@ -152,169 +152,171 @@ enum yysymbol_kind_t
   YYSYMBOL_BEGiN = 28,                     /* BEGiN  */
   YYSYMBOL_BODY = 29,                      /* BODY  */
   YYSYMBOL_CASE = 30,                      /* CASE  */
-  YYSYMBOL_CONSTANT = 31,                  /* CONSTANT  */
-  YYSYMBOL_DECLARE = 32,                   /* DECLARE  */
-  YYSYMBOL_DELAY = 33,                     /* DELAY  */
-  YYSYMBOL_DELTA = 34,                     /* DELTA  */
-  YYSYMBOL_DIGITS = 35,                    /* DIGITS  */
-  YYSYMBOL_DO = 36,                        /* DO  */
-  YYSYMBOL_ELSE = 37,                      /* ELSE  */
-  YYSYMBOL_ELSIF = 38,                     /* ELSIF  */
-  YYSYMBOL_END = 39,                       /* END  */
-  YYSYMBOL_ENTRY = 40,                     /* ENTRY  */
-  YYSYMBOL_EXCEPTION = 41,                 /* EXCEPTION  */
-  YYSYMBOL_EXIT = 42,                      /* EXIT  */
-  YYSYMBOL_FOR = 43,                       /* FOR  */
-  YYSYMBOL_FUNCTION = 44,                  /* FUNCTION  */
-  YYSYMBOL_GENERIC = 45,                   /* GENERIC  */
-  YYSYMBOL_GOTO = 46,                      /* GOTO  */
-  YYSYMBOL_IF = 47,                        /* IF  */
-  YYSYMBOL_IN = 48,                        /* IN  */
-  YYSYMBOL_IS = 49,                        /* IS  */
-  YYSYMBOL_LIMITED = 50,                   /* LIMITED  */
-  YYSYMBOL_LOOP = 51,                      /* LOOP  */
-  YYSYMBOL_MUL = 52,                       /* MUL  */
-  YYSYMBOL_DIV = 53,                       /* DIV  */
-  YYSYMBOL_MOD = 54,                       /* MOD  */
-  YYSYMBOL_NEW = 55,                       /* NEW  */
-  YYSYMBOL_NOT = 56,                       /* NOT  */
-  YYSYMBOL_SUB = 57,                       /* SUB  */
-  YYSYMBOL_ADD = 58,                       /* ADD  */
-  YYSYMBOL_NuLL = 59,                      /* NuLL  */
-  YYSYMBOL_OF = 60,                        /* OF  */
-  YYSYMBOL_OR = 61,                        /* OR  */
-  YYSYMBOL_OTHERS = 62,                    /* OTHERS  */
-  YYSYMBOL_OUT = 63,                       /* OUT  */
-  YYSYMBOL_PACKAGE = 64,                   /* PACKAGE  */
-  YYSYMBOL_PRAGMA = 65,                    /* PRAGMA  */
-  YYSYMBOL_PRIVATE = 66,                   /* PRIVATE  */
-  YYSYMBOL_PROCEDURE = 67,                 /* PROCEDURE  */
-  YYSYMBOL_PROTECTED = 68,                 /* PROTECTED  */
-  YYSYMBOL_RAISE = 69,                     /* RAISE  */
-  YYSYMBOL_RANGE = 70,                     /* RANGE  */
-  YYSYMBOL_RECORD = 71,                    /* RECORD  */
-  YYSYMBOL_REM = 72,                       /* REM  */
-  YYSYMBOL_RENAMES = 73,                   /* RENAMES  */
-  YYSYMBOL_REQUEUE = 74,                   /* REQUEUE  */
-  YYSYMBOL_RETURN = 75,                    /* RETURN  */
-  YYSYMBOL_REVERSE = 76,                   /* REVERSE  */
-  YYSYMBOL_SELECT = 77,                    /* SELECT  */
-  YYSYMBOL_SEPARATE = 78,                  /* SEPARATE  */
-  YYSYMBOL_SUBTYPE = 79,                   /* SUBTYPE  */
-  YYSYMBOL_TAGGED = 80,                    /* TAGGED  */
-  YYSYMBOL_TASK = 81,                      /* TASK  */
-  YYSYMBOL_TERMINATE = 82,                 /* TERMINATE  */
-  YYSYMBOL_THEN = 83,                      /* THEN  */
-  YYSYMBOL_TYPE = 84,                      /* TYPE  */
-  YYSYMBOL_UNTIL = 85,                     /* UNTIL  */
-  YYSYMBOL_USE = 86,                       /* USE  */
-  YYSYMBOL_WHEN = 87,                      /* WHEN  */
-  YYSYMBOL_WHILE = 88,                     /* WHILE  */
-  YYSYMBOL_WITH = 89,                      /* WITH  */
-  YYSYMBOL_XOR = 90,                       /* XOR  */
-  YYSYMBOL_PUT_LINE = 91,                  /* PUT_LINE  */
-  YYSYMBOL_PUT = 92,                       /* PUT  */
-  YYSYMBOL_GET = 93,                       /* GET  */
-  YYSYMBOL_TRuE = 94,                      /* TRuE  */
-  YYSYMBOL_FALsE = 95,                     /* FALsE  */
-  YYSYMBOL_DECIMIAL = 96,                  /* DECIMIAL  */
-  YYSYMBOL_Identifier = 97,                /* Identifier  */
-  YYSYMBOL_STRINGLITERAL = 98,             /* STRINGLITERAL  */
-  YYSYMBOL_PACKAGEID = 99,                 /* PACKAGEID  */
-  YYSYMBOL_INTEGER = 100,                  /* INTEGER  */
-  YYSYMBOL_STRING = 101,                   /* STRING  */
-  YYSYMBOL_NATURAL = 102,                  /* NATURAL  */
-  YYSYMBOL_BOOLEAN = 103,                  /* BOOLEAN  */
-  YYSYMBOL_COLON = 104,                    /* COLON  */
-  YYSYMBOL_SEMICOLON = 105,                /* SEMICOLON  */
-  YYSYMBOL_LPAREN = 106,                   /* LPAREN  */
-  YYSYMBOL_RPAREN = 107,                   /* RPAREN  */
-  YYSYMBOL_COMMA = 108,                    /* COMMA  */
-  YYSYMBOL_SINGLEAND = 109,                /* SINGLEAND  */
-  YYSYMBOL_SINGLEOR = 110,                 /* SINGLEOR  */
-  YYSYMBOL_YYACCEPT = 111,                 /* $accept  */
-  YYSYMBOL_Program = 112,                  /* Program  */
-  YYSYMBOL_CompUnit = 113,                 /* CompUnit  */
-  YYSYMBOL_Unit = 114,                     /* Unit  */
-  YYSYMBOL_PackageCall = 115,              /* PackageCall  */
-  YYSYMBOL_SubprogDecl = 116,              /* SubprogDecl  */
-  YYSYMBOL_SubprogSpec = 117,              /* SubprogSpec  */
-  YYSYMBOL_118_1 = 118,                    /* $@1  */
-  YYSYMBOL_119_2 = 119,                    /* $@2  */
-  YYSYMBOL_FormalPartOpt = 120,            /* FormalPartOpt  */
-  YYSYMBOL_FormalPart = 121,               /* FormalPart  */
-  YYSYMBOL_Params = 122,                   /* Params  */
-  YYSYMBOL_Param = 123,                    /* Param  */
-  YYSYMBOL_Type = 124,                     /* Type  */
-  YYSYMBOL_InitOpt = 125,                  /* InitOpt  */
-  YYSYMBOL_SubprogBody = 126,              /* SubprogBody  */
-  YYSYMBOL_127_3 = 127,                    /* $@3  */
-  YYSYMBOL_DeclPart = 128,                 /* DeclPart  */
-  YYSYMBOL_Decl = 129,                     /* Decl  */
-  YYSYMBOL_ObjectDecl = 130,               /* ObjectDecl  */
-  YYSYMBOL_DefIds = 131,                   /* DefIds  */
-  YYSYMBOL_DefId = 132,                    /* DefId  */
-  YYSYMBOL_DeclItemOrBodys = 133,          /* DeclItemOrBodys  */
-  YYSYMBOL_DeclItemOrBody = 134,           /* DeclItemOrBody  */
-  YYSYMBOL_Statements = 135,               /* Statements  */
-  YYSYMBOL_Statement = 136,                /* Statement  */
-  YYSYMBOL_SimpleStmt = 137,               /* SimpleStmt  */
-  YYSYMBOL_PutStmt = 138,                  /* PutStmt  */
-  YYSYMBOL_PutlineStmt = 139,              /* PutlineStmt  */
-  YYSYMBOL_GetStmt = 140,                  /* GetStmt  */
-  YYSYMBOL_CompoundStmt = 141,             /* CompoundStmt  */
-  YYSYMBOL_NullStmt = 142,                 /* NullStmt  */
-  YYSYMBOL_AssignStmt = 143,               /* AssignStmt  */
-  YYSYMBOL_ReturnStmt = 144,               /* ReturnStmt  */
-  YYSYMBOL_ProcedureCall = 145,            /* ProcedureCall  */
-  YYSYMBOL_ExitStmt = 146,                 /* ExitStmt  */
-  YYSYMBOL_WhenOpt = 147,                  /* WhenOpt  */
-  YYSYMBOL_IfStmt = 148,                   /* IfStmt  */
-  YYSYMBOL_CondClauses = 149,              /* CondClauses  */
-  YYSYMBOL_CondClause = 150,               /* CondClause  */
-  YYSYMBOL_CondPart = 151,                 /* CondPart  */
-  YYSYMBOL_Condition = 152,                /* Condition  */
-  YYSYMBOL_ElseOpt = 153,                  /* ElseOpt  */
-  YYSYMBOL_CaseStmt = 154,                 /* CaseStmt  */
-  YYSYMBOL_Alternatives = 155,             /* Alternatives  */
-  YYSYMBOL_Alternative = 156,              /* Alternative  */
-  YYSYMBOL_Choices = 157,                  /* Choices  */
-  YYSYMBOL_Choice = 158,                   /* Choice  */
-  YYSYMBOL_DiscreteWithRange = 159,        /* DiscreteWithRange  */
-  YYSYMBOL_LoopStmt = 160,                 /* LoopStmt  */
-  YYSYMBOL_LabelOpt = 161,                 /* LabelOpt  */
-  YYSYMBOL_Iteration = 162,                /* Iteration  */
-  YYSYMBOL_IterPart = 163,                 /* IterPart  */
-  YYSYMBOL_ReverseOpt = 164,               /* ReverseOpt  */
-  YYSYMBOL_BasicLoop = 165,                /* BasicLoop  */
-  YYSYMBOL_IdOpt = 166,                    /* IdOpt  */
-  YYSYMBOL_DiscreteRange = 167,            /* DiscreteRange  */
-  YYSYMBOL_RangeConstrOpt = 168,           /* RangeConstrOpt  */
-  YYSYMBOL_Range = 169,                    /* Range  */
-  YYSYMBOL_Block = 170,                    /* Block  */
-  YYSYMBOL_BlockDecl = 171,                /* BlockDecl  */
-  YYSYMBOL_BlockBody = 172,                /* BlockBody  */
-  YYSYMBOL_Expression = 173,               /* Expression  */
-  YYSYMBOL_Logical = 174,                  /* Logical  */
-  YYSYMBOL_ShortCircuit = 175,             /* ShortCircuit  */
-  YYSYMBOL_Relation = 176,                 /* Relation  */
-  YYSYMBOL_Relational = 177,               /* Relational  */
-  YYSYMBOL_Membership = 178,               /* Membership  */
-  YYSYMBOL_SimpleExpression = 179,         /* SimpleExpression  */
-  YYSYMBOL_Unary = 180,                    /* Unary  */
-  YYSYMBOL_Adding = 181,                   /* Adding  */
-  YYSYMBOL_Term = 182,                     /* Term  */
-  YYSYMBOL_Multiplying = 183,              /* Multiplying  */
-  YYSYMBOL_Factor = 184,                   /* Factor  */
-  YYSYMBOL_Primary = 185,                  /* Primary  */
-  YYSYMBOL_Name = 186,                     /* Name  */
-  YYSYMBOL_IndexedComp = 187,              /* IndexedComp  */
-  YYSYMBOL_Values = 188,                   /* Values  */
-  YYSYMBOL_Value = 189,                    /* Value  */
-  YYSYMBOL_Attribute = 190,                /* Attribute  */
-  YYSYMBOL_AttributeId = 191,              /* AttributeId  */
-  YYSYMBOL_ParenthesizedPrimary = 192,     /* ParenthesizedPrimary  */
-  YYSYMBOL_Literal = 193                   /* Literal  */
+  YYSYMBOL_CHARACTER = 31,                 /* CHARACTER  */
+  YYSYMBOL_CONSTANT = 32,                  /* CONSTANT  */
+  YYSYMBOL_DECLARE = 33,                   /* DECLARE  */
+  YYSYMBOL_DELAY = 34,                     /* DELAY  */
+  YYSYMBOL_DELTA = 35,                     /* DELTA  */
+  YYSYMBOL_DIGITS = 36,                    /* DIGITS  */
+  YYSYMBOL_DO = 37,                        /* DO  */
+  YYSYMBOL_ELSE = 38,                      /* ELSE  */
+  YYSYMBOL_ELSIF = 39,                     /* ELSIF  */
+  YYSYMBOL_END = 40,                       /* END  */
+  YYSYMBOL_ENTRY = 41,                     /* ENTRY  */
+  YYSYMBOL_EXCEPTION = 42,                 /* EXCEPTION  */
+  YYSYMBOL_EXIT = 43,                      /* EXIT  */
+  YYSYMBOL_FOR = 44,                       /* FOR  */
+  YYSYMBOL_FUNCTION = 45,                  /* FUNCTION  */
+  YYSYMBOL_GENERIC = 46,                   /* GENERIC  */
+  YYSYMBOL_GOTO = 47,                      /* GOTO  */
+  YYSYMBOL_IF = 48,                        /* IF  */
+  YYSYMBOL_IN = 49,                        /* IN  */
+  YYSYMBOL_IS = 50,                        /* IS  */
+  YYSYMBOL_LIMITED = 51,                   /* LIMITED  */
+  YYSYMBOL_LOOP = 52,                      /* LOOP  */
+  YYSYMBOL_MUL = 53,                       /* MUL  */
+  YYSYMBOL_DIV = 54,                       /* DIV  */
+  YYSYMBOL_MOD = 55,                       /* MOD  */
+  YYSYMBOL_NEW = 56,                       /* NEW  */
+  YYSYMBOL_NOT = 57,                       /* NOT  */
+  YYSYMBOL_SUB = 58,                       /* SUB  */
+  YYSYMBOL_ADD = 59,                       /* ADD  */
+  YYSYMBOL_NuLL = 60,                      /* NuLL  */
+  YYSYMBOL_OF = 61,                        /* OF  */
+  YYSYMBOL_OR = 62,                        /* OR  */
+  YYSYMBOL_OTHERS = 63,                    /* OTHERS  */
+  YYSYMBOL_OUT = 64,                       /* OUT  */
+  YYSYMBOL_PACKAGE = 65,                   /* PACKAGE  */
+  YYSYMBOL_PRAGMA = 66,                    /* PRAGMA  */
+  YYSYMBOL_PRIVATE = 67,                   /* PRIVATE  */
+  YYSYMBOL_PROCEDURE = 68,                 /* PROCEDURE  */
+  YYSYMBOL_PROTECTED = 69,                 /* PROTECTED  */
+  YYSYMBOL_RAISE = 70,                     /* RAISE  */
+  YYSYMBOL_RANGE = 71,                     /* RANGE  */
+  YYSYMBOL_RECORD = 72,                    /* RECORD  */
+  YYSYMBOL_REM = 73,                       /* REM  */
+  YYSYMBOL_RENAMES = 74,                   /* RENAMES  */
+  YYSYMBOL_REQUEUE = 75,                   /* REQUEUE  */
+  YYSYMBOL_RETURN = 76,                    /* RETURN  */
+  YYSYMBOL_REVERSE = 77,                   /* REVERSE  */
+  YYSYMBOL_SELECT = 78,                    /* SELECT  */
+  YYSYMBOL_SEPARATE = 79,                  /* SEPARATE  */
+  YYSYMBOL_SUBTYPE = 80,                   /* SUBTYPE  */
+  YYSYMBOL_TAGGED = 81,                    /* TAGGED  */
+  YYSYMBOL_TASK = 82,                      /* TASK  */
+  YYSYMBOL_TERMINATE = 83,                 /* TERMINATE  */
+  YYSYMBOL_THEN = 84,                      /* THEN  */
+  YYSYMBOL_TYPE = 85,                      /* TYPE  */
+  YYSYMBOL_UNTIL = 86,                     /* UNTIL  */
+  YYSYMBOL_USE = 87,                       /* USE  */
+  YYSYMBOL_WHEN = 88,                      /* WHEN  */
+  YYSYMBOL_WHILE = 89,                     /* WHILE  */
+  YYSYMBOL_WITH = 90,                      /* WITH  */
+  YYSYMBOL_XOR = 91,                       /* XOR  */
+  YYSYMBOL_PUT_LINE = 92,                  /* PUT_LINE  */
+  YYSYMBOL_PUT = 93,                       /* PUT  */
+  YYSYMBOL_GET = 94,                       /* GET  */
+  YYSYMBOL_TRuE = 95,                      /* TRuE  */
+  YYSYMBOL_FALsE = 96,                     /* FALsE  */
+  YYSYMBOL_DECIMIAL = 97,                  /* DECIMIAL  */
+  YYSYMBOL_SINGLECHAR = 98,                /* SINGLECHAR  */
+  YYSYMBOL_Identifier = 99,                /* Identifier  */
+  YYSYMBOL_STRINGLITERAL = 100,            /* STRINGLITERAL  */
+  YYSYMBOL_PACKAGEID = 101,                /* PACKAGEID  */
+  YYSYMBOL_INTEGER = 102,                  /* INTEGER  */
+  YYSYMBOL_STRING = 103,                   /* STRING  */
+  YYSYMBOL_NATURAL = 104,                  /* NATURAL  */
+  YYSYMBOL_BOOLEAN = 105,                  /* BOOLEAN  */
+  YYSYMBOL_COLON = 106,                    /* COLON  */
+  YYSYMBOL_SEMICOLON = 107,                /* SEMICOLON  */
+  YYSYMBOL_LPAREN = 108,                   /* LPAREN  */
+  YYSYMBOL_RPAREN = 109,                   /* RPAREN  */
+  YYSYMBOL_COMMA = 110,                    /* COMMA  */
+  YYSYMBOL_SINGLEAND = 111,                /* SINGLEAND  */
+  YYSYMBOL_SINGLEOR = 112,                 /* SINGLEOR  */
+  YYSYMBOL_YYACCEPT = 113,                 /* $accept  */
+  YYSYMBOL_Program = 114,                  /* Program  */
+  YYSYMBOL_CompUnit = 115,                 /* CompUnit  */
+  YYSYMBOL_Unit = 116,                     /* Unit  */
+  YYSYMBOL_PackageCall = 117,              /* PackageCall  */
+  YYSYMBOL_SubprogDecl = 118,              /* SubprogDecl  */
+  YYSYMBOL_SubprogSpec = 119,              /* SubprogSpec  */
+  YYSYMBOL_120_1 = 120,                    /* $@1  */
+  YYSYMBOL_121_2 = 121,                    /* $@2  */
+  YYSYMBOL_FormalPartOpt = 122,            /* FormalPartOpt  */
+  YYSYMBOL_FormalPart = 123,               /* FormalPart  */
+  YYSYMBOL_Params = 124,                   /* Params  */
+  YYSYMBOL_Param = 125,                    /* Param  */
+  YYSYMBOL_Type = 126,                     /* Type  */
+  YYSYMBOL_InitOpt = 127,                  /* InitOpt  */
+  YYSYMBOL_SubprogBody = 128,              /* SubprogBody  */
+  YYSYMBOL_129_3 = 129,                    /* $@3  */
+  YYSYMBOL_DeclPart = 130,                 /* DeclPart  */
+  YYSYMBOL_Decl = 131,                     /* Decl  */
+  YYSYMBOL_ObjectDecl = 132,               /* ObjectDecl  */
+  YYSYMBOL_DefIds = 133,                   /* DefIds  */
+  YYSYMBOL_DefId = 134,                    /* DefId  */
+  YYSYMBOL_DeclItemOrBodys = 135,          /* DeclItemOrBodys  */
+  YYSYMBOL_DeclItemOrBody = 136,           /* DeclItemOrBody  */
+  YYSYMBOL_Statements = 137,               /* Statements  */
+  YYSYMBOL_Statement = 138,                /* Statement  */
+  YYSYMBOL_SimpleStmt = 139,               /* SimpleStmt  */
+  YYSYMBOL_PutStmt = 140,                  /* PutStmt  */
+  YYSYMBOL_PutlineStmt = 141,              /* PutlineStmt  */
+  YYSYMBOL_GetStmt = 142,                  /* GetStmt  */
+  YYSYMBOL_CompoundStmt = 143,             /* CompoundStmt  */
+  YYSYMBOL_NullStmt = 144,                 /* NullStmt  */
+  YYSYMBOL_AssignStmt = 145,               /* AssignStmt  */
+  YYSYMBOL_ReturnStmt = 146,               /* ReturnStmt  */
+  YYSYMBOL_ProcedureCall = 147,            /* ProcedureCall  */
+  YYSYMBOL_ExitStmt = 148,                 /* ExitStmt  */
+  YYSYMBOL_WhenOpt = 149,                  /* WhenOpt  */
+  YYSYMBOL_IfStmt = 150,                   /* IfStmt  */
+  YYSYMBOL_CondClauses = 151,              /* CondClauses  */
+  YYSYMBOL_CondClause = 152,               /* CondClause  */
+  YYSYMBOL_CondPart = 153,                 /* CondPart  */
+  YYSYMBOL_Condition = 154,                /* Condition  */
+  YYSYMBOL_ElseOpt = 155,                  /* ElseOpt  */
+  YYSYMBOL_CaseStmt = 156,                 /* CaseStmt  */
+  YYSYMBOL_Alternatives = 157,             /* Alternatives  */
+  YYSYMBOL_Alternative = 158,              /* Alternative  */
+  YYSYMBOL_Choices = 159,                  /* Choices  */
+  YYSYMBOL_Choice = 160,                   /* Choice  */
+  YYSYMBOL_DiscreteWithRange = 161,        /* DiscreteWithRange  */
+  YYSYMBOL_LoopStmt = 162,                 /* LoopStmt  */
+  YYSYMBOL_LabelOpt = 163,                 /* LabelOpt  */
+  YYSYMBOL_Iteration = 164,                /* Iteration  */
+  YYSYMBOL_IterPart = 165,                 /* IterPart  */
+  YYSYMBOL_ReverseOpt = 166,               /* ReverseOpt  */
+  YYSYMBOL_BasicLoop = 167,                /* BasicLoop  */
+  YYSYMBOL_IdOpt = 168,                    /* IdOpt  */
+  YYSYMBOL_DiscreteRange = 169,            /* DiscreteRange  */
+  YYSYMBOL_RangeConstrOpt = 170,           /* RangeConstrOpt  */
+  YYSYMBOL_Range = 171,                    /* Range  */
+  YYSYMBOL_Block = 172,                    /* Block  */
+  YYSYMBOL_BlockDecl = 173,                /* BlockDecl  */
+  YYSYMBOL_BlockBody = 174,                /* BlockBody  */
+  YYSYMBOL_Expression = 175,               /* Expression  */
+  YYSYMBOL_Logical = 176,                  /* Logical  */
+  YYSYMBOL_ShortCircuit = 177,             /* ShortCircuit  */
+  YYSYMBOL_Relation = 178,                 /* Relation  */
+  YYSYMBOL_Relational = 179,               /* Relational  */
+  YYSYMBOL_Membership = 180,               /* Membership  */
+  YYSYMBOL_SimpleExpression = 181,         /* SimpleExpression  */
+  YYSYMBOL_Unary = 182,                    /* Unary  */
+  YYSYMBOL_Adding = 183,                   /* Adding  */
+  YYSYMBOL_Term = 184,                     /* Term  */
+  YYSYMBOL_Multiplying = 185,              /* Multiplying  */
+  YYSYMBOL_Factor = 186,                   /* Factor  */
+  YYSYMBOL_Primary = 187,                  /* Primary  */
+  YYSYMBOL_Name = 188,                     /* Name  */
+  YYSYMBOL_IndexedComp = 189,              /* IndexedComp  */
+  YYSYMBOL_Values = 190,                   /* Values  */
+  YYSYMBOL_Value = 191,                    /* Value  */
+  YYSYMBOL_Attribute = 192,                /* Attribute  */
+  YYSYMBOL_AttributeId = 193,              /* AttributeId  */
+  YYSYMBOL_ParenthesizedPrimary = 194,     /* ParenthesizedPrimary  */
+  YYSYMBOL_Literal = 195                   /* Literal  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -642,19 +644,19 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  16
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   439
+#define YYLAST   470
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  111
+#define YYNTOKENS  113
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  83
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  165
+#define YYNRULES  167
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  270
+#define YYNSTATES  272
 
 /* YYMAXUTOK -- Last valid token kind.  */
-#define YYMAXUTOK   365
+#define YYMAXUTOK   367
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -704,30 +706,30 @@ static const yytype_int8 yytranslate[] =
       75,    76,    77,    78,    79,    80,    81,    82,    83,    84,
       85,    86,    87,    88,    89,    90,    91,    92,    93,    94,
       95,    96,    97,    98,    99,   100,   101,   102,   103,   104,
-     105,   106,   107,   108,   109,   110
+     105,   106,   107,   108,   109,   110,   111,   112
 };
 
 #if YYDEBUG
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int16 yyrline[] =
 {
-       0,   150,   150,   156,   159,   165,   168,   171,   178,   183,
-     191,   203,   203,   234,   234,   270,   271,   277,   283,   286,
-     292,   300,   303,   306,   309,   314,   315,   321,   321,   340,
-     341,   348,   351,   357,   368,   383,   386,   393,   401,   404,
-     411,   414,   420,   423,   430,   433,   439,   442,   445,   448,
-     451,   454,   457,   460,   466,   473,   479,   489,   492,   495,
-     498,   504,   510,   522,   525,   531,   537,   543,   544,   550,
-     556,   559,   566,   572,   578,   583,   584,   590,   596,   597,
-     608,   614,   617,   624,   627,   630,   636,   641,   647,   658,
-     659,   666,   670,   674,   681,   689,   690,   696,   702,   703,
-     710,   715,   720,   721,   727,   733,   738,   739,   745,   754,
-     757,   760,   766,   769,   772,   778,   781,   787,   790,   793,
-     796,   803,   806,   809,   812,   815,   818,   824,   827,   833,
-     836,   839,   845,   848,   854,   857,   860,   866,   869,   875,
-     878,   881,   884,   890,   893,   896,   899,   905,   908,   911,
-     917,   924,   927,   930,   938,   944,   947,   954,   960,   966,
-     972,   978,   982,   986,   989,   993
+       0,   153,   153,   159,   162,   168,   171,   174,   181,   186,
+     194,   206,   206,   237,   237,   273,   274,   280,   286,   289,
+     295,   303,   306,   309,   312,   315,   320,   321,   327,   327,
+     346,   347,   354,   357,   363,   374,   389,   392,   399,   407,
+     410,   417,   420,   426,   429,   436,   439,   445,   448,   451,
+     454,   457,   460,   463,   466,   472,   479,   485,   495,   498,
+     501,   504,   510,   516,   528,   531,   537,   543,   549,   550,
+     556,   562,   565,   572,   578,   584,   589,   590,   596,   602,
+     603,   614,   620,   623,   630,   633,   636,   642,   647,   653,
+     664,   665,   672,   676,   680,   687,   695,   696,   702,   708,
+     709,   716,   721,   726,   727,   733,   739,   744,   745,   751,
+     760,   763,   766,   772,   775,   778,   784,   787,   793,   796,
+     799,   802,   809,   812,   815,   818,   821,   824,   830,   833,
+     839,   842,   845,   851,   854,   860,   863,   866,   872,   875,
+     881,   884,   887,   890,   896,   899,   902,   905,   911,   914,
+     917,   923,   930,   933,   936,   944,   950,   953,   960,   966,
+     972,   978,   984,   988,   992,   996,   999,  1003
 };
 #endif
 
@@ -747,33 +749,34 @@ static const char *const yytname[] =
   "DOTDOT", "LTLT", "BOX", "LTEQ", "GTEQ", "EXPON", "NE", "GTGT", "GE",
   "LE", "EQ", "ASSIGN", "RIGHTSHAFT", "ABORT", "ABS", "ABSTRACT", "ACCEPT",
   "ACCESS", "ALIASED", "ALL", "AND", "ARRAY", "AT", "BEGiN", "BODY",
-  "CASE", "CONSTANT", "DECLARE", "DELAY", "DELTA", "DIGITS", "DO", "ELSE",
-  "ELSIF", "END", "ENTRY", "EXCEPTION", "EXIT", "FOR", "FUNCTION",
-  "GENERIC", "GOTO", "IF", "IN", "IS", "LIMITED", "LOOP", "MUL", "DIV",
-  "MOD", "NEW", "NOT", "SUB", "ADD", "NuLL", "OF", "OR", "OTHERS", "OUT",
-  "PACKAGE", "PRAGMA", "PRIVATE", "PROCEDURE", "PROTECTED", "RAISE",
-  "RANGE", "RECORD", "REM", "RENAMES", "REQUEUE", "RETURN", "REVERSE",
-  "SELECT", "SEPARATE", "SUBTYPE", "TAGGED", "TASK", "TERMINATE", "THEN",
-  "TYPE", "UNTIL", "USE", "WHEN", "WHILE", "WITH", "XOR", "PUT_LINE",
-  "PUT", "GET", "TRuE", "FALsE", "DECIMIAL", "Identifier", "STRINGLITERAL",
-  "PACKAGEID", "INTEGER", "STRING", "NATURAL", "BOOLEAN", "COLON",
-  "SEMICOLON", "LPAREN", "RPAREN", "COMMA", "SINGLEAND", "SINGLEOR",
-  "$accept", "Program", "CompUnit", "Unit", "PackageCall", "SubprogDecl",
-  "SubprogSpec", "$@1", "$@2", "FormalPartOpt", "FormalPart", "Params",
-  "Param", "Type", "InitOpt", "SubprogBody", "$@3", "DeclPart", "Decl",
-  "ObjectDecl", "DefIds", "DefId", "DeclItemOrBodys", "DeclItemOrBody",
-  "Statements", "Statement", "SimpleStmt", "PutStmt", "PutlineStmt",
-  "GetStmt", "CompoundStmt", "NullStmt", "AssignStmt", "ReturnStmt",
-  "ProcedureCall", "ExitStmt", "WhenOpt", "IfStmt", "CondClauses",
-  "CondClause", "CondPart", "Condition", "ElseOpt", "CaseStmt",
-  "Alternatives", "Alternative", "Choices", "Choice", "DiscreteWithRange",
-  "LoopStmt", "LabelOpt", "Iteration", "IterPart", "ReverseOpt",
-  "BasicLoop", "IdOpt", "DiscreteRange", "RangeConstrOpt", "Range",
-  "Block", "BlockDecl", "BlockBody", "Expression", "Logical",
-  "ShortCircuit", "Relation", "Relational", "Membership",
-  "SimpleExpression", "Unary", "Adding", "Term", "Multiplying", "Factor",
-  "Primary", "Name", "IndexedComp", "Values", "Value", "Attribute",
-  "AttributeId", "ParenthesizedPrimary", "Literal", YY_NULLPTR
+  "CASE", "CHARACTER", "CONSTANT", "DECLARE", "DELAY", "DELTA", "DIGITS",
+  "DO", "ELSE", "ELSIF", "END", "ENTRY", "EXCEPTION", "EXIT", "FOR",
+  "FUNCTION", "GENERIC", "GOTO", "IF", "IN", "IS", "LIMITED", "LOOP",
+  "MUL", "DIV", "MOD", "NEW", "NOT", "SUB", "ADD", "NuLL", "OF", "OR",
+  "OTHERS", "OUT", "PACKAGE", "PRAGMA", "PRIVATE", "PROCEDURE",
+  "PROTECTED", "RAISE", "RANGE", "RECORD", "REM", "RENAMES", "REQUEUE",
+  "RETURN", "REVERSE", "SELECT", "SEPARATE", "SUBTYPE", "TAGGED", "TASK",
+  "TERMINATE", "THEN", "TYPE", "UNTIL", "USE", "WHEN", "WHILE", "WITH",
+  "XOR", "PUT_LINE", "PUT", "GET", "TRuE", "FALsE", "DECIMIAL",
+  "SINGLECHAR", "Identifier", "STRINGLITERAL", "PACKAGEID", "INTEGER",
+  "STRING", "NATURAL", "BOOLEAN", "COLON", "SEMICOLON", "LPAREN", "RPAREN",
+  "COMMA", "SINGLEAND", "SINGLEOR", "$accept", "Program", "CompUnit",
+  "Unit", "PackageCall", "SubprogDecl", "SubprogSpec", "$@1", "$@2",
+  "FormalPartOpt", "FormalPart", "Params", "Param", "Type", "InitOpt",
+  "SubprogBody", "$@3", "DeclPart", "Decl", "ObjectDecl", "DefIds",
+  "DefId", "DeclItemOrBodys", "DeclItemOrBody", "Statements", "Statement",
+  "SimpleStmt", "PutStmt", "PutlineStmt", "GetStmt", "CompoundStmt",
+  "NullStmt", "AssignStmt", "ReturnStmt", "ProcedureCall", "ExitStmt",
+  "WhenOpt", "IfStmt", "CondClauses", "CondClause", "CondPart",
+  "Condition", "ElseOpt", "CaseStmt", "Alternatives", "Alternative",
+  "Choices", "Choice", "DiscreteWithRange", "LoopStmt", "LabelOpt",
+  "Iteration", "IterPart", "ReverseOpt", "BasicLoop", "IdOpt",
+  "DiscreteRange", "RangeConstrOpt", "Range", "Block", "BlockDecl",
+  "BlockBody", "Expression", "Logical", "ShortCircuit", "Relation",
+  "Relational", "Membership", "SimpleExpression", "Unary", "Adding",
+  "Term", "Multiplying", "Factor", "Primary", "Name", "IndexedComp",
+  "Values", "Value", "Attribute", "AttributeId", "ParenthesizedPrimary",
+  "Literal", YY_NULLPTR
 };
 
 static const char *
@@ -783,12 +786,12 @@ yysymbol_name (yysymbol_kind_t yysymbol)
 }
 #endif
 
-#define YYPACT_NINF (-141)
+#define YYPACT_NINF (-139)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
 
-#define YYTABLE_NINF (-151)
+#define YYTABLE_NINF (-152)
 
 #define yytable_value_is_error(Yyn) \
   0
@@ -797,33 +800,34 @@ yysymbol_name (yysymbol_kind_t yysymbol)
    STATE-NUM.  */
 static const yytype_int16 yypact[] =
 {
-      45,   -68,   -44,   -79,   -30,   111,    45,  -141,  -141,  -141,
-     -21,  -141,  -141,  -141,    -2,    10,  -141,  -141,  -141,  -141,
-      16,    16,  -141,  -141,   103,    32,    65,  -141,  -141,  -141,
-    -141,  -141,   116,  -141,  -141,   -72,  -141,   103,  -141,    59,
-      31,  -141,   146,   298,   130,    25,    53,  -141,   146,    32,
-    -141,  -141,  -141,  -141,  -141,  -141,   134,    74,   134,    67,
-     101,    68,    71,    76,    -3,  -141,   288,  -141,  -141,  -141,
-    -141,  -141,  -141,  -141,  -141,  -141,  -141,  -141,  -141,  -141,
-    -141,   136,  -141,     3,  -141,  -141,    74,   146,   164,  -141,
-     164,  -141,   333,   333,  -141,  -141,  -141,  -141,  -141,  -141,
-    -141,  -141,   134,    -7,  -141,    85,   216,   113,  -141,   174,
-       4,  -141,  -141,  -141,   102,    20,  -141,   298,   105,   112,
-    -141,  -141,     2,   134,   134,   106,   134,  -141,  -141,   103,
-     115,   134,   158,   132,   116,   120,  -141,   134,   118,   164,
-     134,   121,  -141,  -141,  -141,    12,   127,  -141,   181,  -141,
-     134,   134,  -141,  -141,  -141,  -141,  -141,  -141,  -141,   172,
-    -141,  -141,  -141,   134,   186,   216,   113,  -141,  -141,  -141,
-    -141,   216,   333,   134,   122,   298,   134,   194,   232,  -141,
-    -141,   129,   208,   143,    56,  -141,   189,  -141,   298,    74,
-    -141,   202,   200,  -141,  -141,   112,    48,  -141,  -141,   151,
-     112,  -141,  -141,  -141,   -17,  -141,  -141,  -141,  -141,   -32,
-       7,  -141,     9,   113,  -141,  -141,  -141,  -141,   311,  -141,
-     217,   162,   163,   168,  -141,  -141,   325,   173,   -20,  -141,
-    -141,    74,  -141,   134,  -141,   211,   157,  -141,   134,   182,
-    -141,  -141,  -141,   226,  -141,   134,  -141,   184,  -141,   185,
-    -141,   224,    -6,  -141,  -141,  -141,   112,    30,   -32,  -141,
-    -141,  -141,  -141,  -141,   134,   298,   157,  -141,   246,  -141
+      94,   -67,   -55,   -63,   -48,    92,    94,  -139,  -139,  -139,
+     -36,  -139,  -139,  -139,   -25,     7,  -139,  -139,  -139,  -139,
+      19,    19,  -139,  -139,   -14,    42,    56,  -139,  -139,  -139,
+    -139,  -139,   118,  -139,  -139,    68,  -139,   -14,  -139,    43,
+     -72,  -139,    -2,   368,   121,    -6,    67,  -139,    -2,    42,
+    -139,  -139,  -139,  -139,  -139,  -139,  -139,   171,    70,   171,
+      65,    99,    72,    75,    81,    11,  -139,   248,  -139,  -139,
+    -139,  -139,  -139,  -139,  -139,  -139,  -139,  -139,  -139,  -139,
+    -139,  -139,    40,  -139,     3,  -139,  -139,    70,    -2,   159,
+    -139,   159,  -139,   355,   355,  -139,  -139,  -139,  -139,  -139,
+    -139,  -139,  -139,  -139,   171,    45,  -139,    32,   217,   179,
+    -139,   183,     4,  -139,  -139,  -139,   112,   148,  -139,   368,
+     129,    80,  -139,  -139,    31,   171,   171,   117,   171,  -139,
+    -139,   -14,   120,   171,   169,   146,   118,   126,  -139,   171,
+     119,   159,   171,   128,  -139,  -139,  -139,    44,   153,  -139,
+     200,  -139,   171,   171,  -139,  -139,  -139,  -139,  -139,  -139,
+    -139,   190,  -139,  -139,  -139,   171,   185,   217,   179,  -139,
+    -139,  -139,  -139,   217,   355,   171,   133,   368,   171,   201,
+     288,  -139,  -139,   106,   109,   145,    69,  -139,   206,  -139,
+     368,    70,  -139,   203,   216,  -139,  -139,    80,    82,  -139,
+    -139,   150,    80,  -139,  -139,  -139,    35,  -139,  -139,  -139,
+    -139,    62,     5,  -139,    29,   179,  -139,  -139,  -139,  -139,
+     325,  -139,   210,   157,   158,   165,  -139,  -139,   346,   168,
+      73,  -139,  -139,    70,  -139,   171,  -139,   246,   151,  -139,
+     171,   182,  -139,  -139,  -139,   234,  -139,   171,  -139,   187,
+    -139,   188,  -139,   219,    -8,  -139,  -139,  -139,    80,     8,
+      62,  -139,  -139,  -139,  -139,  -139,   171,   368,   151,  -139,
+     303,  -139
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -832,60 +836,61 @@ static const yytype_int16 yypact[] =
 static const yytype_uint8 yydefact[] =
 {
        0,     0,     0,     0,     0,     0,     2,     3,     7,     5,
-       0,     6,    13,    11,     0,     0,     1,     4,    27,    10,
-      15,    15,     9,     8,    29,     0,     0,    16,    12,    37,
-      32,    40,     0,    41,    31,     0,    35,    30,    38,     0,
-       0,    18,     0,    89,     0,     0,     0,    39,     0,     0,
-      17,    21,    23,    24,    22,    14,     0,    98,     0,     0,
-       0,     0,     0,     0,   150,   153,    89,    42,    44,    51,
-      52,    53,    45,    46,    47,    48,    49,    50,    57,    58,
-      59,    91,    60,     0,   151,   152,    98,     0,    25,    36,
-      25,    19,     0,     0,   133,   132,   163,   164,   165,   161,
-     150,   162,     0,     0,   109,   117,     0,   130,   137,   143,
-     148,   149,   147,    99,    67,    75,    70,    89,     0,    74,
-      61,    63,     0,     0,     0,     0,     0,    90,    43,    29,
-       0,     0,     0,    95,     0,     0,    65,     0,     0,    25,
-       0,     0,    20,   145,   144,     0,   112,    78,   113,   114,
-       0,     0,   124,   126,   122,   125,   123,   121,   127,     0,
-     135,   134,   136,     0,     0,     0,   129,   139,   140,   141,
-     142,     0,     0,     0,     0,    89,     0,     0,    89,    73,
-      64,     0,     0,     0,     0,   107,     0,    92,    89,    98,
-      96,     0,     0,   159,   158,   157,     0,   155,    28,     0,
-      26,    33,   160,   115,     0,   116,   110,   111,   128,   118,
-     120,   119,     0,   131,   138,   146,    68,    66,    89,    71,
-       0,     0,     0,     0,    62,    94,    89,     0,   150,    93,
-     101,    98,   154,     0,    34,     0,     0,    79,     0,     0,
-      55,    54,    56,     0,    88,     0,   100,     0,   156,     0,
-      85,   150,     0,    81,    84,    87,    83,   117,   104,    69,
-      97,   103,   105,    77,     0,    89,     0,    86,    89,    82
+       0,     6,    13,    11,     0,     0,     1,     4,    28,    10,
+      15,    15,     9,     8,    30,     0,     0,    16,    12,    38,
+      33,    41,     0,    42,    32,     0,    36,    31,    39,     0,
+       0,    18,     0,    90,     0,     0,     0,    40,     0,     0,
+      17,    23,    21,    24,    25,    22,    14,     0,    99,     0,
+       0,     0,     0,     0,     0,   151,   154,    90,    43,    45,
+      52,    53,    54,    46,    47,    48,    49,    50,    51,    58,
+      59,    60,    92,    61,     0,   152,   153,    99,     0,    26,
+      37,    26,    19,     0,     0,   134,   133,   165,   166,   167,
+     162,   163,   151,   164,     0,     0,   110,   118,     0,   131,
+     138,   144,   149,   150,   148,   100,    68,    76,    71,    90,
+       0,    75,    62,    64,     0,     0,     0,     0,     0,    91,
+      44,    30,     0,     0,     0,    96,     0,     0,    66,     0,
+       0,    26,     0,     0,    20,   146,   145,     0,   113,    79,
+     114,   115,     0,     0,   125,   127,   123,   126,   124,   122,
+     128,     0,   136,   135,   137,     0,     0,     0,   130,   140,
+     141,   142,   143,     0,     0,     0,     0,    90,     0,     0,
+      90,    74,    65,     0,     0,     0,     0,   108,     0,    93,
+      90,    99,    97,     0,     0,   160,   159,   158,     0,   156,
+      29,     0,    27,    34,   161,   116,     0,   117,   111,   112,
+     129,   119,   121,   120,     0,   132,   139,   147,    69,    67,
+      90,    72,     0,     0,     0,     0,    63,    95,    90,     0,
+     151,    94,   102,    99,   155,     0,    35,     0,     0,    80,
+       0,     0,    56,    55,    57,     0,    89,     0,   101,     0,
+     157,     0,    86,   151,     0,    82,    85,    88,    84,   118,
+     105,    70,    98,   104,   106,    78,     0,    90,     0,    87,
+      90,    83
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int16 yypgoto[] =
 {
-    -141,  -141,  -141,   289,  -141,    34,  -141,  -141,  -141,   280,
-    -141,  -141,   254,   -15,   -71,    46,  -141,   175,  -141,  -141,
-    -141,   260,  -141,   272,  -113,   -64,  -141,  -141,  -141,  -141,
-    -141,  -141,  -141,  -141,  -141,  -141,  -141,  -141,  -141,   144,
-    -141,   -76,  -141,  -141,  -141,  -141,  -141,    60,  -141,  -141,
-    -141,  -141,  -141,  -141,  -141,   -83,  -141,  -141,  -140,  -141,
-    -141,   197,   -55,  -141,  -141,   -60,  -141,  -141,  -115,  -141,
-    -141,   -85,  -141,   148,   -77,   -43,  -141,  -141,   109,  -141,
-    -141,  -141,  -141
+    -139,  -139,  -139,   286,  -139,    33,  -139,  -139,  -139,   276,
+    -139,  -139,   255,   100,   -61,    36,  -139,   175,  -139,  -139,
+    -139,   261,  -139,   272,  -116,   -65,  -139,  -139,  -139,  -139,
+    -139,  -139,  -139,  -139,  -139,  -139,  -139,  -139,  -139,   132,
+    -139,  -113,  -139,  -139,  -139,  -139,  -139,    52,  -139,  -139,
+    -139,  -139,  -139,  -139,  -139,   -83,  -139,  -139,  -138,  -139,
+    -139,   186,   -56,  -139,  -139,    50,  -139,  -139,  -114,  -139,
+    -139,   -90,  -139,   156,   -44,   -43,  -139,  -139,    86,  -139,
+    -139,  -139,  -139
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
-static const yytype_uint8 yydefgoto[] =
+static const yytype_int16 yydefgoto[] =
 {
        0,     5,     6,     7,     8,    30,    10,    21,    20,    26,
-      27,    40,    41,    55,   141,    31,    24,    32,    33,    34,
-      35,    36,    37,    38,    66,    67,    68,    69,    70,    71,
-      72,    73,    74,    75,    76,    77,   174,    78,   115,   116,
-     117,   118,   177,    79,   204,   237,   252,   253,   254,    80,
-      81,   132,   133,   191,   189,   114,   229,   246,   255,    82,
-     134,    44,   119,   150,   151,   104,   163,   164,   105,   106,
-     165,   107,   171,   108,   109,   110,    84,   196,   197,    85,
-     194,   111,   112
+      27,    40,    41,    56,   143,    31,    24,    32,    33,    34,
+      35,    36,    37,    38,    67,    68,    69,    70,    71,    72,
+      73,    74,    75,    76,    77,    78,   176,    79,   117,   118,
+     119,   120,   179,    80,   206,   239,   254,   255,   256,    81,
+      82,   134,   135,   193,   191,   116,   231,   248,   257,    83,
+     136,    44,   121,   152,   153,   106,   165,   166,   107,   108,
+     167,   109,   173,   110,   111,   112,    85,   198,   199,    86,
+     196,   113,   114
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -893,153 +898,162 @@ static const yytype_uint8 yydefgoto[] =
    number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int16 yytable[] =
 {
-      83,   103,   128,   138,   178,   122,   135,   135,   181,   182,
-    -150,   265,  -150,   126,   238,   143,   144,  -150,   146,   142,
-      14,   166,   235,    83,   211,   160,   161,   146,    18,    12,
-      88,  -102,    45,    90,     9,   238,    46,   146,   152,   153,
-       9,   154,   147,   155,   156,   157,    11,   145,   209,   212,
-     245,   230,    11,    13,   148,   187,    87,   175,   176,  -150,
-    -150,  -150,   218,   148,  -150,  -150,   160,   161,   199,    15,
-     236,   184,   139,   148,    83,   226,   212,   162,   158,  -150,
-     213,   146,   195,   149,    19,   200,   159,   160,   161,     1,
-     206,   207,   149,   152,   153,   215,   154,   216,   155,   156,
-     157,   127,   149,    22,   266,   261,   227,   180,   136,   137,
-     137,    16,     2,  -150,   128,    23,  -150,   148,   162,   202,
-      92,   257,    25,   258,   267,    51,    52,    53,    54,    39,
-     212,     3,    83,   158,     4,    83,    49,   146,    50,   162,
-      42,   159,   160,   161,    43,    83,   149,     1,   247,   212,
-      29,   257,   268,    92,   128,   232,   233,    93,    94,    95,
-      96,   224,   128,    48,  -106,   167,   168,   169,   129,    86,
-       2,   113,   120,   148,   123,    83,    92,   124,   195,   130,
-     140,   256,   125,    83,   172,   170,   160,   161,   179,   173,
-      93,    94,    95,    96,   162,    97,    98,    99,   100,   101,
-      29,    65,   149,   183,   128,    92,   121,   102,   190,   188,
-     203,   256,   186,    93,    94,    95,    96,   193,   205,   250,
-     208,    92,    83,   198,   131,    83,   201,   217,    97,    98,
-      99,   100,   101,   220,    65,    92,   221,   225,   162,   231,
-     102,   249,    93,    94,    95,    96,    51,    52,    53,    54,
-     223,    97,    98,    99,   251,   101,   234,    65,    93,    94,
-      95,    96,    56,   102,   239,   160,   161,   240,   241,   -72,
-     -72,   -72,    93,   242,    57,    96,    56,   260,   244,    58,
-      97,    98,    99,   210,   101,   -80,    65,   259,    57,   262,
-     263,    59,   102,    58,   264,    17,    97,    98,    99,   228,
-     101,    28,    65,    91,   185,    59,    89,    60,   102,    47,
-      97,    98,    99,   100,   101,   222,    65,   162,    56,   214,
-     219,    60,   102,    61,    62,    63,   269,  -108,    56,    64,
-      57,   192,    65,   -80,     0,    58,     0,    61,    62,    63,
-      57,    56,   248,    64,     0,    58,    65,    59,     0,     0,
-     -76,     0,     0,    57,     0,    56,     0,    59,    58,     0,
-       0,     0,     0,    60,   243,     0,     0,    57,     0,     0,
-      59,     0,    58,    60,     0,     0,     0,     0,     0,    61,
-      62,    63,     0,     0,    59,    64,    60,     0,    65,    61,
-      62,    63,    96,     0,     0,    64,     0,     0,    65,     0,
-      60,     0,    61,    62,    63,     0,     0,     0,    64,     0,
-       0,    65,     0,     0,     0,     0,    61,    62,    63,     0,
-       0,     0,    64,     0,     0,    65,     0,    97,    98,    99,
-     100,   101,     0,    65,     0,     0,     0,     0,     0,   102
+      84,   105,   130,   180,   140,   124,   137,   137,  -151,   267,
+    -151,   183,   184,   240,    18,  -151,   154,   155,   168,   156,
+     189,   157,   158,   159,    84,    51,    88,   128,   213,    51,
+     144,     1,    12,     9,   240,    49,    11,    50,    14,     9,
+     154,   155,    11,   156,    13,   157,   158,   159,   147,   145,
+     146,   211,   214,    15,     2,   232,   148,   160,  -151,  -151,
+    -151,   220,   218,  -151,  -151,   161,   162,   163,  -107,   148,
+     148,    19,   186,   131,   228,   237,    84,   215,  -151,   214,
+     201,   160,    22,   197,   132,    29,   202,   162,   163,   161,
+     162,   163,    16,   150,   148,   149,    52,    53,    54,    55,
+      52,    53,    54,    55,   268,   148,   150,   150,   229,   263,
+     138,   139,   139,  -151,    23,   130,  -151,   129,    93,   164,
+     162,   163,   151,   238,   259,  -103,   260,    25,   269,   133,
+     217,   150,    42,   214,    84,   151,   151,    84,   182,     1,
+     164,    39,   150,   164,   247,    89,    43,    84,    91,    48,
+     249,   270,   214,   204,   259,   130,    94,    95,    96,    97,
+     151,    87,     2,   130,   162,   163,    29,   162,   163,   115,
+      93,   151,   122,   164,    45,   142,   226,    84,    46,   197,
+     125,     3,   258,   126,     4,    84,   177,   178,   141,   127,
+      93,   234,   235,   174,    98,    99,   100,   101,   102,   103,
+     175,    66,   208,   209,    93,   130,   123,   104,    94,    95,
+      96,    97,   258,   181,   252,   223,   185,   164,   224,   188,
+     164,   190,    93,   192,    84,   195,   200,    84,    94,    95,
+      96,    97,   169,   170,   171,   203,    93,   205,   207,   210,
+     219,   222,    94,    95,    96,    97,    98,    99,   100,   101,
+     253,   103,   172,    66,   225,   227,   233,   236,   241,   104,
+      94,    95,    96,    97,   242,   243,    98,    99,   100,   101,
+     102,   103,   244,    66,    94,   246,   251,    97,    57,   104,
+      98,    99,   100,   101,   212,   103,   262,    66,  -109,   261,
+     266,    58,    17,   104,   264,   265,    59,    28,    98,    99,
+     100,   101,   230,   103,    92,    66,   187,    90,    60,    47,
+     221,   104,    98,    99,   100,   101,   102,   103,    57,    66,
+     271,   250,   194,     0,    61,   104,   -73,   -73,   -73,   216,
+       0,    58,     0,    57,     0,     0,    59,     0,     0,     0,
+      62,    63,    64,   -81,     0,     0,    58,    65,    60,     0,
+      66,    59,     0,     0,     0,    57,     0,     0,     0,     0,
+       0,     0,     0,    60,    61,   -77,     0,     0,    58,     0,
+       0,     0,     0,    59,     0,     0,    57,     0,     0,    61,
+      62,    63,    64,     0,     0,    60,   245,    65,     0,    58,
+      66,   -81,     0,     0,    59,    62,    63,    64,    57,     0,
+       0,    61,    65,     0,     0,    66,    60,     0,     0,     0,
+       0,    58,     0,     0,     0,    97,    59,    62,    63,    64,
+       0,     0,    61,     0,    65,     0,     0,    66,    60,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,    62,    63,
+      64,     0,     0,     0,    61,    65,     0,     0,    66,     0,
+      98,    99,   100,   101,   102,   103,     0,    66,     0,     0,
+      62,    63,    64,   104,     0,     0,     0,    65,     0,     0,
+      66
 };
 
 static const yytype_int16 yycheck[] =
 {
-      43,    56,    66,    86,   117,    60,     3,     3,   123,   124,
-       3,    17,     5,    16,     5,    92,    93,    10,    25,    90,
-      99,   106,    39,    66,   164,    57,    58,    25,    49,    97,
-      45,    51,   104,    48,     0,     5,   108,    25,     8,     9,
-       6,    11,    49,    13,    14,    15,     0,   102,   163,   164,
-      70,   191,     6,    97,    61,   131,    31,    37,    38,    52,
-      53,    54,   175,    61,    57,    58,    57,    58,   139,    99,
-      87,   126,    87,    61,   117,   188,   191,   109,    48,    72,
-     165,    25,   137,    90,   105,   140,    56,    57,    58,    44,
-     150,   151,    90,     8,     9,   172,    11,   173,    13,    14,
-      15,   104,    90,   105,   110,   245,   189,   105,   105,   106,
-     106,     0,    67,   106,   178,   105,   109,    61,   109,   107,
-      19,   236,   106,   238,   264,   100,   101,   102,   103,    97,
-     245,    86,   175,    48,    89,   178,   105,    25,   107,   109,
-      75,    56,    57,    58,    28,   188,    90,    44,   231,   264,
-      97,   266,   265,    19,   218,   107,   108,    56,    57,    58,
-      59,   105,   226,   104,    28,    52,    53,    54,    32,    39,
-      67,    97,   105,    61,   106,   218,    19,   106,   233,    43,
-      16,   236,   106,   226,    10,    72,    57,    58,    83,    87,
-      56,    57,    58,    59,   109,    94,    95,    96,    97,    98,
-      97,   100,    90,    97,   268,    19,   105,   106,    76,    51,
-      83,   266,    97,    56,    57,    58,    59,    97,    37,    62,
-      48,    19,   265,   105,    88,   268,   105,   105,    94,    95,
-      96,    97,    98,    39,   100,    19,   107,    48,   109,    39,
-     106,    30,    56,    57,    58,    59,   100,   101,   102,   103,
-     107,    94,    95,    96,    97,    98,   105,   100,    56,    57,
-      58,    59,    30,   106,    47,    57,    58,   105,   105,    37,
-      38,    39,    56,   105,    42,    59,    30,    51,   105,    47,
-      94,    95,    96,    97,    98,    39,   100,   105,    42,   105,
-     105,    59,   106,    47,    70,     6,    94,    95,    96,    97,
-      98,    21,   100,    49,   129,    59,    46,    75,   106,    37,
-      94,    95,    96,    97,    98,   107,   100,   109,    30,   171,
-     176,    75,   106,    91,    92,    93,   266,    39,    30,    97,
-      42,   134,   100,    87,    -1,    47,    -1,    91,    92,    93,
-      42,    30,   233,    97,    -1,    47,   100,    59,    -1,    -1,
-      39,    -1,    -1,    42,    -1,    30,    -1,    59,    47,    -1,
-      -1,    -1,    -1,    75,    39,    -1,    -1,    42,    -1,    -1,
-      59,    -1,    47,    75,    -1,    -1,    -1,    -1,    -1,    91,
-      92,    93,    -1,    -1,    59,    97,    75,    -1,   100,    91,
-      92,    93,    59,    -1,    -1,    97,    -1,    -1,   100,    -1,
-      75,    -1,    91,    92,    93,    -1,    -1,    -1,    97,    -1,
-      -1,   100,    -1,    -1,    -1,    -1,    91,    92,    93,    -1,
-      -1,    -1,    97,    -1,    -1,   100,    -1,    94,    95,    96,
-      97,    98,    -1,   100,    -1,    -1,    -1,    -1,    -1,   106
+      43,    57,    67,   119,    87,    61,     3,     3,     3,    17,
+       5,   125,   126,     5,    50,    10,     8,     9,   108,    11,
+     133,    13,    14,    15,    67,    31,    32,    16,   166,    31,
+      91,    45,    99,     0,     5,   107,     0,   109,   101,     6,
+       8,     9,     6,    11,    99,    13,    14,    15,   104,    93,
+      94,   165,   166,   101,    68,   193,    25,    49,    53,    54,
+      55,   177,   175,    58,    59,    57,    58,    59,    28,    25,
+      25,   107,   128,    33,   190,    40,   119,   167,    73,   193,
+     141,    49,   107,   139,    44,    99,   142,    58,    59,    57,
+      58,    59,     0,    62,    25,    50,   102,   103,   104,   105,
+     102,   103,   104,   105,   112,    25,    62,    62,   191,   247,
+     107,   108,   108,   108,   107,   180,   111,   106,    19,   111,
+      58,    59,    91,    88,   238,    52,   240,   108,   266,    89,
+     174,    62,    76,   247,   177,    91,    91,   180,   107,    45,
+     111,    99,    62,   111,    71,    45,    28,   190,    48,   106,
+     233,   267,   266,   109,   268,   220,    57,    58,    59,    60,
+      91,    40,    68,   228,    58,    59,    99,    58,    59,    99,
+      19,    91,   107,   111,   106,    16,   107,   220,   110,   235,
+     108,    87,   238,   108,    90,   228,    38,    39,    88,   108,
+      19,   109,   110,    10,    95,    96,    97,    98,    99,   100,
+      88,   102,   152,   153,    19,   270,   107,   108,    57,    58,
+      59,    60,   268,    84,    63,   109,    99,   111,   109,    99,
+     111,    52,    19,    77,   267,    99,   107,   270,    57,    58,
+      59,    60,    53,    54,    55,   107,    19,    84,    38,    49,
+     107,    40,    57,    58,    59,    60,    95,    96,    97,    98,
+      99,   100,    73,   102,   109,    49,    40,   107,    48,   108,
+      57,    58,    59,    60,   107,   107,    95,    96,    97,    98,
+      99,   100,   107,   102,    57,   107,    30,    60,    30,   108,
+      95,    96,    97,    98,    99,   100,    52,   102,    40,   107,
+      71,    43,     6,   108,   107,   107,    48,    21,    95,    96,
+      97,    98,    99,   100,    49,   102,   131,    46,    60,    37,
+     178,   108,    95,    96,    97,    98,    99,   100,    30,   102,
+     268,   235,   136,    -1,    76,   108,    38,    39,    40,   173,
+      -1,    43,    -1,    30,    -1,    -1,    48,    -1,    -1,    -1,
+      92,    93,    94,    40,    -1,    -1,    43,    99,    60,    -1,
+     102,    48,    -1,    -1,    -1,    30,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    60,    76,    40,    -1,    -1,    43,    -1,
+      -1,    -1,    -1,    48,    -1,    -1,    30,    -1,    -1,    76,
+      92,    93,    94,    -1,    -1,    60,    40,    99,    -1,    43,
+     102,    88,    -1,    -1,    48,    92,    93,    94,    30,    -1,
+      -1,    76,    99,    -1,    -1,   102,    60,    -1,    -1,    -1,
+      -1,    43,    -1,    -1,    -1,    60,    48,    92,    93,    94,
+      -1,    -1,    76,    -1,    99,    -1,    -1,   102,    60,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    92,    93,
+      94,    -1,    -1,    -1,    76,    99,    -1,    -1,   102,    -1,
+      95,    96,    97,    98,    99,   100,    -1,   102,    -1,    -1,
+      92,    93,    94,   108,    -1,    -1,    -1,    99,    -1,    -1,
+     102
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
    state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,    44,    67,    86,    89,   112,   113,   114,   115,   116,
-     117,   126,    97,    97,    99,    99,     0,   114,    49,   105,
-     119,   118,   105,   105,   127,   106,   120,   121,   120,    97,
-     116,   126,   128,   129,   130,   131,   132,   133,   134,    97,
-     122,   123,    75,    28,   172,   104,   108,   134,   104,   105,
-     107,   100,   101,   102,   103,   124,    30,    42,    47,    59,
-      75,    91,    92,    93,    97,   100,   135,   136,   137,   138,
-     139,   140,   141,   142,   143,   144,   145,   146,   148,   154,
-     160,   161,   170,   186,   187,   190,    39,    31,   124,   132,
-     124,   123,    19,    56,    57,    58,    59,    94,    95,    96,
-      97,    98,   106,   173,   176,   179,   180,   182,   184,   185,
-     186,   192,   193,    97,   166,   149,   150,   151,   152,   173,
-     105,   105,   173,   106,   106,   106,    16,   104,   136,    32,
-      43,    88,   162,   163,   171,     3,   105,   106,   166,   124,
-      16,   125,   125,   185,   185,   173,    25,    49,    61,    90,
-     174,   175,     8,     9,    11,    13,    14,    15,    48,    56,
-      57,    58,   109,   177,   178,   181,   182,    52,    53,    54,
-      72,   183,    10,    87,   147,    37,    38,   153,   135,    83,
-     105,   179,   179,    97,   173,   128,    97,   152,    51,   165,
-      76,   164,   172,    97,   191,   173,   188,   189,   105,   125,
-     173,   105,   107,    83,   155,    37,   176,   176,    48,   179,
-      97,   169,   179,   182,   184,   185,   152,   105,   135,   150,
-      39,   107,   107,   107,   105,    48,   135,   166,    97,   167,
-     169,    39,   107,   108,   105,    39,    87,   156,     5,    47,
-     105,   105,   105,    39,   105,    70,   168,   166,   189,    30,
-      62,    97,   157,   158,   159,   169,   173,   179,   179,   105,
-      51,   169,   105,   105,    70,    17,   110,   169,   135,   158
+       0,    45,    68,    87,    90,   114,   115,   116,   117,   118,
+     119,   128,    99,    99,   101,   101,     0,   116,    50,   107,
+     121,   120,   107,   107,   129,   108,   122,   123,   122,    99,
+     118,   128,   130,   131,   132,   133,   134,   135,   136,    99,
+     124,   125,    76,    28,   174,   106,   110,   136,   106,   107,
+     109,    31,   102,   103,   104,   105,   126,    30,    43,    48,
+      60,    76,    92,    93,    94,    99,   102,   137,   138,   139,
+     140,   141,   142,   143,   144,   145,   146,   147,   148,   150,
+     156,   162,   163,   172,   188,   189,   192,    40,    32,   126,
+     134,   126,   125,    19,    57,    58,    59,    60,    95,    96,
+      97,    98,    99,   100,   108,   175,   178,   181,   182,   184,
+     186,   187,   188,   194,   195,    99,   168,   151,   152,   153,
+     154,   175,   107,   107,   175,   108,   108,   108,    16,   106,
+     138,    33,    44,    89,   164,   165,   173,     3,   107,   108,
+     168,   126,    16,   127,   127,   187,   187,   175,    25,    50,
+      62,    91,   176,   177,     8,     9,    11,    13,    14,    15,
+      49,    57,    58,    59,   111,   179,   180,   183,   184,    53,
+      54,    55,    73,   185,    10,    88,   149,    38,    39,   155,
+     137,    84,   107,   181,   181,    99,   175,   130,    99,   154,
+      52,   167,    77,   166,   174,    99,   193,   175,   190,   191,
+     107,   127,   175,   107,   109,    84,   157,    38,   178,   178,
+      49,   181,    99,   171,   181,   184,   186,   187,   154,   107,
+     137,   152,    40,   109,   109,   109,   107,    49,   137,   168,
+      99,   169,   171,    40,   109,   110,   107,    40,    88,   158,
+       5,    48,   107,   107,   107,    40,   107,    71,   170,   168,
+     191,    30,    63,    99,   159,   160,   161,   171,   175,   181,
+     181,   107,    52,   171,   107,   107,    71,    17,   112,   171,
+     137,   160
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,   111,   112,   113,   113,   114,   114,   114,   115,   115,
-     116,   118,   117,   119,   117,   120,   120,   121,   122,   122,
-     123,   124,   124,   124,   124,   125,   125,   127,   126,   128,
-     128,   129,   129,   130,   130,   131,   131,   132,   133,   133,
-     134,   134,   135,   135,   136,   136,   137,   137,   137,   137,
-     137,   137,   137,   137,   138,   139,   140,   141,   141,   141,
-     141,   142,   143,   144,   144,   145,   146,   147,   147,   148,
-     149,   149,   150,   151,   152,   153,   153,   154,   155,   155,
-     156,   157,   157,   158,   158,   158,   159,   159,   160,   161,
-     161,   162,   162,   162,   163,   164,   164,   165,   166,   166,
-     167,   167,   168,   168,   169,   170,   171,   171,   172,   173,
-     173,   173,   174,   174,   174,   175,   175,   176,   176,   176,
-     176,   177,   177,   177,   177,   177,   177,   178,   178,   179,
-     179,   179,   180,   180,   181,   181,   181,   182,   182,   183,
-     183,   183,   183,   184,   184,   184,   184,   185,   185,   185,
-     186,   186,   186,   186,   187,   188,   188,   189,   190,   191,
-     192,   193,   193,   193,   193,   193
+       0,   113,   114,   115,   115,   116,   116,   116,   117,   117,
+     118,   120,   119,   121,   119,   122,   122,   123,   124,   124,
+     125,   126,   126,   126,   126,   126,   127,   127,   129,   128,
+     130,   130,   131,   131,   132,   132,   133,   133,   134,   135,
+     135,   136,   136,   137,   137,   138,   138,   139,   139,   139,
+     139,   139,   139,   139,   139,   140,   141,   142,   143,   143,
+     143,   143,   144,   145,   146,   146,   147,   148,   149,   149,
+     150,   151,   151,   152,   153,   154,   155,   155,   156,   157,
+     157,   158,   159,   159,   160,   160,   160,   161,   161,   162,
+     163,   163,   164,   164,   164,   165,   166,   166,   167,   168,
+     168,   169,   169,   170,   170,   171,   172,   173,   173,   174,
+     175,   175,   175,   176,   176,   176,   177,   177,   178,   178,
+     178,   178,   179,   179,   179,   179,   179,   179,   180,   180,
+     181,   181,   181,   182,   182,   183,   183,   183,   184,   184,
+     185,   185,   185,   185,   186,   186,   186,   186,   187,   187,
+     187,   188,   188,   188,   188,   189,   190,   190,   191,   192,
+     193,   194,   195,   195,   195,   195,   195,   195
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
@@ -1047,21 +1061,21 @@ static const yytype_int8 yyr2[] =
 {
        0,     2,     1,     1,     2,     1,     1,     1,     3,     3,
        2,     0,     4,     0,     6,     0,     1,     3,     1,     3,
-       4,     1,     1,     1,     1,     0,     2,     0,     8,     0,
-       1,     1,     1,     5,     6,     1,     3,     1,     1,     2,
-       1,     1,     1,     2,     1,     1,     1,     1,     1,     1,
-       1,     1,     1,     1,     5,     5,     5,     1,     1,     1,
-       1,     2,     4,     2,     3,     2,     4,     0,     2,     6,
-       1,     3,     2,     2,     1,     0,     2,     7,     0,     2,
-       4,     1,     3,     1,     1,     1,     3,     1,     5,     0,
-       2,     0,     2,     3,     3,     0,     1,     4,     0,     1,
-       2,     1,     0,     2,     3,     6,     0,     2,     2,     1,
-       3,     3,     1,     1,     1,     2,     2,     1,     3,     3,
-       3,     1,     1,     1,     1,     1,     1,     1,     2,     2,
-       1,     3,     1,     1,     1,     1,     1,     1,     3,     1,
-       1,     1,     1,     1,     2,     2,     3,     1,     1,     1,
-       1,     1,     1,     1,     4,     1,     3,     1,     3,     1,
-       3,     1,     1,     1,     1,     1
+       4,     1,     1,     1,     1,     1,     0,     2,     0,     8,
+       0,     1,     1,     1,     5,     6,     1,     3,     1,     1,
+       2,     1,     1,     1,     2,     1,     1,     1,     1,     1,
+       1,     1,     1,     1,     1,     5,     5,     5,     1,     1,
+       1,     1,     2,     4,     2,     3,     2,     4,     0,     2,
+       6,     1,     3,     2,     2,     1,     0,     2,     7,     0,
+       2,     4,     1,     3,     1,     1,     1,     3,     1,     5,
+       0,     2,     0,     2,     3,     3,     0,     1,     4,     0,
+       1,     2,     1,     0,     2,     3,     6,     0,     2,     2,
+       1,     3,     3,     1,     1,     1,     2,     2,     1,     3,
+       3,     3,     1,     1,     1,     1,     1,     1,     1,     2,
+       2,     1,     3,     1,     1,     1,     1,     1,     1,     3,
+       1,     1,     1,     1,     1,     2,     2,     3,     1,     1,
+       1,     1,     1,     1,     1,     4,     1,     3,     1,     3,
+       1,     3,     1,     1,     1,     1,     1,     1
 };
 
 
@@ -1525,75 +1539,75 @@ yyreduce:
   switch (yyn)
     {
   case 2: /* Program: CompUnit  */
-#line 150 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 153 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                {
         ast.setRoot((yyvsp[0].StmtType));
     }
-#line 1533 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1547 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 3: /* CompUnit: Unit  */
-#line 156 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 159 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
            {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 1541 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1555 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 4: /* CompUnit: CompUnit Unit  */
-#line 159 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 162 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                     {
         (yyval.StmtType) = new SeqNode((yyvsp[-1].StmtType), (yyvsp[0].StmtType));
     }
-#line 1549 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1563 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 5: /* Unit: SubprogDecl  */
-#line 165 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 168 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                   {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 1557 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1571 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 6: /* Unit: SubprogBody  */
-#line 168 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 171 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                       {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 1565 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1579 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 7: /* Unit: PackageCall  */
-#line 171 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 174 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                   {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 1573 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1587 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 8: /* PackageCall: WITH PACKAGEID SEMICOLON  */
-#line 178 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 181 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                {
         DEBUG_YACC("================Enter PackageCall=================");
         (yyval.StmtType) = new PackageCall((yyvsp[-1].StrType));
         DEBUG_YACC("================Leave PackageCall=================");
     }
-#line 1583 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1597 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 9: /* PackageCall: USE PACKAGEID SEMICOLON  */
-#line 183 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 186 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                               {
         DEBUG_YACC("================Enter PackageCall=================");
         (yyval.StmtType) = new PackageCall((yyvsp[-1].StrType));
         DEBUG_YACC("================Leave PackageCall=================");
     }
-#line 1593 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1607 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 10: /* SubprogDecl: SubprogSpec SEMICOLON  */
-#line 191 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 194 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                             {
         DEBUG_YACC("================Enter SubprogDecl=================");
         (yyval.StmtType) = new ProcedureDecl(dynamic_cast<ProcedureSpec*>((yyvsp[-1].StmtType)));
@@ -1603,11 +1617,11 @@ yyreduce:
         delete ScopeTable;
         DEBUG_YACC("================Leave SubprogDecl=================");
     }
-#line 1607 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1621 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 11: /* $@1: %empty  */
-#line 203 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 206 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                            {
         DEBUG_YACC("================Enter SubprogSpec=================");
         // Register procedure name into symbol table.
@@ -1619,11 +1633,11 @@ yyreduce:
         }
         identifiers = new SymbolTable(identifiers);
     }
-#line 1623 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1637 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 12: /* SubprogSpec: PROCEDURE Identifier $@1 FormalPartOpt  */
-#line 213 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 216 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                     {
         SymbolEntry *se = identifiers->lookup((yyvsp[-2].StrType));
         ProcedureType* proType = dynamic_cast<ProcedureType*>(se->getType());
@@ -1645,11 +1659,11 @@ yyreduce:
         (yyval.StmtType) = new ProcedureSpec(se, param);
         DEBUG_YACC("================Leave SubprogSpec=================");
     }
-#line 1649 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1663 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 13: /* $@2: %empty  */
-#line 234 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 237 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                           {
         DEBUG_YACC("================Enter SubprogSpec=================");
         // Register procedure name into symbol table.
@@ -1661,11 +1675,11 @@ yyreduce:
         }
         identifiers = new SymbolTable(identifiers);
     }
-#line 1665 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1679 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 14: /* SubprogSpec: FUNCTION Identifier $@2 FormalPartOpt RETURN Type  */
-#line 244 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 247 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                {
         SymbolEntry *se = identifiers->lookup((yyvsp[-4].StrType));
         ProcedureType* proType = dynamic_cast<ProcedureType*>(se->getType());
@@ -1689,117 +1703,125 @@ yyreduce:
         (yyval.StmtType) = new ProcedureSpec(se, param);
         DEBUG_YACC("================Leave SubprogSpec=================");
     }
-#line 1693 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 15: /* FormalPartOpt: %empty  */
-#line 270 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-             { (yyval.StmtType) = nullptr; }
-#line 1699 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 16: /* FormalPartOpt: FormalPart  */
-#line 271 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                     {
-        (yyval.StmtType) = (yyvsp[0].StmtType);
-    }
 #line 1707 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
+  case 15: /* FormalPartOpt: %empty  */
+#line 273 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+             { (yyval.StmtType) = nullptr; }
+#line 1713 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 16: /* FormalPartOpt: FormalPart  */
+#line 274 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                     {
+        (yyval.StmtType) = (yyvsp[0].StmtType);
+    }
+#line 1721 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
   case 17: /* FormalPart: LPAREN Params RPAREN  */
-#line 277 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 280 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                            {
         (yyval.StmtType) = (yyvsp[-1].StmtType);
     }
-#line 1715 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1729 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 18: /* Params: Param  */
-#line 283 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 286 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
             {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 1723 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1737 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 19: /* Params: Params SEMICOLON Param  */
-#line 286 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 289 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                  {
         (yyval.StmtType) = (yyvsp[-2].StmtType);
         (yyvsp[-2].StmtType)->setNext((yyvsp[0].StmtType));
     }
-#line 1732 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1746 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 20: /* Param: Identifier COLON Type InitOpt  */
-#line 292 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 295 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                       {
         SymbolEntry *se = new IdentifierSymbolEntry((yyvsp[-1].type), (yyvsp[-3].StrType), IdentifierSymbolEntry::PARAM);
         identifiers->install((yyvsp[-3].StrType), se);
         (yyval.StmtType) = new ParamNode(se, dynamic_cast<InitOptStmt*>((yyvsp[0].StmtType)));
     }
-#line 1742 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1756 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 21: /* Type: INTEGER  */
-#line 300 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 303 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
               {
         (yyval.type) = TypeSystem::integerType;
     }
-#line 1750 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1764 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
   case 22: /* Type: BOOLEAN  */
-#line 303 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 306 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
               {
         (yyval.type) = TypeSystem::boolType;
     }
-#line 1758 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1772 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 23: /* Type: STRING  */
-#line 306 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-             {
-        (yyval.type) = TypeSystem::stringType;
-    }
-#line 1766 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 24: /* Type: NATURAL  */
+  case 23: /* Type: CHARACTER  */
 #line 309 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-              {
-        (yyval.type) = TypeSystem::naturalType;
+                {
+         (yyval.type) = TypeSystem::characterType;
     }
-#line 1774 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 25: /* InitOpt: %empty  */
-#line 314 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                 { (yyval.StmtType) = nullptr; }
 #line 1780 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 26: /* InitOpt: ASSIGN Expression  */
-#line 315 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                            {
-        (yyval.StmtType) = new InitOptStmt((yyvsp[0].ExprType));
+  case 24: /* Type: STRING  */
+#line 312 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+             {
+        (yyval.type) = TypeSystem::stringType;
     }
 #line 1788 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 27: /* $@3: %empty  */
+  case 25: /* Type: NATURAL  */
+#line 315 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+              {
+        (yyval.type) = TypeSystem::naturalType;
+    }
+#line 1796 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 26: /* InitOpt: %empty  */
+#line 320 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                 { (yyval.StmtType) = nullptr; }
+#line 1802 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 27: /* InitOpt: ASSIGN Expression  */
 #line 321 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                            {
+        (yyval.StmtType) = new InitOptStmt((yyvsp[0].ExprType));
+    }
+#line 1810 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 28: /* $@3: %empty  */
+#line 327 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                      {
         DEBUG_YACC("================Enter SubprogBody=================");
         // Enter into new scope.
         identifiers = new SymbolTable(identifiers);
         procedureIters.push_back(dynamic_cast<ProcedureSpec*>((yyvsp[-1].StmtType)));
     }
-#line 1799 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1821 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 28: /* SubprogBody: SubprogSpec IS $@3 DeclPart BlockBody END IdOpt SEMICOLON  */
-#line 326 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 29: /* SubprogBody: SubprogSpec IS $@3 DeclPart BlockBody END IdOpt SEMICOLON  */
+#line 332 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                              {
         procedureIters.pop_back();
         ProcedureSpec* prev = procedureIters.empty()? nullptr : procedureIters.back();
@@ -1812,41 +1834,41 @@ yyreduce:
         delete PrevTable;
         DEBUG_YACC("================Leave SubprogBody=================");
     }
-#line 1816 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 29: /* DeclPart: %empty  */
-#line 340 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                 { (yyval.StmtType) = nullptr; }
-#line 1822 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 30: /* DeclPart: DeclItemOrBodys  */
-#line 341 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                          {
-        (yyval.StmtType) = (yyvsp[0].StmtType);
-    }
-#line 1830 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 31: /* Decl: ObjectDecl  */
-#line 348 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-               {
-        (yyval.StmtType) = new DeclStmt(dynamic_cast<ObjectDeclStmt*>((yyvsp[0].StmtType)));
-    }
 #line 1838 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 32: /* Decl: SubprogDecl  */
-#line 351 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 30: /* DeclPart: %empty  */
+#line 346 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                 { (yyval.StmtType) = nullptr; }
+#line 1844 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 31: /* DeclPart: DeclItemOrBodys  */
+#line 347 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                          {
+        (yyval.StmtType) = (yyvsp[0].StmtType);
+    }
+#line 1852 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 32: /* Decl: ObjectDecl  */
+#line 354 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+               {
+        (yyval.StmtType) = new DeclStmt(dynamic_cast<ObjectDeclStmt*>((yyvsp[0].StmtType)));
+    }
+#line 1860 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 33: /* Decl: SubprogDecl  */
+#line 357 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                   {
         (yyval.StmtType) = new DeclStmt(dynamic_cast<ProcedureDecl*>((yyvsp[0].StmtType)));
     }
-#line 1846 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1868 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 33: /* ObjectDecl: DefIds COLON Type InitOpt SEMICOLON  */
-#line 357 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 34: /* ObjectDecl: DefIds COLON Type InitOpt SEMICOLON  */
+#line 363 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                           {
         DEBUG_YACC("================Enter ObjectDecl=================");
         // Reset the type of id
@@ -1858,11 +1880,11 @@ yyreduce:
         (yyval.StmtType) = new ObjectDeclStmt(dynamic_cast<DefId*>((yyvsp[-4].StmtType)), dynamic_cast<InitOptStmt*>((yyvsp[-1].StmtType)));
         DEBUG_YACC("================Leave ObjectDecl=================");
     }
-#line 1862 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1884 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 34: /* ObjectDecl: DefIds COLON CONSTANT Type InitOpt SEMICOLON  */
-#line 368 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 35: /* ObjectDecl: DefIds COLON CONSTANT Type InitOpt SEMICOLON  */
+#line 374 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                                    {
         DEBUG_YACC("================Enter CONSTANT ObjectDecl=================");
         DefId* id = dynamic_cast<DefId*>((yyvsp[-5].StmtType));
@@ -1875,184 +1897,184 @@ yyreduce:
         (yyval.StmtType) = new ObjectDeclStmt(dynamic_cast<DefId*>((yyvsp[-5].StmtType)), dynamic_cast<InitOptStmt*>((yyvsp[-1].StmtType)));
         DEBUG_YACC("================Leave CONSTANT ObjectDecl=================");
     }
-#line 1879 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1901 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 35: /* DefIds: DefId  */
-#line 383 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 36: /* DefIds: DefId  */
+#line 389 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
             {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 1887 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1909 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 36: /* DefIds: DefIds COMMA DefId  */
-#line 386 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 37: /* DefIds: DefIds COMMA DefId  */
+#line 392 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                          {
         (yyval.StmtType) = (yyvsp[-2].StmtType);
         (yyvsp[-2].StmtType)->setNext((yyvsp[0].StmtType));
     }
-#line 1896 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1918 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 37: /* DefId: Identifier  */
-#line 393 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 38: /* DefId: Identifier  */
+#line 399 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                  {
         IdentifierSymbolEntry *se = new IdentifierSymbolEntry((yyvsp[0].StrType), identifiers->getLevel());
         identifiers->install((yyvsp[0].StrType), se);
         (yyval.StmtType) = new DefId(se);
     }
-#line 1906 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1928 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 38: /* DeclItemOrBodys: DeclItemOrBody  */
-#line 401 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 39: /* DeclItemOrBodys: DeclItemOrBody  */
+#line 407 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                      {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 1914 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1936 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 39: /* DeclItemOrBodys: DeclItemOrBodys DeclItemOrBody  */
-#line 404 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 40: /* DeclItemOrBodys: DeclItemOrBodys DeclItemOrBody  */
+#line 410 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                          {
         (yyval.StmtType) = (yyvsp[-1].StmtType);
         (yyvsp[-1].StmtType)->setNext((yyvsp[0].StmtType));
     }
-#line 1923 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1945 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 40: /* DeclItemOrBody: SubprogBody  */
-#line 411 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 41: /* DeclItemOrBody: SubprogBody  */
+#line 417 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                   {
         (yyval.StmtType) = new DeclItemOrBodyStmt(dynamic_cast<ProcedureDef*>((yyvsp[0].StmtType)));
     }
-#line 1931 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1953 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 41: /* DeclItemOrBody: Decl  */
-#line 414 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 42: /* DeclItemOrBody: Decl  */
+#line 420 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                {
         (yyval.StmtType) = new DeclItemOrBodyStmt(dynamic_cast<DeclStmt*>((yyvsp[0].StmtType)));
     }
-#line 1939 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1961 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 42: /* Statements: Statement  */
-#line 420 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 43: /* Statements: Statement  */
+#line 426 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                 {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 1947 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1969 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 43: /* Statements: Statements Statement  */
-#line 423 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 44: /* Statements: Statements Statement  */
+#line 429 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                {
         (yyval.StmtType) = (yyvsp[-1].StmtType);
         (yyvsp[-1].StmtType)->setNext((yyvsp[0].StmtType));
     }
-#line 1956 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1978 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 44: /* Statement: SimpleStmt  */
-#line 430 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 45: /* Statement: SimpleStmt  */
+#line 436 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                  {
         (yyval.StmtType) = new Stmt((yyvsp[0].StmtType));
     }
-#line 1964 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1986 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 45: /* Statement: CompoundStmt  */
-#line 433 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 46: /* Statement: CompoundStmt  */
+#line 439 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                        {
         (yyval.StmtType) = new Stmt((yyvsp[0].StmtType));
     }
-#line 1972 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 1994 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 46: /* SimpleStmt: NullStmt  */
-#line 439 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 47: /* SimpleStmt: NullStmt  */
+#line 445 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 1980 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2002 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 47: /* SimpleStmt: AssignStmt  */
-#line 442 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                     {
-        (yyval.StmtType) = (yyvsp[0].StmtType);
-    }
-#line 1988 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 48: /* SimpleStmt: ReturnStmt  */
-#line 445 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                     {
-        (yyval.StmtType) = (yyvsp[0].StmtType);
-    }
-#line 1996 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 49: /* SimpleStmt: ProcedureCall  */
+  case 48: /* SimpleStmt: AssignStmt  */
 #line 448 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                     {
+        (yyval.StmtType) = (yyvsp[0].StmtType);
+    }
+#line 2010 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 49: /* SimpleStmt: ReturnStmt  */
+#line 451 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                     {
+        (yyval.StmtType) = (yyvsp[0].StmtType);
+    }
+#line 2018 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 50: /* SimpleStmt: ProcedureCall  */
+#line 454 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                         {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 2004 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2026 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 50: /* SimpleStmt: ExitStmt  */
-#line 451 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 51: /* SimpleStmt: ExitStmt  */
+#line 457 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 2012 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2034 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 51: /* SimpleStmt: PutStmt  */
-#line 454 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-              {
-        (yyval.StmtType) = (yyvsp[0].StmtType);
-    }
-#line 2020 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 52: /* SimpleStmt: PutlineStmt  */
-#line 457 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                  {
-        (yyval.StmtType) = (yyvsp[0].StmtType);
-    }
-#line 2028 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 53: /* SimpleStmt: GetStmt  */
+  case 52: /* SimpleStmt: PutStmt  */
 #line 460 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
               {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 2036 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2042 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 54: /* PutStmt: PUT LPAREN SimpleExpression RPAREN SEMICOLON  */
+  case 53: /* SimpleStmt: PutlineStmt  */
+#line 463 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                  {
+        (yyval.StmtType) = (yyvsp[0].StmtType);
+    }
+#line 2050 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 54: /* SimpleStmt: GetStmt  */
 #line 466 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+              {
+        (yyval.StmtType) = (yyvsp[0].StmtType);
+    }
+#line 2058 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 55: /* PutStmt: PUT LPAREN SimpleExpression RPAREN SEMICOLON  */
+#line 472 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                                    {
         (yyval.StmtType) = new PutStmt((yyvsp[-2].ExprType));
     }
-#line 2044 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2066 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 55: /* PutlineStmt: PUT_LINE LPAREN SimpleExpression RPAREN SEMICOLON  */
-#line 473 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 56: /* PutlineStmt: PUT_LINE LPAREN SimpleExpression RPAREN SEMICOLON  */
+#line 479 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                                         {
         (yyval.StmtType) = new PutlineStmt((yyvsp[-2].ExprType));
     }
-#line 2052 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2074 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 56: /* GetStmt: GET LPAREN Identifier RPAREN SEMICOLON  */
-#line 479 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 57: /* GetStmt: GET LPAREN Identifier RPAREN SEMICOLON  */
+#line 485 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                              {
         IdentifierSymbolEntry *se = dynamic_cast<IdentifierSymbolEntry*>(identifiers->lookup((yyvsp[-2].StrType)));            
         if(!se) {
@@ -2060,51 +2082,51 @@ yyreduce:
         }
         (yyval.StmtType) = new GetStmt(se);
     }
-#line 2064 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2086 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 57: /* CompoundStmt: IfStmt  */
-#line 489 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 58: /* CompoundStmt: IfStmt  */
+#line 495 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
              {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 2072 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2094 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 58: /* CompoundStmt: CaseStmt  */
-#line 492 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                   {
-        (yyval.StmtType) = (yyvsp[0].StmtType);
-    }
-#line 2080 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 59: /* CompoundStmt: LoopStmt  */
-#line 495 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                   {
-        (yyval.StmtType) = (yyvsp[0].StmtType);
-    }
-#line 2088 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 60: /* CompoundStmt: Block  */
+  case 59: /* CompoundStmt: CaseStmt  */
 #line 498 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                   {
+        (yyval.StmtType) = (yyvsp[0].StmtType);
+    }
+#line 2102 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 60: /* CompoundStmt: LoopStmt  */
+#line 501 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                   {
+        (yyval.StmtType) = (yyvsp[0].StmtType);
+    }
+#line 2110 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 61: /* CompoundStmt: Block  */
+#line 504 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                 {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 2096 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2118 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 61: /* NullStmt: NuLL SEMICOLON  */
-#line 504 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 62: /* NullStmt: NuLL SEMICOLON  */
+#line 510 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                      {
         (yyval.StmtType) = new NullStmt();
     }
-#line 2104 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2126 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 62: /* AssignStmt: Identifier ASSIGN Expression SEMICOLON  */
-#line 510 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 63: /* AssignStmt: Identifier ASSIGN Expression SEMICOLON  */
+#line 516 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                              {
         DEBUG_YACC("================Enter AssignStmt=================");
         SymbolEntry *se = identifiers->lookup((yyvsp[-3].StrType));
@@ -2114,134 +2136,134 @@ yyreduce:
         (yyval.StmtType) = new AssignStmt(se, (yyvsp[-1].ExprType));
         DEBUG_YACC("================Leave AssignStmt=================");
     }
-#line 2118 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2140 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 63: /* ReturnStmt: RETURN SEMICOLON  */
-#line 522 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 64: /* ReturnStmt: RETURN SEMICOLON  */
+#line 528 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                        {
         (yyval.StmtType) = new ReturnStmt(nullptr);
     }
-#line 2126 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2148 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 64: /* ReturnStmt: RETURN Expression SEMICOLON  */
-#line 525 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 65: /* ReturnStmt: RETURN Expression SEMICOLON  */
+#line 531 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                       {
         (yyval.StmtType) = new ReturnStmt((yyvsp[-1].ExprType));
     }
-#line 2134 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 65: /* ProcedureCall: Name SEMICOLON  */
-#line 531 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                     {
-        (yyval.StmtType) = new CallStmt(dynamic_cast<Id*>((yyvsp[-1].ExprType)));
-    }
-#line 2142 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 66: /* ExitStmt: EXIT IdOpt WhenOpt SEMICOLON  */
-#line 537 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                                   {
-        (yyval.StmtType) = new ExitStmt((yyvsp[-1].ExprType));
-    }
-#line 2150 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 67: /* WhenOpt: %empty  */
-#line 543 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-             { (yyval.ExprType) = nullptr; }
 #line 2156 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 68: /* WhenOpt: WHEN Condition  */
-#line 544 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                         {
-        (yyval.ExprType) = (yyvsp[0].ExprType);
+  case 66: /* ProcedureCall: Name SEMICOLON  */
+#line 537 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                     {
+        (yyval.StmtType) = new CallStmt(dynamic_cast<Id*>((yyvsp[-1].ExprType)));
     }
 #line 2164 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 69: /* IfStmt: IF CondClauses ElseOpt END IF SEMICOLON  */
-#line 550 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                                              {
-        (yyval.StmtType) = new IfStmt(dynamic_cast<CondClause*>((yyvsp[-4].StmtType)), dynamic_cast<Stmt*>((yyvsp[-3].StmtType)));
+  case 67: /* ExitStmt: EXIT IdOpt WhenOpt SEMICOLON  */
+#line 543 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                                   {
+        (yyval.StmtType) = new ExitStmt((yyvsp[-1].ExprType));
     }
 #line 2172 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 70: /* CondClauses: CondClause  */
+  case 68: /* WhenOpt: %empty  */
+#line 549 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+             { (yyval.ExprType) = nullptr; }
+#line 2178 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 69: /* WhenOpt: WHEN Condition  */
+#line 550 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                         {
+        (yyval.ExprType) = (yyvsp[0].ExprType);
+    }
+#line 2186 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 70: /* IfStmt: IF CondClauses ElseOpt END IF SEMICOLON  */
 #line 556 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                                              {
+        (yyval.StmtType) = new IfStmt(dynamic_cast<CondClause*>((yyvsp[-4].StmtType)), dynamic_cast<Stmt*>((yyvsp[-3].StmtType)));
+    }
+#line 2194 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 71: /* CondClauses: CondClause  */
+#line 562 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                  {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 2180 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2202 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 71: /* CondClauses: CondClauses ELSIF CondClause  */
-#line 559 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 72: /* CondClauses: CondClauses ELSIF CondClause  */
+#line 565 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                        {
         (yyval.StmtType) = (yyvsp[-2].StmtType);
         (yyvsp[-2].StmtType)->setNext((yyvsp[0].StmtType));
     }
-#line 2189 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2211 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 72: /* CondClause: CondPart Statements  */
-#line 566 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 73: /* CondClause: CondPart Statements  */
+#line 572 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                           {
         (yyval.StmtType) = new CondClause((yyvsp[-1].ExprType), dynamic_cast<Stmt*>((yyvsp[0].StmtType)));
     }
-#line 2197 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 73: /* CondPart: Condition THEN  */
-#line 572 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                     {
-        (yyval.ExprType) = (yyvsp[-1].ExprType);
-    }
-#line 2205 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 74: /* Condition: Expression  */
-#line 578 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                 {
-        (yyval.ExprType) = (yyvsp[0].ExprType); 
-    }
-#line 2213 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 75: /* ElseOpt: %empty  */
-#line 583 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                 { (yyval.StmtType) = nullptr; }
 #line 2219 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 76: /* ElseOpt: ELSE Statements  */
-#line 584 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                          {
-        (yyval.StmtType) = (yyvsp[0].StmtType);
+  case 74: /* CondPart: Condition THEN  */
+#line 578 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                     {
+        (yyval.ExprType) = (yyvsp[-1].ExprType);
     }
 #line 2227 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 77: /* CaseStmt: CASE Expression IS Alternatives END CASE SEMICOLON  */
-#line 590 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                                                         {
-        (yyval.StmtType) = new CaseStmt((yyvsp[-5].ExprType), dynamic_cast<Alternative*>((yyvsp[-3].StmtType)));
+  case 75: /* Condition: Expression  */
+#line 584 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                 {
+        (yyval.ExprType) = (yyvsp[0].ExprType); 
     }
 #line 2235 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 78: /* Alternatives: %empty  */
-#line 596 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-             { (yyval.StmtType) = nullptr; }
+  case 76: /* ElseOpt: %empty  */
+#line 589 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                 { (yyval.StmtType) = nullptr; }
 #line 2241 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 79: /* Alternatives: Alternatives Alternative  */
-#line 597 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 77: /* ElseOpt: ELSE Statements  */
+#line 590 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                          {
+        (yyval.StmtType) = (yyvsp[0].StmtType);
+    }
+#line 2249 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 78: /* CaseStmt: CASE Expression IS Alternatives END CASE SEMICOLON  */
+#line 596 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                                                         {
+        (yyval.StmtType) = new CaseStmt((yyvsp[-5].ExprType), dynamic_cast<Alternative*>((yyvsp[-3].StmtType)));
+    }
+#line 2257 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 79: /* Alternatives: %empty  */
+#line 602 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+             { (yyval.StmtType) = nullptr; }
+#line 2263 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 80: /* Alternatives: Alternatives Alternative  */
+#line 603 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                    {
         if((yyvsp[-1].StmtType)) {
             (yyval.StmtType) = (yyvsp[-1].StmtType);
@@ -2250,78 +2272,78 @@ yyreduce:
             (yyval.StmtType) = (yyvsp[0].StmtType);
         }
     }
-#line 2254 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2276 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 80: /* Alternative: WHEN Choices RIGHTSHAFT Statements  */
-#line 608 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 81: /* Alternative: WHEN Choices RIGHTSHAFT Statements  */
+#line 614 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                          {
         (yyval.StmtType) = new Alternative(dynamic_cast<Choice*>((yyvsp[-2].StmtType)), dynamic_cast<Stmt*>((yyvsp[0].StmtType)));
     }
-#line 2262 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2284 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 81: /* Choices: Choice  */
-#line 614 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 82: /* Choices: Choice  */
+#line 620 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
              {
         (yyval.StmtType) = (yyvsp[0].StmtType);
     }
-#line 2270 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2292 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 82: /* Choices: Choices SINGLEOR Choice  */
-#line 617 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 83: /* Choices: Choices SINGLEOR Choice  */
+#line 623 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                   {
         (yyval.StmtType) = (yyvsp[-2].StmtType);
         (yyvsp[-2].StmtType)->setNext((yyvsp[0].StmtType));
     }
-#line 2279 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2301 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 83: /* Choice: Expression  */
-#line 624 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 84: /* Choice: Expression  */
+#line 630 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                  {
         (yyval.StmtType) = new Choice((yyvsp[0].ExprType));
     }
-#line 2287 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2309 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 84: /* Choice: DiscreteWithRange  */
-#line 627 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 85: /* Choice: DiscreteWithRange  */
+#line 633 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                             {
         (yyval.StmtType) = new Choice(dynamic_cast<DiscreteRange*>((yyvsp[0].StmtType)));
     }
-#line 2295 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2317 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 85: /* Choice: OTHERS  */
-#line 630 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 86: /* Choice: OTHERS  */
+#line 636 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                  {
         (yyval.StmtType) = new Choice(true);
     }
-#line 2303 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2325 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 86: /* DiscreteWithRange: Identifier RANGE Range  */
-#line 636 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 87: /* DiscreteWithRange: Identifier RANGE Range  */
+#line 642 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                              {
         Type* type = dynamic_cast<Range*>((yyvsp[0].StmtType))->getType();
         SymbolEntry* se = new IdentifierSymbolEntry(type, (yyvsp[-2].StrType), identifiers->getLevel());
         (yyval.StmtType) = new DiscreteRange(se, dynamic_cast<Range*>((yyvsp[0].StmtType)));
     }
-#line 2313 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2335 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 87: /* DiscreteWithRange: Range  */
-#line 641 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 88: /* DiscreteWithRange: Range  */
+#line 647 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                 {
         (yyval.StmtType) = new DiscreteRange(dynamic_cast<Range*>((yyvsp[0].StmtType)));
     }
-#line 2321 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2343 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 88: /* LoopStmt: LabelOpt Iteration BasicLoop IdOpt SEMICOLON  */
-#line 647 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 89: /* LoopStmt: LabelOpt Iteration BasicLoop IdOpt SEMICOLON  */
+#line 653 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                                    {
         (yyval.StmtType) = new LoopStmt(dynamic_cast<LabelOpt*>((yyvsp[-4].StmtType)), dynamic_cast<Iteration*>((yyvsp[-3].StmtType)), dynamic_cast<BasicLoopStmt*>((yyvsp[-2].StmtType)));
         if(!whileIters.empty() && whileIters.back()) {
@@ -2331,504 +2353,504 @@ yyreduce:
         }
         whileIters.pop_back();
     }
-#line 2335 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2357 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 89: /* LabelOpt: %empty  */
-#line 658 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 90: /* LabelOpt: %empty  */
+#line 664 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                   { (yyval.StmtType) = nullptr; }
-#line 2341 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2363 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 90: /* LabelOpt: Identifier COLON  */
-#line 659 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 91: /* LabelOpt: Identifier COLON  */
+#line 665 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                            {
         SymbolEntry *se = new IdentifierSymbolEntry(TypeSystem::integerType, (yyvsp[-1].StrType), identifiers->getLevel());
         identifiers->install((yyvsp[-1].StrType), se);
         (yyval.StmtType) = new LabelOpt(se);
     }
-#line 2351 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2373 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 91: /* Iteration: %empty  */
-#line 666 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 92: /* Iteration: %empty  */
+#line 672 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                    {
         whileIters.push_back(false);
         (yyval.StmtType) = nullptr; 
     }
-#line 2360 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2382 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 92: /* Iteration: WHILE Condition  */
-#line 670 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 93: /* Iteration: WHILE Condition  */
+#line 676 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                           {
         (yyval.StmtType) = new Iteration((yyvsp[0].ExprType));
         whileIters.push_back(false);
     }
-#line 2369 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2391 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 93: /* Iteration: IterPart ReverseOpt DiscreteRange  */
-#line 674 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 94: /* Iteration: IterPart ReverseOpt DiscreteRange  */
+#line 680 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                             {
         (yyval.StmtType) = new Iteration(dynamic_cast<IterPart*>((yyvsp[-2].StmtType)), (yyvsp[-1].SignType), dynamic_cast<DiscreteRange*>((yyvsp[0].StmtType)));
         whileIters.push_back(true);
     }
-#line 2378 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2400 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 94: /* IterPart: FOR Identifier IN  */
-#line 681 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 95: /* IterPart: FOR Identifier IN  */
+#line 687 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                         {
         identifiers = new SymbolTable(identifiers);
         SymbolEntry *se = new IdentifierSymbolEntry(TypeSystem::integerType, (yyvsp[-1].StrType), identifiers->getLevel());
         identifiers->install((yyvsp[-1].StrType), se);
         (yyval.StmtType) = new IterPart(se);
     }
-#line 2389 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 95: /* ReverseOpt: %empty  */
-#line 689 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                    { (yyval.SignType) = nullptr; }
-#line 2395 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 96: /* ReverseOpt: REVERSE  */
-#line 690 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                  {
-        (yyval.SignType) = new OpSignNode(OpSignNode::REVERSE);
-    }
-#line 2403 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 97: /* BasicLoop: LOOP Statements END LOOP  */
-#line 696 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                               {
-        (yyval.StmtType) = new BasicLoopStmt(dynamic_cast<Stmt*>((yyvsp[-2].StmtType)));
-    }
 #line 2411 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 98: /* IdOpt: %empty  */
-#line 702 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                 { (yyval.ExprType) = nullptr; }
+  case 96: /* ReverseOpt: %empty  */
+#line 695 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                    { (yyval.SignType) = nullptr; }
 #line 2417 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 99: /* IdOpt: Identifier  */
-#line 703 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 97: /* ReverseOpt: REVERSE  */
+#line 696 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                  {
+        (yyval.SignType) = new OpSignNode(OpSignNode::REVERSE);
+    }
+#line 2425 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 98: /* BasicLoop: LOOP Statements END LOOP  */
+#line 702 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                               {
+        (yyval.StmtType) = new BasicLoopStmt(dynamic_cast<Stmt*>((yyvsp[-2].StmtType)));
+    }
+#line 2433 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 99: /* IdOpt: %empty  */
+#line 708 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                 { (yyval.ExprType) = nullptr; }
+#line 2439 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 100: /* IdOpt: Identifier  */
+#line 709 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                      {
         SymbolEntry* se = identifiers->lookup((yyvsp[0].StrType));
         (yyval.ExprType) = new Id(se);
     }
-#line 2426 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2448 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 100: /* DiscreteRange: Identifier RangeConstrOpt  */
-#line 710 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 101: /* DiscreteRange: Identifier RangeConstrOpt  */
+#line 716 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                 {
         SymbolEntry *se = new IdentifierSymbolEntry(TypeSystem::integerType, (yyvsp[-1].StrType), identifiers->getLevel());
         identifiers->install((yyvsp[-1].StrType), se);
         (yyval.StmtType) = new DiscreteRange(se, dynamic_cast<Range*>((yyvsp[0].StmtType)));
     }
-#line 2436 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 101: /* DiscreteRange: Range  */
-#line 715 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                {
-        (yyval.StmtType) = new DiscreteRange(dynamic_cast<Range*>((yyvsp[0].StmtType)));
-    }
-#line 2444 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 102: /* RangeConstrOpt: %empty  */
-#line 720 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                        { (yyval.StmtType) = nullptr; }
-#line 2450 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 103: /* RangeConstrOpt: RANGE Range  */
-#line 721 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                      {
-        (yyval.StmtType) = (yyvsp[0].StmtType);
-    }
 #line 2458 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 104: /* Range: SimpleExpression DOTDOT SimpleExpression  */
-#line 727 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                                               {
-        (yyval.StmtType) = new Range((yyvsp[-2].ExprType), (yyvsp[0].ExprType));
+  case 102: /* DiscreteRange: Range  */
+#line 721 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                {
+        (yyval.StmtType) = new DiscreteRange(dynamic_cast<Range*>((yyvsp[0].StmtType)));
     }
 #line 2466 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 105: /* Block: LabelOpt BlockDecl BlockBody END IdOpt SEMICOLON  */
-#line 733 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                                                       {
-        (yyval.StmtType) = new Block(dynamic_cast<LabelOpt*>((yyvsp[-5].StmtType)), dynamic_cast<DeclItemOrBodyStmt*>((yyvsp[-4].StmtType)), dynamic_cast<Stmt*>((yyvsp[-3].StmtType)));
-    }
-#line 2474 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+  case 103: /* RangeConstrOpt: %empty  */
+#line 726 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                        { (yyval.StmtType) = nullptr; }
+#line 2472 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 106: /* BlockDecl: %empty  */
-#line 738 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                   { (yyval.StmtType) = nullptr; }
+  case 104: /* RangeConstrOpt: RANGE Range  */
+#line 727 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                      {
+        (yyval.StmtType) = (yyvsp[0].StmtType);
+    }
 #line 2480 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 107: /* BlockDecl: DECLARE DeclPart  */
-#line 739 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-                           {
-        (yyval.StmtType) = (yyvsp[0].StmtType);
+  case 105: /* Range: SimpleExpression DOTDOT SimpleExpression  */
+#line 733 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                                               {
+        (yyval.StmtType) = new Range((yyvsp[-2].ExprType), (yyvsp[0].ExprType));
     }
 #line 2488 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 108: /* BlockBody: BEGiN Statements  */
+  case 106: /* Block: LabelOpt BlockDecl BlockBody END IdOpt SEMICOLON  */
+#line 739 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                                                       {
+        (yyval.StmtType) = new Block(dynamic_cast<LabelOpt*>((yyvsp[-5].StmtType)), dynamic_cast<DeclItemOrBodyStmt*>((yyvsp[-4].StmtType)), dynamic_cast<Stmt*>((yyvsp[-3].StmtType)));
+    }
+#line 2496 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 107: /* BlockDecl: %empty  */
+#line 744 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                   { (yyval.StmtType) = nullptr; }
+#line 2502 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 108: /* BlockDecl: DECLARE DeclPart  */
 #line 745 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                           {
+        (yyval.StmtType) = (yyvsp[0].StmtType);
+    }
+#line 2510 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 109: /* BlockBody: BEGiN Statements  */
+#line 751 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                        {
         DEBUG_YACC("================Enter BlockBody=================");
         (yyval.StmtType) = (yyvsp[0].StmtType);
         DEBUG_YACC("================Enter BlockBody=================");
 
     }
-#line 2499 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2521 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 109: /* Expression: Relation  */
-#line 754 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 110: /* Expression: Relation  */
+#line 760 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2507 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2529 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 110: /* Expression: Expression Logical Relation  */
-#line 757 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 111: /* Expression: Expression Logical Relation  */
+#line 763 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                       {
         (yyval.ExprType) = new BinaryExpr((yyvsp[-2].ExprType), (yyvsp[0].ExprType), (yyvsp[-1].SignType));
     }
-#line 2515 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2537 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 111: /* Expression: Expression ShortCircuit Relation  */
-#line 760 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 112: /* Expression: Expression ShortCircuit Relation  */
+#line 766 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                            {
         (yyval.ExprType) = new BinaryExpr((yyvsp[-2].ExprType), (yyvsp[0].ExprType), (yyvsp[-1].SignType));
     }
-#line 2523 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2545 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 112: /* Logical: AND  */
-#line 766 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 113: /* Logical: AND  */
+#line 772 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
           {
         (yyval.SignType) = new OpSignNode(OpSignNode::AND);
     }
-#line 2531 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2553 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 113: /* Logical: OR  */
-#line 769 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 114: /* Logical: OR  */
+#line 775 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
              {
         (yyval.SignType) = new OpSignNode(OpSignNode::OR);
     }
-#line 2539 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2561 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 114: /* Logical: XOR  */
-#line 772 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 115: /* Logical: XOR  */
+#line 778 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
               {
         (yyval.SignType) = new OpSignNode(OpSignNode::XOR);
     }
-#line 2547 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2569 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 115: /* ShortCircuit: AND THEN  */
-#line 778 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 116: /* ShortCircuit: AND THEN  */
+#line 784 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                {
         (yyval.SignType) = new OpSignNode(OpSignNode::ANDTHEN);
     }
-#line 2555 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2577 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 116: /* ShortCircuit: OR ELSE  */
-#line 781 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 117: /* ShortCircuit: OR ELSE  */
+#line 787 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                   {
         (yyval.SignType) = new OpSignNode(OpSignNode::ORELSE);
     }
-#line 2563 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2585 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 117: /* Relation: SimpleExpression  */
-#line 787 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 118: /* Relation: SimpleExpression  */
+#line 793 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                        {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2571 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2593 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 118: /* Relation: SimpleExpression Relational SimpleExpression  */
-#line 790 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 119: /* Relation: SimpleExpression Relational SimpleExpression  */
+#line 796 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                                        {
         (yyval.ExprType) = new BinaryExpr((yyvsp[-2].ExprType), (yyvsp[0].ExprType), (yyvsp[-1].SignType));
     }
-#line 2579 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2601 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 119: /* Relation: SimpleExpression Membership Range  */
-#line 793 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 120: /* Relation: SimpleExpression Membership Range  */
+#line 799 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                             {
         (yyval.ExprType) = new BinaryExpr((yyvsp[-2].ExprType), dynamic_cast<Range*>((yyvsp[0].StmtType)), (yyvsp[-1].SignType));
     }
-#line 2587 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2609 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 120: /* Relation: SimpleExpression Membership Identifier  */
-#line 796 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 121: /* Relation: SimpleExpression Membership Identifier  */
+#line 802 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                                  {
         SymbolEntry* se = new IdentifierSymbolEntry(TypeSystem::integerType, (yyvsp[0].StrType), identifiers->getLevel());
         (yyval.ExprType) = new BinaryExpr((yyvsp[-2].ExprType), se, (yyvsp[-1].SignType));
     }
-#line 2596 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2618 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 121: /* Relational: EQ  */
-#line 803 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 122: /* Relational: EQ  */
+#line 809 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
          {
         (yyval.SignType) = new OpSignNode(OpSignNode::EQ);
     }
-#line 2604 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2626 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 122: /* Relational: NE  */
-#line 806 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 123: /* Relational: NE  */
+#line 812 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
              {
         (yyval.SignType) = new OpSignNode(OpSignNode::NE);
     }
-#line 2612 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2634 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 123: /* Relational: LE  */
-#line 809 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 124: /* Relational: LE  */
+#line 815 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
              {
         (yyval.SignType) = new OpSignNode(OpSignNode::LE);
     }
-#line 2620 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2642 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 124: /* Relational: LTEQ  */
-#line 812 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 125: /* Relational: LTEQ  */
+#line 818 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                {
         (yyval.SignType) = new OpSignNode(OpSignNode::LTEQ);
     }
-#line 2628 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2650 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 125: /* Relational: GE  */
-#line 815 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 126: /* Relational: GE  */
+#line 821 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
              {
         (yyval.SignType) = new OpSignNode(OpSignNode::GE);
     }
-#line 2636 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2658 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 126: /* Relational: GTEQ  */
-#line 818 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 127: /* Relational: GTEQ  */
+#line 824 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                {
         (yyval.SignType) = new OpSignNode(OpSignNode::GTEQ);
     }
-#line 2644 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2666 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 127: /* Membership: IN  */
-#line 824 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 128: /* Membership: IN  */
+#line 830 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
          {
         (yyval.SignType) = new OpSignNode(OpSignNode::IN);
     }
-#line 2652 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2674 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 128: /* Membership: NOT IN  */
-#line 827 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 129: /* Membership: NOT IN  */
+#line 833 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                  {
         (yyval.SignType) = new OpSignNode(OpSignNode::NOTIN);
     }
-#line 2660 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2682 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 129: /* SimpleExpression: Unary Term  */
-#line 833 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 130: /* SimpleExpression: Unary Term  */
+#line 839 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                  {
         (yyval.ExprType) = new BinaryExpr((yyvsp[0].ExprType), (yyvsp[-1].SignType));
     }
-#line 2668 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2690 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 130: /* SimpleExpression: Term  */
-#line 836 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 131: /* SimpleExpression: Term  */
+#line 842 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2676 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2698 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 131: /* SimpleExpression: SimpleExpression Adding Term  */
-#line 839 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 132: /* SimpleExpression: SimpleExpression Adding Term  */
+#line 845 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                        {
         (yyval.ExprType) = new BinaryExpr((yyvsp[-2].ExprType), (yyvsp[0].ExprType), (yyvsp[-1].SignType));
     }
-#line 2684 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2706 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 132: /* Unary: ADD  */
-#line 845 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 133: /* Unary: ADD  */
+#line 851 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
           {
         (yyval.SignType) = new OpSignNode(OpSignNode::ADD);
     }
-#line 2692 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2714 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 133: /* Unary: SUB  */
-#line 848 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-              {
-        (yyval.SignType) = new OpSignNode(OpSignNode::SUB);
-    }
-#line 2700 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 134: /* Adding: ADD  */
+  case 134: /* Unary: SUB  */
 #line 854 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
-          {
-        (yyval.SignType) = new OpSignNode(OpSignNode::ADD);
-    }
-#line 2708 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
-    break;
-
-  case 135: /* Adding: SUB  */
-#line 857 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
               {
         (yyval.SignType) = new OpSignNode(OpSignNode::SUB);
     }
-#line 2716 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2722 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 136: /* Adding: SINGLEAND  */
+  case 135: /* Adding: ADD  */
 #line 860 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+          {
+        (yyval.SignType) = new OpSignNode(OpSignNode::ADD);
+    }
+#line 2730 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 136: /* Adding: SUB  */
+#line 863 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+              {
+        (yyval.SignType) = new OpSignNode(OpSignNode::SUB);
+    }
+#line 2738 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 137: /* Adding: SINGLEAND  */
+#line 866 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                     {
         (yyval.SignType) = new OpSignNode(OpSignNode::SINGLEAND);
     }
-#line 2724 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2746 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 137: /* Term: Factor  */
-#line 866 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 138: /* Term: Factor  */
+#line 872 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
              {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2732 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2754 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 138: /* Term: Term Multiplying Factor  */
-#line 869 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 139: /* Term: Term Multiplying Factor  */
+#line 875 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                   {
         (yyval.ExprType) = new BinaryExpr((yyvsp[-2].ExprType), (yyvsp[0].ExprType), (yyvsp[-1].SignType));
     }
-#line 2740 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2762 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 139: /* Multiplying: MUL  */
-#line 875 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 140: /* Multiplying: MUL  */
+#line 881 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
           {
         (yyval.SignType) = new OpSignNode(OpSignNode::MUL);
     }
-#line 2748 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2770 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 140: /* Multiplying: DIV  */
-#line 878 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 141: /* Multiplying: DIV  */
+#line 884 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
               {
         (yyval.SignType) = new OpSignNode(OpSignNode::DIV);
     }
-#line 2756 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2778 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 141: /* Multiplying: MOD  */
-#line 881 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 142: /* Multiplying: MOD  */
+#line 887 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
               {
         (yyval.SignType) = new OpSignNode(OpSignNode::MOD);
     }
-#line 2764 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2786 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 142: /* Multiplying: REM  */
-#line 884 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 143: /* Multiplying: REM  */
+#line 890 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
               {
         (yyval.SignType) = new OpSignNode(OpSignNode::REM);
     }
-#line 2772 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2794 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 143: /* Factor: Primary  */
-#line 890 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 144: /* Factor: Primary  */
+#line 896 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
               {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2780 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2802 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 144: /* Factor: NOT Primary  */
-#line 893 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 145: /* Factor: NOT Primary  */
+#line 899 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                       {
         (yyval.ExprType) = new FactorExpr((yyvsp[0].ExprType), FactorExpr::NOT);
     }
-#line 2788 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2810 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 145: /* Factor: ABS Primary  */
-#line 896 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 146: /* Factor: ABS Primary  */
+#line 902 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                       {
         (yyval.ExprType) = new FactorExpr((yyvsp[0].ExprType), FactorExpr::ABS);
     }
-#line 2796 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2818 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 146: /* Factor: Primary EXPON Primary  */
-#line 899 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 147: /* Factor: Primary EXPON Primary  */
+#line 905 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                 {
         (yyval.ExprType) = new BinaryExpr((yyvsp[-2].ExprType), (yyvsp[0].ExprType), new OpSignNode(OpSignNode::EXPON));
     }
-#line 2804 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2826 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 147: /* Primary: Literal  */
-#line 905 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 148: /* Primary: Literal  */
+#line 911 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
               {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2812 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2834 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 148: /* Primary: Name  */
-#line 908 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 149: /* Primary: Name  */
+#line 914 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2820 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2842 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 149: /* Primary: ParenthesizedPrimary  */
-#line 911 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 150: /* Primary: ParenthesizedPrimary  */
+#line 917 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2828 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2850 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 150: /* Name: Identifier  */
-#line 917 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 151: /* Name: Identifier  */
+#line 923 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                  {
         SymbolEntry* se = identifiers->lookup((yyvsp[0].StrType));
         if(!se) {
@@ -2836,138 +2858,147 @@ yyreduce:
         }
         (yyval.ExprType) = new Id(se);
     }
-#line 2840 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2862 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 151: /* Name: IndexedComp  */
-#line 924 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 152: /* Name: IndexedComp  */
+#line 930 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                   {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2848 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2870 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 152: /* Name: Attribute  */
-#line 927 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 153: /* Name: Attribute  */
+#line 933 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                 {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2856 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2878 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 153: /* Name: INTEGER  */
-#line 930 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 154: /* Name: INTEGER  */
+#line 936 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
               {
         SymbolEntry *se = new IdentifierSymbolEntry(TypeSystem::integerType, "Integer", 0);
         globals->install("Integer", se);
         (yyval.ExprType) = new Id(se);
     }
-#line 2866 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2888 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 154: /* IndexedComp: Name LPAREN Values RPAREN  */
-#line 938 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 155: /* IndexedComp: Name LPAREN Values RPAREN  */
+#line 944 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                 {
         (yyval.ExprType) = new Id(dynamic_cast<Id*>((yyvsp[-3].ExprType)), (yyvsp[-1].ExprType));
     }
-#line 2874 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2896 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 155: /* Values: Value  */
-#line 944 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 156: /* Values: Value  */
+#line 950 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
             {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2882 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2904 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 156: /* Values: Values COMMA Value  */
-#line 947 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 157: /* Values: Values COMMA Value  */
+#line 953 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                              {
         (yyval.ExprType) = (yyvsp[-2].ExprType);
         (yyvsp[-2].ExprType)->setNext((yyvsp[0].ExprType));
     }
-#line 2891 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2913 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 157: /* Value: Expression  */
-#line 954 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 158: /* Value: Expression  */
+#line 960 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                  {
         (yyval.ExprType) = (yyvsp[0].ExprType);
     }
-#line 2899 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2921 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 158: /* Attribute: Name TIC AttributeId  */
-#line 960 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 159: /* Attribute: Name TIC AttributeId  */
+#line 966 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                            {
         (yyval.ExprType) = new Id(dynamic_cast<Id*>((yyvsp[-2].ExprType)), (yyvsp[0].StrType));
     }
-#line 2907 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2929 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 159: /* AttributeId: Identifier  */
-#line 966 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 160: /* AttributeId: Identifier  */
+#line 972 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                  {
         (yyval.StrType) = (yyvsp[0].StrType);
     }
-#line 2915 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2937 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 160: /* ParenthesizedPrimary: LPAREN Expression RPAREN  */
-#line 972 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 161: /* ParenthesizedPrimary: LPAREN Expression RPAREN  */
+#line 978 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                                {
         (yyval.ExprType) = (yyvsp[-1].ExprType);
     }
-#line 2923 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2945 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 161: /* Literal: DECIMIAL  */
-#line 978 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 162: /* Literal: DECIMIAL  */
+#line 984 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                {
         SymbolEntry* se = new ConstantSymbolEntry(TypeSystem::integerType, (yyvsp[0].IntType));
         (yyval.ExprType) = new Constant(se);
     }
-#line 2932 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2954 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 162: /* Literal: STRINGLITERAL  */
-#line 982 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 163: /* Literal: SINGLECHAR  */
+#line 988 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+                 {
+        SymbolEntry* se = new ConstantSymbolEntry(TypeSystem::characterType, (yyvsp[0].CharType));
+        (yyval.ExprType) = new Constant(se);
+    }
+#line 2963 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+    break;
+
+  case 164: /* Literal: STRINGLITERAL  */
+#line 992 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                         {
         SymbolEntry* se = new ConstantSymbolEntry(TypeSystem::stringType, (yyvsp[0].StrType));
         (yyval.ExprType) = new Constant(se);
     }
-#line 2941 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2972 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 163: /* Literal: NuLL  */
-#line 986 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 165: /* Literal: NuLL  */
+#line 996 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
                {
         (yyval.ExprType) = nullptr;
     }
-#line 2949 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2980 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 164: /* Literal: TRuE  */
-#line 989 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 166: /* Literal: TRuE  */
+#line 999 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
            {
         SymbolEntry* se = new ConstantSymbolEntry(TypeSystem::boolType, true);
         (yyval.ExprType) = new Constant(se);
     }
-#line 2958 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2989 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
-  case 165: /* Literal: FALsE  */
-#line 993 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+  case 167: /* Literal: FALsE  */
+#line 1003 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
             {
         SymbolEntry* se = new ConstantSymbolEntry(TypeSystem::boolType, false);
         (yyval.ExprType) = new Constant(se);
     }
-#line 2967 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 2998 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
     break;
 
 
-#line 2971 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
+#line 3002 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.cpp"
 
       default: break;
     }
@@ -3160,7 +3191,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 998 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
+#line 1008 "/mnt/hgfs/Graduation/Ada2Rust/src/parser.y"
 
 
 int yyerror(char const* message)

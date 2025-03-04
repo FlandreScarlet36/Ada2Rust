@@ -71,7 +71,7 @@ private:
   std::string packageName;
 public:
   RustPackageCall(std::string _packageName) : RustStmt(nullptr), packageName(_packageName){};
-  std::string output(int level) const { return ""; };
+  std::string output(int level) const;
 };
 
 class RustRange : public RustStmt {
@@ -111,6 +111,7 @@ private:
 
 public:
   RustConstant(SymbolEntry *_se) : se(_se){};
+  SymbolEntry* getSE() { return se; }
   std::string output() const;
 };
 

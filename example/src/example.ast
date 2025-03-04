@@ -2,41 +2,40 @@ program
     Package: Ada.Text_IO
     Package: Ada.Text_IO
     ProcedureDef
-        Procedure	name: Constant_Example	type: Procedure
+        Procedure	name: Greet	type: Procedure
         DeclItemOrBodyStmt
             DeclStmt
                 ObjectDeclStmt
-                    DefId	name: Length	type: Integer	isConst: true
+                    DefId	name: I	type: Integer	isConst: false
                     InitOptStmt
-                        Literal	type: Integer	value: 10
-        DeclItemOrBodyStmt
-            DeclStmt
-                ObjectDeclStmt
-                    DefId	name: Width	type: Integer	isConst: true
-                    InitOptStmt
-                        Literal	type: Integer	value: 5
-        DeclItemOrBodyStmt
-            DeclStmt
-                ObjectDeclStmt
-                    DefId	name: Area	type: Integer	isConst: false
+                        Literal	type: Integer	value: 1
         Stmt
-            AssignStmt	name: Area	type: Integer
-                BinaryExpr
-                    OpSign: *
-                        Id
-                            name: Length	scope: 2	type: Integer
-                        Id
-                            name: Width	scope: 2	type: Integer
-        Stmt
-            PutLineStmt
-                BinaryExpr
-                    OpSign: &
-                        Literal	type: String	value: AdaString::from("The area of the rectangle is: ")
-                        Id
-                            Id
-                                Id
-                                    name: Integer	scope: 0	type: Integer
-                                    AttributeId: Image
-                            Name PAREN Value
-                                Id
-                                    name: Area	scope: 2	type: Integer
+            LoopStmt
+                BasicLoopStmt
+                    Stmt
+                        PutLineStmt
+                            BinaryExpr
+                                OpSign: &
+                                    Literal	type: String	value: "Hello, World"
+                                    Id
+                                        Id
+                                            Id
+                                                name: Integer	scope: 0	type: Integer
+                                                AttributeId: Image
+                                        Name PAREN Value
+                                            Id
+                                                name: I	scope: 2	type: Integer
+                    Stmt
+                        ExitStmt
+                            BinaryExpr
+                                OpSign: =
+                                    Id
+                                        name: I	scope: 2	type: Integer
+                                    Literal	type: Integer	value: 5
+                    Stmt
+                        AssignStmt	name: I	type: Integer
+                            BinaryExpr
+                                OpSign: +
+                                    Id
+                                        name: I	scope: 2	type: Integer
+                                    Literal	type: Integer	value: 1

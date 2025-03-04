@@ -31,6 +31,7 @@
 
 %union {
     char* StrType;
+    char CharType;
     int IntType;
     StmtNode* StmtType;
     ExprNode* ExprType;
@@ -68,6 +69,7 @@
 %token BEGiN
 %token BODY
 %token CASE
+%token CHARACTER
 %token CONSTANT
 %token DECLARE
 %token DELAY
@@ -133,6 +135,7 @@
 %token GET
 %token <BoolType> TRuE FALsE
 %token <IntType> DECIMIAL
+%token <CharType> SINGLECHAR
 %token <StrType> Identifier STRINGLITERAL PACKAGEID
 %token INTEGER STRING NATURAL BOOLEAN
 %token COLON SEMICOLON LPAREN RPAREN COMMA
@@ -302,6 +305,9 @@ Type
     }
     | BOOLEAN {
         $$ = TypeSystem::boolType;
+    }
+    | CHARACTER {
+         $$ = TypeSystem::characterType;
     }
     | STRING {
         $$ = TypeSystem::stringType;
@@ -977,6 +983,10 @@ ParenthesizedPrimary
 Literal
     : DECIMIAL {
         SymbolEntry* se = new ConstantSymbolEntry(TypeSystem::integerType, $1);
+        $$ = new Constant(se);
+    }
+    | SINGLECHAR {
+        SymbolEntry* se = new ConstantSymbolEntry(TypeSystem::characterType, $1);
         $$ = new Constant(se);
     }
 	| STRINGLITERAL {

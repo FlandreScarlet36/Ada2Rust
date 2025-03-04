@@ -1,13 +1,13 @@
-with Ada.Text_IO; use Ada.Text_IO;
+with Ada.Text_IO;
+use Ada.Text_IO;
 
-procedure Constant_Example is
-   -- 定义常量
-   Length : constant Integer := 10;
-   Width : constant Integer := 5;
-   Area : Integer;
+procedure Greet is
+    I : Integer := 1;
 begin
-   -- 计算矩形的面积
-   Area := Length * Width;
-   -- 输出结果
-   Put_Line("The area of the rectangle is: " & Integer'Image(Area));
-end Constant_Example;
+    loop
+        Put_Line ("Hello, World"
+                & Integer'Image(I));
+        exit when I = 5;
+        I := I + 1;
+    end loop;
+end Greet;

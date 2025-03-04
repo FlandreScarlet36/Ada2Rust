@@ -1,7 +1,36 @@
 #include "Statement.h"
 #include "Function.h"
+#include <unordered_map>
 
 extern FILE *yyout;
+
+bool isStringType(RustExpr* expr) {
+  if (auto rustId = dynamic_cast<RustId*>(expr)) {
+      return rustId->getSE() && rustId->getSE()->getType()->isString();
+  }
+  if (auto rustConstant = dynamic_cast<RustConstant*>(expr)) {
+      return rustConstant->getSE() && rustConstant->getSE()->getType()->isString();
+  }
+  return false;
+}
+
+// 定义一个映射表
+std::unordered_map<std::string, std::string> replacementMap = {
+  {"Image", ".to_string()"},
+  {"First", "::MIN"},
+  {"Last", "::MAX"},
+  {"Integer", "i32"}
+};
+
+// 替换函数
+std::string replaceString(const std::string& input) {
+  auto it = replacementMap.find(input);
+  if (it != replacementMap.end()) {
+      return it->second;
+  }
+  return input;
+}
+
 int RustNode::counter = 0;
 
 // RustNode 构造函数，初始化 seq 为 counter 并递增 counter
@@ -40,6 +69,8 @@ RustStmt::RustStmt(Function *func) {
   }
 }
 
+std::string RustPackageCall::output(int level) const {}
+
 // 输出 RustId 的字符串表示
 std::string RustId::output() const {
   
@@ -47,7 +78,7 @@ std::string RustId::output() const {
     if (!attr.empty()) {
       //类型自带的attribute
       char res[50];
-      sprintf(res, "%s.%s()", name->output().c_str(), attr.c_str());
+      sprintf(res, "%s%s", replaceString(name->output()).c_str(), replaceString(attr).c_str());
       return std::string(res);
     } 
     else if (expr) {
@@ -61,7 +92,7 @@ std::string RustId::output() const {
       }
       char res[50];
       if(!name->getAttr()->empty()){
-        sprintf(res, "%s.%s()", paramStr.c_str(), name->getAttr()->c_str());
+        sprintf(res, "%s%s", paramStr.c_str(), replaceString(*name->getAttr()).c_str());
       } else {
         sprintf(res, "%s(%s)", name->output().c_str(), paramStr.c_str());
       }
@@ -196,10 +227,13 @@ std::string RustBinaryExpr::output() const {
     }
     return std::string(temp);
   } else {
-    sprintf(temp, "%s %s %s", rustExpr1->output().c_str(), opSignName.c_str(),
+    if ((isStringType(rustExpr1) || isStringType(rustExpr2)) && opSignName == "+") {
+      sprintf(temp, "format!(\"{}{}\", %s, %s)", rustExpr1->output().c_str(), rustExpr2->output().c_str());
+    } else
+      sprintf(temp, "%s %s %s", rustExpr1->output().c_str(), opSignName.c_str(),
             rustExpr2->output().c_str());
     // 输出示例: "expr1 opSignName expr2"
-    // 具体示例: "a + b"
+    // 具体示例: "a + b" 
     return std::string(temp);
   }
 }

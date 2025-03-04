@@ -3,7 +3,6 @@
 
 #include <string>
 #include <vector>
-#include "RustType.h"
 
 class SymbolEntry;
 
@@ -12,7 +11,7 @@ private:
   int kind;
 
 protected:
-  enum { INTEGER, BOOLEAN, STRING, NATURAL, PROCEDURE, FUNCTION };
+  enum { INTEGER, BOOLEAN, CHARACTER, STRING, NATURAL, PROCEDURE, FUNCTION };
 
 public:
   Type(int _kind) : kind(_kind){};
@@ -21,6 +20,7 @@ public:
   virtual std::string toRustStr() = 0;
   bool isInteger() const { return kind == INTEGER; };
   bool isBoolean() const { return kind == BOOLEAN; };
+  bool isCharacter() const { return kind == CHARACTER; };
   bool isString() const { return kind == STRING; };
   bool isNatural() const { return kind == NATURAL; };
   bool isProcedure() const { return kind == PROCEDURE; };
@@ -43,6 +43,16 @@ private:
 
 public:
   BooleanType(int _size) : Type(Type::BOOLEAN), size(_size){};
+  std::string dump();
+  std::string toRustStr();
+};
+
+class CharacterType : public Type {
+private:
+  int size;
+
+public:
+  CharacterType(int _size) : Type(Type::CHARACTER), size(_size){};
   std::string dump();
   std::string toRustStr();
 };
@@ -129,12 +139,14 @@ private:
   static IntegerType commonInteger;
   static NaturalType commonNatural;
   static BooleanType commonBool;
+  static CharacterType commonCharacter;
   static StringType commonString;
 
 public:
   static Type *integerType;
   static Type *naturalType;
   static Type *boolType;
+  static Type *characterType;
   static Type *stringType;
 };
 

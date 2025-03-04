@@ -1,7 +1,6 @@
 #ifndef __ADA2RUST_RUST_UNIT_H__
 #define __ADA2RUST_RUST_UNIT_H__
 
-#include "RustType.h"
 #include "Function.h"
 #include <map>
 #include <vector>

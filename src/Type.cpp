@@ -3,11 +3,13 @@
 IntegerType TypeSystem::commonInteger = IntegerType(32);
 NaturalType TypeSystem::commonNatural = NaturalType(32);
 BooleanType TypeSystem::commonBool = BooleanType(1);
+CharacterType TypeSystem::commonCharacter = CharacterType(8);
 StringType TypeSystem::commonString = StringType(16);
 
 Type* TypeSystem::integerType = &commonInteger;
 Type* TypeSystem::boolType = &commonBool;
 Type* TypeSystem::naturalType = &commonNatural;
+Type* TypeSystem::characterType = &commonCharacter;
 Type* TypeSystem::stringType = &commonString;
 
 std::string IntegerType::dump() {
@@ -26,12 +28,20 @@ std::string BooleanType::toRustStr() {
     return "bool";
 }
 
+std::string CharacterType::dump() {
+    return "Character";
+}
+
+std::string CharacterType::toRustStr() {
+    return "char";
+}
+
 std::string StringType::dump() {
     return "String";
 }
 
 std::string StringType::toRustStr() {
-    return "AdaString";
+    return "String";
 }
 
 std::string NaturalType::dump() {
@@ -39,7 +49,6 @@ std::string NaturalType::dump() {
 }
 
 std::string NaturalType::toRustStr() {
-    AdaNatural::getInstance();
     return "u32";
 }
 

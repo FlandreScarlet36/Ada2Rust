@@ -19,13 +19,23 @@ ConstantSymbolEntry::ConstantSymbolEntry(Type *type, char *str)
   this->str = std::string(str);
 }
 
+ConstantSymbolEntry::ConstantSymbolEntry(Type *type, char singleChar)
+    : SymbolEntry(SymbolEntry::CONSTANT), type(type) {
+  this->singleChar = singleChar;
+}
+
 std::string ConstantSymbolEntry::dump() {
   if (type->isInteger()) {
     std::ostringstream buffer;
     buffer << value;
     return buffer.str();
+  } else if (type->isCharacter()) {
+    std::ostringstream buffer;
+    buffer << "'" << singleChar << "'";
+    return buffer.str();
+
   } else if (type->isString()) {
-    std::string res = "AdaString::from(\"" + str + "\")";
+    std::string res = "\"" + str + "\"";
     return res;
   } else if (type->isBoolean()) {
     if (bvalue)

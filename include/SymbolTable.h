@@ -25,6 +25,7 @@ class ConstantSymbolEntry : public SymbolEntry {
 private:
   int value;
   std::string str;
+  char singleChar;
   Type* type;
   bool bvalue;
 
@@ -32,6 +33,7 @@ public:
   ConstantSymbolEntry(Type *type, int value);
   ConstantSymbolEntry(Type *type, bool bvalue);
   ConstantSymbolEntry(Type *type, char* str);
+  ConstantSymbolEntry(Type *type, char singleChar);
   virtual ~ConstantSymbolEntry(){};
   int getValue() const { return value; };
   Type *getType() { return type; };

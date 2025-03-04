@@ -26,7 +26,7 @@
     }
     #define YY_USER_ACTION update_loc();  
     
-    #define NUM_KEYWORDS 78
+    #define NUM_KEYWORDS 79
     typedef struct {
       char *keyword;
       int keyword_value;
@@ -47,6 +47,7 @@
          {"BODY", BODY},
          {"BOOLEAN", BOOLEAN},
          {"CASE", CASE},
+         {"CHARACTER", CHARACTER},
          {"CONSTANT", CONSTANT},
          {"DECLARE", DECLARE},
          {"DELAY", DELAY},
@@ -124,6 +125,7 @@
 DECIMIAL ([1-9][0-9]*|0)
 PACKAGEID [a-zA-Z](_?[a-zA-Z0-9])*\.[a-zA-Z](_?[a-zA-Z0-9])*
 ID [a-zA-Z](_?[a-zA-Z0-9])*
+SINGLECHAR '([^\\]|\\.)'
 STRINGLITERAL \"(\"\"|[^\n\"])*\"
 EOL (\r\n|\n|\r)
 WHITE [ \t\f]
@@ -303,6 +305,13 @@ LINECOMMENT --.*\n
         DUMP_TOKEN("DECIMIAL\t" + std::string(yytext));
     yylval.IntType = atoi(yytext);
     return DECIMIAL;
+}
+
+{SINGLECHAR} {
+    if(dump_token)
+        DUMP_TOKEN("SINGLECHAR\t" + std::string(yytext));
+    yylval.CharType = yytext[1]; // 提取字符
+    return SINGLECHAR;
 }
 
 {STRINGLITERAL} {
