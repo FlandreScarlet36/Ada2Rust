@@ -2,40 +2,38 @@ program
     Package: Ada.Text_IO
     Package: Ada.Text_IO
     ProcedureDef
-        Procedure	name: Greet	type: Procedure
+        Procedure	name: Constant_Example	type: Procedure
         DeclItemOrBodyStmt
             DeclStmt
                 ObjectDeclStmt
-                    DefId	name: I	type: Integer	isConst: false
+                    DefId	name: A	type: Integer	isConst: true
                     InitOptStmt
-                        Literal	type: Integer	value: 1
+                        Literal	type: Integer	value: 114
+        DeclItemOrBodyStmt
+            DeclStmt
+                ObjectDeclStmt
+                    DefId	name: B	type: Integer	isConst: true
+                    InitOptStmt
+                        Literal	type: Integer	value: 514
         Stmt
-            LoopStmt
-                BasicLoopStmt
-                    Stmt
-                        PutLineStmt
-                            BinaryExpr
-                                OpSign: &
-                                    Literal	type: String	value: "Hello, World"
-                                    Id
-                                        Id
-                                            Id
-                                                name: Integer	scope: 0	type: Integer
-                                                AttributeId: Image
-                                        Name PAREN Value
-                                            Id
-                                                name: I	scope: 2	type: Integer
-                    Stmt
-                        ExitStmt
-                            BinaryExpr
-                                OpSign: =
-                                    Id
-                                        name: I	scope: 2	type: Integer
-                                    Literal	type: Integer	value: 5
-                    Stmt
-                        AssignStmt	name: I	type: Integer
-                            BinaryExpr
-                                OpSign: +
-                                    Id
-                                        name: I	scope: 2	type: Integer
-                                    Literal	type: Integer	value: 1
+            PutLineStmt
+                BinaryExpr
+                    OpSign: &
+                        Literal	type: String	value: "A is: "
+                        Id
+                            Id
+                                Id
+                                    name: Integer	scope: 0	type: Integer
+                                    AttributeId: Image
+                            Name PAREN Value
+                                Id
+                                    name: A	scope: 2	type: Integer
+        Stmt
+            PutLineStmt
+                BinaryExpr
+                    OpSign: &
+                        Literal	type: String	value: "B is: "
+                        Id
+                            Id
+                                name: B	scope: 2	type: Integer
+                                AttributeId: Image

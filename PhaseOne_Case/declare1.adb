@@ -3,7 +3,7 @@ begin
    loop
 
       declare
-         Name : Integer := 22;
+         Name : Integer := 33;
          --               ^ Call to the
          --                 Get_Line function
       begin

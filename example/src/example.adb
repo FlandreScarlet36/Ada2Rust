@@ -1,13 +1,9 @@
-with Ada.Text_IO;
-use Ada.Text_IO;
+with Ada.Text_IO; use Ada.Text_IO;
 
-procedure Greet is
-    I : Integer := 1;
+procedure Constant_Example is
+   A : constant Integer := 114;
+   B : constant Integer := 514;
 begin
-    loop
-        Put_Line ("Hello, World"
-                & Integer'Image(I));
-        exit when I = 5;
-        I := I + 1;
-    end loop;
-end Greet;
+   Put_Line("A is: " & Integer'Image(A));
+   Put_Line("B is: " & B'Image);
+end Constant_Example;

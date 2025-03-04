@@ -281,8 +281,8 @@ std::string RustReturnStmt::output(int level) const {
 
 std::string RustPutStmt::output(int level) const {
   char temp[200];
-  sprintf(temp, "%*cprintln!(\"{}\", %s);\n", level, ' ', rustExpr->output().c_str());
-  // 输出示例: "    println!("{}", expr);"
+  sprintf(temp, "%*cprint!(\"{}\", %s);\n", level, ' ', rustExpr->output().c_str());
+  // 输出示例: "    print!("{}", expr);"
   return std::string(temp);
 }
 
@@ -291,7 +291,7 @@ std::string RustGetStmt::output(int level) const {
   sprintf(res, R"deli(%*clet mut %s = String::new();
 %*cio::stdin().read_line(&mut %s).expect("Failed to read line");
 %*clet %s: %s = %s.trim().parse().unwrap();
-  )deli",
+)deli",
   level, ' ', id->dump().c_str(), 
   level, ' ', id->dump().c_str(), 
   level, ' ', id->dump().c_str(), id->getType()->toRustStr().c_str(), id->dump().c_str());

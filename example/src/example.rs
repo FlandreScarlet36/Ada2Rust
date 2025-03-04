@@ -1,13 +1,9 @@
 use std::io::{self, Write};
 
- fn Greet() {
-    let mut I: i32 = 1;
+ fn Constant_Example() {
+    let A: i32 = 114;
+    let B: i32 = 514;
 
-    loop {
-        println!("{}", format!("{}{}", "Hello, World", I.to_string()));
-        if I == 5 {
-            break;
-        }
-        I = I + 1;
-    }
+    println!("{}", format!("{}{}", "A is: ", A.to_string()));
+    println!("{}", format!("{}{}", "B is: ", B.to_string()));
  }
