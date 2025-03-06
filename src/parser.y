@@ -33,6 +33,7 @@
     char* StrType;
     char CharType;
     int IntType;
+    float FloatType;
     StmtNode* StmtType;
     ExprNode* ExprType;
     OpSignNode* SignType;
@@ -135,9 +136,10 @@
 %token GET
 %token <BoolType> TRuE FALsE
 %token <IntType> DECIMIAL
+%token <FloatType> FLOATNUM
 %token <CharType> SINGLECHAR
 %token <StrType> Identifier STRINGLITERAL PACKAGEID
-%token INTEGER STRING NATURAL BOOLEAN
+%token INTEGER STRING NATURAL BOOLEAN FLOAT
 %token COLON SEMICOLON LPAREN RPAREN COMMA
 %token SINGLEAND SINGLEOR
 
@@ -308,6 +310,9 @@ Type
     }
     | CHARACTER {
          $$ = TypeSystem::characterType;
+    }
+    | FLOAT {
+        $$ = TypeSystem::floatType;
     }
     | STRING {
         $$ = TypeSystem::stringType;
@@ -938,6 +943,11 @@ Name
         globals->install("Integer", se);
         $$ = new Id(se);
     }
+    | FLOAT {
+        SymbolEntry *se = new IdentifierSymbolEntry(TypeSystem::floatType, "Float", 0);
+        globals->install("Float", se);
+        $$ = new Id(se);
+    }
     ;
 
 IndexedComp
@@ -989,11 +999,15 @@ Literal
         SymbolEntry* se = new ConstantSymbolEntry(TypeSystem::characterType, $1);
         $$ = new Constant(se);
     }
-	| STRINGLITERAL {
+    | STRINGLITERAL {
         SymbolEntry* se = new ConstantSymbolEntry(TypeSystem::stringType, $1);
         $$ = new Constant(se);
     }
-	| NuLL {
+    | FLOATNUM {
+        SymbolEntry* se = new ConstantSymbolEntry(TypeSystem::floatType, $1);
+        $$ = new Constant(se);
+    }
+    | NuLL {
         $$ = nullptr;
     }
     | TRuE {
@@ -1004,7 +1018,7 @@ Literal
         SymbolEntry* se = new ConstantSymbolEntry(TypeSystem::boolType, false);
         $$ = new Constant(se);
     }
-	;
+    ;
 %%
 
 int yyerror(char const* message)

@@ -11,7 +11,7 @@ private:
   int kind;
 
 protected:
-  enum { INTEGER, BOOLEAN, CHARACTER, STRING, NATURAL, PROCEDURE, FUNCTION };
+  enum { INTEGER, BOOLEAN, CHARACTER, STRING, NATURAL, FLOAT, PROCEDURE, FUNCTION };
 
 public:
   Type(int _kind) : kind(_kind){};
@@ -19,6 +19,7 @@ public:
   virtual std::string dump() = 0;
   virtual std::string toRustStr() = 0;
   bool isInteger() const { return kind == INTEGER; };
+  bool isFloat() const { return kind == FLOAT; };
   bool isBoolean() const { return kind == BOOLEAN; };
   bool isCharacter() const { return kind == CHARACTER; };
   bool isString() const { return kind == STRING; };
@@ -36,6 +37,16 @@ public:
   std::string dump();
   std::string toRustStr();
 };
+
+class FloatType : public Type {
+  private:
+    int size;
+  
+  public:
+    FloatType(int _size) : Type(Type::FLOAT), size(_size) {};
+    std::string dump();
+    std::string toRustStr();
+  };
 
 class BooleanType : public Type {
 private:
@@ -141,13 +152,14 @@ private:
   static BooleanType commonBool;
   static CharacterType commonCharacter;
   static StringType commonString;
-
+  static FloatType commonFloat;
 public:
   static Type *integerType;
   static Type *naturalType;
   static Type *boolType;
   static Type *characterType;
   static Type *stringType;
+  static Type *floatType;
 };
 
 #endif

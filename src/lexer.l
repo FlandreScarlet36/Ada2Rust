@@ -26,7 +26,7 @@
     }
     #define YY_USER_ACTION update_loc();  
     
-    #define NUM_KEYWORDS 79
+    #define NUM_KEYWORDS 80
     typedef struct {
       char *keyword;
       int keyword_value;
@@ -34,84 +34,85 @@
 
     KEY_TABLE key_tab[NUM_KEYWORDS] = 
         {{"ABORT", ABORT},
-         {"ABS", ABS},
-         {"ABSTRACT", ABSTRACT},
-         {"ACCEPT", ACCEPT},
-         {"ACCESS", ACCESS},
-         {"ALIASED", ALIASED},
-         {"ALL", ALL},
-         {"AND", AND},
-         {"ARRAY", ARRAY},
-         {"AT", AT},
-         {"BEGIN", BEGiN},
-         {"BODY", BODY},
-         {"BOOLEAN", BOOLEAN},
-         {"CASE", CASE},
-         {"CHARACTER", CHARACTER},
-         {"CONSTANT", CONSTANT},
-         {"DECLARE", DECLARE},
-         {"DELAY", DELAY},
-         {"DELTA", DELTA},
-         {"DIGITS", DIGITS},
-         {"DO", DO},
-         {"ELSE", ELSE},
-         {"ELSIF", ELSIF},
-         {"END", END},
-         {"ENTRY", ENTRY},
-         {"EXCEPTION", EXCEPTION},
-         {"EXIT", EXIT},
-         {"FALSE", FALsE},
-         {"FOR", FOR},
-         {"FUNCTION", FUNCTION},
-         {"GENERIC", GENERIC},
-         {"GET", GET},
-         {"GOTO", GOTO},
-         {"IF", IF},
-         {"IN", IN},
-         {"INTEGER", INTEGER},
-         {"IS", IS},
-         {"LIMITED", LIMITED},
-         {"LOOP", LOOP},
-         {"MOD", MOD},
-         {"NATURAL", NATURAL},
-         {"NEW", NEW},
-         {"NOT", NOT},
-         {"NULL", NuLL},
-         {"OF", OF},
-         {"OR", OR},
-         {"OTHERS", OTHERS},
-         {"OUT", OUT},
-         {"PACKAGE", PACKAGE},
-         {"PRAGMA", PRAGMA},
-         {"PRIVATE", PRIVATE},
-         {"PROCEDURE", PROCEDURE},
-         {"PROTECTED", PROTECTED},
-         {"PUT", PUT},
-         {"PUT_LINE", PUT_LINE},
-         {"RAISE", RAISE},
-         {"RANGE", RANGE},
-         {"RECORD", RECORD},
-         {"REM", REM},
-         {"RENAMES", RENAMES},
-         {"REQUEUE", REQUEUE},
-         {"RETURN", RETURN},
-         {"REVERSE", REVERSE},
-         {"SELECT", SELECT},
-         {"SEPARATE", SEPARATE},
-         {"STRING", STRING},
-         {"SUBTYPE", SUBTYPE},
-         {"TAGGED", TAGGED},
-         {"TASK", TASK},
-         {"TERMINATE", TERMINATE},
-         {"THEN", THEN},
-         {"TRUE", TRuE},
-         {"TYPE", TYPE},
-         {"UNTIL", UNTIL},
-         {"USE", USE},
-         {"WHEN", WHEN},
-         {"WHILE", WHILE},
-         {"WITH", WITH},
-         {"XOR", XOR}};
+            {"ABS", ABS},
+            {"ABSTRACT", ABSTRACT},
+            {"ACCEPT", ACCEPT},
+            {"ACCESS", ACCESS},
+            {"ALIASED", ALIASED},
+            {"ALL", ALL},
+            {"AND", AND},
+            {"ARRAY", ARRAY},
+            {"AT", AT},
+            {"BEGIN", BEGiN},
+            {"BODY", BODY},
+            {"BOOLEAN", BOOLEAN},
+            {"CASE", CASE},
+            {"CHARACTER", CHARACTER},
+            {"CONSTANT", CONSTANT},
+            {"DECLARE", DECLARE},
+            {"DELAY", DELAY},
+            {"DELTA", DELTA},
+            {"DIGITS", DIGITS},
+            {"DO", DO},
+            {"ELSE", ELSE},
+            {"ELSIF", ELSIF},
+            {"END", END},
+            {"ENTRY", ENTRY},
+            {"EXCEPTION", EXCEPTION},
+            {"EXIT", EXIT},
+            {"FALSE", FALsE},
+            {"FLOAT", FLOAT},
+            {"FOR", FOR},
+            {"FUNCTION", FUNCTION},
+            {"GENERIC", GENERIC},
+            {"GET", GET},
+            {"GOTO", GOTO},
+            {"IF", IF},
+            {"IN", IN},
+            {"INTEGER", INTEGER},
+            {"IS", IS},
+            {"LIMITED", LIMITED},
+            {"LOOP", LOOP},
+            {"MOD", MOD},
+            {"NATURAL", NATURAL},
+            {"NEW", NEW},
+            {"NOT", NOT},
+            {"NULL", NuLL},
+            {"OF", OF},
+            {"OR", OR},
+            {"OTHERS", OTHERS},
+            {"OUT", OUT},
+            {"PACKAGE", PACKAGE},
+            {"PRAGMA", PRAGMA},
+            {"PRIVATE", PRIVATE},
+            {"PROCEDURE", PROCEDURE},
+            {"PROTECTED", PROTECTED},
+            {"PUT", PUT},
+            {"PUT_LINE", PUT_LINE},
+            {"RAISE", RAISE},
+            {"RANGE", RANGE},
+            {"RECORD", RECORD},
+            {"REM", REM},
+            {"RENAMES", RENAMES},
+            {"REQUEUE", REQUEUE},
+            {"RETURN", RETURN},
+            {"REVERSE", REVERSE},
+            {"SELECT", SELECT},
+            {"SEPARATE", SEPARATE},
+            {"STRING", STRING},
+            {"SUBTYPE", SUBTYPE},
+            {"TAGGED", TAGGED},
+            {"TASK", TASK},
+            {"TERMINATE", TERMINATE},
+            {"THEN", THEN},
+            {"TRUE", TRuE},
+            {"TYPE", TYPE},
+            {"UNTIL", UNTIL},
+            {"USE", USE},
+            {"WHEN", WHEN},
+            {"WHILE", WHILE},
+            {"WITH", WITH},
+            {"XOR", XOR}};
     
     void to_upper(char *str) {
       char *cp;
@@ -123,6 +124,7 @@
 %}
 
 DECIMIAL ([1-9][0-9]*|0)
+FLOATNUM ([0-9]*\.[0-9]+([eE][-+]?[0-9]+)?|[0-9]+[eE][-+]?[0-9]+)
 PACKAGEID [a-zA-Z](_?[a-zA-Z0-9])*\.[a-zA-Z](_?[a-zA-Z0-9])*
 ID [a-zA-Z](_?[a-zA-Z0-9])*
 SINGLECHAR '([^\\]|\\.)'
@@ -305,6 +307,13 @@ LINECOMMENT --.*\n
         DUMP_TOKEN("DECIMIAL\t" + std::string(yytext));
     yylval.IntType = atoi(yytext);
     return DECIMIAL;
+}
+
+{FLOATNUM} {
+    if(dump_token)
+        DUMP_TOKEN("FLOATNUM\t" + std::string(yytext));
+    yylval.FloatType = atof(yytext);
+    return FLOATNUM;
 }
 
 {SINGLECHAR} {

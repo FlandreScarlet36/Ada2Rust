@@ -24,6 +24,11 @@ ConstantSymbolEntry::ConstantSymbolEntry(Type *type, char singleChar)
   this->singleChar = singleChar;
 }
 
+ConstantSymbolEntry::ConstantSymbolEntry(Type *type, float fvalue) // 新增的 float 构造函数
+    : SymbolEntry(SymbolEntry::CONSTANT), type(type) {
+  this->fvalue = fvalue;
+}
+
 std::string ConstantSymbolEntry::dump() {
   if (type->isInteger()) {
     std::ostringstream buffer;
@@ -33,7 +38,6 @@ std::string ConstantSymbolEntry::dump() {
     std::ostringstream buffer;
     buffer << "'" << singleChar << "'";
     return buffer.str();
-
   } else if (type->isString()) {
     std::string res = "\"" + str + "\"";
     return res;
@@ -42,6 +46,10 @@ std::string ConstantSymbolEntry::dump() {
       return std::string("true");
     else
       return std::string("false");
+  } else if (type->isFloat()) { // 新增的 float 类型处理
+    std::ostringstream buffer;
+    buffer << fvalue;
+    return buffer.str();
   } else {
     return std::string("");
   }

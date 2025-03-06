@@ -153,24 +153,26 @@ extern int yydebug;
     PUT_LINE = 347,                /* PUT_LINE  */
     PUT = 348,                     /* PUT  */
     GET = 349,                     /* GET  */
-    TRuE = 350,                    /* TRuE  */
-    FALsE = 351,                   /* FALsE  */
-    DECIMIAL = 352,                /* DECIMIAL  */
-    SINGLECHAR = 353,              /* SINGLECHAR  */
-    Identifier = 354,              /* Identifier  */
-    STRINGLITERAL = 355,           /* STRINGLITERAL  */
-    PACKAGEID = 356,               /* PACKAGEID  */
-    INTEGER = 357,                 /* INTEGER  */
-    STRING = 358,                  /* STRING  */
-    NATURAL = 359,                 /* NATURAL  */
-    BOOLEAN = 360,                 /* BOOLEAN  */
-    COLON = 361,                   /* COLON  */
-    SEMICOLON = 362,               /* SEMICOLON  */
-    LPAREN = 363,                  /* LPAREN  */
-    RPAREN = 364,                  /* RPAREN  */
-    COMMA = 365,                   /* COMMA  */
-    SINGLEAND = 366,               /* SINGLEAND  */
-    SINGLEOR = 367                 /* SINGLEOR  */
+    FLOAT = 350,                   /* FLOAT  */
+    TRuE = 351,                    /* TRuE  */
+    FALsE = 352,                   /* FALsE  */
+    DECIMIAL = 353,                /* DECIMIAL  */
+    FLOATNUM = 354,                /* FLOATNUM  */
+    SINGLECHAR = 355,              /* SINGLECHAR  */
+    Identifier = 356,              /* Identifier  */
+    STRINGLITERAL = 357,           /* STRINGLITERAL  */
+    PACKAGEID = 358,               /* PACKAGEID  */
+    INTEGER = 359,                 /* INTEGER  */
+    STRING = 360,                  /* STRING  */
+    NATURAL = 361,                 /* NATURAL  */
+    BOOLEAN = 362,                 /* BOOLEAN  */
+    COLON = 363,                   /* COLON  */
+    SEMICOLON = 364,               /* SEMICOLON  */
+    LPAREN = 365,                  /* LPAREN  */
+    RPAREN = 366,                  /* RPAREN  */
+    COMMA = 367,                   /* COMMA  */
+    SINGLEAND = 368,               /* SINGLEAND  */
+    SINGLEOR = 369                 /* SINGLEOR  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -184,13 +186,14 @@ union YYSTYPE
     char* StrType;
     char CharType;
     int IntType;
+    float FloatType;
     StmtNode* StmtType;
     ExprNode* ExprType;
     OpSignNode* SignType;
     Type* type;
     PackageCall* packageCall;
 
-#line 194 "/mnt/hgfs/Graduation/Ada2Rust/include/parser.h"
+#line 197 "/mnt/hgfs/Graduation/Ada2Rust/include/parser.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

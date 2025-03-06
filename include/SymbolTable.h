@@ -22,24 +22,27 @@ public:
 };
 
 class ConstantSymbolEntry : public SymbolEntry {
-private:
-  int value;
-  std::string str;
-  char singleChar;
-  Type* type;
-  bool bvalue;
-
-public:
-  ConstantSymbolEntry(Type *type, int value);
-  ConstantSymbolEntry(Type *type, bool bvalue);
-  ConstantSymbolEntry(Type *type, char* str);
-  ConstantSymbolEntry(Type *type, char singleChar);
-  virtual ~ConstantSymbolEntry(){};
-  int getValue() const { return value; };
-  Type *getType() { return type; };
-  void setType(Type* _type) { type = _type; };
-  std::string dump();
-};
+  private:
+    int value;
+    std::string str;
+    char singleChar;
+    Type* type;
+    bool bvalue;
+    float fvalue;
+  
+  public:
+    ConstantSymbolEntry(Type *type, int value);
+    ConstantSymbolEntry(Type *type, bool bvalue);
+    ConstantSymbolEntry(Type *type, char* str);
+    ConstantSymbolEntry(Type *type, char singleChar);
+    ConstantSymbolEntry(Type *type, float fvalue);
+    virtual ~ConstantSymbolEntry(){};
+    int getValue() const { return value; };
+    float getFloatValue() const { return fvalue; };
+    Type *getType() { return type; };
+    void setType(Type* _type) { type = _type; };
+    std::string dump();
+  };
 
 class IdentifierSymbolEntry : public SymbolEntry {
 private:

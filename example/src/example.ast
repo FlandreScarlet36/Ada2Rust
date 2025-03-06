@@ -16,7 +16,7 @@ program
                     InitOptStmt
                         Literal	type: Integer	value: 514
         Stmt
-            PutLineStmt
+            PutStmt
                 BinaryExpr
                     OpSign: &
                         Literal	type: String	value: "A is: "
@@ -29,7 +29,7 @@ program
                                 Id
                                     name: A	scope: 2	type: Integer
         Stmt
-            PutLineStmt
+            PutStmt
                 BinaryExpr
                     OpSign: &
                         Literal	type: String	value: "B is: "
