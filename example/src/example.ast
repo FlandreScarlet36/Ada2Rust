@@ -6,34 +6,41 @@ program
         DeclItemOrBodyStmt
             DeclStmt
                 ObjectDeclStmt
-                    DefId	name: A	type: Integer	isConst: true
+                    DefId	name: Pi	type: Float	isConst: true
                     InitOptStmt
-                        Literal	type: Integer	value: 114
+                        Literal	type: Float	value: 3.14159
         DeclItemOrBodyStmt
             DeclStmt
                 ObjectDeclStmt
-                    DefId	name: B	type: Integer	isConst: true
+                    DefId	name: Radius	type: Float	isConst: true
                     InitOptStmt
-                        Literal	type: Integer	value: 514
+                        Literal	type: Float	value: 5
+        DeclItemOrBodyStmt
+            DeclStmt
+                ObjectDeclStmt
+                    DefId	name: Area	type: Float	isConst: false
         Stmt
-            PutStmt
+            AssignStmt	name: Area	type: Float
+                BinaryExpr
+                    OpSign: *
+                        BinaryExpr
+                            OpSign: *
+                                Id
+                                    name: Pi	scope: 2	type: Float
+                                Id
+                                    name: Radius	scope: 2	type: Float
+                        Id
+                            name: Radius	scope: 2	type: Float
+        Stmt
+            PutLineStmt
                 BinaryExpr
                     OpSign: &
-                        Literal	type: String	value: "A is: "
+                        Literal	type: String	value: "The area of the circle is: "
                         Id
                             Id
                                 Id
-                                    name: Integer	scope: 0	type: Integer
+                                    name: Float	scope: 0	type: Float
                                     AttributeId: Image
                             Name PAREN Value
                                 Id
-                                    name: A	scope: 2	type: Integer
-        Stmt
-            PutStmt
-                BinaryExpr
-                    OpSign: &
-                        Literal	type: String	value: "B is: "
-                        Id
-                            Id
-                                name: B	scope: 2	type: Integer
-                                AttributeId: Image
+                                    name: Area	scope: 2	type: Float

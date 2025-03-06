@@ -19,7 +19,11 @@ std::unordered_map<std::string, std::string> replacementMap = {
   {"Image", ".to_string()"},
   {"First", "::MIN"},
   {"Last", "::MAX"},
-  {"Integer", "i32"}
+  {"Integer", "i32"},
+  {"Boolean", "bool"},
+  {"Character", "char"},
+  {"String", "String"},
+  {"Float", "f32"}
 };
 
 // 替换函数

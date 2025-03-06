@@ -24,7 +24,7 @@ ConstantSymbolEntry::ConstantSymbolEntry(Type *type, char singleChar)
   this->singleChar = singleChar;
 }
 
-ConstantSymbolEntry::ConstantSymbolEntry(Type *type, float fvalue) // 新增的 float 构造函数
+ConstantSymbolEntry::ConstantSymbolEntry(Type *type, float fvalue)
     : SymbolEntry(SymbolEntry::CONSTANT), type(type) {
   this->fvalue = fvalue;
 }
