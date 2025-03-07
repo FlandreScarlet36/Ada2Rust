@@ -5,14 +5,16 @@ NaturalType TypeSystem::commonNatural = NaturalType(32);
 BooleanType TypeSystem::commonBool = BooleanType(1);
 CharacterType TypeSystem::commonCharacter = CharacterType(8);
 StringType TypeSystem::commonString = StringType(16);
-FloatType TypeSystem::commonFloat = FloatType(32); // 新增的 FloatType 成员变量初始化
+FloatType TypeSystem::commonFloat = FloatType(32);
+ArrayType TypeSystem::commonArray = ArrayType(0);
 
 Type* TypeSystem::integerType = &commonInteger;
 Type* TypeSystem::boolType = &commonBool;
 Type* TypeSystem::naturalType = &commonNatural;
 Type* TypeSystem::characterType = &commonCharacter;
 Type* TypeSystem::stringType = &commonString;
-Type* TypeSystem::floatType = &commonFloat; // 新增的 FloatType 指针初始化
+Type* TypeSystem::floatType = &commonFloat;
+Type* TypeSystem::arrayType = &commonArray;
 
 std::string IntegerType::dump() {
     return "Integer";
@@ -60,6 +62,14 @@ std::string FloatType::dump() {
 
 std::string FloatType::toRustStr() {
     return "f32";
+}
+
+std::string ArrayType::dump() {
+    return "Array";
+}
+
+std::string ArrayType::toRustStr() {
+    return "Array";
 }
 
 std::string ProcedureType::dump() {

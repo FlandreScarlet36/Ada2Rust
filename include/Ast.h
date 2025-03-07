@@ -186,6 +186,17 @@ public:
   void genRustCode(Node *parent);
 };
 
+class ArrayDef : public ExprNode {
+private:
+  Range *range;
+  Type *arraytype;
+public:
+  ArrayDef(Range *_range, Type *_type) : range(_range), arraytype(_type){};
+  Type *getType() { return arraytype; }
+  void dump(int level);
+  void genRustCode(Node *parent);
+};
+
 class SeqNode : public StmtNode {
 private:
   StmtNode *stmt1, *stmt2;
@@ -323,6 +334,17 @@ class PutStmt : public StmtNode {
     void dump(int level);
     void genRustCode(Node *parent);
   };
+
+  class TypeDeclStmt : public StmtNode {
+  private:
+    ExprNode *expr;
+    SymbolEntry *se;
+  public:
+    TypeDeclStmt(ExprNode *_expr, SymbolEntry *_se) : expr(_expr), se(_se){};
+    void dump(int level);
+    void genRustCode(Node *parent);
+  };
+
   
   class PackageCall : public StmtNode {
   private:

@@ -92,7 +92,7 @@ test-all:app
 		FILE=$${file##*/}
 		TOKS=$${file%.*}.toks
 		AST=$${file%.*}.ast
-		RS=$${file%.*}.RS
+		RS=$${file%.*}.rs
 		LOG=$${file%.*}.log
 		$(BINARY) $${file} -t -o $${TOKS}
 		$(BINARY) $${file} -a -o $${AST}

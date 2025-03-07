@@ -305,6 +305,17 @@ void BinaryExpr::genRustCode(Node *parent) {
   }
 }
 
+void ArrayDef::dump(int level) {
+  fprintf(yyout, "%*cArrayDef\n", level, ' ');
+  range->dump(level + 4);
+  arraytype->dump();
+}
+
+void ArrayDef::genRustCode(Node *parent) {
+  //range->genRustCode(parent);
+  //rustExpr = new RustArrayDef(dynamic_cast<RustRange *>(range->getRustStmt()), type);
+}
+
 void SeqNode::dump(int level) {
   stmt1->dump(level);
   stmt2->dump(level);
@@ -655,6 +666,16 @@ void PutlineStmt::dump(int level) {
 void PutlineStmt::genRustCode(Node *parent) {
   expr->genRustCode(parent);
   rustStmt = new RustPutlineStmt(expr->getRustExpr());
+}
+
+void TypeDeclStmt::dump(int level) {
+  fprintf(yyout, "%*cTypeIsStmt: %s\n", level, ' ', se->dump().c_str());
+  expr->dump(level + 4);
+}
+
+void TypeDeclStmt::genRustCode(Node *parent) {
+  //expr->genRustCode(parent);
+  //rustStmt = new RustTypeIsStmt(expr->getRustExpr(), typeName);
 }
 
 void PackageCall::dump(int level) {

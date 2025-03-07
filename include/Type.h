@@ -145,6 +145,16 @@ public:
   std::string toRustStr();
 };
 
+class ArrayType : public Type {
+private:
+  Type *elementType;
+  int size;
+public:
+  ArrayType(int size) : Type(Type::INTEGER), elementType(elementType), size(size){};
+  std::string dump();
+  std::string toRustStr();
+};
+
 class TypeSystem {
 private:
   static IntegerType commonInteger;
@@ -153,6 +163,7 @@ private:
   static CharacterType commonCharacter;
   static StringType commonString;
   static FloatType commonFloat;
+  static ArrayType commonArray;
 public:
   static Type *integerType;
   static Type *naturalType;
@@ -160,6 +171,7 @@ public:
   static Type *characterType;
   static Type *stringType;
   static Type *floatType;
+  static Type *arrayType;
 };
 
 #endif
