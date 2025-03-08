@@ -20,7 +20,7 @@ package ada_main is
                     "GNAT Version: 10.5.0" & ASCII.NUL;
    pragma Export (C, GNAT_Version, "__gnat_version");
 
-   Ada_Main_Program_Name : constant String := "_ada_case4" & ASCII.NUL;
+   Ada_Main_Program_Name : constant String := "_ada_array_example" & ASCII.NUL;
    pragma Export (C, Ada_Main_Program_Name, "__gnat_ada_main_program_name");
 
    procedure adainit;
@@ -37,28 +37,28 @@ package ada_main is
    pragma Export (C, main, "main");
 
    type Version_32 is mod 2 ** 32;
-   u00001 : constant Version_32 := 16#a9d27e51#;
-   pragma Export (C, u00001, "case4B");
+   u00001 : constant Version_32 := 16#c008f982#;
+   pragma Export (C, u00001, "array_exampleB");
    u00002 : constant Version_32 := 16#050ff2f0#;
    pragma Export (C, u00002, "system__standard_libraryB");
    u00003 : constant Version_32 := 16#4113f22b#;
    pragma Export (C, u00003, "system__standard_libraryS");
-   u00004 : constant Version_32 := 16#4635ec04#;
-   pragma Export (C, u00004, "systemS");
-   u00005 : constant Version_32 := 16#e31b7c4e#;
-   pragma Export (C, u00005, "system__memoryB");
-   u00006 : constant Version_32 := 16#1f488a30#;
-   pragma Export (C, u00006, "system__memoryS");
+   u00004 : constant Version_32 := 16#76789da1#;
+   pragma Export (C, u00004, "adaS");
+   u00005 : constant Version_32 := 16#f4e097a7#;
+   pragma Export (C, u00005, "ada__text_ioB");
+   u00006 : constant Version_32 := 16#777d5329#;
+   pragma Export (C, u00006, "ada__text_ioS");
    u00007 : constant Version_32 := 16#185015e7#;
    pragma Export (C, u00007, "ada__exceptionsB");
    u00008 : constant Version_32 := 16#d6578bab#;
    pragma Export (C, u00008, "ada__exceptionsS");
-   u00009 : constant Version_32 := 16#76789da1#;
-   pragma Export (C, u00009, "adaS");
-   u00010 : constant Version_32 := 16#5726abed#;
-   pragma Export (C, u00010, "ada__exceptions__last_chance_handlerB");
-   u00011 : constant Version_32 := 16#cfec26ee#;
-   pragma Export (C, u00011, "ada__exceptions__last_chance_handlerS");
+   u00009 : constant Version_32 := 16#5726abed#;
+   pragma Export (C, u00009, "ada__exceptions__last_chance_handlerB");
+   u00010 : constant Version_32 := 16#cfec26ee#;
+   pragma Export (C, u00010, "ada__exceptions__last_chance_handlerS");
+   u00011 : constant Version_32 := 16#4635ec04#;
+   pragma Export (C, u00011, "systemS");
    u00012 : constant Version_32 := 16#ae860117#;
    pragma Export (C, u00012, "system__soft_linksB");
    u00013 : constant Version_32 := 16#8d3f9472#;
@@ -231,6 +231,42 @@ package ada_main is
    pragma Export (C, u00096, "system__wch_jisB");
    u00097 : constant Version_32 := 16#d28f6d04#;
    pragma Export (C, u00097, "system__wch_jisS");
+   u00098 : constant Version_32 := 16#10558b11#;
+   pragma Export (C, u00098, "ada__streamsB");
+   u00099 : constant Version_32 := 16#67e31212#;
+   pragma Export (C, u00099, "ada__streamsS");
+   u00100 : constant Version_32 := 16#5d91da9f#;
+   pragma Export (C, u00100, "ada__tagsB");
+   u00101 : constant Version_32 := 16#12a0afb8#;
+   pragma Export (C, u00101, "ada__tagsS");
+   u00102 : constant Version_32 := 16#796f31f1#;
+   pragma Export (C, u00102, "system__htableB");
+   u00103 : constant Version_32 := 16#c2f75fee#;
+   pragma Export (C, u00103, "system__htableS");
+   u00104 : constant Version_32 := 16#089f5cd0#;
+   pragma Export (C, u00104, "system__string_hashB");
+   u00105 : constant Version_32 := 16#60a93490#;
+   pragma Export (C, u00105, "system__string_hashS");
+   u00106 : constant Version_32 := 16#73d2d764#;
+   pragma Export (C, u00106, "interfaces__c_streamsB");
+   u00107 : constant Version_32 := 16#b1330297#;
+   pragma Export (C, u00107, "interfaces__c_streamsS");
+   u00108 : constant Version_32 := 16#ec9c64c3#;
+   pragma Export (C, u00108, "system__file_ioB");
+   u00109 : constant Version_32 := 16#e1440d61#;
+   pragma Export (C, u00109, "system__file_ioS");
+   u00110 : constant Version_32 := 16#86c56e5a#;
+   pragma Export (C, u00110, "ada__finalizationS");
+   u00111 : constant Version_32 := 16#95817ed8#;
+   pragma Export (C, u00111, "system__finalization_rootB");
+   u00112 : constant Version_32 := 16#09c79f94#;
+   pragma Export (C, u00112, "system__finalization_rootS");
+   u00113 : constant Version_32 := 16#bbaa76ac#;
+   pragma Export (C, u00113, "system__file_control_blockS");
+   u00114 : constant Version_32 := 16#e31b7c4e#;
+   pragma Export (C, u00114, "system__memoryB");
+   u00115 : constant Version_32 := 16#1f488a30#;
+   pragma Export (C, u00115, "system__memoryS");
 
    --  BEGIN ELABORATION ORDER
    --  ada%s
@@ -245,10 +281,16 @@ package ada_main is
    --  system.parameters%s
    --  system.parameters%b
    --  system.crtl%s
+   --  interfaces.c_streams%s
+   --  interfaces.c_streams%b
    --  system.storage_elements%s
    --  system.storage_elements%b
    --  system.stack_checking%s
    --  system.stack_checking%b
+   --  system.string_hash%s
+   --  system.string_hash%b
+   --  system.htable%s
+   --  system.htable%b
    --  system.strings%s
    --  system.strings%b
    --  system.traceback_entries%s
@@ -329,7 +371,19 @@ package ada_main is
    --  ada.exceptions%b
    --  system.val_lli%b
    --  system.val_llu%b
-   --  case4%b
+   --  ada.tags%s
+   --  ada.tags%b
+   --  ada.streams%s
+   --  ada.streams%b
+   --  system.file_control_block%s
+   --  system.finalization_root%s
+   --  system.finalization_root%b
+   --  ada.finalization%s
+   --  system.file_io%s
+   --  system.file_io%b
+   --  ada.text_io%s
+   --  ada.text_io%b
+   --  array_example%b
    --  END ELABORATION ORDER
 
 end ada_main;

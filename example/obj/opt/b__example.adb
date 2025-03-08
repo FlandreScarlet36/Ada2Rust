@@ -3,24 +3,32 @@ pragma Ada_95;
 pragma Source_File_Name (ada_main, Spec_File_Name => "b__example.ads");
 pragma Source_File_Name (ada_main, Body_File_Name => "b__example.adb");
 pragma Suppress (Overflow_Check);
+with Ada.Exceptions;
 
 package body ada_main is
 
-   E75 : Short_Integer; pragma Import (Ada, E75, "system__os_lib_E");
-   E08 : Short_Integer; pragma Import (Ada, E08, "ada__exceptions_E");
-   E13 : Short_Integer; pragma Import (Ada, E13, "system__soft_links_E");
-   E25 : Short_Integer; pragma Import (Ada, E25, "system__exception_table_E");
-   E40 : Short_Integer; pragma Import (Ada, E40, "ada__containers_E");
-   E70 : Short_Integer; pragma Import (Ada, E70, "ada__io_exceptions_E");
-   E55 : Short_Integer; pragma Import (Ada, E55, "ada__strings_E");
-   E57 : Short_Integer; pragma Import (Ada, E57, "ada__strings__maps_E");
-   E61 : Short_Integer; pragma Import (Ada, E61, "ada__strings__maps__constants_E");
-   E45 : Short_Integer; pragma Import (Ada, E45, "interfaces__c_E");
-   E27 : Short_Integer; pragma Import (Ada, E27, "system__exceptions_E");
-   E81 : Short_Integer; pragma Import (Ada, E81, "system__object_reader_E");
-   E50 : Short_Integer; pragma Import (Ada, E50, "system__dwarf_lines_E");
-   E21 : Short_Integer; pragma Import (Ada, E21, "system__soft_links__initialize_E");
-   E39 : Short_Integer; pragma Import (Ada, E39, "system__traceback__symbolic_E");
+   E075 : Short_Integer; pragma Import (Ada, E075, "system__os_lib_E");
+   E008 : Short_Integer; pragma Import (Ada, E008, "ada__exceptions_E");
+   E013 : Short_Integer; pragma Import (Ada, E013, "system__soft_links_E");
+   E025 : Short_Integer; pragma Import (Ada, E025, "system__exception_table_E");
+   E040 : Short_Integer; pragma Import (Ada, E040, "ada__containers_E");
+   E070 : Short_Integer; pragma Import (Ada, E070, "ada__io_exceptions_E");
+   E055 : Short_Integer; pragma Import (Ada, E055, "ada__strings_E");
+   E057 : Short_Integer; pragma Import (Ada, E057, "ada__strings__maps_E");
+   E061 : Short_Integer; pragma Import (Ada, E061, "ada__strings__maps__constants_E");
+   E045 : Short_Integer; pragma Import (Ada, E045, "interfaces__c_E");
+   E027 : Short_Integer; pragma Import (Ada, E027, "system__exceptions_E");
+   E081 : Short_Integer; pragma Import (Ada, E081, "system__object_reader_E");
+   E050 : Short_Integer; pragma Import (Ada, E050, "system__dwarf_lines_E");
+   E021 : Short_Integer; pragma Import (Ada, E021, "system__soft_links__initialize_E");
+   E039 : Short_Integer; pragma Import (Ada, E039, "system__traceback__symbolic_E");
+   E101 : Short_Integer; pragma Import (Ada, E101, "ada__tags_E");
+   E099 : Short_Integer; pragma Import (Ada, E099, "ada__streams_E");
+   E113 : Short_Integer; pragma Import (Ada, E113, "system__file_control_block_E");
+   E112 : Short_Integer; pragma Import (Ada, E112, "system__finalization_root_E");
+   E110 : Short_Integer; pragma Import (Ada, E110, "ada__finalization_E");
+   E109 : Short_Integer; pragma Import (Ada, E109, "system__file_io_E");
+   E006 : Short_Integer; pragma Import (Ada, E006, "ada__text_io_E");
 
    Sec_Default_Sized_Stacks : array (1 .. 1) of aliased System.Secondary_Stack.SS_Stack (System.Parameters.Runtime_Default_Sec_Stack_Size);
 
@@ -28,6 +36,30 @@ package body ada_main is
    Local_Interrupt_States : constant String := "";
 
    Is_Elaborated : Boolean := False;
+
+   procedure finalize_library is
+   begin
+      E006 := E006 - 1;
+      declare
+         procedure F1;
+         pragma Import (Ada, F1, "ada__text_io__finalize_spec");
+      begin
+         F1;
+      end;
+      declare
+         procedure F2;
+         pragma Import (Ada, F2, "system__file_io__finalize_body");
+      begin
+         E109 := E109 - 1;
+         F2;
+      end;
+      declare
+         procedure Reraise_Library_Exception_If_Any;
+            pragma Import (Ada, Reraise_Library_Exception_If_Any, "__gnat_reraise_library_exception_if_any");
+      begin
+         Reraise_Library_Exception_If_Any;
+      end;
+   end finalize_library;
 
    procedure adafinal is
       procedure s_stalib_adafinal;
@@ -123,42 +155,58 @@ package body ada_main is
 
       Runtime_Initialize (1);
 
-      Finalize_Library_Objects := null;
+      Finalize_Library_Objects := finalize_library'access;
 
       Ada.Exceptions'Elab_Spec;
       System.Soft_Links'Elab_Spec;
       System.Exception_Table'Elab_Body;
-      E25 := E25 + 1;
+      E025 := E025 + 1;
       Ada.Containers'Elab_Spec;
-      E40 := E40 + 1;
+      E040 := E040 + 1;
       Ada.Io_Exceptions'Elab_Spec;
-      E70 := E70 + 1;
+      E070 := E070 + 1;
       Ada.Strings'Elab_Spec;
-      E55 := E55 + 1;
+      E055 := E055 + 1;
       Ada.Strings.Maps'Elab_Spec;
-      E57 := E57 + 1;
+      E057 := E057 + 1;
       Ada.Strings.Maps.Constants'Elab_Spec;
-      E61 := E61 + 1;
+      E061 := E061 + 1;
       Interfaces.C'Elab_Spec;
-      E45 := E45 + 1;
+      E045 := E045 + 1;
       System.Exceptions'Elab_Spec;
-      E27 := E27 + 1;
+      E027 := E027 + 1;
       System.Object_Reader'Elab_Spec;
-      E81 := E81 + 1;
+      E081 := E081 + 1;
       System.Dwarf_Lines'Elab_Spec;
-      E50 := E50 + 1;
+      E050 := E050 + 1;
       System.Os_Lib'Elab_Body;
-      E75 := E75 + 1;
+      E075 := E075 + 1;
       System.Soft_Links.Initialize'Elab_Body;
-      E21 := E21 + 1;
-      E13 := E13 + 1;
+      E021 := E021 + 1;
+      E013 := E013 + 1;
       System.Traceback.Symbolic'Elab_Body;
-      E39 := E39 + 1;
-      E08 := E08 + 1;
+      E039 := E039 + 1;
+      E008 := E008 + 1;
+      Ada.Tags'Elab_Spec;
+      Ada.Tags'Elab_Body;
+      E101 := E101 + 1;
+      Ada.Streams'Elab_Spec;
+      E099 := E099 + 1;
+      System.File_Control_Block'Elab_Spec;
+      E113 := E113 + 1;
+      System.Finalization_Root'Elab_Spec;
+      E112 := E112 + 1;
+      Ada.Finalization'Elab_Spec;
+      E110 := E110 + 1;
+      System.File_Io'Elab_Body;
+      E109 := E109 + 1;
+      Ada.Text_Io'Elab_Spec;
+      Ada.Text_Io'Elab_Body;
+      E006 := E006 + 1;
    end adainit;
 
    procedure Ada_Main_Program;
-   pragma Import (Ada, Ada_Main_Program, "_ada_case4");
+   pragma Import (Ada, Ada_Main_Program, "_ada_array_example");
 
    function main
      (argc : Integer;

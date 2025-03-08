@@ -306,14 +306,13 @@ void BinaryExpr::genRustCode(Node *parent) {
 }
 
 void ArrayDef::dump(int level) {
-  fprintf(yyout, "%*cArrayDef\n", level, ' ');
+  fprintf(yyout, "%*cArrayDef: %s\n", level, ' ', arraytype->dump().c_str());
   range->dump(level + 4);
-  arraytype->dump();
 }
 
 void ArrayDef::genRustCode(Node *parent) {
-  //range->genRustCode(parent);
-  //rustExpr = new RustArrayDef(dynamic_cast<RustRange *>(range->getRustStmt()), type);
+  range->genRustCode(parent);
+  rustExpr = new RustArrayDef(dynamic_cast<RustRange *>(range->getRustStmt()), arraytype);
 }
 
 void SeqNode::dump(int level) {
@@ -388,6 +387,17 @@ void ProcedureDecl::genRustCode(Node *parent) {
   rustStmt = new RustFuncDecl(curFunc, getProcedureSymbol());
 }
 
+void TypeDecl::dump(int level) {
+  fprintf(yyout, "%*cTypeIsStmt: %s\n", level, ' ', se->dump().c_str());
+  expr->dump(level + 4);
+}
+
+void TypeDecl::genRustCode(Node *parent) {
+  expr->genRustCode(parent);
+  Function *curFunc = builder->getCurrFunc();
+  rustStmt = new RustTypeDecl(curFunc, expr->getRustExpr(), se);
+}
+
 void ObjectDeclStmt::dump(int level) {
   printAstLog("ObjectDeclStmt dump");
   fprintf(yyout, "%*cObjectDeclStmt\n", level, ' ');
@@ -444,6 +454,8 @@ void DeclStmt::dump(int level) {
     objectDecl->dump(level + 4);
   if (procedureDecl)
     procedureDecl->dump(level + 4);
+  if (typeDecl)
+    typeDecl->dump(level + 4);
 }
 
 void DeclStmt::genRustCode(Node *parent) {
@@ -454,6 +466,10 @@ void DeclStmt::genRustCode(Node *parent) {
   if (procedureDecl) {
     procedureDecl->genRustCode(parent);
     rustStmt = procedureDecl->getRustStmt();
+  }
+  if (typeDecl) {
+    typeDecl->genRustCode(parent);
+    rustStmt = typeDecl->getRustStmt();
   }
 }
 
@@ -666,16 +682,6 @@ void PutlineStmt::dump(int level) {
 void PutlineStmt::genRustCode(Node *parent) {
   expr->genRustCode(parent);
   rustStmt = new RustPutlineStmt(expr->getRustExpr());
-}
-
-void TypeDeclStmt::dump(int level) {
-  fprintf(yyout, "%*cTypeIsStmt: %s\n", level, ' ', se->dump().c_str());
-  expr->dump(level + 4);
-}
-
-void TypeDeclStmt::genRustCode(Node *parent) {
-  //expr->genRustCode(parent);
-  //rustStmt = new RustTypeIsStmt(expr->getRustExpr(), typeName);
 }
 
 void PackageCall::dump(int level) {

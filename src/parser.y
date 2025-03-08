@@ -142,7 +142,7 @@
 %token COLON SEMICOLON LPAREN RPAREN COMMA
 %token SINGLEAND SINGLEOR
 
-%type<StmtType> CompUnit Unit PackageCall SubprogDecl SubprogBody SubprogSpec FormalPartOpt FormalPart Params Param DefIds DefId InitOpt DeclPart DeclItemOrBody DeclItemOrBodys ObjectDecl Decl Statements Statement PutStmt PutlineStmt GetStmt TypeDeclStmt SimpleStmt CompoundStmt NullStmt AssignStmt ReturnStmt ProcedureCall ExitStmt IfStmt CaseStmt LoopStmt Iteration IterPart LabelOpt Block CondClause CondClauses ElseOpt Range RangeConstrOpt DiscreteRange DiscreteWithRange Choice Choices Alternative Alternatives BasicLoop BlockBody BlockDecl
+%type<StmtType> CompUnit Unit PackageCall SubprogDecl SubprogBody SubprogSpec FormalPartOpt FormalPart Params Param DefIds DefId InitOpt DeclPart DeclItemOrBody DeclItemOrBodys ObjectDecl TypeDecl Decl Statements Statement PutStmt PutlineStmt GetStmt SimpleStmt CompoundStmt NullStmt AssignStmt ReturnStmt ProcedureCall ExitStmt IfStmt CaseStmt LoopStmt Iteration IterPart LabelOpt Block CondClause CondClauses ElseOpt Range RangeConstrOpt DiscreteRange DiscreteWithRange Choice Choices Alternative Alternatives BasicLoop BlockBody BlockDecl
 %type<type> Type
 %type<StrType> AttributeId
 %type<ExprType> Expression Condition CondPart IdOpt WhenOpt Literal ParenthesizedPrimary Primary Factor Term SimpleExpression Relation Attribute Value Values IndexedComp Name ArrayDef
@@ -361,6 +361,23 @@ Decl
     | SubprogDecl {
         $$ = new DeclStmt(dynamic_cast<ProcedureDecl*>($1));
     }
+    | TypeDecl {
+        $$ = new DeclStmt(dynamic_cast<TypeDecl*>($1));
+    }
+    ;
+
+TypeDecl
+    : TYPE Identifier IS ArrayDef SEMICOLON{
+        SymbolEntry *se = new IdentifierSymbolEntry(TypeSystem::arrayType, $2, identifiers->getLevel());
+        identifiers->install($2, se);
+        $$ = new TypeDecl($4, se);
+    }
+    ;
+
+ArrayDef
+    : ARRAY LPAREN Range RPAREN OF Type {
+        $$ = new ArrayDef(dynamic_cast<Range*>($3), $6);
+    }
     ;
 
 ObjectDecl
@@ -470,9 +487,6 @@ SimpleStmt
     | GetStmt {
         $$ = $1;
     }
-    | TypeDeclStmt {
-        $$ = $1;
-    }
 	;
 
 PutStmt
@@ -495,20 +509,6 @@ GetStmt
             std::cerr << "[YACC ERROR]: Can't not get symbolEntry: "<< $3 << "\n";
         }
         $$ = new GetStmt(se);
-    }
-    ;
-
-TypeDeclStmt
-    : TYPE Identifier IS ArrayDef SEMICOLON{
-        SymbolEntry *se = new IdentifierSymbolEntry(TypeSystem::arrayType, $2, identifiers->getLevel());
-        identifiers->install($2, se);
-        $$ = new TypeDeclStmt($4, se);
-    }
-    ;
-
-ArrayDef
-    : ARRAY LPAREN Range RPAREN OF Type {
-        $$ = new ArrayDef(dynamic_cast<Range*>($3), $6);
     }
     ;
 

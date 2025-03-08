@@ -178,6 +178,15 @@ public:
   std::string output() const;
 };
 
+class RustArrayDef : public RustExpr {
+private:
+  RustRange *range;
+  Type *arraytype;
+public:
+  RustArrayDef(RustRange *_range, Type *_type) : range(_range), arraytype(_type){};
+  std::string output() const;
+};
+
 class RustSeqStmt : public RustStmt {
 private:
   RustStmt *stmt;
@@ -358,6 +367,15 @@ private:
   SymbolEntry* se;
 public:
   RustFuncDecl(Function *_func, SymbolEntry* _se);
+  std::string output(int level) const;
+};
+
+class RustTypeDecl: public RustStmt {
+private:
+  SymbolEntry* se;
+  RustExpr* rustExpr;
+public:
+  RustTypeDecl(Function *_func, RustExpr* _rustExpr, SymbolEntry* _se);
   std::string output(int level) const;
 };
 

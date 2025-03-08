@@ -242,6 +242,16 @@ std::string RustBinaryExpr::output() const {
   }
 }
 
+// 输出 RustArrayDef 的字符串表示
+std::string RustArrayDef::output() const {
+  char temp[200];
+  std::string size = range->getUpper()->output() + " - " + range->getLow()->output() + " + 1";
+  sprintf(temp, "[%s; %s]", arraytype->toRustStr().c_str(), size.c_str());
+  // 输出示例: "[arraytype; size]"
+  // 具体示例: "[i32; 10 - 3 + 1]"
+  return std::string(temp);
+}
+
 // 输出 RustSeqStmt 的字符串表示
 std::string RustSeqStmt::output(int level) const {
   std::string res = stmt->output(level);
@@ -581,5 +591,22 @@ std::string RustFuncDecl::output(int level) const {
   //std::string paramStr=func->getParamStr();
   //sprintf(res, "%*cfn %s();", level, ' ', se->dump().c_str());
   // Rust不需要声明函数
+  return std::string(res);
+}
+
+// RustTypeDecl 构造函数 
+RustTypeDecl::RustTypeDecl(Function *_func, RustExpr *_rustExpr, SymbolEntry *_se)
+    : RustStmt(_func) {
+  se = _se;
+  rustExpr = _rustExpr;
+}
+
+// 输出 RustTypeDecl 的字符串表示
+std::string RustTypeDecl::output(int level) const {
+  char res[200];
+  sprintf(res, "%*ctype %s = %s;\n", level, ' ', se->dump().c_str(),
+          rustExpr->output().c_str());
+  // 输出示例: "    type se = expr;"
+  // 具体示例: "    type x = sometype;"
   return std::string(res);
 }

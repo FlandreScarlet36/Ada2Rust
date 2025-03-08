@@ -1,15 +1,24 @@
-with Ada.Text_IO; use Ada.Text_IO;
+procedure case4 is
+    procedure Compute_A (V : Natural);
+    --  Forward declaration of Compute_A
 
-procedure Array_Example is
-   -- 声明一个包含5个整数的数组类型
-   type Int_Array is array (2 .. 6) of Integer;
+    procedure Compute_B (V : Natural) is
+    begin
+       if V > 5 then
+          Compute_A (V - 1);
+          --  Call to Compute_A
+       end if;
+    end Compute_B;
 
-   -- 声明一个数组变量并初始化
-   My_Array : Int_Array := (1, 2, 3, 4, 5);
-
+    procedure Compute_A (V : Natural) is
+    begin
+       if V > 2 then
+          Compute_B (V - 1);
+          --  Call to Compute_B
+       end if;
+    end Compute_A;
+    A : Integer := 12;
+    B : Integer := 44;
 begin
-   -- 遍历数组并输出每个元素
-   for I in My_Array'Range loop
-      Put_Line ("Element" & Integer'Image(I) & " : " & Integer'Image(My_Array(I)));
-   end loop;
-end Array_Example;
+   Compute_A (15);
+end case4;
