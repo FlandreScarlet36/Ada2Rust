@@ -49,6 +49,7 @@ private:
   std::string name;
   int scope;
   bool isConst;
+  int offset;
   Type* type;
 
 public:
@@ -64,6 +65,8 @@ public:
   void setConst() { isConst = true; };
   bool getConst() { return isConst; };
   int getScope() const { return scope; };
+  int getOffset() const { return offset; };
+  void setOffset(int _offset) { offset = _offset; };
 };
 
 class TemporarySymbolEntry : public SymbolEntry {

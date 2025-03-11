@@ -123,7 +123,7 @@
     }
 %}
 
-DECIMIAL ([1-9][0-9]*|0)
+DECIMAL ([1-9][0-9]*|0)
 FLOATNUM ([0-9]*\.[0-9]+([eE][-+]?[0-9]+)?|[0-9]+[eE][-+]?[0-9]+)
 PACKAGEID [a-zA-Z](_?[a-zA-Z0-9])*\.[a-zA-Z](_?[a-zA-Z0-9])*
 ID [a-zA-Z](_?[a-zA-Z0-9])*
@@ -301,12 +301,12 @@ LINECOMMENT --.*\n
     return Identifier;
 }
 
-{DECIMIAL} {
+{DECIMAL} {
     int num = atoi(yytext);
     if(dump_token)
-        DUMP_TOKEN("DECIMIAL\t" + std::string(yytext));
+        DUMP_TOKEN("DECIMAL\t" + std::string(yytext));
     yylval.IntType = atoi(yytext);
-    return DECIMIAL;
+    return DECIMAL;
 }
 
 {FLOATNUM} {

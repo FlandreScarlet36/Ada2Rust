@@ -1205,9 +1205,9 @@ YY_RULE_SETUP
 {
     int num = atoi(yytext);
     if(dump_token)
-        DUMP_TOKEN("DECIMIAL\t" + std::string(yytext));
+        DUMP_TOKEN("DECIMAL\t" + std::string(yytext));
     yylval.IntType = atoi(yytext);
-    return DECIMIAL;
+    return DECIMAL;
 }
 	YY_BREAK
 case 30:

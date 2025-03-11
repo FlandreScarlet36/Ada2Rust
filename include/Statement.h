@@ -379,4 +379,23 @@ public:
   std::string output(int level) const;
 };
 
+class RustArrayDecl : public RustStmt {
+private:
+  RustStmt *defids;
+  SymbolEntry *se;
+  RustExpr *rustExpr;
+public:
+  RustArrayDecl(RustStmt *_defids, SymbolEntry *_se, RustExpr *_expr)
+      : RustStmt(nullptr), defids(_defids), se(_se), rustExpr(_expr){};
+  std::string output(int level) const;
+};
+
+class RustArrayInit : public RustExpr {
+private:
+  RustExpr *initExpr;
+public:
+  RustArrayInit(RustExpr *_initExpr) : initExpr(_initExpr){};
+  std::string output() const;
+};
+
 #endif

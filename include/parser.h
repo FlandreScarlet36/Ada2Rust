@@ -154,7 +154,7 @@ extern int yydebug;
     GET = 348,                     /* GET  */
     TRuE = 349,                    /* TRuE  */
     FALsE = 350,                   /* FALsE  */
-    DECIMIAL = 351,                /* DECIMIAL  */
+    DECIMAL = 351,                 /* DECIMAL  */
     FLOATNUM = 352,                /* FLOATNUM  */
     SINGLECHAR = 353,              /* SINGLECHAR  */
     Identifier = 354,              /* Identifier  */

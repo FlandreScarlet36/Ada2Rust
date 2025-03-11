@@ -1,24 +1,18 @@
-procedure case4 is
-    procedure Compute_A (V : Natural);
-    --  Forward declaration of Compute_A
+with Ada.Text_IO; use Ada.Text_IO;
 
-    procedure Compute_B (V : Natural) is
-    begin
-       if V > 5 then
-          Compute_A (V - 1);
-          --  Call to Compute_A
-       end if;
-    end Compute_B;
+procedure Array_Example is
+   -- 声明一个包含5个整数的数组类型
+   Num1 : Integer;
+   type Int_Array is array (1 .. 5) of Integer;
+   Num2 : Integer;
+   type Int_Array2 is array (1 .. 5) of Integer;
 
-    procedure Compute_A (V : Natural) is
-    begin
-       if V > 2 then
-          Compute_B (V - 1);
-          --  Call to Compute_B
-       end if;
-    end Compute_A;
     A : Integer := 12;
-    B : Integer := 44;
+    B : Integer := 34;
+   
+   -- 声明一个数组变量
+   Arr1 : Int_Array := (1, 2, 3, 4, 5);
 begin
-   Compute_A (15);
-end case4;
+   Put ("Array Example");
+
+end Array_Example;

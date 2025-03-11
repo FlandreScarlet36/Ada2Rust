@@ -104,6 +104,7 @@ public:
   Range(ExprNode *_lowerbound, ExprNode *_upperbound)
       : lowerbound(_lowerbound), upperbound(_upperbound){};
   Type *getType() { return lowerbound->getType(); }
+  ExprNode *getLowerbound() { return lowerbound; }
   void dump(int level);
   void genRustCode(Node *parent);
 };
@@ -138,6 +139,7 @@ private:
 public:
   Constant(SymbolEntry *_se) : se(_se){};
   Type *getType() { return se->getType(); }
+  int evaluate() { return dynamic_cast<ConstantSymbolEntry*>(se)->getValue(); }
   void dump(int level);
   void genRustCode(Node *parent);
 };
@@ -281,16 +283,39 @@ class TypeDecl : public StmtNode {
     void genRustCode(Node *parent);
 };
 
+class ArrayDecl : public StmtNode {
+private:
+  DefId *defids;
+  SymbolEntry *se;
+  ExprNode *expr;
+public:
+  ArrayDecl(DefId *_defids, SymbolEntry *_se, ExprNode *_expr) : defids(_defids), se(_se), expr(_expr){};
+  void dump(int level);
+  void genRustCode(Node *parent);
+};
+
+class ArrayInit : public ExprNode {
+private:
+  ExprNode *expr;
+public:
+  ArrayInit(ExprNode *_expr) : expr(_expr){};
+  Type *getType() { return expr->getType(); }
+  void dump(int level);
+  void genRustCode(Node *parent);
+};
+
 class DeclStmt : public StmtNode {
 private:
   ObjectDeclStmt *objectDecl;
   ProcedureDecl *procedureDecl;
   TypeDecl *typeDecl;
+  ArrayDecl *arrayDecl;
 
 public:
   DeclStmt(ObjectDeclStmt *_objectDecl) : objectDecl(_objectDecl) {}
   DeclStmt(ProcedureDecl *_procedureDecl) : procedureDecl(_procedureDecl) {}
   DeclStmt(TypeDecl *_typeDecl) : typeDecl(_typeDecl) {}
+  DeclStmt(ArrayDecl *_arrayDecl) : arrayDecl(_arrayDecl) {}
   void dump(int level);
   void genRustCode(Node *parent);
 };
@@ -302,6 +327,7 @@ class ArrayDef : public ExprNode {
   public:
     ArrayDef(Range *_range, Type *_type) : range(_range), arraytype(_type){};
     Type *getType() { return arraytype; }
+    int getOffset() { return dynamic_cast<Constant*>(range->getLowerbound())->evaluate(); }
     void dump(int level);
     void genRustCode(Node *parent);
 };

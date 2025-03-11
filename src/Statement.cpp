@@ -596,9 +596,10 @@ std::string RustFuncDecl::output(int level) const {
 
 // RustTypeDecl 构造函数 
 RustTypeDecl::RustTypeDecl(Function *_func, RustExpr *_rustExpr, SymbolEntry *_se)
-    : RustStmt(_func) {
+    : RustStmt(nullptr) {
   se = _se;
   rustExpr = _rustExpr;
+  _func->insertDecls(this);
 }
 
 // 输出 RustTypeDecl 的字符串表示
@@ -609,4 +610,25 @@ std::string RustTypeDecl::output(int level) const {
   // 输出示例: "    type se = expr;"
   // 具体示例: "    type x = sometype;"
   return std::string(res);
+}
+
+// 输出 RustArrayDecl 的字符串表示
+std::string RustArrayDecl::output(int level) const {
+  char res[200];
+  sprintf(res, "%*clet %s: %s = [%s];\n", level, ' ', defids->output(level).c_str(),
+          se->dump().c_str(), rustExpr->output().c_str());
+  // 输出示例: "    let name: se = [expr];"
+  // 具体示例: "    let x: IntArray = [1, 2, 3];"
+  return std::string(res);
+}
+
+// 输出 RustArrayInit 的字符串表示
+std::string RustArrayInit::output() const {
+  std::string res;
+  RustExpr *temp = initExpr;
+  while (temp) {
+    res += temp->output();
+    temp = dynamic_cast<RustExpr *>(temp->getNext());
+  }
+  return res;
 }

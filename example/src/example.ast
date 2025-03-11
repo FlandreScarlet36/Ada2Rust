@@ -1,0 +1,52 @@
+program
+    Package: Ada.Text_IO
+    Package: Ada.Text_IO
+    ProcedureDef
+        Procedure	name: Array_Example	type: Procedure
+        DeclItemOrBodyStmt
+            DeclStmt
+                ObjectDeclStmt
+                    DefId	name: Num1	type: Integer	isConst: false
+        DeclItemOrBodyStmt
+            DeclStmt
+                TypeDecl: Int_Array
+                    ArrayDef: Integer
+                        Range
+                            Literal	type: Integer	value: 1
+                            Literal	type: Integer	value: 5
+        DeclItemOrBodyStmt
+            DeclStmt
+                ObjectDeclStmt
+                    DefId	name: Num2	type: Integer	isConst: false
+        DeclItemOrBodyStmt
+            DeclStmt
+                TypeDecl: Int_Array2
+                    ArrayDef: Integer
+                        Range
+                            Literal	type: Integer	value: 1
+                            Literal	type: Integer	value: 5
+        DeclItemOrBodyStmt
+            DeclStmt
+                ObjectDeclStmt
+                    DefId	name: A	type: Integer	isConst: false
+                    InitOptStmt
+                        Literal	type: Integer	value: 12
+        DeclItemOrBodyStmt
+            DeclStmt
+                ObjectDeclStmt
+                    DefId	name: B	type: Integer	isConst: false
+                    InitOptStmt
+                        Literal	type: Integer	value: 34
+        DeclItemOrBodyStmt
+            DeclStmt
+                ArrayDeclType: Int_Array, Offset: 1
+                    DefId	name: Arr1	type: Integer	isConst: false
+                    ArrayInit
+                        Literal	type: Integer	value: 1
+                        Literal	type: Integer	value: 2
+                        Literal	type: Integer	value: 3
+                        Literal	type: Integer	value: 4
+                        Literal	type: Integer	value: 5
+        Stmt
+            PutStmt
+                Literal	type: String	value: "Array Example"

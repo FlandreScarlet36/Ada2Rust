@@ -134,7 +134,7 @@
 %token PUT
 %token GET
 %token <BoolType> TRuE FALsE
-%token <IntType> DECIMIAL
+%token <IntType> DECIMAL
 %token <FloatType> FLOATNUM
 %token <CharType> SINGLECHAR
 %token <StrType> Identifier STRINGLITERAL PACKAGEID
@@ -142,10 +142,10 @@
 %token COLON SEMICOLON LPAREN RPAREN COMMA
 %token SINGLEAND SINGLEOR
 
-%type<StmtType> CompUnit Unit PackageCall SubprogDecl SubprogBody SubprogSpec FormalPartOpt FormalPart Params Param DefIds DefId InitOpt DeclPart DeclItemOrBody DeclItemOrBodys ObjectDecl TypeDecl Decl Statements Statement PutStmt PutlineStmt GetStmt SimpleStmt CompoundStmt NullStmt AssignStmt ReturnStmt ProcedureCall ExitStmt IfStmt CaseStmt LoopStmt Iteration IterPart LabelOpt Block CondClause CondClauses ElseOpt Range RangeConstrOpt DiscreteRange DiscreteWithRange Choice Choices Alternative Alternatives BasicLoop BlockBody BlockDecl
+%type<StmtType> CompUnit Unit PackageCall SubprogDecl SubprogBody SubprogSpec FormalPartOpt FormalPart Params Param DefIds DefId InitOpt DeclPart DeclItemOrBody DeclItemOrBodys ObjectDecl TypeDecl ArrayDecl Decl Statements Statement PutStmt PutlineStmt GetStmt SimpleStmt CompoundStmt NullStmt AssignStmt ReturnStmt ProcedureCall ExitStmt IfStmt CaseStmt LoopStmt Iteration IterPart LabelOpt Block CondClause CondClauses ElseOpt Range RangeConstrOpt DiscreteRange DiscreteWithRange Choice Choices Alternative Alternatives BasicLoop BlockBody BlockDecl
 %type<type> Type
 %type<StrType> AttributeId
-%type<ExprType> Expression Condition CondPart IdOpt WhenOpt Literal ParenthesizedPrimary Primary Factor Term SimpleExpression Relation Attribute Value Values IndexedComp Name ArrayDef
+%type<ExprType> Expression Condition CondPart IdOpt WhenOpt Literal ParenthesizedPrimary Primary Factor Term SimpleExpression Relation Attribute Value Values IndexedComp Name ArrayDef ArrayInit
 %type<SignType> ReverseOpt Multiplying Adding Unary Membership Relational ShortCircuit Logical
 
 %%
@@ -359,16 +359,23 @@ Decl
         $$ = new DeclStmt(dynamic_cast<ObjectDeclStmt*>($1));
     }
     | SubprogDecl {
-        $$ = new DeclStmt(dynamic_cast<ProcedureDecl*>($1));
+        // $$ = new DeclStmt(dynamic_cast<ProcedureDecl*>($1));
     }
     | TypeDecl {
         $$ = new DeclStmt(dynamic_cast<TypeDecl*>($1));
+    }
+    | ArrayDecl {
+        $$ = new DeclStmt(dynamic_cast<ArrayDecl*>($1));
     }
     ;
 
 TypeDecl
     : TYPE Identifier IS ArrayDef SEMICOLON{
-        SymbolEntry *se = new IdentifierSymbolEntry(TypeSystem::arrayType, $2, identifiers->getLevel());
+        ArrayDef *arraydef = dynamic_cast<ArrayDef *>($4);
+        Type *arraytype = arraydef->getType();
+        int offset = arraydef->getOffset();
+        SymbolEntry *se = new IdentifierSymbolEntry(arraytype, $2, identifiers->getLevel());
+        dynamic_cast<IdentifierSymbolEntry *>(se)->setOffset(offset);
         identifiers->install($2, se);
         $$ = new TypeDecl($4, se);
     }
@@ -377,6 +384,28 @@ TypeDecl
 ArrayDef
     : ARRAY LPAREN Range RPAREN OF Type {
         $$ = new ArrayDef(dynamic_cast<Range*>($3), $6);
+    }
+    ;
+
+ArrayDecl
+    : DefIds COLON Identifier ASSIGN ArrayInit SEMICOLON {
+        SymbolEntry* se = identifiers->lookup($3);
+        if (!se) {
+            std::cerr << "[YACC ERROR]: Can't not get symbolEntry: " << $3 << "\n";
+        }
+        Type *elementtype = dynamic_cast<IdentifierSymbolEntry*>(se)->getType();
+        DefId* id = dynamic_cast<DefId*>($1);
+        while(id) {
+            id->setType(elementtype);
+            id = dynamic_cast<DefId*>(id->getNext());
+        }
+        $$ = new ArrayDecl(dynamic_cast<DefId*>($1), se, $5);
+    }
+    ;
+
+ArrayInit
+    : LPAREN Values RPAREN {
+        $$ = new ArrayInit($2);
     }
     ;
 
@@ -1008,7 +1037,7 @@ ParenthesizedPrimary
 	;
 
 Literal
-    : DECIMIAL {
+    : DECIMAL {
         SymbolEntry* se = new ConstantSymbolEntry(TypeSystem::integerType, $1);
         $$ = new Constant(se);
     }

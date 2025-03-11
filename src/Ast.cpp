@@ -388,7 +388,7 @@ void ProcedureDecl::genRustCode(Node *parent) {
 }
 
 void TypeDecl::dump(int level) {
-  fprintf(yyout, "%*cTypeIsStmt: %s\n", level, ' ', se->dump().c_str());
+  fprintf(yyout, "%*cTypeDecl: %s\n", level, ' ', se->dump().c_str());
   expr->dump(level + 4);
 }
 
@@ -396,6 +396,41 @@ void TypeDecl::genRustCode(Node *parent) {
   expr->genRustCode(parent);
   Function *curFunc = builder->getCurrFunc();
   rustStmt = new RustTypeDecl(curFunc, expr->getRustExpr(), se);
+}
+
+void ArrayDecl::dump(int level) {
+  fprintf(yyout, "%*cArrayDeclType: %s, Offset: %d\n", level, ' ', se->dump().c_str(), dynamic_cast<IdentifierSymbolEntry *>(se)->getOffset());
+  defids->dump(level + 4);
+  expr->dump(level + 4);
+}
+
+void ArrayDecl::genRustCode(Node *parent) {
+  expr->genRustCode(parent);
+  //rustStmt = new RustArrayDecl(defids->getSymbolEntry(), se, expr->getRustExpr());
+}
+
+void ArrayInit::dump(int level) {
+  fprintf(yyout, "%*cArrayInit\n", level, ' ');
+  ExprNode *temp = expr;
+  while (temp) {
+    temp->dump(level + 4);
+    temp = dynamic_cast<ExprNode *>(temp->getNext());
+  }
+}
+
+void ArrayInit::genRustCode(Node *parent) {
+  RustExpr *initExpr = nullptr;
+  ExprNode *temp = expr;
+  while (temp) {
+    temp->genRustCode(parent);
+    if (!initExpr) {
+      initExpr = temp->getRustExpr();
+    } else {
+      initExpr->setNext(temp->getRustExpr());
+    }
+    temp = dynamic_cast<ExprNode *>(temp->getNext());
+  }
+  rustExpr = new RustArrayInit(initExpr);
 }
 
 void ObjectDeclStmt::dump(int level) {
@@ -456,6 +491,8 @@ void DeclStmt::dump(int level) {
     procedureDecl->dump(level + 4);
   if (typeDecl)
     typeDecl->dump(level + 4);
+  if (arrayDecl)
+    arrayDecl->dump(level + 4);
 }
 
 void DeclStmt::genRustCode(Node *parent) {
@@ -470,6 +507,10 @@ void DeclStmt::genRustCode(Node *parent) {
   if (typeDecl) {
     typeDecl->genRustCode(parent);
     rustStmt = typeDecl->getRustStmt();
+  }
+  if (arrayDecl) {
+    arrayDecl->genRustCode(parent);
+    rustStmt = arrayDecl->getRustStmt();
   }
 }
 

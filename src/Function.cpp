@@ -25,7 +25,7 @@ Function::~Function() {
     parent->removeFunc(this);
 }
 
-// 获取函数声明字符串
+// 获取声明字符串
 std::string Function::getDeclStr(int level) const {
   std::string declStr;
   // 1. 处理操作数声明
