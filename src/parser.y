@@ -372,7 +372,9 @@ Decl
 TypeDecl
     : TYPE Identifier IS ArrayDef SEMICOLON{
         ArrayDef *arraydef = dynamic_cast<ArrayDef *>($4);
+        // 数组元素的类型
         Type *arraytype = arraydef->getType();
+        // 数组第一个下标相对于0的偏移量
         int offset = arraydef->getOffset();
         SymbolEntry *se = new IdentifierSymbolEntry(arraytype, $2, identifiers->getLevel());
         dynamic_cast<IdentifierSymbolEntry *>(se)->setOffset(offset);
@@ -393,6 +395,7 @@ ArrayDecl
         if (!se) {
             std::cerr << "[YACC ERROR]: Can't not get symbolEntry: " << $3 << "\n";
         }
+        // 数组元素的类型
         Type *elementtype = dynamic_cast<IdentifierSymbolEntry*>(se)->getType();
         DefId* id = dynamic_cast<DefId*>($1);
         while(id) {

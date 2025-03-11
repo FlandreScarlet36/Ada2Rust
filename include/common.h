@@ -5,7 +5,7 @@ enum dump_type_t
 {
     TOKENS,
     AST,
-    CPP,
+    RUST,
 };
 
 #endif

@@ -5,19 +5,11 @@ program
         Procedure	name: Array_Example	type: Procedure
         DeclItemOrBodyStmt
             DeclStmt
-                ObjectDeclStmt
-                    DefId	name: Num1	type: Integer	isConst: false
-        DeclItemOrBodyStmt
-            DeclStmt
                 TypeDecl: Int_Array
                     ArrayDef: Integer
                         Range
-                            Literal	type: Integer	value: 1
-                            Literal	type: Integer	value: 5
-        DeclItemOrBodyStmt
-            DeclStmt
-                ObjectDeclStmt
-                    DefId	name: Num2	type: Integer	isConst: false
+                            Literal	type: Integer	value: 6
+                            Literal	type: Integer	value: 10
         DeclItemOrBodyStmt
             DeclStmt
                 TypeDecl: Int_Array2
@@ -27,20 +19,8 @@ program
                             Literal	type: Integer	value: 5
         DeclItemOrBodyStmt
             DeclStmt
-                ObjectDeclStmt
-                    DefId	name: A	type: Integer	isConst: false
-                    InitOptStmt
-                        Literal	type: Integer	value: 12
-        DeclItemOrBodyStmt
-            DeclStmt
-                ObjectDeclStmt
-                    DefId	name: B	type: Integer	isConst: false
-                    InitOptStmt
-                        Literal	type: Integer	value: 34
-        DeclItemOrBodyStmt
-            DeclStmt
-                ArrayDecl: Type: Int_Array, Offset: 1
-                    DefId	name: Arr1	type: Integer	isConst: false
+                ArrayDecl: Type: Int_Array, Offset: 6
+                    DefId	name: New_Array	type: Integer	isConst: false
                     ArrayInit
                         Literal	type: Integer	value: 1
                         Literal	type: Integer	value: 2
@@ -49,4 +29,13 @@ program
                         Literal	type: Integer	value: 5
         Stmt
             PutStmt
-                Literal	type: String	value: "Array Example"
+                BinaryExpr
+                    OpSign: &
+                        BinaryExpr
+                            OpSign: &
+                                BinaryExpr
+                                    OpSign: &
+                                        Literal	type: String	value: "Array Example"
+                                        Literal	type: String	value: "aaa"
+                                Literal	type: String	value: "bbb"
+                        Literal	type: String	value: "ccc"

@@ -14,7 +14,7 @@ RustUnit unit;
 
 char outfile[256] = "a.out";
 bool dump_token = false;
-dump_type_t dump_type = CPP;
+dump_type_t dump_type = RUST;
 
 int main(int argc, char *argv[]) {
   int opt;
@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
       break;
     case 'c':
       strcpy(outfile, "a.cpp");
-      dump_type = CPP;
+      dump_type = RUST;
       break;
     default:
       fprintf(stderr, "Usage: %s [-o outfile] infile\n", argv[0]);
@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
   if (dump_type == AST)
     ast.dump();
 
-  if (dump_type == CPP) {
+  if (dump_type == RUST) {
     ast.genRustCode(&unit);
     unit.output();
   }

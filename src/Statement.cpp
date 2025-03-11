@@ -11,6 +11,9 @@ bool isStringType(RustExpr* expr) {
   if (auto rustConstant = dynamic_cast<RustConstant*>(expr)) {
       return rustConstant->getSE() && rustConstant->getSE()->getType()->isString();
   }
+  if (auto rustBinaryExpr = dynamic_cast<RustBinaryExpr*>(expr)) {
+    return isStringType(rustBinaryExpr->getExpr1());
+  }
   return false;
 }
 

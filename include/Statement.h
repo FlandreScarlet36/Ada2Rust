@@ -145,6 +145,7 @@ private:
   int sign;
   bool isUnary;
   bool isMember;
+  bool isString;
 
 public:
   enum {
@@ -183,6 +184,9 @@ public:
       : rustExpr1(_expr1), se(_se), sign(_sign) {
     isMember = true;
   };
+  bool getIsStringType() { return isString; }
+  RustExpr *getExpr1() { return rustExpr1; }
+  RustExpr *getExpr2() { return rustExpr2; } 
   std::string output() const;
 };
 

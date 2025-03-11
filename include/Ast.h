@@ -209,6 +209,7 @@ public:
   void setType(Type *_type) { id->setType(_type); }
   void setConst() { id->setConst(); }
   bool getConst() { return id->getConst(); }
+  std::string getName() { return id->dump(); }
   void dump(int level);
   void genRustCode(Node *parent);
 };
