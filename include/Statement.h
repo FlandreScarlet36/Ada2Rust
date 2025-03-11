@@ -66,6 +66,14 @@ public:
   std::string output(int level) const;
 };
 
+class RustDefId : public RustStmt {
+private:
+  IdentifierSymbolEntry *id;
+public:
+  RustDefId(IdentifierSymbolEntry *_id) : RustStmt(nullptr), id(_id){};
+  std::string output(int level) const { return id->dump(); };
+};
+
 class RustPackageCall : public RustStmt {
 private:
   std::string packageName;
@@ -381,12 +389,11 @@ public:
 
 class RustArrayDecl : public RustStmt {
 private:
-  RustStmt *defids;
+  RustDefId *defids;
   SymbolEntry *se;
   RustExpr *rustExpr;
 public:
-  RustArrayDecl(RustStmt *_defids, SymbolEntry *_se, RustExpr *_expr)
-      : RustStmt(nullptr), defids(_defids), se(_se), rustExpr(_expr){};
+  RustArrayDecl(Function *_func, RustDefId *_defids, SymbolEntry *_se, RustExpr *_expr);
   std::string output(int level) const;
 };
 

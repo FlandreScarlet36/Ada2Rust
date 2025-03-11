@@ -339,7 +339,13 @@ void DefId::dump(int level) {
     this->getNext()->dump(level);
 }
 
-void DefId::genRustCode(Node *parent) {}
+void DefId::genRustCode(Node *parent) {
+  rustStmt = new RustDefId(id);
+  if (this->getNext()){
+    this->getNext()->genRustCode(parent);
+    rustStmt->setNext(this->getNext()->getRustStmt());
+  }
+}
 
 void InitOptStmt::dump(int level) {
   fprintf(yyout, "%*cInitOptStmt\n", level, ' ');
@@ -399,14 +405,16 @@ void TypeDecl::genRustCode(Node *parent) {
 }
 
 void ArrayDecl::dump(int level) {
-  fprintf(yyout, "%*cArrayDeclType: %s, Offset: %d\n", level, ' ', se->dump().c_str(), dynamic_cast<IdentifierSymbolEntry *>(se)->getOffset());
+  fprintf(yyout, "%*cArrayDecl: Type: %s, Offset: %d\n", level, ' ', se->dump().c_str(), dynamic_cast<IdentifierSymbolEntry *>(se)->getOffset());
   defids->dump(level + 4);
   expr->dump(level + 4);
 }
 
 void ArrayDecl::genRustCode(Node *parent) {
+  defids->genRustCode(parent);
   expr->genRustCode(parent);
-  //rustStmt = new RustArrayDecl(defids->getSymbolEntry(), se, expr->getRustExpr());
+  Function *curFunc = builder->getCurrFunc();
+  rustStmt = new RustArrayDecl(curFunc, dynamic_cast<RustDefId*>(defids->getRustStmt()), se, expr->getRustExpr());
 }
 
 void ArrayInit::dump(int level) {

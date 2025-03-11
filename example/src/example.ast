@@ -39,7 +39,7 @@ program
                         Literal	type: Integer	value: 34
         DeclItemOrBodyStmt
             DeclStmt
-                ArrayDeclType: Int_Array, Offset: 1
+                ArrayDecl: Type: Int_Array, Offset: 1
                     DefId	name: Arr1	type: Integer	isConst: false
                     ArrayInit
                         Literal	type: Integer	value: 1

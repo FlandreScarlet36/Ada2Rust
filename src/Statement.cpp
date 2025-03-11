@@ -612,6 +612,15 @@ std::string RustTypeDecl::output(int level) const {
   return std::string(res);
 }
 
+// RustArrayDecl 构造函数
+RustArrayDecl::RustArrayDecl(Function *_func, RustDefId *_defids, SymbolEntry *_se, RustExpr *_expr)
+    : RustStmt(nullptr) {
+  defids = _defids;
+  se = _se;
+  rustExpr = _expr;
+  _func->insertDecls(this);
+}
+
 // 输出 RustArrayDecl 的字符串表示
 std::string RustArrayDecl::output(int level) const {
   char res[200];
@@ -629,6 +638,9 @@ std::string RustArrayInit::output() const {
   while (temp) {
     res += temp->output();
     temp = dynamic_cast<RustExpr *>(temp->getNext());
+    if (temp) {
+      res += ", ";
+    }
   }
   return res;
 }
