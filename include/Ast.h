@@ -126,6 +126,7 @@ public:
     else
       return name->getType();
   }
+  SymbolEntry *getSymbolEntry() { return se; }
   Id *getId() { return name; }
   ExprNode *getExpr() { return expr; }
   void dump(int level);
@@ -209,6 +210,10 @@ public:
   void setType(Type *_type) { id->setType(_type); }
   void setConst() { id->setConst(); }
   bool getConst() { return id->getConst(); }
+  void setOffset(int _offset) { id->setOffset(_offset); }
+  int getOffset() { return id->getOffset(); }
+  void setIsArray() { id->setIsArray(); }
+  bool getIsArray() { return id->getIsArray(); }
   std::string getName() { return id->dump(); }
   void dump(int level);
   void genRustCode(Node *parent);
@@ -479,12 +484,14 @@ class DiscreteRange : public StmtNode {
 private:
   SymbolEntry *se;
   Range *range;
+  bool isArray = false;
 
 public:
   DiscreteRange(SymbolEntry *_se, Range *_range = nullptr)
       : se(_se), range(_range){};
   DiscreteRange(Range *_range) : range(_range){};
   SymbolEntry *getSymbol() { return se; }
+  void setIsArray() { isArray = true; }
   void dump(int level);
   void genRustCode(Node *parent);
 };

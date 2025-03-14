@@ -49,6 +49,7 @@ private:
   std::string name;
   int scope;
   bool isConst;
+  bool isArray;
   int offset;
   Type* type;
 
@@ -62,6 +63,8 @@ public:
   Type *getType() { return type; };
   std::string dump();
   void setType(Type* _type) { type = _type; };
+  void setIsArray() { isArray = true; };
+  bool getIsArray() { return isArray; };
   void setConst() { isConst = true; };
   bool getConst() { return isConst; };
   int getScope() const { return scope; };

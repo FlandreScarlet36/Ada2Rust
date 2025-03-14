@@ -397,9 +397,12 @@ ArrayDecl
         }
         // 数组元素的类型
         Type *elementtype = dynamic_cast<IdentifierSymbolEntry*>(se)->getType();
+        int offset = dynamic_cast<IdentifierSymbolEntry*>(se)->getOffset();
         DefId* id = dynamic_cast<DefId*>($1);
         while(id) {
             id->setType(elementtype);
+            id->setOffset(offset);
+            id->setIsArray();
             id = dynamic_cast<DefId*>(id->getNext());
         }
         $$ = new ArrayDecl(dynamic_cast<DefId*>($1), se, $5);

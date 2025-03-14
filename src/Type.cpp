@@ -69,7 +69,7 @@ std::string ArrayType::dump() {
 }
 
 std::string ArrayType::toRustStr() {
-    return "Array";
+    return "array";
 }
 
 std::string ProcedureType::dump() {

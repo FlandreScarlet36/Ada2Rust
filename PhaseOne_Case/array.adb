@@ -9,7 +9,7 @@ procedure Array_Example is
 
 begin
    -- 遍历数组并输出每个元素
-   for I in My_Array'Range loop
+   for I in 1..5 loop
       Put_Line ("Element" & Integer'Image(I) & " : " & Integer'Image(My_Array(I)));
    end loop;
 end Array_Example;

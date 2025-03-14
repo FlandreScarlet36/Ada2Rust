@@ -8,19 +8,12 @@ program
                 TypeDecl: Int_Array
                     ArrayDef: Integer
                         Range
-                            Literal	type: Integer	value: 6
-                            Literal	type: Integer	value: 10
-        DeclItemOrBodyStmt
-            DeclStmt
-                TypeDecl: Int_Array2
-                    ArrayDef: Integer
-                        Range
                             Literal	type: Integer	value: 1
                             Literal	type: Integer	value: 5
         DeclItemOrBodyStmt
             DeclStmt
-                ArrayDecl: Type: Int_Array, Offset: 6
-                    DefId	name: New_Array	type: Integer	isConst: false
+                ArrayDecl: Type: Int_Array, Offset: 1
+                    DefId	name: My_Array	type: Integer	isConst: false
                     ArrayInit
                         Literal	type: Integer	value: 1
                         Literal	type: Integer	value: 2
@@ -28,14 +21,25 @@ program
                         Literal	type: Integer	value: 4
                         Literal	type: Integer	value: 5
         Stmt
-            PutStmt
-                BinaryExpr
-                    OpSign: &
-                        BinaryExpr
-                            OpSign: &
-                                BinaryExpr
-                                    OpSign: &
-                                        Literal	type: String	value: "Array Example"
-                                        Literal	type: String	value: "aaa"
-                                Literal	type: String	value: "bbb"
-                        Literal	type: String	value: "ccc"
+            LoopStmt
+                Iteration
+                    IterPart	name: I
+                    DiscreteRange
+                        Range
+                            Literal	type: Integer	value: 1
+                            Literal	type: Integer	value: 5
+                BasicLoopStmt
+                    Stmt
+                        PutLineStmt
+                            Id
+                                Id
+                                    Id
+                                        name: Integer	scope: 0	type: Integer
+                                        AttributeId: Image
+                                Name PAREN Value
+                                    Id
+                                        Id
+                                            name: My_Array	scope: 2	type: Integer
+                                        Name PAREN Value
+                                            Id
+                                                name: I	scope: 3	type: Integer

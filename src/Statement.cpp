@@ -98,7 +98,10 @@ std::string RustId::output() const {
         paramStr += temp->output();
       }
       char res[50];
-      if(!name->getAttr()->empty()){
+      auto idSymbolEntry = dynamic_cast<IdentifierSymbolEntry*>(name->getSE());
+      if (idSymbolEntry && idSymbolEntry->getIsArray()) {
+        sprintf(res, "%s[%s - %d]", name->output().c_str(), paramStr.c_str(), idSymbolEntry->getOffset());
+      } else if(!name->getAttr()->empty()){
         sprintf(res, "%s%s", paramStr.c_str(), replaceString(*name->getAttr()).c_str());
       } else {
         sprintf(res, "%s(%s)", name->output().c_str(), paramStr.c_str());
