@@ -13,4 +13,3 @@ begin
             Put_Line("Go");
     end case;
 end Traffic_Light;
-
