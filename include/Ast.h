@@ -272,19 +272,28 @@ class ObjectDeclStmt : public StmtNode {
 private:
   DefId *id;
   InitOptStmt *init;
+  Type *type;
+  bool isConst = false;
 
 public:
-  ObjectDeclStmt(DefId *_id, InitOptStmt *_init) : id(_id), init(_init) {}
+  ObjectDeclStmt(Type *_type, InitOptStmt *_init) : type(_type), init(_init) {}
+  void setId(DefId *_id) { id = _id; }
+  void setConst() { isConst = true; }
+  bool getConst() { return isConst; }
+  Type *getType() { return type; }
   void dump(int level);
   void genRustCode(Node *parent);
 };
 
 class TypeDecl : public StmtNode {
   private:
+    DefId *id;
     ExprNode *expr;
     SymbolEntry *se;
   public:
     TypeDecl(ExprNode *_expr, SymbolEntry *_se) : expr(_expr), se(_se){};
+    TypeDecl(DefId *_id) : id(_id){};
+    SymbolEntry *getSymbolEntry() { return se; }
     void dump(int level);
     void genRustCode(Node *parent);
 };
@@ -295,7 +304,9 @@ private:
   SymbolEntry *se;
   ExprNode *expr;
 public:
-  ArrayDecl(DefId *_defids, SymbolEntry *_se, ExprNode *_expr) : defids(_defids), se(_se), expr(_expr){};
+  ArrayDecl(SymbolEntry *_se, ExprNode *_expr) : se(_se), expr(_expr){};
+  void setDefIds(DefId *_defids) { defids = _defids; }
+  SymbolEntry *getSymbolEntry() { return se; }
   void dump(int level);
   void genRustCode(Node *parent);
 };
@@ -306,6 +317,7 @@ private:
 public:
   ArrayInit(ExprNode *_expr) : expr(_expr){};
   Type *getType() { return expr->getType(); }
+  ExprNode *getExpr() { return expr; }
   void dump(int level);
   void genRustCode(Node *parent);
 };

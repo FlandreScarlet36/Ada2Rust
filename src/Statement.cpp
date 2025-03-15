@@ -608,8 +608,27 @@ RustTypeDecl::RustTypeDecl(Function *_func, RustExpr *_rustExpr, SymbolEntry *_s
   _func->insertDecls(this);
 }
 
+// RustTypeDecl 构造函数 
+RustTypeDecl::RustTypeDecl(Function *_func, RustDefId *_id)
+    : RustStmt(nullptr) {
+  id = _id;
+  _func->insertDecls(this);
+}
+
 // 输出 RustTypeDecl 的字符串表示
 std::string RustTypeDecl::output(int level) const {
+  if(id){
+    std::string res;
+    RustDefId *temp = id;
+    int count = 0;
+    while (temp) {
+      res += std::string(level, ' ') + "let " + temp->output(level) + ": i32 = " + 
+             std::to_string(count) + ";\n";
+      count++;
+      temp = dynamic_cast<RustDefId *>(temp->getNext());
+    }
+    return res;
+  }
   char res[200];
   sprintf(res, "%*ctype %s = %s;\n", level, ' ', se->dump().c_str(),
           rustExpr->output().c_str());

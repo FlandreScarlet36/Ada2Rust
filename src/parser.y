@@ -142,10 +142,10 @@
 %token COLON SEMICOLON LPAREN RPAREN COMMA
 %token SINGLEAND SINGLEOR
 
-%type<StmtType> CompUnit Unit PackageCall SubprogDecl SubprogBody SubprogSpec FormalPartOpt FormalPart Params Param DefIds DefId InitOpt DeclPart DeclItemOrBody DeclItemOrBodys ObjectDecl TypeDecl ArrayDecl Decl Statements Statement PutStmt PutlineStmt GetStmt SimpleStmt CompoundStmt NullStmt AssignStmt ReturnStmt ProcedureCall ExitStmt IfStmt CaseStmt LoopStmt Iteration IterPart LabelOpt Block CondClause CondClauses ElseOpt Range RangeConstrOpt DiscreteRange DiscreteWithRange Choice Choices Alternative Alternatives BasicLoop BlockBody BlockDecl
+%type<StmtType> CompUnit Unit PackageCall SubprogDecl SubprogBody SubprogSpec FormalPartOpt FormalPart Params Param DefIds DefId InitOpt DeclPart DeclItemOrBody DeclItemOrBodys DeclType TypeDecl Decl Statements Statement PutStmt PutlineStmt GetStmt SimpleStmt CompoundStmt NullStmt AssignStmt ReturnStmt ProcedureCall ExitStmt IfStmt CaseStmt LoopStmt Iteration IterPart LabelOpt Block CondClause CondClauses ElseOpt Range RangeConstrOpt DiscreteRange DiscreteWithRange Choice Choices Alternative Alternatives BasicLoop BlockBody BlockDecl
 %type<type> Type
 %type<StrType> AttributeId
-%type<ExprType> Expression Condition CondPart IdOpt WhenOpt Literal ParenthesizedPrimary Primary Factor Term SimpleExpression Relation Attribute Value Values IndexedComp Name ArrayDef ArrayInit
+%type<ExprType> Expression Condition CondPart IdOpt WhenOpt Literal Primary Factor Term SimpleExpression Relation Attribute Value Values IndexedComp Name ArrayDef ArrayInit
 %type<SignType> ReverseOpt Multiplying Adding Unary Membership Relational ShortCircuit Logical
 
 %%
@@ -354,18 +354,44 @@ DeclPart :%empty { $$ = nullptr; }
 	;
 
 Decl
-    :
-    ObjectDecl {
-        $$ = new DeclStmt(dynamic_cast<ObjectDeclStmt*>($1));
+    : DefIds COLON DeclType SEMICOLON {
+        if (dynamic_cast<ObjectDeclStmt*>($3)) {
+            ObjectDeclStmt* decl = dynamic_cast<ObjectDeclStmt*>($3);
+            Type *elementtype = decl->getType();
+            DefId* id = dynamic_cast<DefId*>($1);
+            while(id) {
+                id->setType(elementtype);
+                if(decl->getConst())
+                    id->setConst();
+                id = dynamic_cast<DefId*>(id->getNext());
+            }
+            decl->setId(dynamic_cast<DefId*>($1));
+            $$ = new DeclStmt(dynamic_cast<ObjectDeclStmt*>($3));
+        } 
+        else if (dynamic_cast<ArrayDecl*>($3)) {
+            ArrayDecl* arraydecl = dynamic_cast<ArrayDecl*>($3);
+            // 数组元素的类型
+            SymbolEntry *se = arraydecl->getSymbolEntry();
+            Type *elementtype = dynamic_cast<IdentifierSymbolEntry*>(se)->getType();
+            int offset = dynamic_cast<IdentifierSymbolEntry*>(se)->getOffset();
+            DefId* id = dynamic_cast<DefId*>($1);
+            while(id) {
+                id->setType(elementtype);
+                id->setOffset(offset);
+                id->setIsArray();
+                id = dynamic_cast<DefId*>(id->getNext());
+            }
+            arraydecl->setDefIds(dynamic_cast<DefId*>($1));
+            $$ = new DeclStmt(arraydecl);
+        } else {
+            yyerror("Unknown DeclType");
+        }
     }
     | SubprogDecl {
         // $$ = new DeclStmt(dynamic_cast<ProcedureDecl*>($1));
     }
     | TypeDecl {
         $$ = new DeclStmt(dynamic_cast<TypeDecl*>($1));
-    }
-    | ArrayDecl {
-        $$ = new DeclStmt(dynamic_cast<ArrayDecl*>($1));
     }
     ;
 
@@ -381,6 +407,19 @@ TypeDecl
         identifiers->install($2, se);
         $$ = new TypeDecl($4, se);
     }
+    | TYPE Identifier IS LPAREN DefIds RPAREN SEMICOLON{
+        SymbolEntry *se = new IdentifierSymbolEntry(TypeSystem::integerType, $2, identifiers->getLevel());
+        DefId* id = dynamic_cast<DefId*>($5);
+        int count = 0; // 添加计数器
+        while(id) {
+            id->setType(TypeSystem::enumType);
+            id = dynamic_cast<DefId*>(id->getNext());
+            count++;
+        }
+        dynamic_cast<IdentifierSymbolEntry *>(se)->setOffset(count);
+        identifiers->install($2, se);
+        $$ = new TypeDecl(dynamic_cast<DefId*>($5));
+    }
     ;
 
 ArrayDef
@@ -389,23 +428,25 @@ ArrayDef
     }
     ;
 
-ArrayDecl
-    : DefIds COLON Identifier ASSIGN ArrayInit SEMICOLON {
-        SymbolEntry* se = identifiers->lookup($3);
+DeclType
+    : Type InitOpt {
+        $$ = new ObjectDeclStmt($1, dynamic_cast<InitOptStmt*>($2));
+    }
+    | CONSTANT Type InitOpt {
+        ObjectDeclStmt *stmt = new ObjectDeclStmt($2, dynamic_cast<InitOptStmt*>($3));
+        stmt->setConst();
+        $$ = stmt;
+    }
+    | Identifier ASSIGN Expression {
+        InitOptStmt* init = new InitOptStmt($3);
+        $$ = new ObjectDeclStmt(TypeSystem::integerType, init);
+    }
+    | Identifier ASSIGN ArrayInit {
+        SymbolEntry* se = identifiers->lookup($1);
         if (!se) {
-            std::cerr << "[YACC ERROR]: Can't not get symbolEntry: " << $3 << "\n";
+            std::cerr << "[YACC ERROR]: Can't not get symbolEntry: " << $1 << "\n";
         }
-        // 数组元素的类型
-        Type *elementtype = dynamic_cast<IdentifierSymbolEntry*>(se)->getType();
-        int offset = dynamic_cast<IdentifierSymbolEntry*>(se)->getOffset();
-        DefId* id = dynamic_cast<DefId*>($1);
-        while(id) {
-            id->setType(elementtype);
-            id->setOffset(offset);
-            id->setIsArray();
-            id = dynamic_cast<DefId*>(id->getNext());
-        }
-        $$ = new ArrayDecl(dynamic_cast<DefId*>($1), se, $5);
+        $$ = new ArrayDecl(se, $3);
     }
     ;
 
@@ -415,31 +456,6 @@ ArrayInit
     }
     ;
 
-ObjectDecl
-    : DefIds COLON Type InitOpt SEMICOLON {
-        DEBUG_YACC("================Enter ObjectDecl=================");
-        // Reset the type of id
-        DefId* id = dynamic_cast<DefId*>($1);
-        while(id) {
-            id->setType($3);
-            id = dynamic_cast<DefId*>(id->getNext());
-        }
-        $$ = new ObjectDeclStmt(dynamic_cast<DefId*>($1), dynamic_cast<InitOptStmt*>($4));
-        DEBUG_YACC("================Leave ObjectDecl=================");
-    }
-    | DefIds COLON CONSTANT Type InitOpt SEMICOLON {
-        DEBUG_YACC("================Enter CONSTANT ObjectDecl=================");
-        DefId* id = dynamic_cast<DefId*>($1);
-        // InitOptStmt* init = dynamic_cast<InitOptStmt*>($5);
-        while(id) {
-            id->setType($4);
-            id->setConst();
-            id = dynamic_cast<DefId*>(id->getNext());
-        }
-        $$ = new ObjectDeclStmt(dynamic_cast<DefId*>($1), dynamic_cast<InitOptStmt*>($5));
-        DEBUG_YACC("================Leave CONSTANT ObjectDecl=================");
-    }
-	;
 
 DefIds
     : DefId {
@@ -770,9 +786,20 @@ IdOpt
 
 DiscreteRange
     : Identifier RangeConstrOpt {
-        SymbolEntry *se = new IdentifierSymbolEntry(TypeSystem::integerType, $1, identifiers->getLevel());
-        identifiers->install($1, se);
-        $$ = new DiscreteRange(se, dynamic_cast<Range*>($2));
+        SymbolEntry *se = identifiers->lookup($1);
+        if(se){
+            int offset = dynamic_cast<IdentifierSymbolEntry*>(se)->getOffset();
+            std::cerr << offset << "\n";
+            ExprNode* start = new Constant(new ConstantSymbolEntry(TypeSystem::integerType, 0));
+            ExprNode* end = new Constant(new ConstantSymbolEntry(TypeSystem::integerType, offset - 1));
+            Range* range = new Range(start, end);
+            $$ = new DiscreteRange(range);
+        }
+        else {
+            SymbolEntry* se = new IdentifierSymbolEntry(TypeSystem::integerType, $1, identifiers->getLevel());
+            identifiers->install($1, se);
+            $$ = new DiscreteRange(se, dynamic_cast<Range*>($2));
+        }
     }
 	| Range {
         $$ = new DiscreteRange(dynamic_cast<Range*>($1));
@@ -971,9 +998,6 @@ Primary
 	| Name {
         $$ = $1;
     }
-	| ParenthesizedPrimary {
-        $$ = $1;
-    }
 	;
 
 Name
@@ -1033,12 +1057,6 @@ Attribute
 AttributeId
     : Identifier {
         $$ = $1;
-    }
-	;
-
-ParenthesizedPrimary
-    : LPAREN Expression RPAREN {
-        $$ = $2;
     }
 	;
 

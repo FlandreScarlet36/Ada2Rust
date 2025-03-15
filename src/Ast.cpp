@@ -394,14 +394,23 @@ void ProcedureDecl::genRustCode(Node *parent) {
 }
 
 void TypeDecl::dump(int level) {
+  if(id) {
+    fprintf(yyout, "%*cTypeDecl: ", level, ' ');
+    id->dump(level + 4);
+    return;
+  }
   fprintf(yyout, "%*cTypeDecl: %s\n", level, ' ', se->dump().c_str());
   expr->dump(level + 4);
 }
 
 void TypeDecl::genRustCode(Node *parent) {
+  if(id) {
+    id->genRustCode(parent);
+    rustStmt = new RustTypeDecl(builder->getCurrFunc(), dynamic_cast<RustDefId*>(id->getRustStmt()));
+    return;
+  }
   expr->genRustCode(parent);
-  Function *curFunc = builder->getCurrFunc();
-  rustStmt = new RustTypeDecl(curFunc, expr->getRustExpr(), se);
+  rustStmt = new RustTypeDecl(builder->getCurrFunc(), expr->getRustExpr(), se);
 }
 
 void ArrayDecl::dump(int level) {

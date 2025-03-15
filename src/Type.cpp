@@ -7,6 +7,7 @@ CharacterType TypeSystem::commonCharacter = CharacterType(8);
 StringType TypeSystem::commonString = StringType(16);
 FloatType TypeSystem::commonFloat = FloatType(32);
 ArrayType TypeSystem::commonArray = ArrayType(0);
+EnumType TypeSystem::commonEnum = EnumType(32);
 
 Type* TypeSystem::integerType = &commonInteger;
 Type* TypeSystem::boolType = &commonBool;
@@ -15,6 +16,7 @@ Type* TypeSystem::characterType = &commonCharacter;
 Type* TypeSystem::stringType = &commonString;
 Type* TypeSystem::floatType = &commonFloat;
 Type* TypeSystem::arrayType = &commonArray;
+Type* TypeSystem::enumType = &commonEnum;
 
 std::string IntegerType::dump() {
     return "Integer";
@@ -70,6 +72,14 @@ std::string ArrayType::dump() {
 
 std::string ArrayType::toRustStr() {
     return "array";
+}
+
+std::string EnumType::dump() {
+    return "Enum";
+}
+
+std::string EnumType::toRustStr() {
+    return "Enum";
 }
 
 std::string ProcedureType::dump() {

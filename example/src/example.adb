@@ -1,16 +1,19 @@
 with Ada.Text_IO; use Ada.Text_IO;
 
-procedure Traffic_Light is
-    type Light_Color is (Red, Yellow, Green);
-    Current_Light : Light_Color := Red;
-begin
-    case Current_Light is
-        when Red =>
-            Put_Line("Stop");
-        when Yellow =>
-            Put_Line("Caution");
-        when Green =>
-            Put_Line("Go");
-    end case;
-end Traffic_Light;
+procedure Enumeration_Example is
+    type Days is (Monday, Tuesday, Wednesday,
+                  Thursday, Friday,
+                  Saturday, Sunday);
 
+begin
+    for I in Days loop
+        case I is
+            when Saturday .. Sunday =>
+               Put_Line ("Week end!");
+
+            when Monday .. Friday =>
+               Put_Line ("Week day!");
+               
+        end case;
+    end loop;
+end Enumeration_Example;

@@ -11,7 +11,7 @@ private:
   int kind;
 
 protected:
-  enum { INTEGER, BOOLEAN, CHARACTER, STRING, NATURAL, FLOAT, PROCEDURE, FUNCTION };
+  enum { INTEGER, BOOLEAN, CHARACTER, STRING, NATURAL, FLOAT, PROCEDURE, FUNCTION, ENUM };
 
 public:
   Type(int _kind) : kind(_kind){};
@@ -26,6 +26,7 @@ public:
   bool isNatural() const { return kind == NATURAL; };
   bool isProcedure() const { return kind == PROCEDURE; };
   bool isFunction() const { return kind == FUNCTION; };
+  bool isEnum() const { return kind == ENUM; };
 };
 
 class IntegerType : public Type {
@@ -74,6 +75,15 @@ private:
 
 public:
   StringType(int _length) : Type(Type::STRING), length(_length){};
+  std::string dump();
+  std::string toRustStr();
+};
+
+class EnumType : public Type {
+private:
+  int size;
+public:
+  EnumType(int _size) : Type(Type::ENUM), size(_size){};
   std::string dump();
   std::string toRustStr();
 };
@@ -164,6 +174,7 @@ private:
   static StringType commonString;
   static FloatType commonFloat;
   static ArrayType commonArray;
+  static EnumType commonEnum;
 public:
   static Type *integerType;
   static Type *naturalType;
@@ -172,6 +183,7 @@ public:
   static Type *stringType;
   static Type *floatType;
   static Type *arrayType;
+  static Type *enumType;
 };
 
 #endif

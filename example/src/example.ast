@@ -2,44 +2,48 @@ program
     Package: Ada.Text_IO
     Package: Ada.Text_IO
     ProcedureDef
-        Procedure	name: Array_Example	type: Procedure
+        Procedure	name: Enumeration_Example	type: Procedure
         DeclItemOrBodyStmt
             DeclStmt
-                TypeDecl: Int_Array
-                    ArrayDef: Integer
-                        Range
-                            Literal	type: Integer	value: 1
-                            Literal	type: Integer	value: 5
-        DeclItemOrBodyStmt
-            DeclStmt
-                ArrayDecl: Type: Int_Array, Offset: 1
-                    DefId	name: My_Array	type: Integer	isConst: false
-                    ArrayInit
-                        Literal	type: Integer	value: 1
-                        Literal	type: Integer	value: 2
-                        Literal	type: Integer	value: 3
-                        Literal	type: Integer	value: 4
-                        Literal	type: Integer	value: 5
+                TypeDecl:                     DefId	name: Monday	type: Enum	isConst: false
+                    DefId	name: Tuesday	type: Enum	isConst: false
+                    DefId	name: Wednesday	type: Enum	isConst: false
+                    DefId	name: Thursday	type: Enum	isConst: false
+                    DefId	name: Friday	type: Enum	isConst: false
+                    DefId	name: Saturday	type: Enum	isConst: false
+                    DefId	name: Sunday	type: Enum	isConst: false
         Stmt
             LoopStmt
                 Iteration
                     IterPart	name: I
                     DiscreteRange
                         Range
-                            Literal	type: Integer	value: 1
-                            Literal	type: Integer	value: 5
+                            Literal	type: Integer	value: 0
+                            Literal	type: Integer	value: 6
                 BasicLoopStmt
                     Stmt
-                        PutLineStmt
+                        CaseStmt
                             Id
-                                Id
-                                    Id
-                                        name: Integer	scope: 0	type: Integer
-                                        AttributeId: Image
-                                Name PAREN Value
-                                    Id
-                                        Id
-                                            name: My_Array	scope: 2	type: Integer
-                                        Name PAREN Value
+                                name: I	scope: 3	type: Integer
+                            Alternative
+                                Choice
+                                    DiscreteRange
+                                        Range
                                             Id
-                                                name: I	scope: 3	type: Integer
+                                                name: Saturday	scope: 2	type: Enum
+                                            Id
+                                                name: Sunday	scope: 2	type: Enum
+                                Stmt
+                                    PutLineStmt
+                                        Literal	type: String	value: "Week end!"
+                            Alternative
+                                Choice
+                                    DiscreteRange
+                                        Range
+                                            Id
+                                                name: Monday	scope: 2	type: Enum
+                                            Id
+                                                name: Friday	scope: 2	type: Enum
+                                Stmt
+                                    PutLineStmt
+                                        Literal	type: String	value: "Week day!"

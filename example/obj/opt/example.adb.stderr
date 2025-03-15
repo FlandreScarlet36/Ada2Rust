@@ -1,1 +1,3 @@
-example.adb:3:11: warning: file name does not match unit name, should be "array_example.adb"
+example.adb:3:11: warning: file name does not match unit name, should be "traffic_light.adb"
+example.adb:16:14: cannot iterate over "Integer"
+example.adb:16:14: to iterate directly over the elements of a container, write "of num"

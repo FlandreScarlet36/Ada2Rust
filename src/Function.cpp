@@ -28,7 +28,11 @@ Function::~Function() {
 // 获取声明字符串
 std::string Function::getDeclStr(int level) const {
   std::string declStr;
-  // 1. 处理操作数声明
+  // 1. 处理其他声明
+  for (auto decl : decls) {
+    declStr += decl->output(level);
+  }
+  // 2. 处理操作数声明
   for (auto op : declOps) {
     char temp[100];
     RustExpr *init = op->getInit();
@@ -41,10 +45,6 @@ std::string Function::getDeclStr(int level) const {
     } else
       sprintf(temp, "%*clet mut %s: %s;\n", level, ' ', op->getName().c_str(), op->typeName().c_str());
     declStr += std::string(temp);
-  }
-  // 2. 处理其他声明
-  for (auto decl : decls) {
-    declStr += decl->output(level);
   }
   // 3. 处理子过程定义
   for (auto &func : subFuncs) {

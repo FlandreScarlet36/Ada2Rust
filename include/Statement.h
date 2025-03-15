@@ -384,10 +384,12 @@ public:
 
 class RustTypeDecl: public RustStmt {
 private:
+  RustDefId *id;
   SymbolEntry* se;
   RustExpr* rustExpr;
 public:
   RustTypeDecl(Function *_func, RustExpr* _rustExpr, SymbolEntry* _se);
+  RustTypeDecl(Function *_func, RustDefId *_id);
   std::string output(int level) const;
 };
 
